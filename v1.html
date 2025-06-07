@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UserHood – We Are User First Designers</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; font-family: "Inter", sans-serif; background: #fff; color: #000; }
+  .header {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: #8CC63F;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    cursor: pointer;
+    outline: none;
+    z-index: 10;
+    user-select: none;
+    overflow: hidden;
+    transition: box-shadow 0.3s, filter 0.3s;
+  }
+  .header:focus {
+    box-shadow: 0 0 0 3px #2222, 0 4px 24px #0002;
+  }
+  .header:hover {
+    box-shadow: 0 4px 24px #0002, 0 0 0 2px #fff4;
+    filter: brightness(1.07);
+  }
+  .header .new-badge {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    margin-left: 1rem;
+    padding: 0.2rem 0.5rem;
+    font-size: 1rem;
+    transition: background 0.3s, color 0.3s;
+  }
+  .header:hover .new-badge {
+    animation: newWiggle 0.9s;
+    background: #222;
+    color: #8CC63F;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    left: -75%;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0.1) 100%);
+    transform: skewX(-20deg);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .header:hover::after {
+    animation: shineSweep 1.2s forwards;
+    opacity: 1;
+  }
+  @keyframes newWiggle {
+    0% { transform: rotate(0deg); }
+    20% { transform: rotate(-12deg); }
+    40% { transform: rotate(10deg); }
+    60% { transform: rotate(-8deg); }
+    80% { transform: rotate(6deg); }
+    100% { transform: rotate(0deg); }
+  }
+  @keyframes shineSweep {
+    0% { left: -75%; opacity: 0; }
+    10% { opacity: 1; }
+    80% { left: 120%; opacity: 1; }
+    100% { left: 120%; opacity: 0; }
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 1rem;
+    perspective: 900px;
+  }
+  .logo {
+    width: 80vw;
+    max-width: 600px;
+    height: auto;
+    margin-bottom: 2rem;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  .slogan { font-size: 3rem; font-weight: 700; margin: 0; }
+  .tagline { font-size: 2rem; margin: 0.5rem 0; }
+  .section {
+    width: 100vw;
+    margin: 0;
+    padding: 6rem 1.5rem;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    color: #fff;
+  }
+  .section h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-top: 0;
+    text-align: center;
+    color: #fff;
+  }
+  .section p {
+    max-width: 800px;
+    margin: 2rem auto 0 auto;
+    text-align: center;
+    line-height: 1.6;
+  }
+  #whatwedo {
+    background: #8CC63F;
+  }
+  #howwedo {
+    background: #00A99D;
+  }
+  .hood-o1 {
+    animation: hoodMove1 2.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite alternate;
+    transform-origin: center;
+  }
+  .hood-o2 {
+    animation: hoodMove2 2.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite alternate;
+    animation-delay: 0.3s;
+    transform-origin: center;
+  }
+  @keyframes hoodMove1 {
+    0% { transform: scale(1) rotate(0deg) translateY(0) skewX(0deg); }
+    20% { transform: scale(1.08, 0.96) rotate(-2deg) translateY(-2px) skewX(-2deg); }
+    40% { transform: scale(1.15, 0.92) rotate(2deg) translateY(-6px) skewX(2deg); }
+    60% { transform: scale(1.08, 0.96) rotate(-2deg) translateY(-2px) skewX(-2deg); }
+    80% { transform: scale(1.03, 1.01) rotate(1deg) translateY(1px) skewX(1deg); }
+    100% { transform: scale(1) rotate(0deg) translateY(0) skewX(0deg); }
+  }
+  @keyframes hoodMove2 {
+    0% { transform: scale(1) rotate(0deg) translateY(0) skewX(0deg); }
+    25% { transform: scale(1.06, 0.98) rotate(2deg) translateY(-1px) skewX(2deg); }
+    50% { transform: scale(1.13, 0.94) rotate(-2deg) translateY(-7px) skewX(-2deg); }
+    75% { transform: scale(1.06, 0.98) rotate(2deg) translateY(-1px) skewX(2deg); }
+    100% { transform: scale(1) rotate(0deg) translateY(0) skewX(0deg); }
+  }
+  /* Cool modern SVG pattern background for main page */
+  body::before {
+    content: '';
+    position: fixed;
+    z-index: 0;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    opacity: 0.13;
+    background: url('data:image/svg+xml;utf8,<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="60" height="60" fill="white" fill-opacity="0"/><circle cx="30" cy="30" r="2.5" fill="%23222" fill-opacity="0.7"/><circle cx="0" cy="0" r="2.5" fill="%23222" fill-opacity="0.5"/><circle cx="60" cy="60" r="2.5" fill="%23222" fill-opacity="0.5"/><circle cx="60" cy="0" r="2.5" fill="%23222" fill-opacity="0.3"/><circle cx="0" cy="60" r="2.5" fill="%23222" fill-opacity="0.3"/></svg>');
+    background-size: 60px 60px;
+    background-repeat: repeat;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 94" fill="none">
+      <path d="M0.0999756 57.99V0H17.94V44.61H26.86V0H44.7V57.99H0.0999756Z" fill="black"/>
+      <path d="M75.93 13.38H67.01V22.3H93.77V57.98H49.16V40.14H67V44.6H75.92V35.68H49.16V0H93.77V17.84H75.93V13.38Z" fill="black"/>
+      <path d="M116.07 44.61H142.83V57.99H98.22V0H142.83V13.38H116.07V22.3H142.83V35.68H116.07V44.6V44.61Z" fill="black"/>
+      <path d="M174.06 35.69H165.14V57.99H147.3V0H191.91V22.3L185.22 28.99L191.91 35.68V57.98H174.07V35.68L174.06 35.69ZM165.14 13.38V22.3H174.06V13.38H165.14Z" fill="black"/>
+      <path d="M17.08 87.32V93.32H0V63.81H17.08V72.32H26.62V63.81H44.2V93.32H26.62V87.32H17.08Z" fill="black"/>
+      <path class="hood-o1" d="M98.41 93.32V63.81H143.2V93.32H98.41Z" fill="#00A99D"/>
+      <path class="hood-o2" d="M49.2 93.32V63.81H94.2V93.32H49.2Z" fill="#8CC63F"/>
+      <path d="M147 93V64H184.984L192 70.6923V93H147Z" fill="black"/>
+    </svg>
+    <p class="slogan">We are user first designers!</p>
+    <p class="tagline">Website launching soon!</p>
+  </div>
+  <div id="whatwedo" class="section">
+    <h2>Here's what we do</h2>
+    <p>We create user-first digital experiences, blending design thinking, research, and technology to solve real problems for real people. Our work spans User Interface and User Experience Design, product strategy, and more.</p>
+  </div>
+  <div id="howwedo" class="section">
+    <h2>Here's how we do it</h2>
+    <p>We use collaborative workshops, rapid prototyping, and continuous user feedback. Our process is transparent, iterative, and always focused on delivering value to users and stakeholders.</p>
+  </div>
+  <script>
+    // 3D gyroscope effect for the logo
+    const logo = document.querySelector('.logo');
+    let logoTargetX = 0, logoTargetY = 0, logoTargetZ = 0;
+    let logoCurrentX = 0, logoCurrentY = 0, logoCurrentZ = 0;
+    function onMouseMove(e) {
+      const cx = window.innerWidth / 2;
+      const cy = window.innerHeight / 2;
+      const dx = (e.clientX - cx) / cx; // -1 to 1
+      const dy = (e.clientY - cy) / cy; // -1 to 1
+      // More subtle max rotation in deg
+      logoTargetY = dx * 8; // rotateY for left/right
+      logoTargetX = -dy * 6; // rotateX for up/down
+      logoTargetZ = dx * 2; // subtle rotateZ for twist
+    }
+    function animateLogo() {
+      logoCurrentX += (logoTargetX - logoCurrentX) * 0.08;
+      logoCurrentY += (logoTargetY - logoCurrentY) * 0.08;
+      logoCurrentZ += (logoTargetZ - logoCurrentZ) * 0.08;
+      logo.style.transform = `rotateX(${logoCurrentX}deg) rotateY(${logoCurrentY}deg) rotateZ(${logoCurrentZ}deg)`;
+      requestAnimationFrame(animateLogo);
+    }
+    window.addEventListener('mousemove', onMouseMove);
+    animateLogo();
+  </script>
+</body>
+</html>
