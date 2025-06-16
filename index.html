@@ -11,168 +11,143 @@
 
   gtag('config', 'G-690654KZJN');
 </script>
-
-  
-<meta charset="UTF-8">
-<link rel="icon" type="image/png" href="favicon.png">
-<title>UserHood – We Are User First Designers</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  html, body { margin: 0; padding: 0; font-family: "Inter", sans-serif; background: #fff; color: #000; }
-  .header {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    background: #8CC63F;
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    font-size: 1.5rem;
-    cursor: pointer;
-    outline: none;
-    z-index: 10;
-    user-select: none;
-    overflow: hidden;
-    transition: box-shadow 0.3s, filter 0.3s;
-  }
-  .header:focus {
-    box-shadow: 0 0 0 3px #2222, 0 4px 24px #0002;
-  }
-  .header:hover {
-    box-shadow: 0 4px 24px #0002, 0 0 0 2px #fff4;
-    filter: brightness(1.07);
-  }
-  .header .new-badge {
-    display: inline-block;
-    background: #000;
-    color: #fff;
-    margin-left: 1rem;
-    padding: 0.2rem 0.5rem;
-    font-size: 1rem;
-    transition: background 0.3s, color 0.3s;
-  }
-  .header:hover .new-badge {
-    animation: newWiggle 0.9s;
-    background: #222;
-    color: #8CC63F;
-  }
-  .header::after {
-    content: '';
-    position: absolute;
-    left: -75%;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0.1) 100%);
-    transform: skewX(-20deg);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-  .header:hover::after {
-    animation: shineSweep 1.2s forwards;
-    opacity: 1;
-  }
-  @keyframes newWiggle {
-    0% { transform: rotate(0deg); }
-    20% { transform: rotate(-12deg); }
-    40% { transform: rotate(10deg); }
-    60% { transform: rotate(-8deg); }
-    80% { transform: rotate(6deg); }
-    100% { transform: rotate(0deg); }
-  }
-  @keyframes shineSweep {
-    0% { left: -75%; opacity: 0; }
-    10% { opacity: 1; }
-    80% { left: 120%; opacity: 1; }
-    100% { left: 120%; opacity: 0; }
-  }
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    text-align: center;
-    padding: 1rem;
-    perspective: 900px;
-  }
-  .logo {
-    width: 80vw;
-    max-width: 600px;
-    height: auto;
-    margin-bottom: 2rem;
-    transform-style: preserve-3d;
-    will-change: transform;
-  }
-  .slogan { font-size: 3rem; font-weight: 700; margin: 0; }
-  .tagline { font-size: 2rem; margin: 0.5rem 0; }
-  .section {
-    width: 100vw;
-    margin: 0;
-    padding: 6rem 1.5rem;
-    box-sizing: border-box;
-    font-size: 1.5rem;
-    position: relative;
-    z-index: 1;
-    opacity: 1;
-    color: #fff;
-  }
-  .section h2 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-top: 0;
-    text-align: center;
-    color: #fff;
-  }
-  .section p {
-    max-width: 800px;
-    margin: 2rem auto 0 auto;
-    text-align: center;
-    line-height: 1.6;
-  }
-  #whatwedo {
-    background: #8CC63F;
-  }
-  #howwedo {
-    background: #00A99D;
-  }
-  .hood-o1 {
-    animation: hoodMove1 2.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite alternate;
-    transform-origin: center;
-  }
-  .hood-o2 {
-    animation: hoodMove2 2.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite alternate;
-    animation-delay: 0.3s;
-    transform-origin: center;
-  }
-  @keyframes hoodMove1 {
-    0% { transform: scale(1) rotate(0deg) translateY(0) skewX(0deg); }
-    20% { transform: scale(1.08, 0.96) rotate(-2deg) translateY(-2px) skewX(-2deg); }
-    40% { transform: scale(1.15, 0.92) rotate(2deg) translateY(-6px) skewX(2deg); }
-    60% { transform: scale(1.08, 0.96) rotate(-2deg) translateY(-2px) skewX(-2deg); }
-    80% { transform: scale(1.03, 1.01) rotate(1deg) translateY(1px) skewX(1deg); }
-    100% { transform: scale(1) rotate(0deg) translateY(0) skewX(0deg); }
-  }
-  @keyframes hoodMove2 {
-    0% { transform: scale(1) rotate(0deg) translateY(0) skewX(0deg); }
-    25% { transform: scale(1.06, 0.98) rotate(2deg) translateY(-1px) skewX(2deg); }
-    50% { transform: scale(1.13, 0.94) rotate(-2deg) translateY(-7px) skewX(-2deg); }
-    75% { transform: scale(1.06, 0.98) rotate(2deg) translateY(-1px) skewX(2deg); }
-    100% { transform: scale(1) rotate(0deg) translateY(0) skewX(0deg); }
-  }
-  /* Cool modern SVG pattern background for main page */
-  body::before {
-    content: '';
-    position: fixed;
-    z-index: 0;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    pointer-events: none;
-    opacity: 0.13;
-    background: url('data:image/svg+xml;utf8,<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="60" height="60" fill="white" fill-opacity="0"/><circle cx="30" cy="30" r="2.5" fill="%23222" fill-opacity="0.7"/><circle cx="0" cy="0" r="2.5" fill="%23222" fill-opacity="0.5"/><circle cx="60" cy="60" r="2.5" fill="%23222" fill-opacity="0.5"/><circle cx="60" cy="0" r="2.5" fill="%23222" fill-opacity="0.3"/><circle cx="0" cy="60" r="2.5" fill="%23222" fill-opacity="0.3"/></svg>');
-    background-size: 60px 60px;
-    background-repeat: repeat;
-  }
-</style>
+    
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <title>UserHood – We Are User First Designers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", sans-serif;
+      background: #fff;
+      color: #000;
+      overflow-x: hidden;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 4rem;
+      perspective: 900px;
+      position: relative;
+      background-image: radial-gradient(rgba(0,0,0,0.06) 2px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .logo {
+      width: 80vw;
+      max-width: 600px;
+      height: auto;
+      margin-bottom: 2rem;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .hood-o1, .hood-o2 {
+      animation: bounce 1.5s infinite ease-in-out alternate;
+      transform-origin: center;
+    }
+    .hood-o1 {
+      animation-delay: 0.1s;
+    }
+    .hood-o2 {
+      animation-delay: 0.3s;
+    }
+    @keyframes bounce {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-6px); }
+    }
+    .slogan, .tagline {
+      opacity: 0;
+      animation: fadein 1.5s ease-out forwards;
+    }
+    .slogan {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0;
+      animation-delay: 0.4s;
+    }
+    .tagline {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      color: #444;
+      animation-delay: 1s;
+    }
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .section {
+      width: 100vw;
+      padding: 6rem 1.5rem;
+      box-sizing: border-box;
+      font-size: 1.5rem;
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease-out;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .section h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 0;
+      text-align: center;
+    }
+    .section p {
+      max-width: 800px;
+      margin: 2rem auto 0 auto;
+      text-align: center;
+      line-height: 1.6;
+    }
+    #whatwedo {
+      background: #8CC63F;
+      color: #fff;
+    }
+    #howwedo {
+      background: #00A99D;
+      color: #fff;
+    }
+    #whoweworkwith {
+      background: #222;
+      color: #fff;
+    }
+    #philosophy {
+      background: #000;
+      color: #fff;
+    }
+    .waitlist {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #8CC63F;
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 20;
+    }
+    .waitlist:hover {
+      background: #76b135;
+    }
+    footer {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -197,33 +172,30 @@
     <h2>Here's how we do it</h2>
     <p>We blend sharp research with soulful thinking. Through collaborative sprints, rapid prototyping, and story-led design, we solve real problems for real people—without losing the magic. Our process is transparent, iterative, and always human-first.</p>
   </div>
-
-<div id="whatwedo" class="section">
-  <h2>Who We Work With</h2>
-  <p>We collaborate with founders, teams, and organizations who care deeply about the people they’re building for. Whether you're an early-stage startup shaping a product from scratch, or an established company looking to rethink your UX! if you believe design should respect, not just impress, we’re listening.</p>
-</div>
-
-<div id="howwedo" class="section">
-  <h2>Our Philosophy</h2>
-  <p>We believe design isn’t decoration... it’s dignity. That good UX is invisible, but unforgettable. That the future should feel human, not just look sleek. And that every interaction, from a button to a story, holds the power to connect, comfort, or change someone’s day.</p>
-</div>
-
-
+  <div id="whoweworkwith" class="section">
+    <h2>Who We Work With</h2>
+    <p>We collaborate with founders, teams, and organizations who care deeply about the people they’re building for. Whether you're an early-stage startup shaping a product from scratch, or an established company looking to rethink your UX, if you believe design should respect—not just impress—we’re listening.</p>
+  </div>
+  <div id="philosophy" class="section">
+    <h2>Our Philosophy</h2>
+    <p>We believe design isn’t decoration... it’s dignity. That good UX is invisible, but unforgettable. That the future should feel human, not just look sleek. And that every interaction, from a button to a story, holds the power to connect, comfort, or change someone’s day.</p>
+  </div>
   
+   <!-- // <div class="waitlist">Join Waitlist</div> -->
+  <footer>© 2025 Userhood. We’re based in Pune, Reach us at <a href="mailto:hello@userhood.in" style="color: #8CC63F; text-decoration: none;">hello@userhood.in</a></footer>
   <script>
-    // 3D gyroscope effect for the logo
+    // Logo gyroscope
     const logo = document.querySelector('.logo');
     let logoTargetX = 0, logoTargetY = 0, logoTargetZ = 0;
     let logoCurrentX = 0, logoCurrentY = 0, logoCurrentZ = 0;
     function onMouseMove(e) {
       const cx = window.innerWidth / 2;
       const cy = window.innerHeight / 2;
-      const dx = (e.clientX - cx) / cx; // -1 to 1
-      const dy = (e.clientY - cy) / cy; // -1 to 1
-      // More subtle max rotation in deg
-      logoTargetY = dx * 8; // rotateY for left/right
-      logoTargetX = -dy * 6; // rotateX for up/down
-      logoTargetZ = dx * 2; // subtle rotateZ for twist
+      const dx = (e.clientX - cx) / cx;
+      const dy = (e.clientY - cy) / cy;
+      logoTargetY = dx * 8;
+      logoTargetX = -dy * 6;
+      logoTargetZ = dx * 2;
     }
     function animateLogo() {
       logoCurrentX += (logoTargetX - logoCurrentX) * 0.08;
@@ -234,6 +206,15 @@
     }
     window.addEventListener('mousemove', onMouseMove);
     animateLogo();
+
+    // Scroll reveal
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
   </script>
 </body>
 </html>
