@@ -21,15 +21,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
 
-       #ripple-canvas {
+#ripple-canvas {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
   pointer-events: none;
-  display: block;
+  z-index: 0; /* beneath other content */
 }
 
 @media (max-width: 480px) {
@@ -59,13 +56,22 @@
 
 
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: "Inter", sans-serif;
-      background: #fff;
-      color: #000;
-      overflow-x: hidden;
+     html, body { margin: 0; padding: 0; font-family: "Inter", sans-serif; background: #fff; color: #000; }
+  .header {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: #8CC63F;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    cursor: pointer;
+    outline: none;
+    z-index: 10;
+    user-select: none;
+    overflow: hidden;
+    transition: box-shadow 0.3s, filter 0.3s;
+  }
     }
     .container {
       display: flex;
@@ -207,6 +213,9 @@
   </style>
 </head>
 <body>
+
+     <canvas id="ripple-canvas"></canvas>
+     
   <div class="container">
     <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 94" fill="none">
       <path d="M0.0999756 57.99V0H17.94V44.61H26.86V0H44.7V57.99H0.0999756Z" fill="black"/>
