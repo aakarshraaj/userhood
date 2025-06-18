@@ -6,6 +6,15 @@
   z-index: 0; /* beneath other content */
 }
 
+.mobile-break {
+  display: none;
+}
+@media (max-width: 500px) {
+  .mobile-break {
+    display: inline;
+  }
+}
+
 @media (max-width: 480px) {
   .slogan {
     font-size: 2rem;
