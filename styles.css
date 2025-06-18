@@ -1,0 +1,193 @@
+#ripple-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0; /* beneath other content */
+}
+
+@media (max-width: 480px) {
+  .slogan {
+    font-size: 2rem;
+    line-height: 2.8rem;
+    margin: 0.5rem 0;
+    letter-spacing: -3px;
+  }
+
+  .tagline {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    margin: 0.5rem 1rem 0 1rem;
+    color: #555;
+  }
+
+  .container {
+    padding: 2rem 1.25rem;
+  }
+
+  .logo {
+    width: 90vw;
+    max-width: 320px;
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background: #fff;
+  color: #000;
+}
+
+.header {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: #8CC63F;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  outline: none;
+  z-index: 10;
+  user-select: none;
+  overflow: hidden;
+  transition: box-shadow 0.3s, filter 0.3s;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 1rem;
+  perspective: 900px;
+}
+.logo {
+  width: 80vw;
+  max-width: 600px;
+  height: auto;
+  margin-bottom: 2rem;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.hood-o1, .hood-o2 {
+  animation: bounce 1.5s infinite ease-in-out alternate;
+  transform-origin: center;
+}
+.hood-o1 {
+  animation: hoodMove1 2.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite alternate;
+  transform-origin: center;
+}
+.hood-o2 {
+  animation: hoodMove2 2.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite alternate;
+  animation-delay: 0.3s;
+  transform-origin: center;
+}
+
+@keyframes hoodMove1 {
+  0% { transform: scale(1) rotate(0deg) translateY(0) skewX(0deg); }
+  20% { transform: scale(1.08, 0.96) rotate(-2deg) translateY(-2px) skewX(-2deg); }
+  40% { transform: scale(1.15, 0.92) rotate(2deg) translateY(-6px) skewX(2deg); }
+  60% { transform: scale(1.08, 0.96) rotate(-2deg) translateY(-2px) skewX(-2deg); }
+  80% { transform: scale(1.03, 1.01) rotate(1deg) translateY(1px) skewX(1deg); }
+  100% { transform: scale(1) rotate(0deg) translateY(0) skewX(0deg); }
+}
+@keyframes hoodMove2 {
+  0% { transform: scale(1) rotate(0deg) translateY(0) skewX(0deg); }
+  25% { transform: scale(1.06, 0.98) rotate(2deg) translateY(-1px) skewX(2deg); }
+  50% { transform: scale(1.13, 0.94) rotate(-2deg) translateY(-7px) skewX(-2deg); }
+  75% { transform: scale(1.06, 0.98) rotate(2deg) translateY(-1px) skewX(2deg); }
+  100% { transform: scale(1) rotate(0deg) translateY(0) skewX(0deg); }
+}
+.slogan, .tagline {
+  opacity: 0;
+  animation: fadein 1.5s ease-out forwards;
+}
+.slogan {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  animation-delay: 0.4s;
+  letter-spacing: -2px;
+}
+.tagline {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  color: #444;
+  animation-delay: 1s;
+}
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.section {
+  width: 100vw;
+  padding: 6rem 1.5rem;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s ease-out;
+}
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.section h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+  text-align: center;
+  letter-spacing: -2px;
+}
+.section p {
+  max-width: 800px;
+  margin: 2rem auto 0 auto;
+  text-align: center;
+  line-height: 1.6;
+  letter-spacing: -1px;   
+}
+#whatwedo {
+  background: #8CC63F;
+  color: #fff;
+}
+#howwedo {
+  background: #00A99D;
+  color: #fff;
+}
+#whoweworkwith {
+  background: #222;
+  color: #fff;
+}
+#philosophy {
+  background: #000;
+  color: #fff;
+}
+.waitlist {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #8CC63F;
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+.waitlist:hover {
+  background: #76b135;
+}
+footer {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
