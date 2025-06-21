@@ -102,23 +102,22 @@ animateDots();
 
 
 const cursor = document.getElementById('custom-cursor');
-const cursorSVG = cursor.querySelector('svg');
 
-window.addEventListener('mousemove', e => {
-  cursor.style.top = `${e.clientY}px`;
-  cursor.style.left = `${e.clientX}px`;
+let cursorX = 0;
+let cursorY = 0;
+let targetX = 0;
+let targetY = 0;
 
-  // Animate based on movement direction
-  const dx = e.movementX;
-  const dy = e.movementY;
-  const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-
-  cursorSVG.style.transform = `rotate(${angle}deg) scale(1.05)`;
+window.addEventListener('mousemove', (e) => {
+  targetX = e.clientX;
+  targetY = e.clientY;
 });
 
-window.addEventListener('mouseout', () => {
-  cursor.style.opacity = 0;
-});
-window.addEventListener('mouseover', () => {
-  cursor.style.opacity = 1;
-});
+function animateCursor() {
+  cursorX += (targetX - cursorX) * 0.15;
+  cursorY += (targetY - cursorY) * 0.15;
+  cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
