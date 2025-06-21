@@ -98,3 +98,43 @@ function animateDots() {
 }
 
 animateDots();
+
+
+
+
+
+
+const cursorWrapper = document.getElementById('custom-cursor');
+const arrow = document.getElementById('cursor-arrow');
+const hand = document.getElementById('cursor-hand');
+
+let mouseX = 0, mouseY = 0;
+let currentX = 0, currentY = 0;
+
+// Smooth following
+window.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateCursor() {
+  currentX += (mouseX - currentX) * 0.18;
+  currentY += (mouseY - currentY) * 0.18;
+  cursorWrapper.style.transform = `translate(${currentX}px, ${currentY}px)`;
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// Morph to hand cursor on clickable
+const clickableTags = ['A', 'BUTTON', 'INPUT', 'TEXTAREA', 'LABEL'];
+document.addEventListener('mouseover', (e) => {
+  const tag = e.target.tagName;
+  if (clickableTags.includes(tag) || e.target.closest('a, button')) {
+    arrow.style.display = 'none';
+    hand.style.display = 'block';
+  } else {
+    arrow.style.display = 'block';
+    hand.style.display = 'none';
+  }
+});
+
