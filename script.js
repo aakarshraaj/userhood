@@ -104,37 +104,37 @@ animateDots();
 
 
 
-const cursorWrapper = document.getElementById('custom-cursor');
-const arrow = document.getElementById('cursor-arrow');
-const hand = document.getElementById('cursor-hand');
+const cursor = document.getElementById('custom-cursor');
+const arrowCursor = document.getElementById('cursor-arrow');
+const handCursor = document.getElementById('cursor-hand');
 
 let mouseX = 0, mouseY = 0;
-let currentX = 0, currentY = 0;
+let currX = 0, currY = 0;
 
-// Smooth following
 window.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
 });
 
 function animateCursor() {
-  currentX += (mouseX - currentX) * 0.18;
-  currentY += (mouseY - currentY) * 0.18;
-  cursorWrapper.style.transform = `translate(${currentX}px, ${currentY}px)`;
+  currX += (mouseX - currX) * 0.15;
+  currY += (mouseY - currY) * 0.15;
+  cursor.style.transform = `translate(${currX}px, ${currY}px)`;
   requestAnimationFrame(animateCursor);
 }
 animateCursor();
 
-// Morph to hand cursor on clickable
-const clickableTags = ['A', 'BUTTON', 'INPUT', 'TEXTAREA', 'LABEL'];
+// Interactive morphing
+const isClickable = (el) => {
+  return el.closest('a, button, [role="button"], input, textarea, select, label');
+};
+
 document.addEventListener('mouseover', (e) => {
-  const tag = e.target.tagName;
-  if (clickableTags.includes(tag) || e.target.closest('a, button')) {
-    arrow.style.display = 'none';
-    hand.style.display = 'block';
+  if (isClickable(e.target)) {
+    arrowCursor.style.display = 'none';
+    handCursor.style.display = 'block';
   } else {
-    arrow.style.display = 'block';
-    hand.style.display = 'none';
+    arrowCursor.style.display = 'block';
+    handCursor.style.display = 'none';
   }
 });
-
