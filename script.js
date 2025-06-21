@@ -103,21 +103,19 @@ animateDots();
 
 const cursor = document.getElementById('custom-cursor');
 
-let cursorX = 0;
-let cursorY = 0;
-let targetX = 0;
-let targetY = 0;
+let mouseX = 0, mouseY = 0;
+let currentX = 0, currentY = 0;
 
 window.addEventListener('mousemove', (e) => {
-  targetX = e.clientX;
-  targetY = e.clientY;
+  mouseX = e.clientX;
+  mouseY = e.clientY;
 });
 
-function animateCursor() {
-  cursorX += (targetX - cursorX) * 0.15;
-  cursorY += (targetY - cursorY) * 0.15;
-  cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-  requestAnimationFrame(animateCursor);
+function moveCursor() {
+  currentX += (mouseX - currentX) * 0.15;
+  currentY += (mouseY - currentY) * 0.15;
+  cursor.style.transform = `translate(${currentX}px, ${currentY}px)`;
+  requestAnimationFrame(moveCursor);
 }
 
-animateCursor();
+moveCursor();
