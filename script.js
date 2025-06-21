@@ -98,3 +98,27 @@ function animateDots() {
 }
 
 animateDots();
+
+
+
+const cursor = document.getElementById('custom-cursor');
+const cursorSVG = cursor.querySelector('svg');
+
+window.addEventListener('mousemove', e => {
+  cursor.style.top = `${e.clientY}px`;
+  cursor.style.left = `${e.clientX}px`;
+
+  // Animate based on movement direction
+  const dx = e.movementX;
+  const dy = e.movementY;
+  const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+  cursorSVG.style.transform = `rotate(${angle}deg) scale(1.05)`;
+});
+
+window.addEventListener('mouseout', () => {
+  cursor.style.opacity = 0;
+});
+window.addEventListener('mouseover', () => {
+  cursor.style.opacity = 1;
+});
