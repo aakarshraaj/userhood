@@ -208,7 +208,7 @@ footer {
 
 
 body {
-  cursor: none;
+  cursor: none; !important;
 }
 
 #custom-cursor {
