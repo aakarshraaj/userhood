@@ -15,7 +15,7 @@ function animateLogo() {
   logoCurrentX += (logoTargetX - logoCurrentX) * 0.08;
   logoCurrentY += (logoTargetY - logoCurrentY) * 0.08;
   logoCurrentZ += (logoTargetZ - logoCurrentZ) * 0.08;
-  logo.style.transform = `rotateX(${logoCurrentX}deg) rotateY(${logoCurrentY}deg) rotateZ(${logoCurrentZ}deg)`;
+  logo.style.transform = rotateX(${logoCurrentX}deg) rotateY(${logoCurrentY}deg) rotateZ(${logoCurrentZ}deg);
   requestAnimationFrame(animateLogo);
 }
 window.addEventListener('mousemove', onMouseMove);
@@ -84,3 +84,5 @@ function animateDots() {
 
   requestAnimationFrame(animateDots);
 }
+
+animateDots();
