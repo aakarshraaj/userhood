@@ -117,8 +117,8 @@ window.addEventListener('mousemove', (e) => {
 });
 
 function animateCursor() {
-  currX += (mouseX - currX) * 0.15;
-  currY += (mouseY - currY) * 0.15;
+  currX = mouseX;
+  currY = mouseY;
   cursor.style.transform = `translate(${currX}px, ${currY}px)`;
   requestAnimationFrame(animateCursor);
 }
