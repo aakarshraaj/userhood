@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-690654KZJN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-690654KZJN');
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('click', function(e) {
+        if (e.target.href && e.target.href.includes('mailto:')) {
+          gtag('event', 'email_click', {
+            'contact_method': 'email',
+            'contact_value': e.target.href.replace('mailto:', '')
+          });
+        }
+      });
+      
+      const bookCallButtons = document.querySelectorAll('.cta-button, .book-call');
+      bookCallButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          gtag('event', 'book_call_click', {
+            'source': 'landing_page_design'
+          });
+        });
+      });
+    });
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>High-Converting Landing Page Design | Userhood</title>
+  <meta name="description" content="Design landing pages that convert visitors into customers. We create high-performing landing pages optimised for conversions and business growth. Based in Pune, India.">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Userhood">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://userhood.in/landing-page-design">
+  
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="en-IN" href="https://userhood.in/landing-page-design">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="High-Converting Landing Page Design | Userhood">
+  <meta property="og:description" content="Design landing pages that convert visitors into customers. We create high-performing landing pages optimised for conversions and business growth. Based in Pune, India.">
+  <meta property="og:url" content="https://userhood.in/landing-page-design">
+  <meta property="og:image" content="https://userhood.in/og/landing-page-design.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:site_name" content="Userhood">
+  
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="High-Converting Landing Page Design | Userhood">
+  <meta name="twitter:description" content="Design landing pages that convert visitors into customers. We create high-performing landing pages optimised for conversions and business growth. Based in Pune, India.">
+  <meta name="twitter:image" content="https://userhood.in/og/landing-page-design.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+  
+  <!-- Font Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../styles.css">
+  
+  <!-- Search Console Verification (placeholder) -->
+  <meta name="google-site-verification" content="GOOGLE_VERIFICATION_CODE_HERE">
+  <meta name="msvalidate.01" content="BING_VERIFICATION_CODE_HERE">
+  
+  <!-- Structured Data - Service Page -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Landing Page Design Services",
+    "serviceType": "Landing Page Design",
+    "description": "High-converting landing page design services that turn visitors into customers. Optimised for conversions and business growth.",
+    "provider": {
+      "@type": ["Organization", "LocalBusiness"],
+      "name": "Userhood",
+      "url": "https://userhood.in",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pune",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      }
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Pune"
+      },
+      {
+        "@type": "Country",
+        "name": "India"
+      }
+    ],
+    "offers": {
+      "@type": "Offer",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "INR"
+      }
+    }
+  }
+  </script>
+  
+  <!-- Breadcrumb Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://userhood.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Landing Page Design",
+        "item": "https://userhood.in/landing-page-design"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<div class="page-container">
+  <!-- Navigation -->
+  <nav class="main-nav" style="position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 100; padding: 1rem; border-bottom: 1px solid #eee;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+      <a href="/" style="font-weight: bold; color: #000; text-decoration: none; font-size: 1.5rem;">Userhood</a>
+      <div style="display: flex; gap: 2rem;">
+        <a href="/product-design" style="color: #000; text-decoration: none;">Product Design</a>
+        <a href="/ui-ux-design" style="color: #000; text-decoration: none;">UI/UX Design</a>
+        <a href="/about" style="color: #000; text-decoration: none;">About</a>
+        <a href="/contact" style="color: #000; text-decoration: none; background: #8CC63F; padding: 0.5rem 1rem; border-radius: 4px; color: white;">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main style="margin-top: 80px; padding: 2rem 1rem;">
+    
+    <!-- Hero Section -->
+    <section class="hero" style="max-width: 1200px; margin: 0 auto; text-align: center; padding: 4rem 0;">
+      <h1 style="font-size: 3rem; font-weight: 700; margin: 0 0 1rem 0; color: #000;">High-Converting Landing Page Design</h1>
+      <p style="font-size: 1.25rem; color: #666; max-width: 600px; margin: 0 auto 2rem auto; line-height: 1.6;">Turn visitors into customers with landing pages that convert. We design focused, persuasive pages that drive action and grow your business.</p>
+      <a href="/contact" class="cta-button" style="background: #8CC63F; color: white; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block; margin: 1rem 0;">Boost Your Conversions</a>
+    </section>
+
+    <!-- Why Landing Pages Matter -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Why Landing Pages Matter for Your Business</h2>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+        
+        <div>
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0; font-size: 1.8rem;">Focused on One Goal</h3>
+          <p style="line-height: 1.6; margin-bottom: 2rem;">Unlike your main website, landing pages have one clear purpose – to convert visitors into customers, leads, or subscribers. This singular focus dramatically improves conversion rates.</p>
+          
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0; font-size: 1.8rem;">Measurable Results</h3>
+          <p style="line-height: 1.6; margin-bottom: 2rem;">Landing pages provide clear, measurable ROI. You can track exactly how many visitors convert and optimise based on real data, not guesswork.</p>
+        </div>
+        
+        <div style="background: #f8f9fa; padding: 2rem; border-radius: 12px; text-align: center;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0; font-size: 2rem;">Average Conversion Rate</h3>
+          <p style="font-size: 3rem; font-weight: 700; margin: 0; color: #00A99D;">2.35%</p>
+          <p style="margin: 1rem 0 0 0; color: #666;">Industry average, but we consistently achieve 5-15% conversion rates through strategic design and testing.</p>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Our Landing Page Design Process -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0; background: #f8f9fa; margin-left: -1rem; margin-right: -1rem; padding-left: 1rem; padding-right: 1rem;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Our Landing Page Design Process</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">1. Conversion Strategy</h3>
+          <p>We start by understanding your business goals, target audience, and desired actions. This foundation ensures every design element serves the conversion objective.</p>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">2. Competitor Analysis</h3>
+          <p>We analyse high-performing landing pages in your industry to identify best practices and opportunities for differentiation.</p>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">3. Persuasive Copywriting</h3>
+          <p>We collaborate on compelling headlines, benefit-focused copy, and clear calls-to-action that speak directly to your audience's needs and motivations.</p>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">4. Visual Design & Layout</h3>
+          <p>We create visually appealing designs that guide the eye towards conversion elements using proven principles of visual hierarchy and persuasion.</p>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">5. Mobile Optimisation</h3>
+          <p>With 60%+ of traffic coming from mobile devices, we ensure your landing pages perform perfectly across all screen sizes and devices.</p>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">6. Testing & Optimisation</h3>
+          <p>We set up A/B testing frameworks and provide recommendations for continuous improvement based on user behaviour and conversion data.</p>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Types of Landing Pages -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Types of Landing Pages We Design</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        
+        <div style="border: 1px solid #eee; border-radius: 8px; padding: 2rem; text-align: center;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Lead Generation</h3>
+          <p style="margin: 0 0 1rem 0; color: #666;">Capture qualified leads with compelling offers like eBooks, webinars, or free consultations.</p>
+          <div style="background: #f8f9fa; padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+            <strong>Best for:</strong> B2B services, consultancies, course creators
+          </div>
+        </div>
+        
+        <div style="border: 1px solid #eee; border-radius: 8px; padding: 2rem; text-align: center;">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Product Sales</h3>
+          <p style="margin: 0 0 1rem 0; color: #666;">Drive direct sales with persuasive product pages that highlight benefits and overcome objections.</p>
+          <div style="background: #f8f9fa; padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+            <strong>Best for:</strong> E-commerce, SaaS products, digital courses
+          </div>
+        </div>
+        
+        <div style="border: 1px solid #eee; border-radius: 8px; padding: 2rem; text-align: center;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">App Downloads</h3>
+          <p style="margin: 0 0 1rem 0; color: #666;">Increase app installs with pages that showcase features, benefits, and social proof.</p>
+          <div style="background: #f8f9fa; padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+            <strong>Best for:</strong> Mobile apps, software tools, games
+          </div>
+        </div>
+        
+        <div style="border: 1px solid #eee; border-radius: 8px; padding: 2rem; text-align: center;">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Event Registration</h3>
+          <p style="margin: 0 0 1rem 0; color: #666;">Boost event attendance with pages that create urgency and highlight event value.</p>
+          <div style="background: #f8f9fa; padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+            <strong>Best for:</strong> Webinars, conferences, workshops
+          </div>
+        </div>
+        
+        <div style="border: 1px solid #eee; border-radius: 8px; padding: 2rem; text-align: center;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Newsletter Signup</h3>
+          <p style="margin: 0 0 1rem 0; color: #666;">Grow your email list with pages that communicate clear value and build trust.</p>
+          <div style="background: #f8f9fa; padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+            <strong>Best for:</strong> Content creators, bloggers, brands
+          </div>
+        </div>
+        
+        <div style="border: 1px solid #eee; border-radius: 8px; padding: 2rem; text-align: center;">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Coming Soon</h3>
+          <p style="margin: 0 0 1rem 0; color: #666;">Build anticipation and capture early interest for product launches or new features.</p>
+          <div style="background: #f8f9fa; padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+            <strong>Best for:</strong> Startups, new products, feature launches
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Key Elements of High-Converting Landing Pages -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0; background: #f8f9fa; margin-left: -1rem; margin-right: -1rem; padding-left: 1rem; padding-right: 1rem;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Key Elements We Include</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+          <h4 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Compelling Headlines</h4>
+          <p style="margin: 0; color: #666; font-size: 0.9rem;">Clear, benefit-focused headlines that grab attention instantly</p>
+        </div>
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+          <h4 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Strong CTAs</h4>
+          <p style="margin: 0; color: #666; font-size: 0.9rem;">Action-oriented buttons that stand out and drive clicks</p>
+        </div>
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+          <h4 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Social Proof</h4>
+          <p style="margin: 0; color: #666; font-size: 0.9rem;">Testimonials, reviews, and trust signals that build credibility</p>
+        </div>
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+          <h4 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Benefit-Focused Copy</h4>
+          <p style="margin: 0; color: #666; font-size: 0.9rem;">Content that focuses on outcomes, not features</p>
+        </div>
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+          <h4 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Optimised Forms</h4>
+          <p style="margin: 0; color: #666; font-size: 0.9rem;">Minimal, user-friendly forms that reduce friction</p>
+        </div>
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+          <h4 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Mobile-First Design</h4>
+          <p style="margin: 0; color: #666; font-size: 0.9rem;">Perfect experience across all devices and screen sizes</p>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="max-width: 800px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Frequently Asked Questions</h2>
+      
+      <div style="space-y: 2rem;">
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">How much does landing page design cost in India?</h3>
+          <p>Landing page design pricing starts around ₹25K for simple pages and goes up to ₹2L+ for complex, multi-variant campaigns. The cost depends on complexity, number of pages, and testing requirements. We provide detailed quotes after understanding your needs.</p>
+        </div>
+        
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">What's the typical timeline for landing page design?</h3>
+          <p>Most landing pages take 1-2 weeks from brief to launch. This includes strategy, design, copy review, revisions, and setup. Rush projects can be completed in 3-5 days with additional coordination.</p>
+        </div>
+        
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">Do you write the copy for landing pages?</h3>
+          <p>We collaborate on copywriting. You provide the core messaging and product information, and we help structure it for maximum conversion impact. For comprehensive copywriting services, we can recommend specialist partners.</p>
+        </div>
+        
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">How do you measure landing page success?</h3>
+          <p>Success is measured by conversion rate, cost per acquisition, and overall ROI. We set up proper analytics tracking and provide recommendations for A/B testing different elements to continuously improve performance.</p>
+        </div>
+        
+        <div>
+          <h3 style="color: #000; margin: 0 0 1rem 0;">Can you help with ongoing optimisation?</h3>
+          <p>Yes! We offer ongoing optimisation services including A/B testing setup, performance analysis, and iterative improvements. Many clients see 20-50% improvement in conversions through systematic testing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0; text-align: center; background: linear-gradient(135deg, #8CC63F, #00A99D); margin-left: -1rem; margin-right: -1rem; color: white;">
+      <h2 style="font-size: 2.5rem; margin: 0 0 1rem 0; color: white;">Ready to Boost Your Conversion Rates?</h2>
+      <p style="font-size: 1.25rem; margin: 0 0 2rem 0; max-width: 600px; margin-left: auto; margin-right: auto;">Let's create landing pages that turn your traffic into customers and grow your business.</p>
+      <a href="/contact" class="cta-button" style="background: white; color: #8CC63F; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block;">Start Your Project</a>
+    </section>
+
+    <!-- Related Services -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2rem; text-align: center; margin: 0 0 2rem 0;">Related Services</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        
+        <a href="/ui-ux-design" style="text-decoration: none; color: inherit; border: 1px solid #eee; border-radius: 8px; padding: 1.5rem; display: block; transition: box-shadow 0.2s;">
+          <h3 style="color: #8CC63F; margin: 0 0 0.5rem 0;">UI/UX Design</h3>
+          <p style="margin: 0; color: #666;">Comprehensive interface and experience design for web and mobile applications.</p>
+        </a>
+        
+        <a href="/ux-audit" style="text-decoration: none; color: inherit; border: 1px solid #eee; border-radius: 8px; padding: 1.5rem; display: block; transition: box-shadow 0.2s;">
+          <h3 style="color: #8CC63F; margin: 0 0 0.5rem 0;">UX Audit</h3>
+          <p style="margin: 0; color: #666;">Identify conversion bottlenecks and opportunities to improve your existing pages.</p>
+        </a>
+        
+        <a href="/usability-testing" style="text-decoration: none; color: inherit; border: 1px solid #eee; border-radius: 8px; padding: 1.5rem; display: block; transition: box-shadow 0.2s;">
+          <h3 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Usability Testing</h3>
+          <p style="margin: 0; color: #666;">Test your landing pages with real users to validate design decisions and improve conversions.</p>
+        </a>
+        
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: #000; color: white; padding: 20px; text-align: center; font-family: sans-serif;">
+    <div style="margin-bottom: 1rem;">
+      <h3 style="margin: 0 0 1rem 0; font-size: 1.2rem; color: #8CC63F;">Userhood</h3>
+      <p style="margin: 0.5rem 0; font-size: 14px;">
+        Product Design & UX/UI Studio<br>
+        Pune, Maharashtra, India<br>
+        <a href="mailto:hello@userhood.in" style="color: #8CC63F; text-decoration: none;">hello@userhood.in</a>
+      </p>
+    </div>
+    
+    <p style="margin: 0; font-size: 16px;">
+      © 2025 Userhood. All rights reserved.
+      &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/company/userhood" target="_blank" style="display: inline-block; vertical-align: middle;" aria-label="Userhood on LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 34 34" fill="none">
+          <rect width="34" height="34" rx="4" fill="#8CC63F"/>
+          <path d="M10.2 13.5H13.8V25H10.2V13.5ZM12 9.75C12.83 9.75 13.5 10.42 13.5 11.25C13.5 12.08 12.83 12.75 12 12.75C11.17 12.75 10.5 12.08 10.5 11.25C10.5 10.42 11.17 9.75 12 9.75ZM15.3 13.5H18.75V15H18.8C19.28 14.09 20.42 13.2 22.02 13.2C25.35 13.2 26 15.37 26 18.18V25H22.4V18.8C22.4 17.5 22.37 15.8 20.6 15.8C18.8 15.8 18.5 17.27 18.5 18.7V25H15.3V13.5Z" fill="black"/>
+        </svg>
+      </a>
+    </p>
+    
+    <div style="margin-top: 1rem; font-size: 14px;">
+      <a href="/product-design" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Product Design</a> |
+      <a href="/ui-ux-design" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">UI/UX Design</a> |
+      <a href="/contact" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Contact</a> |
+      <a href="/pune" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Pune</a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- FAQ Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does landing page design cost in India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Landing page design pricing starts around ₹25K for simple pages and goes up to ₹2L+ for complex, multi-variant campaigns. The cost depends on complexity, number of pages, and testing requirements. We provide detailed quotes after understanding your needs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the typical timeline for landing page design?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most landing pages take 1-2 weeks from brief to launch. This includes strategy, design, copy review, revisions, and setup. Rush projects can be completed in 3-5 days with additional coordination."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you write the copy for landing pages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We collaborate on copywriting. You provide the core messaging and product information, and we help structure it for maximum conversion impact. For comprehensive copywriting services, we can recommend specialist partners."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you measure landing page success?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Success is measured by conversion rate, cost per acquisition, and overall ROI. We set up proper analytics tracking and provide recommendations for A/B testing different elements to continuously improve performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you help with ongoing optimisation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! We offer ongoing optimisation services including A/B testing setup, performance analysis, and iterative improvements. Many clients see 20-50% improvement in conversions through systematic testing."
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>

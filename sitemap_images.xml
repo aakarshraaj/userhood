@@ -43,4 +43,22 @@
       <image:caption>Premier product design studio serving Pune's tech ecosystem</image:caption>
     </image:image>
   </url>
+  
+  <url>
+    <loc>https://userhood.in/landing-page-design</loc>
+    <image:image>
+      <image:loc>https://userhood.in/og/landing-page-design.png</image:loc>
+      <image:title>High-Converting Landing Page Design</image:title>
+      <image:caption>Landing page design services that turn visitors into customers</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://userhood.in/industries/saas</loc>
+    <image:image>
+      <image:loc>https://userhood.in/og/saas.png</image:loc>
+      <image:title>SaaS Product Design Services</image:title>
+      <image:caption>Expert SaaS product design for software companies and startups</image:caption>
+    </image:image>
+  </url>
 </urlset>
