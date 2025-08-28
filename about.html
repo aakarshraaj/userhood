@@ -86,7 +86,8 @@
   <nav class="main-nav" style="position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 100; padding: 1rem; border-bottom: 1px solid #eee;">
     <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
       <a href="/" style="font-weight: bold; color: #000; text-decoration: none; font-size: 1.5rem;">Userhood</a>
-      <div style="display: flex; gap: 2rem;">
+      <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+      <div class="nav-links">
         <a href="/product-design" style="color: #000; text-decoration: none;">Product Design</a>
         <a href="/ui-ux-design" style="color: #000; text-decoration: none;">UI/UX Design</a>
         <a href="/about" style="color: #8CC63F; text-decoration: none; font-weight: 500;">About</a>
@@ -277,6 +278,31 @@
   </footer>
 
 </div>
+
+<script>
+function toggleMobileMenu() {
+  const navLinks = document.querySelector('.nav-links');
+  navLinks.classList.toggle('active');
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+  const nav = document.querySelector('.main-nav');
+  const toggleButton = document.querySelector('.mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+    navLinks.classList.remove('active');
+  }
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.remove('active');
+  });
+});
+</script>
 
 </body>
 </html>
