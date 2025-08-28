@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-690654KZJN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-690654KZJN');
+    
+    // Enhanced GA4 Event Tracking
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track email clicks
+      document.addEventListener('click', function(e) {
+        if (e.target.href && e.target.href.includes('mailto:')) {
+          gtag('event', 'email_click', {
+            'contact_method': 'email',
+            'contact_value': e.target.href.replace('mailto:', '')
+          });
+        }
+      });
+      
+      // Track book call clicks
+      const bookCallButtons = document.querySelectorAll('.cta-button, .book-call');
+      bookCallButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          gtag('event', 'book_call_click', {
+            'source': 'product_design_page'
+          });
+        });
+      });
+    });
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Product Design for Web & Mobile | Userhood</title>
+  <meta name="description" content="Expert product design services for web and mobile applications. From concept to prototype, we design digital products that users love. Based in Pune, serving globally.">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Userhood">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://userhood.in/product-design">
+  
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="en-IN" href="https://userhood.in/product-design">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Product Design for Web & Mobile | Userhood">
+  <meta property="og:description" content="Expert product design services for web and mobile applications. From concept to prototype, we design digital products that users love. Based in Pune, serving globally.">
+  <meta property="og:url" content="https://userhood.in/product-design">
+  <meta property="og:image" content="https://userhood.in/og/product-design.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:site_name" content="Userhood">
+  
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Product Design for Web & Mobile | Userhood">
+  <meta name="twitter:description" content="Expert product design services for web and mobile applications. From concept to prototype, we design digital products that users love. Based in Pune, serving globally.">
+  <meta name="twitter:image" content="https://userhood.in/og/product-design.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+  
+  <!-- Font Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../styles.css">
+  
+  <!-- Search Console Verification (placeholder) -->
+  <meta name="google-site-verification" content="GOOGLE_VERIFICATION_CODE_HERE">
+  <meta name="msvalidate.01" content="BING_VERIFICATION_CODE_HERE">
+  
+  <!-- Structured Data - Service Page -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Product Design Services",
+    "serviceType": "Product Design",
+    "description": "Expert product design services for web and mobile applications. From concept to prototype, we design digital products that users love.",
+    "provider": {
+      "@type": ["Organization", "LocalBusiness"],
+      "name": "Userhood",
+      "url": "https://userhood.in",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pune",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      }
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Pune"
+      },
+      {
+        "@type": "Country",
+        "name": "India"
+      }
+    ],
+    "offers": {
+      "@type": "Offer",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "INR"
+      }
+    }
+  }
+  </script>
+  
+  <!-- Breadcrumb Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://userhood.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Product Design",
+        "item": "https://userhood.in/product-design"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<div class="page-container">
+  <!-- Navigation -->
+  <nav class="main-nav" style="position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 100; padding: 1rem; border-bottom: 1px solid #eee;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+      <a href="/" style="font-weight: bold; color: #000; text-decoration: none; font-size: 1.5rem;">Userhood</a>
+      <div style="display: flex; gap: 2rem;">
+        <a href="/product-design" style="color: #8CC63F; text-decoration: none; font-weight: 500;">Product Design</a>
+        <a href="/ui-ux-design" style="color: #000; text-decoration: none;">UI/UX Design</a>
+        <a href="/about" style="color: #000; text-decoration: none;">About</a>
+        <a href="/contact" style="color: #000; text-decoration: none; background: #8CC63F; padding: 0.5rem 1rem; border-radius: 4px; color: white;">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main style="margin-top: 80px; padding: 2rem 1rem;">
+    
+    <!-- Hero Section -->
+    <section class="hero" style="max-width: 1200px; margin: 0 auto; text-align: center; padding: 4rem 0;">
+      <h1 style="font-size: 3rem; font-weight: 700; margin: 0 0 1rem 0; color: #000;">Product Design for Web & Mobile</h1>
+      <p style="font-size: 1.25rem; color: #666; max-width: 600px; margin: 0 auto 2rem auto; line-height: 1.6;">We transform ideas into intuitive digital products that users love. From MVP to scale, we design with purpose, backed by research and validated through real user feedback.</p>
+      <a href="/contact" class="cta-button" style="background: #8CC63F; color: white; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block; margin: 1rem 0;">Get Started Today</a>
+    </section>
+
+    <!-- What We Do Section -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Our Product Design Process</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
+        
+        <div style="padding: 2rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">1. Discovery & Research</h3>
+          <p>We start by understanding your users, business goals, and market context. Through stakeholder interviews, user research, and competitive analysis, we build a solid foundation for design decisions.</p>
+        </div>
+        
+        <div style="padding: 2rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">2. Ideation & Wireframing</h3>
+          <p>We translate insights into concepts through collaborative ideation sessions, user journey mapping, and low-fidelity wireframes that focus on structure and user flow before visual design.</p>
+        </div>
+        
+        <div style="padding: 2rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">3. Visual Design & Prototyping</h3>
+          <p>We craft beautiful, accessible interfaces that align with your brand and delight users. High-fidelity prototypes help stakeholders visualise the final product and validate design decisions early.</p>
+        </div>
+        
+        <div style="padding: 2rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">4. Testing & Iteration</h3>
+          <p>We validate designs through usability testing and gather feedback to refine the experience. Every design decision is backed by user insights and business objectives.</p>
+        </div>
+        
+        <div style="padding: 2rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">5. Handoff & Launch</h3>
+          <p>We provide developers with detailed design specifications, component libraries, and ongoing support to ensure pixel-perfect implementation and smooth product launches.</p>
+        </div>
+        
+        <div style="padding: 2rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">6. Post-Launch Optimisation</h3>
+          <p>We monitor user behaviour, gather feedback, and iterate on the design based on real-world usage data to continuously improve user experience and business outcomes.</p>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Services We Offer -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0; background: #f8f9fa; margin-left: -1rem; margin-right: -1rem; padding-left: 1rem; padding-right: 1rem;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">What's Included</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+          <h4 style="color: #8CC63F; margin: 0 0 0.5rem 0;">User Research & Analysis</h4>
+          <p style="margin: 0; color: #666; font-size: 0.9rem;">User interviews, surveys, persona development, and journey mapping</p>
+        </div>
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+          <h4 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Information Architecture</h4>
+          <p style="margin: 0; color: #666; font-size: 0.9rem;">Site mapping, user flows, and content strategy</p>
+        </div>
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+          <h4 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Wireframing & Prototyping</h4>
+          <p style="margin: 0; color: #666; font-size: 0.9rem;">Low and high-fidelity wireframes, interactive prototypes</p>
+        </div>
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+          <h4 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Visual Interface Design</h4>
+          <p style="margin: 0; color: #666; font-size: 0.9rem;">UI design, component libraries, and design systems</p>
+        </div>
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+          <h4 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Usability Testing</h4>
+          <p style="margin: 0; color: #666; font-size: 0.9rem;">User testing, A/B testing, and design validation</p>
+        </div>
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+          <h4 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Developer Handoff</h4>
+          <p style="margin: 0; color: #666; font-size: 0.9rem;">Design specifications, assets, and implementation support</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who We Work With -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Who We Work With</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        
+        <div style="text-align: center; padding: 2rem;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Early-Stage Startups</h3>
+          <p>We help founders validate ideas and design MVPs that resonate with users. From concept to first launch, we build products that attract investors and early adopters.</p>
+        </div>
+        
+        <div style="text-align: center; padding: 2rem;">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Growing Companies</h3>
+          <p>We redesign existing products to improve user experience, increase conversion rates, and support scaling business goals. Data-driven design meets business strategy.</p>
+        </div>
+        
+        <div style="text-align: center; padding: 2rem;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Enterprise Teams</h3>
+          <p>We integrate with internal design and development teams to deliver complex products, establish design processes, and mentor in-house talent.</p>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="max-width: 800px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Frequently Asked Questions</h2>
+      
+      <div style="space-y: 2rem;">
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">How much does product design cost in Pune?</h3>
+          <p>Pricing depends on scope. Typical MVP product design projects range from ₹2.5L–₹10L. Audits start ~₹75K. We share fixed or sprint-based quotes after a short discovery call.</p>
+        </div>
+        
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">What is the usual timeline for product design?</h3>
+          <p>Most MVPs take 4–8 weeks for research, design, validation, and handoff. Complex products may take 12-16 weeks. We align timelines to your release plan and business goals.</p>
+        </div>
+        
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">Do you work with startups and enterprises?</h3>
+          <p>Yes. We've designed for early-stage founders through enterprise teams, adapting our process and documentation depth accordingly. Every client gets the same quality, regardless of size.</p>
+        </div>
+        
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">What do we get at the end of the project?</h3>
+          <p>Figma files, clickable prototypes, component library (if in scope), redlines/specs for engineering, research artifacts, and a style guide for consistent implementation.</p>
+        </div>
+        
+        <div>
+          <h3 style="color: #000; margin: 0 0 1rem 0;">Can you work remote or onsite in Pune?</h3>
+          <p>Both. We collaborate async and can meet across Pune's major tech hubs when needed. Most of our process is optimised for remote work with regular check-ins and reviews.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0; text-align: center; background: linear-gradient(135deg, #8CC63F, #00A99D); margin-left: -1rem; margin-right: -1rem; color: white;">
+      <h2 style="font-size: 2.5rem; margin: 0 0 1rem 0; color: white;">Ready to Start Your Product Design Project?</h2>
+      <p style="font-size: 1.25rem; margin: 0 0 2rem 0; max-width: 600px; margin-left: auto; margin-right: auto;">Let's discuss your ideas and see how we can help bring your digital product vision to life.</p>
+      <a href="/contact" class="cta-button" style="background: white; color: #8CC63F; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block;">Get in Touch</a>
+    </section>
+
+    <!-- Related Services -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2rem; text-align: center; margin: 0 0 2rem 0;">Related Services</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        
+        <a href="/ui-ux-design" style="text-decoration: none; color: inherit; border: 1px solid #eee; border-radius: 8px; padding: 1.5rem; display: block; transition: box-shadow 0.2s;">
+          <h3 style="color: #8CC63F; margin: 0 0 0.5rem 0;">UI/UX Design Services</h3>
+          <p style="margin: 0; color: #666;">Comprehensive interface and experience design for web and mobile applications.</p>
+        </a>
+        
+        <a href="/design-systems" style="text-decoration: none; color: inherit; border: 1px solid #eee; border-radius: 8px; padding: 1.5rem; display: block; transition: box-shadow 0.2s;">
+          <h3 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Design Systems</h3>
+          <p style="margin: 0; color: #666;">Scalable design systems and component libraries for consistent user experiences.</p>
+        </a>
+        
+        <a href="/ux-audit" style="text-decoration: none; color: inherit; border: 1px solid #eee; border-radius: 8px; padding: 1.5rem; display: block; transition: box-shadow 0.2s;">
+          <h3 style="color: #8CC63F; margin: 0 0 0.5rem 0;">UX Audit</h3>
+          <p style="margin: 0; color: #666;">Comprehensive evaluation of existing products to identify improvement opportunities.</p>
+        </a>
+        
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: #000; color: white; padding: 20px; text-align: center; font-family: sans-serif;">
+    <!-- Enhanced NAP (Name, Address, Phone) Information -->
+    <div style="margin-bottom: 1rem;">
+      <h3 style="margin: 0 0 1rem 0; font-size: 1.2rem; color: #8CC63F;">Userhood</h3>
+      <p style="margin: 0.5rem 0; font-size: 14px;">
+        Product Design & UX/UI Studio<br>
+        Pune, Maharashtra, India<br>
+        <a href="mailto:hello@userhood.in" style="color: #8CC63F; text-decoration: none;">hello@userhood.in</a>
+      </p>
+    </div>
+    
+    <p style="margin: 0; font-size: 16px;">
+      © 2025 Userhood. All rights reserved.
+      &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/company/userhood" target="_blank" style="display: inline-block; vertical-align: middle;" aria-label="Userhood on LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 34 34" fill="none">
+          <rect width="34" height="34" rx="4" fill="#8CC63F"/>
+          <path d="M10.2 13.5H13.8V25H10.2V13.5ZM12 9.75C12.83 9.75 13.5 10.42 13.5 11.25C13.5 12.08 12.83 12.75 12 12.75C11.17 12.75 10.5 12.08 10.5 11.25C10.5 10.42 11.17 9.75 12 9.75ZM15.3 13.5H18.75V15H18.8C19.28 14.09 20.42 13.2 22.02 13.2C25.35 13.2 26 15.37 26 18.18V25H22.4V18.8C22.4 17.5 22.37 15.8 20.6 15.8C18.8 15.8 18.5 17.27 18.5 18.7V25H15.3V13.5Z" fill="black"/>
+        </svg>
+      </a>
+    </p>
+    
+    <!-- Quick Navigation Links -->
+    <div style="margin-top: 1rem; font-size: 14px;">
+      <a href="/product-design" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Product Design</a> |
+      <a href="/ui-ux-design" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">UI/UX Design</a> |
+      <a href="/contact" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Contact</a> |
+      <a href="/pune" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Pune</a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- FAQ Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does product design cost in Pune?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pricing depends on scope. Typical MVP product design projects range from ₹2.5L–₹10L. Audits start ~₹75K. We share fixed or sprint-based quotes after a short discovery call."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the usual timeline for product design?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most MVPs take 4–8 weeks for research, design, validation, and handoff. Complex products may take 12-16 weeks. We align timelines to your release plan and business goals."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with startups and enterprises?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We've designed for early-stage founders through enterprise teams, adapting our process and documentation depth accordingly. Every client gets the same quality, regardless of size."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do we get at the end of the project?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Figma files, clickable prototypes, component library (if in scope), redlines/specs for engineering, research artifacts, and a style guide for consistent implementation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you work remote or onsite in Pune?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both. We collaborate async and can meet across Pune's major tech hubs when needed. Most of our process is optimised for remote work with regular check-ins and reviews."
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>

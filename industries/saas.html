@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-690654KZJN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-690654KZJN');
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('click', function(e) {
+        if (e.target.href && e.target.href.includes('mailto:')) {
+          gtag('event', 'email_click', {
+            'contact_method': 'email',
+            'contact_value': e.target.href.replace('mailto:', '')
+          });
+        }
+      });
+      
+      const bookCallButtons = document.querySelectorAll('.cta-button, .book-call');
+      bookCallButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          gtag('event', 'book_call_click', {
+            'source': 'saas_design_page'
+          });
+        });
+      });
+    });
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>SaaS Product Design | Userhood</title>
+  <meta name="description" content="Expert SaaS product design services for software companies. We design user-friendly dashboards, onboarding flows, and subscription interfaces that drive growth and retention.">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Userhood">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://userhood.in/industries/saas">
+  
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="en-IN" href="https://userhood.in/industries/saas">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SaaS Product Design | Userhood">
+  <meta property="og:description" content="Expert SaaS product design services for software companies. We design user-friendly dashboards, onboarding flows, and subscription interfaces that drive growth and retention.">
+  <meta property="og:url" content="https://userhood.in/industries/saas">
+  <meta property="og:image" content="https://userhood.in/og/saas.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:site_name" content="Userhood">
+  
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SaaS Product Design | Userhood">
+  <meta name="twitter:description" content="Expert SaaS product design services for software companies. We design user-friendly dashboards, onboarding flows, and subscription interfaces that drive growth and retention.">
+  <meta name="twitter:image" content="https://userhood.in/og/saas.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../../favicon.png">
+  
+  <!-- Font Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../../styles.css">
+  
+  <!-- Search Console Verification (placeholder) -->
+  <meta name="google-site-verification" content="GOOGLE_VERIFICATION_CODE_HERE">
+  <meta name="msvalidate.01" content="BING_VERIFICATION_CODE_HERE">
+  
+  <!-- Structured Data - Service Page -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "SaaS Product Design Services",
+    "serviceType": "SaaS Product Design",
+    "description": "Expert SaaS product design services for software companies. We design user-friendly dashboards, onboarding flows, and subscription interfaces that drive growth and retention.",
+    "provider": {
+      "@type": ["Organization", "LocalBusiness"],
+      "name": "Userhood",
+      "url": "https://userhood.in",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pune",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      }
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Pune"
+      },
+      {
+        "@type": "Country",
+        "name": "India"
+      }
+    ],
+    "offers": {
+      "@type": "Offer",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "INR"
+      }
+    }
+  }
+  </script>
+  
+  <!-- Breadcrumb Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://userhood.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Industries",
+        "item": "https://userhood.in/industries"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "SaaS",
+        "item": "https://userhood.in/industries/saas"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<div class="page-container">
+  <!-- Navigation -->
+  <nav class="main-nav" style="position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 100; padding: 1rem; border-bottom: 1px solid #eee;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+      <a href="/" style="font-weight: bold; color: #000; text-decoration: none; font-size: 1.5rem;">Userhood</a>
+      <div style="display: flex; gap: 2rem;">
+        <a href="/product-design" style="color: #000; text-decoration: none;">Product Design</a>
+        <a href="/ui-ux-design" style="color: #000; text-decoration: none;">UI/UX Design</a>
+        <a href="/about" style="color: #000; text-decoration: none;">About</a>
+        <a href="/contact" style="color: #000; text-decoration: none; background: #8CC63F; padding: 0.5rem 1rem; border-radius: 4px; color: white;">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main style="margin-top: 80px; padding: 2rem 1rem;">
+    
+    <!-- Hero Section -->
+    <section class="hero" style="max-width: 1200px; margin: 0 auto; text-align: center; padding: 4rem 0;">
+      <h1 style="font-size: 3rem; font-weight: 700; margin: 0 0 1rem 0; color: #000;">SaaS Product Design</h1>
+      <p style="font-size: 1.25rem; color: #666; max-width: 600px; margin: 0 auto 2rem auto; line-height: 1.6;">We design SaaS products that users love and businesses grow with. From onboarding to advanced features, we create experiences that drive adoption and retention.</p>
+      <a href="/contact" class="cta-button" style="background: #8CC63F; color: white; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block; margin: 1rem 0;">Discuss Your SaaS Project</a>
+    </section>
+
+    <!-- SaaS Design Challenges -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Unique Challenges in SaaS Design</h2>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+        
+        <div>
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0; font-size: 1.8rem;">Complex Feature Sets</h3>
+          <p style="line-height: 1.6; margin-bottom: 2rem;">SaaS products often have hundreds of features across multiple user types. The challenge is making complexity feel simple while ensuring advanced users can access powerful functionality.</p>
+          
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0; font-size: 1.8rem;">Diverse User Personas</h3>
+          <p style="line-height: 1.6; margin-bottom: 2rem;">From end users to admins to super admins, SaaS products must serve multiple audiences with different needs, permissions, and technical expertise levels.</p>
+        </div>
+        
+        <div>
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0; font-size: 1.8rem;">Continuous Evolution</h3>
+          <p style="line-height: 1.6; margin-bottom: 2rem;">Unlike static websites, SaaS products continuously evolve. Design systems must be flexible enough to accommodate new features without disrupting existing workflows.</p>
+          
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0; font-size: 1.8rem;">Data-Heavy Interfaces</h3>
+          <p style="line-height: 1.6;">SaaS products handle large amounts of data. We create clear visual hierarchies and smart filtering systems that make information digestible and actionable.</p>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- SaaS Design Specialities -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0; background: #f8f9fa; margin-left: -1rem; margin-right: -1rem; padding-left: 1rem; padding-right: 1rem;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Our SaaS Design Specialities</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">User Onboarding</h3>
+          <p style="margin-bottom: 1rem;">Design onboarding flows that get users to their "aha moment" quickly. We create progressive disclosure experiences that build confidence and demonstrate value.</p>
+          <ul style="color: #666; font-size: 0.9rem; margin: 0; padding-left: 1.2rem;">
+            <li>Welcome sequences and product tours</li>
+            <li>Progressive feature introduction</li>
+            <li>Setup wizards and configuration flows</li>
+            <li>Success metrics and celebration moments</li>
+          </ul>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Dashboard Design</h3>
+          <p style="margin-bottom: 1rem;">Create dashboards that provide instant value with customisable views for different user roles. Clear data visualisation meets intuitive navigation.</p>
+          <ul style="color: #666; font-size: 0.9rem; margin: 0; padding-left: 1.2rem;">
+            <li>Role-based dashboard layouts</li>
+            <li>Interactive data visualisations</li>
+            <li>Customisable widgets and views</li>
+            <li>Real-time updates and notifications</li>
+          </ul>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Subscription & Billing</h3>
+          <p style="margin-bottom: 1rem;">Design billing experiences that feel transparent and trustworthy. From plan selection to usage tracking, we make financial interactions clear and stress-free.</p>
+          <ul style="color: #666; font-size: 0.9rem; margin: 0; padding-left: 1.2rem;">
+            <li>Pricing page optimisation</li>
+            <li>Plan upgrade/downgrade flows</li>
+            <li>Usage tracking and alerts</li>
+            <li>Invoice and payment management</li>
+          </ul>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Team & Admin Interfaces</h3>
+          <p style="margin-bottom: 1rem;">Design powerful admin tools that don't overwhelm. We create scalable permission systems and team management interfaces that grow with your business.</p>
+          <ul style="color: #666; font-size: 0.9rem; margin: 0; padding-left: 1.2rem;">
+            <li>User and role management</li>
+            <li>Permission and access controls</li>
+            <li>Team collaboration features</li>
+            <li>Organisation settings and preferences</li>
+          </ul>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Feature Discovery</h3>
+          <p style="margin-bottom: 1rem;">Help users discover and adopt new features without interrupting their workflow. Smart tooltips, contextual help, and progressive feature reveals.</p>
+          <ul style="color: #666; font-size: 0.9rem; margin: 0; padding-left: 1.2rem;">
+            <li>Contextual feature highlights</li>
+            <li>Smart tooltips and help system</li>
+            <li>Feature announcement strategies</li>
+            <li>Usage analytics integration</li>
+          </ul>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Mobile & Responsive Design</h3>
+          <p style="margin-bottom: 1rem;">Create SaaS experiences that work perfectly on all devices. From mobile-first designs to progressive web app capabilities.</p>
+          <ul style="color: #666; font-size: 0.9rem; margin: 0; padding-left: 1.2rem;">
+            <li>Mobile-optimised dashboards</li>
+            <li>Touch-friendly interactions</li>
+            <li>Offline functionality design</li>
+            <li>Cross-device data synchronisation</li>
+          </ul>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- SaaS Metrics We Focus On -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">SaaS Metrics We Design For</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+        
+        <div style="text-align: center; padding: 2rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">User Activation</h3>
+          <p style="margin: 0 0 1rem 0; color: #666;">Getting users to complete their first meaningful action and experience value quickly.</p>
+          <div style="background: #f8f9fa; padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+            <strong>Target:</strong> 40-60% within first session
+          </div>
+        </div>
+        
+        <div style="text-align: center; padding: 2rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Feature Adoption</h3>
+          <p style="margin: 0 0 1rem 0; color: #666;">Encouraging users to discover and use key features that drive value and stickiness.</p>
+          <div style="background: #f8f9fa; padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+            <strong>Target:</strong> 30-50% for core features
+          </div>
+        </div>
+        
+        <div style="text-align: center; padding: 2rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">User Retention</h3>
+          <p style="margin: 0 0 1rem 0; color: #666;">Designing experiences that keep users engaged and coming back regularly.</p>
+          <div style="background: #f8f9fa; padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+            <strong>Target:</strong> 80%+ monthly retention
+          </div>
+        </div>
+        
+        <div style="text-align: center; padding: 2rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Conversion Rate</h3>
+          <p style="margin: 0 0 1rem 0; color: #666;">Optimising trial-to-paid conversion through better UX and clear value demonstration.</p>
+          <div style="background: #f8f9fa; padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+            <strong>Target:</strong> 15-25% trial conversion
+          </div>
+        </div>
+        
+        <div style="text-align: center; padding: 2rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Time to Value</h3>
+          <p style="margin: 0 0 1rem 0; color: #666;">Reducing the time between signup and first successful outcome or "aha moment".</p>
+          <div style="background: #f8f9fa; padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+            <strong>Target:</strong> Under 5 minutes
+          </div>
+        </div>
+        
+        <div style="text-align: center; padding: 2rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Support Tickets</h3>
+          <p style="margin: 0 0 1rem 0; color: #666;">Designing intuitive interfaces that reduce confusion and support burden.</p>
+          <div style="background: #f8f9fa; padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+            <strong>Target:</strong> 50% reduction in UX-related tickets
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Types of SaaS We Design -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0; background: #f8f9fa; margin-left: -1rem; margin-right: -1rem; padding-left: 1rem; padding-right: 1rem;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Types of SaaS Products We Design</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">B2B Tools & Platforms</h3>
+          <p style="margin: 0; color: #666;">CRM systems, project management tools, analytics platforms, and enterprise software that teams use daily.</p>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Developer Tools</h3>
+          <p style="margin: 0; color: #666;">APIs, SDKs, monitoring tools, and development platforms that need to be both powerful and intuitive.</p>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">FinTech & Finance</h3>
+          <p style="margin: 0; color: #666;">Banking platforms, investment tools, accounting software, and financial dashboards requiring trust and clarity.</p>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">E-learning & EdTech</h3>
+          <p style="margin: 0; color: #666;">Learning management systems, course platforms, and educational tools that engage and educate.</p>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Marketing & Sales</h3>
+          <p style="margin: 0; color: #666;">Email marketing platforms, social media tools, lead generation software, and sales automation systems.</p>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Healthcare & Wellness</h3>
+          <p style="margin: 0; color: #666;">Patient management systems, telemedicine platforms, and health tracking applications with privacy focus.</p>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="max-width: 800px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Frequently Asked Questions</h2>
+      
+      <div style="space-y: 2rem;">
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">How is SaaS design different from other product design?</h3>
+          <p>SaaS design requires deeper understanding of user workflows, data management, and business models. We focus on retention metrics, feature adoption, and designing for multiple user types within the same product.</p>
+        </div>
+        
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">Do you help with SaaS onboarding strategy?</h3>
+          <p>Yes, onboarding is crucial for SaaS success. We design comprehensive onboarding experiences that include welcome flows, feature introductions, and progressive value demonstration to improve activation rates.</p>
+        </div>
+        
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">Can you design for both B2B and B2C SaaS products?</h3>
+          <p>Absolutely. B2B SaaS requires focus on workflow efficiency and team collaboration, while B2C SaaS emphasises simplicity and delight. We adapt our approach based on your target audience and use cases.</p>
+        </div>
+        
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">How do you approach complex SaaS feature sets?</h3>
+          <p>We use progressive disclosure, smart defaults, and contextual help to make complex features approachable. Our information architecture ensures advanced features don't overwhelm new users while remaining accessible to power users.</p>
+        </div>
+        
+        <div>
+          <h3 style="color: #000; margin: 0 0 1rem 0;">Do you provide ongoing design support post-launch?</h3>
+          <p>Yes, SaaS products evolve continuously. We offer ongoing design partnerships for feature additions, A/B testing, user research, and iterative improvements based on user feedback and analytics.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0; text-align: center; background: linear-gradient(135deg, #8CC63F, #00A99D); margin-left: -1rem; margin-right: -1rem; color: white;">
+      <h2 style="font-size: 2.5rem; margin: 0 0 1rem 0; color: white;">Ready to Build a SaaS Product Users Love?</h2>
+      <p style="font-size: 1.25rem; margin: 0 0 2rem 0; max-width: 600px; margin-left: auto; margin-right: auto;">Let's discuss your SaaS vision and create experiences that drive growth, retention, and business success.</p>
+      <a href="/contact" class="cta-button" style="background: white; color: #8CC63F; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block;">Start Your SaaS Project</a>
+    </section>
+
+    <!-- Related Services -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2rem; text-align: center; margin: 0 0 2rem 0;">Related Services</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        
+        <a href="/product-design" style="text-decoration: none; color: inherit; border: 1px solid #eee; border-radius: 8px; padding: 1.5rem; display: block; transition: box-shadow 0.2s;">
+          <h3 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Product Design</h3>
+          <p style="margin: 0; color: #666;">End-to-end product design from concept to launch for web and mobile applications.</p>
+        </a>
+        
+        <a href="/design-systems" style="text-decoration: none; color: inherit; border: 1px solid #eee; border-radius: 8px; padding: 1.5rem; display: block; transition: box-shadow 0.2s;">
+          <h3 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Design Systems</h3>
+          <p style="margin: 0; color: #666;">Scalable design systems and component libraries for SaaS products that evolve.</p>
+        </a>
+        
+        <a href="/usability-testing" style="text-decoration: none; color: inherit; border: 1px solid #eee; border-radius: 8px; padding: 1.5rem; display: block; transition: box-shadow 0.2s;">
+          <h3 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Usability Testing</h3>
+          <p style="margin: 0; color: #666;">Validate your SaaS designs with real users to improve adoption and retention.</p>
+        </a>
+        
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: #000; color: white; padding: 20px; text-align: center; font-family: sans-serif;">
+    <div style="margin-bottom: 1rem;">
+      <h3 style="margin: 0 0 1rem 0; font-size: 1.2rem; color: #8CC63F;">Userhood</h3>
+      <p style="margin: 0.5rem 0; font-size: 14px;">
+        Product Design & UX/UI Studio<br>
+        Pune, Maharashtra, India<br>
+        <a href="mailto:hello@userhood.in" style="color: #8CC63F; text-decoration: none;">hello@userhood.in</a>
+      </p>
+    </div>
+    
+    <p style="margin: 0; font-size: 16px;">
+      © 2025 Userhood. All rights reserved.
+      &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/company/userhood" target="_blank" style="display: inline-block; vertical-align: middle;" aria-label="Userhood on LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 34 34" fill="none">
+          <rect width="34" height="34" rx="4" fill="#8CC63F"/>
+          <path d="M10.2 13.5H13.8V25H10.2V13.5ZM12 9.75C12.83 9.75 13.5 10.42 13.5 11.25C13.5 12.08 12.83 12.75 12 12.75C11.17 12.75 10.5 12.08 10.5 11.25C10.5 10.42 11.17 9.75 12 9.75ZM15.3 13.5H18.75V15H18.8C19.28 14.09 20.42 13.2 22.02 13.2C25.35 13.2 26 15.37 26 18.18V25H22.4V18.8C22.4 17.5 22.37 15.8 20.6 15.8C18.8 15.8 18.5 17.27 18.5 18.7V25H15.3V13.5Z" fill="black"/>
+        </svg>
+      </a>
+    </p>
+    
+    <div style="margin-top: 1rem; font-size: 14px;">
+      <a href="/product-design" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Product Design</a> |
+      <a href="/ui-ux-design" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">UI/UX Design</a> |
+      <a href="/contact" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Contact</a> |
+      <a href="/pune" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Pune</a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- FAQ Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is SaaS design different from other product design?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SaaS design requires deeper understanding of user workflows, data management, and business models. We focus on retention metrics, feature adoption, and designing for multiple user types within the same product."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you help with SaaS onboarding strategy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, onboarding is crucial for SaaS success. We design comprehensive onboarding experiences that include welcome flows, feature introductions, and progressive value demonstration to improve activation rates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you design for both B2B and B2C SaaS products?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. B2B SaaS requires focus on workflow efficiency and team collaboration, while B2C SaaS emphasises simplicity and delight. We adapt our approach based on your target audience and use cases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you approach complex SaaS feature sets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We use progressive disclosure, smart defaults, and contextual help to make complex features approachable. Our information architecture ensures advanced features don't overwhelm new users while remaining accessible to power users."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide ongoing design support post-launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, SaaS products evolve continuously. We offer ongoing design partnerships for feature additions, A/B testing, user research, and iterative improvements based on user feedback and analytics."
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>

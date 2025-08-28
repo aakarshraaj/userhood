@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage Images -->
+  <url>
+    <loc>https://userhood.in/</loc>
+    <image:image>
+      <image:loc>https://userhood.in/favicon.png</image:loc>
+      <image:title>Userhood Logo</image:title>
+      <image:caption>Userhood product design studio logo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://userhood.in/og/homepage.png</image:loc>
+      <image:title>Userhood - Product Design Studio in Pune</image:title>
+      <image:caption>Leading product design studio in Pune, India crafting meaningful digital experiences</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Service Pages Images (to be added when pages are created) -->
+  <url>
+    <loc>https://userhood.in/product-design</loc>
+    <image:image>
+      <image:loc>https://userhood.in/og/product-design.png</image:loc>
+      <image:title>Product Design Services by Userhood</image:title>
+      <image:caption>Comprehensive product design services for web and mobile applications</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://userhood.in/ui-ux-design</loc>
+    <image:image>
+      <image:loc>https://userhood.in/og/ui-ux-design.png</image:loc>
+      <image:title>UI/UX Design Services by Userhood</image:title>
+      <image:caption>Professional UI/UX design services for enhanced user experiences</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://userhood.in/pune</loc>
+    <image:image>
+      <image:loc>https://userhood.in/og/pune.png</image:loc>
+      <image:title>Product Design Studio in Pune</image:title>
+      <image:caption>Premier product design studio serving Pune's tech ecosystem</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://userhood.in/landing-page-design</loc>
+    <image:image>
+      <image:loc>https://userhood.in/og/landing-page-design.png</image:loc>
+      <image:title>High-Converting Landing Page Design</image:title>
+      <image:caption>Landing page design services that turn visitors into customers</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://userhood.in/industries/saas</loc>
+    <image:image>
+      <image:loc>https://userhood.in/og/saas.png</image:loc>
+      <image:title>SaaS Product Design Services</image:title>
+      <image:caption>Expert SaaS product design for software companies and startups</image:caption>
+    </image:image>
+  </url>
+</urlset>
