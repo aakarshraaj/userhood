@@ -1,0 +1,143 @@
+{
+  "brand_location": {
+    "primary": [
+      "product design studio pune",
+      "ui ux design agency pune", 
+      "product design company in pune"
+    ],
+    "supporting": [
+      "app design pune",
+      "web app design pune",
+      "ux agency pune",
+      "design sprint pune",
+      "ux audit pune",
+      "design system pune",
+      "landing page design pune"
+    ],
+    "long_tail": [
+      "best ui ux designers in pune",
+      "hire product designer pune",
+      "mvp design studio pune",
+      "startup ux pune",
+      "enterprise ux pune",
+      "figma designer pune",
+      "usability testing company pune",
+      "user research agency pune"
+    ]
+  },
+  "services_india": {
+    "primary": [
+      "product design studio india",
+      "ui ux design agency india",
+      "saas product design india"
+    ],
+    "supporting": [
+      "ux research services india",
+      "design system services india",
+      "prototype design agency"
+    ],
+    "long_tail": [
+      "ux audit checklist for saas",
+      "cost of ui ux design in india",
+      "landing page design pricing india"
+    ]
+  },
+  "industry_verticals": {
+    "primary": [
+      "saas ux design",
+      "fintech ux design", 
+      "healthcare app design",
+      "edtech ux design"
+    ],
+    "long_tail": [
+      "b2b saas onboarding ux",
+      "kyc fintech ux patterns",
+      "student engagement ux patterns"
+    ]
+  },
+  "informational": {
+    "questions": [
+      "how much does ui ux design cost in pune",
+      "product design process steps india",
+      "ui ux design timeline for mvp",
+      "redesign vs incremental ux improvements",
+      "design sprint agenda 5 days"
+    ]
+  },
+  "global_outsourcing": {
+    "primary": [
+      "offshore ui ux design india",
+      "outsource product design company india",
+      "hire remote ui ux designers india",
+      "top offshore product design agencies",
+      "digital product design outsourcing india"
+    ]
+  },
+  "page_mapping": {
+    "/": [
+      "product design studio pune",
+      "ui ux design agency pune",
+      "product design studio india"
+    ],
+    "/product-design": [
+      "product design services india",
+      "digital product design studio",
+      "prototype design company india"
+    ],
+    "/ui-ux-design": [
+      "ui ux design services india",
+      "ui ux design agency india",
+      "offshore ux design company"
+    ],
+    "/landing-page-design": [
+      "landing page design agency india",
+      "high converting landing pages",
+      "b2b landing page design company"
+    ],
+    "/ux-audit": [
+      "ux audit company india",
+      "heuristic evaluation services",
+      "usability testing services india"
+    ],
+    "/design-sprint": [
+      "design sprint agency india",
+      "design sprint facilitator",
+      "rapid product validation design sprint india"
+    ],
+    "/design-systems": [
+      "design systems company india",
+      "figma design systems services",
+      "component library design agency"
+    ],
+    "/usability-testing": [
+      "usability testing services india",
+      "user research agency pune",
+      "ux research services india"
+    ],
+    "/industries/saas": [
+      "saas product design company india",
+      "ux design for saas startups",
+      "b2b saas onboarding ux"
+    ],
+    "/industries/fintech": [
+      "fintech ui ux design company",
+      "payment app design india",
+      "kyc ux design patterns"
+    ],
+    "/industries/healthcare": [
+      "healthcare app design company india",
+      "medical product design agency",
+      "patient portal design"
+    ],
+    "/industries/edtech": [
+      "edtech product design company india",
+      "e-learning platform ux design",
+      "student engagement ux design"
+    ],
+    "/pune": [
+      "product design studio pune",
+      "ui ux designer near me",
+      "design agency near me"
+    ]
+  }
+}

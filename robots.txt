@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Disallow private and internal pages
+Disallow: /admin
+Disallow: /api/private
+Disallow: /search
+Disallow: /tmp
+
+# Allow important pages
+Allow: /product-design
+Allow: /ui-ux-design
+Allow: /landing-page-design
+Allow: /ux-audit
+Allow: /design-sprint
+Allow: /design-systems
+Allow: /usability-testing
+Allow: /industries/
+Allow: /work
+Allow: /about
+Allow: /contact
+Allow: /pricing
+Allow: /pune
+Allow: /blog
+
+# Sitemap location
+Sitemap: https://userhood.in/sitemap.xml

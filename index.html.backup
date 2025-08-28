@@ -8,55 +8,6 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-690654KZJN');
-    
-    // Enhanced GA4 Event Tracking
-    document.addEventListener('DOMContentLoaded', function() {
-      // Track email clicks
-      document.addEventListener('click', function(e) {
-        if (e.target.href && e.target.href.includes('mailto:')) {
-          gtag('event', 'email_click', {
-            'contact_method': 'email',
-            'contact_value': e.target.href.replace('mailto:', '')
-          });
-        }
-        
-        // Track phone clicks (when added)
-        if (e.target.href && e.target.href.includes('tel:')) {
-          gtag('event', 'phone_click', {
-            'contact_method': 'phone',
-            'contact_value': e.target.href.replace('tel:', '')
-          });
-        }
-        
-        // Track WhatsApp clicks (when added)
-        if (e.target.href && e.target.href.includes('whatsapp')) {
-          gtag('event', 'whatsapp_click', {
-            'contact_method': 'whatsapp'
-          });
-        }
-        
-        // Track navigation clicks to service pages
-        if (e.target.href) {
-          if (e.target.href.includes('/product-design')) {
-            gtag('event', 'service_page_click', { 'service_type': 'product_design' });
-          } else if (e.target.href.includes('/ui-ux-design')) {
-            gtag('event', 'service_page_click', { 'service_type': 'ui_ux_design' });
-          } else if (e.target.href.includes('/contact')) {
-            gtag('event', 'contact_page_click', { 'source': 'navigation' });
-          }
-        }
-      });
-      
-      // Track file downloads (for future case studies and PDFs)
-      document.addEventListener('click', function(e) {
-        if (e.target.href && (e.target.href.includes('.pdf') || e.target.href.includes('.doc'))) {
-          gtag('event', 'file_download', {
-            'file_type': e.target.href.split('.').pop(),
-            'file_url': e.target.href
-          });
-        }
-      });
-    });
   </script>
 
   <meta charset="UTF-8">
@@ -227,19 +178,10 @@
     <p>We believe design isn’t decoration... it’s dignity. That good UX is invisible, but unforgettable. That the future should feel human, not just look sleek. And that every interaction, from a button to a story, holds the power to connect, comfort, or change someone’s day.</p>
   </div>
   
-<footer style="background: #000; color: white; padding: 20px; text-align: center; font-family: sans-serif;">
-  <!-- Enhanced NAP (Name, Address, Phone) Information -->
-  <div style="margin-bottom: 1rem;">
-    <h3 style="margin: 0 0 1rem 0; font-size: 1.2rem; color: #8CC63F;">Userhood</h3>
-    <p style="margin: 0.5rem 0; font-size: 14px;">
-      Product Design & UX/UI Studio<br>
-      Pune, Maharashtra, India<br>
-      <a href="mailto:hello@userhood.in" style="color: #8CC63F; text-decoration: none;">hello@userhood.in</a>
-    </p>
-  </div>
-  
+ <footer style="background: #000; color: white; padding: 20px; text-align: center; font-family: sans-serif;">
   <p style="margin: 0; font-size: 16px;">
-    © 2025 Userhood. All rights reserved.
+    © 2025 Userhood. We’re based in Pune, Reach us at 
+    <a href="mailto:hello@userhood.in" style="color: #8CC63F; text-decoration: none;">hello@userhood.in</a>
     &nbsp;|&nbsp;
     <a href="https://www.linkedin.com/company/userhood" target="_blank" style="display: inline-block; vertical-align: middle;" aria-label="Userhood on LinkedIn">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 34 34" fill="none">
@@ -248,14 +190,6 @@
       </svg>
     </a>
   </p>
-  
-  <!-- Quick Navigation Links -->
-  <div style="margin-top: 1rem; font-size: 14px;">
-    <a href="/product-design" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Product Design</a> |
-    <a href="/ui-ux-design" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">UI/UX Design</a> |
-    <a href="/contact" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Contact</a> |
-    <a href="/pune" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Pune</a>
-  </div>
 </footer>
   
   <script src="script.js"></script>
