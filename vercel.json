@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/product-design", "destination": "/product-design.html" },
+    { "source": "/ui-ux-design", "destination": "/ui-ux-design.html" },
+    { "source": "/landing-page-design", "destination": "/landing-page-design.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/pune", "destination": "/pune.html" }
+  ]
+}

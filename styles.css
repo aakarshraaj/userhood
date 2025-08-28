@@ -26,6 +26,73 @@
   }
 }
 
+/* Mobile Navigation Styles */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #000;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    border-top: 1px solid #eee;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+  
+  .main-nav {
+    position: relative;
+  }
+  
+  .main-nav > div {
+    position: relative;
+  }
+  
+  /* Tablet responsive improvements */
+  .hero h1 {
+    font-size: 2.5rem !important;
+    line-height: 3rem !important;
+  }
+  
+  .hero p {
+    font-size: 1.1rem !important;
+    margin: 0 2rem 2rem 2rem !important;
+  }
+  
+  /* Grid layouts for tablet */
+  section[style*="grid-template-columns"] {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: 1.5rem !important;
+  }
+}
+
 @media (max-width: 480px) {
   .slogan {
     font-size: 2rem;
@@ -48,6 +115,77 @@
   .logo {
     width: 90vw;
     max-width: 320px;
+  }
+  
+  /* Internal pages responsive improvements */
+  .main-nav {
+    padding: 1rem 0.5rem !important;
+  }
+  
+  .main-nav > div {
+    margin: 0 1rem !important;
+  }
+  
+  .main-nav a {
+    font-size: 0.9rem !important;
+  }
+  
+  /* Hero sections on internal pages */
+  .hero h1 {
+    font-size: 2rem !important;
+    line-height: 2.4rem !important;
+  }
+  
+  .hero p {
+    font-size: 1rem !important;
+    margin: 0 1rem 2rem 1rem !important;
+  }
+  
+  /* Grid sections responsive */
+  section[style*="grid-template-columns"] {
+    display: block !important;
+  }
+  
+  section[style*="grid-template-columns"] > div {
+    margin-bottom: 2rem !important;
+  }
+  
+  /* General section improvements for mobile */
+  section {
+    padding: 2rem 1rem !important;
+  }
+  
+  section h2 {
+    font-size: 1.8rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  section h3 {
+    font-size: 1.3rem !important;
+  }
+  
+  /* Services and feature cards */
+  div[style*="background: white"] {
+    margin-bottom: 1.5rem !important;
+    padding: 1.5rem !important;
+  }
+  
+  /* FAQ sections */
+  div[style*="border-bottom: 1px solid #eee"] {
+    padding-bottom: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* CTA sections with gradients */
+  section[style*="background: linear-gradient"] {
+    margin-left: -1rem !important;
+    margin-right: -1rem !important;
+    padding: 2rem 1rem !important;
+  }
+  
+  /* Footer responsive */
+  footer {
+    padding: 2rem 1rem !important;
   }
 }
 
