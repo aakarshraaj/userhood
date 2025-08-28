@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-690654KZJN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-690654KZJN');
+    
+    // Enhanced GA4 Event Tracking
+    document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('click', function(e) {
+        if (e.target.href && e.target.href.includes('mailto:')) {
+          gtag('event', 'email_click', {
+            'contact_method': 'email',
+            'contact_value': e.target.href.replace('mailto:', '')
+          });
+        }
+      });
+      
+      const bookCallButtons = document.querySelectorAll('.cta-button, .book-call');
+      bookCallButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          gtag('event', 'book_call_click', {
+            'source': 'ui_ux_design_page'
+          });
+        });
+      });
+    });
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>UI/UX Design Services | Userhood</title>
+  <meta name="description" content="Professional UI/UX design services for web and mobile apps. We create intuitive interfaces and exceptional user experiences. Based in Pune, serving clients globally.">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Userhood">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://userhood.in/ui-ux-design">
+  
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="en-IN" href="https://userhood.in/ui-ux-design">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="UI/UX Design Services | Userhood">
+  <meta property="og:description" content="Professional UI/UX design services for web and mobile apps. We create intuitive interfaces and exceptional user experiences. Based in Pune, serving clients globally.">
+  <meta property="og:url" content="https://userhood.in/ui-ux-design">
+  <meta property="og:image" content="https://userhood.in/og/ui-ux-design.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:site_name" content="Userhood">
+  
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="UI/UX Design Services | Userhood">
+  <meta name="twitter:description" content="Professional UI/UX design services for web and mobile apps. We create intuitive interfaces and exceptional user experiences. Based in Pune, serving clients globally.">
+  <meta name="twitter:image" content="https://userhood.in/og/ui-ux-design.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+  
+  <!-- Font Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../styles.css">
+  
+  <!-- Search Console Verification (placeholder) -->
+  <meta name="google-site-verification" content="GOOGLE_VERIFICATION_CODE_HERE">
+  <meta name="msvalidate.01" content="BING_VERIFICATION_CODE_HERE">
+  
+  <!-- Structured Data - Service Page -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "UI/UX Design Services",
+    "serviceType": "UI/UX Design",
+    "description": "Professional UI/UX design services for web and mobile apps. We create intuitive interfaces and exceptional user experiences that drive business results.",
+    "provider": {
+      "@type": ["Organization", "LocalBusiness"],
+      "name": "Userhood",
+      "url": "https://userhood.in",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pune",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      }
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Pune"
+      },
+      {
+        "@type": "Country",
+        "name": "India"
+      }
+    ],
+    "offers": {
+      "@type": "Offer",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "INR"
+      }
+    }
+  }
+  </script>
+  
+  <!-- Breadcrumb Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://userhood.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "UI/UX Design",
+        "item": "https://userhood.in/ui-ux-design"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<div class="page-container">
+  <!-- Navigation -->
+  <nav class="main-nav" style="position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 100; padding: 1rem; border-bottom: 1px solid #eee;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+      <a href="/" style="font-weight: bold; color: #000; text-decoration: none; font-size: 1.5rem;">Userhood</a>
+      <div style="display: flex; gap: 2rem;">
+        <a href="/product-design" style="color: #000; text-decoration: none;">Product Design</a>
+        <a href="/ui-ux-design" style="color: #8CC63F; text-decoration: none; font-weight: 500;">UI/UX Design</a>
+        <a href="/about" style="color: #000; text-decoration: none;">About</a>
+        <a href="/contact" style="color: #000; text-decoration: none; background: #8CC63F; padding: 0.5rem 1rem; border-radius: 4px; color: white;">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main style="margin-top: 80px; padding: 2rem 1rem;">
+    
+    <!-- Hero Section -->
+    <section class="hero" style="max-width: 1200px; margin: 0 auto; text-align: center; padding: 4rem 0;">
+      <h1 style="font-size: 3rem; font-weight: 700; margin: 0 0 1rem 0; color: #000;">UI/UX Design Services</h1>
+      <p style="font-size: 1.25rem; color: #666; max-width: 600px; margin: 0 auto 2rem auto; line-height: 1.6;">We craft beautiful, intuitive interfaces and exceptional user experiences that delight users and drive business results. From concept to pixel-perfect designs.</p>
+      <a href="/contact" class="cta-button" style="background: #8CC63F; color: white; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block; margin: 1rem 0;">Start Your Project</a>
+    </section>
+
+    <!-- What Makes Great UI/UX -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">What Makes Great UI/UX Design?</h2>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin: 2rem 0;">
+        
+        <div>
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0; font-size: 1.8rem;">User-Centred Approach</h3>
+          <p style="line-height: 1.6; margin-bottom: 1.5rem;">Great design starts with understanding users. We conduct thorough research to understand user needs, behaviours, and pain points, ensuring every design decision serves your users and business goals.</p>
+          
+          <h3 style="color: #00A99D; margin: 2rem 0 1rem 0; font-size: 1.8rem;">Visual Hierarchy & Accessibility</h3>
+          <p style="line-height: 1.6; margin-bottom: 1.5rem;">We create clear visual hierarchies that guide users naturally through your product. Our designs are accessible by default, ensuring everyone can use your product regardless of their abilities.</p>
+        </div>
+        
+        <div>
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0; font-size: 1.8rem;">Consistent Design Systems</h3>
+          <p style="line-height: 1.6; margin-bottom: 1.5rem;">We build scalable design systems that ensure consistency across all touchpoints. This approach speeds up development and creates cohesive user experiences.</p>
+          
+          <h3 style="color: #00A99D; margin: 2rem 0 1rem 0; font-size: 1.8rem;">Data-Driven Decisions</h3>
+          <p style="line-height: 1.6; margin-bottom: 1.5rem;">Every design choice is backed by research and validated through testing. We use analytics, user feedback, and usability testing to continuously improve the experience.</p>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Our UI/UX Design Services -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0; background: #f8f9fa; margin-left: -1rem; margin-right: -1rem; padding-left: 1rem; padding-right: 1rem;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Our UI/UX Design Services</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">User Experience (UX) Design</h3>
+          <p style="margin-bottom: 1rem;">End-to-end UX design from research to validation. We create user journeys, wireframes, and interactive prototypes that solve real user problems.</p>
+          <ul style="color: #666; font-size: 0.9rem; margin: 0; padding-left: 1.2rem;">
+            <li>User research & personas</li>
+            <li>Journey mapping & wireframing</li>
+            <li>Information architecture</li>
+            <li>Usability testing & validation</li>
+          </ul>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">User Interface (UI) Design</h3>
+          <p style="margin-bottom: 1rem;">Beautiful, functional interfaces that align with your brand and delight users. We design for web, mobile, and emerging platforms.</p>
+          <ul style="color: #666; font-size: 0.9rem; margin: 0; padding-left: 1.2rem;">
+            <li>Visual design & branding</li>
+            <li>Component libraries</li>
+            <li>Responsive design systems</li>
+            <li>Interactive prototypes</li>
+          </ul>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Mobile App Design</h3>
+          <p style="margin-bottom: 1rem;">Native iOS and Android app designs that follow platform guidelines while maintaining your unique brand identity.</p>
+          <ul style="color: #666; font-size: 0.9rem; margin: 0; padding-left: 1.2rem;">
+            <li>iOS & Android design patterns</li>
+            <li>Touch-optimised interfaces</li>
+            <li>App store optimisation assets</li>
+            <li>Cross-platform consistency</li>
+          </ul>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Web Application Design</h3>
+          <p style="margin-bottom: 1rem;">Complex web application interfaces that handle large amounts of data while remaining intuitive and efficient for daily use.</p>
+          <ul style="color: #666; font-size: 0.9rem; margin: 0; padding-left: 1.2rem;">
+            <li>Dashboard & admin interfaces</li>
+            <li>Data visualisation</li>
+            <li>Progressive web apps (PWAs)</li>
+            <li>Cross-browser compatibility</li>
+          </ul>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Design System Development</h3>
+          <p style="margin-bottom: 1rem;">Scalable design systems that ensure consistency across all your digital products and speed up future development.</p>
+          <ul style="color: #666; font-size: 0.9rem; margin: 0; padding-left: 1.2rem;">
+            <li>Component libraries</li>
+            <li>Design tokens & guidelines</li>
+            <li>Documentation & handoff</li>
+            <li>Team training & adoption</li>
+          </ul>
+        </div>
+        
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Conversion Optimisation</h3>
+          <p style="margin-bottom: 1rem;">Strategic design improvements that increase conversion rates, reduce bounce rates, and improve key business metrics.</p>
+          <ul style="color: #666; font-size: 0.9rem; margin: 0; padding-left: 1.2rem;">
+            <li>A/B testing & analytics</li>
+            <li>Landing page optimisation</li>
+            <li>Checkout flow improvements</li>
+            <li>User behaviour analysis</li>
+          </ul>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Industries We Serve -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Industries We Serve</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+        
+        <div style="text-align: center; padding: 1.5rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">SaaS & B2B</h3>
+          <p style="margin: 0; color: #666;">Complex dashboards, onboarding flows, and enterprise software that's actually enjoyable to use daily.</p>
+        </div>
+        
+        <div style="text-align: center; padding: 1.5rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Fintech</h3>
+          <p style="margin: 0; color: #666;">Secure, trustworthy interfaces for banking, payments, and financial management applications.</p>
+        </div>
+        
+        <div style="text-align: center; padding: 1.5rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Healthcare</h3>
+          <p style="margin: 0; color: #666;">Patient-focused designs that prioritise accessibility, privacy, and ease of use in critical moments.</p>
+        </div>
+        
+        <div style="text-align: center; padding: 1.5rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">E-learning</h3>
+          <p style="margin: 0; color: #666;">Engaging educational interfaces that improve learning outcomes and student engagement.</p>
+        </div>
+        
+        <div style="text-align: center; padding: 1.5rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">E-commerce</h3>
+          <p style="margin: 0; color: #666;">Conversion-optimised shopping experiences that increase sales and customer satisfaction.</p>
+        </div>
+        
+        <div style="text-align: center; padding: 1.5rem; border: 1px solid #eee; border-radius: 8px;">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Startups</h3>
+          <p style="margin: 0; color: #666;">MVP designs that attract early adopters and investors while validating product-market fit.</p>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="max-width: 800px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Frequently Asked Questions</h2>
+      
+      <div style="space-y: 2rem;">
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">What's the difference between UI and UX design?</h3>
+          <p>UX (User Experience) design focuses on how a product works and feels - the overall experience, user research, and problem-solving. UI (User Interface) design focuses on how it looks - the visual design, layouts, and interactive elements. Both are essential for great products.</p>
+        </div>
+        
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">How much does UI/UX design cost in India?</h3>
+          <p>UI/UX design projects typically range from ₹1.5L–₹8L depending on complexity and scope. Simple landing pages start around ₹50K, while comprehensive app designs can go up to ₹15L+. We provide detailed quotes after understanding your requirements.</p>
+        </div>
+        
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">Do you create designs for both web and mobile?</h3>
+          <p>Yes, we design for all platforms - responsive websites, native mobile apps (iOS & Android), progressive web apps, and desktop applications. We ensure consistent experiences across all touchpoints.</p>
+        </div>
+        
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">What design tools do you use?</h3>
+          <p>We primarily use Figma for design and prototyping, which allows for real-time collaboration and easy handoff to developers. We also use tools like Miro for workshops, Maze for user testing, and various research tools.</p>
+        </div>
+        
+        <div>
+          <h3 style="color: #000; margin: 0 0 1rem 0;">Can you redesign our existing product?</h3>
+          <p>Absolutely. We start with a comprehensive UX audit to identify pain points and opportunities, then create an improved design that enhances user experience while maintaining familiar elements that users already know.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0; text-align: center; background: linear-gradient(135deg, #8CC63F, #00A99D); margin-left: -1rem; margin-right: -1rem; color: white;">
+      <h2 style="font-size: 2.5rem; margin: 0 0 1rem 0; color: white;">Ready to Improve Your User Experience?</h2>
+      <p style="font-size: 1.25rem; margin: 0 0 2rem 0; max-width: 600px; margin-left: auto; margin-right: auto;">Let's discuss how great UI/UX design can transform your business and delight your users.</p>
+      <a href="/contact" class="cta-button" style="background: white; color: #8CC63F; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block;">Start Your Project</a>
+    </section>
+
+    <!-- Related Services -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2rem; text-align: center; margin: 0 0 2rem 0;">Related Services</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        
+        <a href="/product-design" style="text-decoration: none; color: inherit; border: 1px solid #eee; border-radius: 8px; padding: 1.5rem; display: block; transition: box-shadow 0.2s;">
+          <h3 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Product Design</h3>
+          <p style="margin: 0; color: #666;">End-to-end product design from concept to launch for web and mobile applications.</p>
+        </a>
+        
+        <a href="/usability-testing" style="text-decoration: none; color: inherit; border: 1px solid #eee; border-radius: 8px; padding: 1.5rem; display: block; transition: box-shadow 0.2s;">
+          <h3 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Usability Testing</h3>
+          <p style="margin: 0; color: #666;">Validate your designs with real users to ensure optimal user experience and business results.</p>
+        </a>
+        
+        <a href="/landing-page-design" style="text-decoration: none; color: inherit; border: 1px solid #eee; border-radius: 8px; padding: 1.5rem; display: block; transition: box-shadow 0.2s;">
+          <h3 style="color: #8CC63F; margin: 0 0 0.5rem 0;">Landing Page Design</h3>
+          <p style="margin: 0; color: #666;">High-converting landing pages that turn visitors into customers and drive business growth.</p>
+        </a>
+        
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: #000; color: white; padding: 20px; text-align: center; font-family: sans-serif;">
+    <!-- Enhanced NAP (Name, Address, Phone) Information -->
+    <div style="margin-bottom: 1rem;">
+      <h3 style="margin: 0 0 1rem 0; font-size: 1.2rem; color: #8CC63F;">Userhood</h3>
+      <p style="margin: 0.5rem 0; font-size: 14px;">
+        Product Design & UX/UI Studio<br>
+        Pune, Maharashtra, India<br>
+        <a href="mailto:hello@userhood.in" style="color: #8CC63F; text-decoration: none;">hello@userhood.in</a>
+      </p>
+    </div>
+    
+    <p style="margin: 0; font-size: 16px;">
+      © 2025 Userhood. All rights reserved.
+      &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/company/userhood" target="_blank" style="display: inline-block; vertical-align: middle;" aria-label="Userhood on LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 34 34" fill="none">
+          <rect width="34" height="34" rx="4" fill="#8CC63F"/>
+          <path d="M10.2 13.5H13.8V25H10.2V13.5ZM12 9.75C12.83 9.75 13.5 10.42 13.5 11.25C13.5 12.08 12.83 12.75 12 12.75C11.17 12.75 10.5 12.08 10.5 11.25C10.5 10.42 11.17 9.75 12 9.75ZM15.3 13.5H18.75V15H18.8C19.28 14.09 20.42 13.2 22.02 13.2C25.35 13.2 26 15.37 26 18.18V25H22.4V18.8C22.4 17.5 22.37 15.8 20.6 15.8C18.8 15.8 18.5 17.27 18.5 18.7V25H15.3V13.5Z" fill="black"/>
+        </svg>
+      </a>
+    </p>
+    
+    <!-- Quick Navigation Links -->
+    <div style="margin-top: 1rem; font-size: 14px;">
+      <a href="/product-design" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Product Design</a> |
+      <a href="/ui-ux-design" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">UI/UX Design</a> |
+      <a href="/contact" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Contact</a> |
+      <a href="/pune" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Pune</a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- FAQ Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What's the difference between UI and UX design?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "UX (User Experience) design focuses on how a product works and feels - the overall experience, user research, and problem-solving. UI (User Interface) design focuses on how it looks - the visual design, layouts, and interactive elements. Both are essential for great products."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does UI/UX design cost in India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "UI/UX design projects typically range from ₹1.5L–₹8L depending on complexity and scope. Simple landing pages start around ₹50K, while comprehensive app designs can go up to ₹15L+. We provide detailed quotes after understanding your requirements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you create designs for both web and mobile?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we design for all platforms - responsive websites, native mobile apps (iOS & Android), progressive web apps, and desktop applications. We ensure consistent experiences across all touchpoints."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What design tools do you use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We primarily use Figma for design and prototyping, which allows for real-time collaboration and easy handoff to developers. We also use tools like Miro for workshops, Maze for user testing, and various research tools."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you redesign our existing product?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. We start with a comprehensive UX audit to identify pain points and opportunities, then create an improved design that enhances user experience while maintaining familiar elements that users already know."
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>

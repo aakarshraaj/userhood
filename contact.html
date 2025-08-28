@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-690654KZJN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-690654KZJN');
+    
+    // Enhanced GA4 Event Tracking
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track contact form submission
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function() {
+          gtag('event', 'contact_form_submit', {
+            'form_type': 'main_contact',
+            'source': 'contact_page'
+          });
+        });
+      }
+      
+      // Track email clicks
+      document.addEventListener('click', function(e) {
+        if (e.target.href && e.target.href.includes('mailto:')) {
+          gtag('event', 'email_click', {
+            'contact_method': 'email',
+            'contact_value': e.target.href.replace('mailto:', '')
+          });
+        }
+      });
+    });
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Contact Userhood | Product Design Studio in Pune</title>
+  <meta name="description" content="Get in touch with Userhood for your product design and UX/UI needs. Based in Pune, serving clients globally. Contact us for a free consultation today.">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Userhood">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://userhood.in/contact">
+  
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="en-IN" href="https://userhood.in/contact">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact Userhood | Product Design Studio in Pune">
+  <meta property="og:description" content="Get in touch with Userhood for your product design and UX/UI needs. Based in Pune, serving clients globally. Contact us for a free consultation today.">
+  <meta property="og:url" content="https://userhood.in/contact">
+  <meta property="og:image" content="https://userhood.in/og/contact.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:site_name" content="Userhood">
+  
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Userhood | Product Design Studio in Pune">
+  <meta name="twitter:description" content="Get in touch with Userhood for your product design and UX/UI needs. Based in Pune, serving clients globally. Contact us for a free consultation today.">
+  <meta name="twitter:image" content="https://userhood.in/og/contact.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+  
+  <!-- Font Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../styles.css">
+  
+  <!-- Search Console Verification (placeholder) -->
+  <meta name="google-site-verification" content="GOOGLE_VERIFICATION_CODE_HERE">
+  <meta name="msvalidate.01" content="BING_VERIFICATION_CODE_HERE">
+  
+  <!-- Structured Data - LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
+    "name": "Userhood",
+    "url": "https://userhood.in",
+    "logo": "https://userhood.in/favicon.png",
+    "description": "Product design and UX/UI studio based in Pune, India. We craft meaningful digital experiences for startups and enterprises globally.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Pune",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "email": "hello@userhood.in",
+        "contactType": "Customer Service",
+        "availableLanguage": ["English", "Hindi"]
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/userhood"
+    ],
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Pune"
+      },
+      {
+        "@type": "Country",
+        "name": "India"
+      }
+    ],
+    "serviceType": ["Product Design", "UX Design", "UI Design", "Design Systems"],
+    "priceRange": "₹₹₹"
+  }
+  </script>
+  
+  <!-- Breadcrumb Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://userhood.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact",
+        "item": "https://userhood.in/contact"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<div class="page-container">
+  <!-- Navigation -->
+  <nav class="main-nav" style="position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 100; padding: 1rem; border-bottom: 1px solid #eee;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+      <a href="/" style="font-weight: bold; color: #000; text-decoration: none; font-size: 1.5rem;">Userhood</a>
+      <div style="display: flex; gap: 2rem;">
+        <a href="/product-design" style="color: #000; text-decoration: none;">Product Design</a>
+        <a href="/ui-ux-design" style="color: #000; text-decoration: none;">UI/UX Design</a>
+        <a href="/about" style="color: #000; text-decoration: none;">About</a>
+        <a href="/contact" style="color: #8CC63F; text-decoration: none; font-weight: 500;">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main style="margin-top: 80px; padding: 2rem 1rem;">
+    
+    <!-- Hero Section -->
+    <section class="hero" style="max-width: 1200px; margin: 0 auto; text-align: center; padding: 4rem 0;">
+      <h1 style="font-size: 3rem; font-weight: 700; margin: 0 0 1rem 0; color: #000;">Contact Userhood</h1>
+      <p style="font-size: 1.25rem; color: #666; max-width: 600px; margin: 0 auto 2rem auto; line-height: 1.6;">Ready to transform your digital product? Let's discuss your project and see how we can help bring your vision to life.</p>
+    </section>
+
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding: 2rem 0;">
+      
+      <!-- Contact Form -->
+      <div>
+        <h2 style="margin: 0 0 2rem 0; color: #000;">Let's Start a Conversation</h2>
+        
+        <form id="contact-form" style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <div>
+            <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Name *</label>
+            <input type="text" id="name" name="name" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+          </div>
+          
+          <div>
+            <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email *</label>
+            <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+          </div>
+          
+          <div>
+            <label for="company" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Company</label>
+            <input type="text" id="company" name="company" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+          </div>
+          
+          <div>
+            <label for="project-type" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Project Type</label>
+            <select id="project-type" name="project-type" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+              <option value="">Select a service</option>
+              <option value="product-design">Product Design</option>
+              <option value="ui-ux-design">UI/UX Design</option>
+              <option value="landing-page">Landing Page Design</option>
+              <option value="ux-audit">UX Audit</option>
+              <option value="design-sprint">Design Sprint</option>
+              <option value="design-system">Design System</option>
+              <option value="usability-testing">Usability Testing</option>
+              <option value="other">Other / Not Sure</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="budget" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Budget Range</label>
+            <select id="budget" name="budget" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+              <option value="">Select budget range</option>
+              <option value="under-2l">Under ₹2L</option>
+              <option value="2l-5l">₹2L - ₹5L</option>
+              <option value="5l-10l">₹5L - ₹10L</option>
+              <option value="10l-plus">₹10L+</option>
+              <option value="discuss">Let's discuss</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="timeline" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Timeline</label>
+            <select id="timeline" name="timeline" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+              <option value="">Select timeline</option>
+              <option value="asap">ASAP</option>
+              <option value="1-month">Within 1 month</option>
+              <option value="1-3-months">1-3 months</option>
+              <option value="3-plus-months">3+ months</option>
+              <option value="just-exploring">Just exploring</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Tell us about your project *</label>
+            <textarea id="message" name="message" required rows="5" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; resize: vertical;" placeholder="Describe your project, goals, and any specific challenges you're facing..."></textarea>
+          </div>
+          
+          <button type="submit" style="background: #8CC63F; color: white; padding: 1rem 2rem; border: none; border-radius: 6px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background 0.2s;">Send Message</button>
+        </form>
+      </div>
+      
+      <!-- Contact Information -->
+      <div>
+        <h2 style="margin: 0 0 2rem 0; color: #000;">Get in Touch</h2>
+        
+        <div style="margin-bottom: 3rem;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Email</h3>
+          <p style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">
+            <a href="mailto:hello@userhood.in" style="color: #000; text-decoration: none;">hello@userhood.in</a>
+          </p>
+          <p style="margin: 0; color: #666; font-size: 0.9rem;">We typically respond within 24 hours</p>
+        </div>
+        
+        <div style="margin-bottom: 3rem;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Location</h3>
+          <p style="margin: 0 0 0.5rem 0;">Pune, Maharashtra, India</p>
+          <p style="margin: 0; color: #666; font-size: 0.9rem;">Serving clients globally, available for remote collaboration</p>
+        </div>
+        
+        <div style="margin-bottom: 3rem;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Social</h3>
+          <p style="margin: 0;">
+            <a href="https://www.linkedin.com/company/userhood" target="_blank" style="color: #000; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 34 34" fill="none">
+                <rect width="34" height="34" rx="4" fill="#8CC63F"/>
+                <path d="M10.2 13.5H13.8V25H10.2V13.5ZM12 9.75C12.83 9.75 13.5 10.42 13.5 11.25C13.5 12.08 12.83 12.75 12 12.75C11.17 12.75 10.5 12.08 10.5 11.25C10.5 10.42 11.17 9.75 12 9.75ZM15.3 13.5H18.75V15H18.8C19.28 14.09 20.42 13.2 22.02 13.2C25.35 13.2 26 15.37 26 18.18V25H22.4V18.8C22.4 17.5 22.37 15.8 20.6 15.8C18.8 15.8 18.5 17.27 18.5 18.7V25H15.3V13.5Z" fill="black"/>
+              </svg>
+              LinkedIn
+            </a>
+          </p>
+        </div>
+        
+        <div style="background: #f8f9fa; padding: 2rem; border-radius: 8px; border-left: 4px solid #8CC63F;">
+          <h3 style="color: #000; margin: 0 0 1rem 0; font-size: 1.2rem;">Quick Response</h3>
+          <p style="margin: 0; line-height: 1.6;">For urgent inquiries or to schedule a call, mention your preferred time in your message. We're available for video calls Monday to Friday, 10 AM to 6 PM IST.</p>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- FAQ Section -->
+    <section style="max-width: 800px; margin: 0 auto; padding: 4rem 0;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Frequently Asked Questions</h2>
+      
+      <div style="space-y: 2rem;">
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">What information should I include in my project brief?</h3>
+          <p>Include your business goals, target audience, timeline, budget range, and any specific requirements or constraints. The more context you provide, the better we can tailor our proposal to your needs.</p>
+        </div>
+        
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">Do you offer free consultations?</h3>
+          <p>Yes, we offer a complimentary 30-minute discovery call to understand your project and discuss how we can help. This helps us provide accurate timelines and pricing for your specific needs.</p>
+        </div>
+        
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">How quickly can you start a new project?</h3>
+          <p>Our availability varies based on current projects. Typically, we can start new projects within 1-2 weeks. For urgent projects, we may be able to accommodate faster timelines.</p>
+        </div>
+        
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 2rem; margin-bottom: 2rem;">
+          <h3 style="color: #000; margin: 0 0 1rem 0;">Do you work with international clients?</h3>
+          <p>Absolutely! We work with clients across different time zones and have experience collaborating remotely. We're flexible with meeting times and communication preferences.</p>
+        </div>
+        
+        <div>
+          <h3 style="color: #000; margin: 0 0 1rem 0;">What's your payment structure?</h3>
+          <p>We typically work with a 50% upfront payment and 50% upon project completion for smaller projects. For larger projects, we can arrange milestone-based payments. All details are clearly outlined in our proposals.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Office Locations in Pune -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 0; background: #f8f9fa; margin-left: -1rem; margin-right: -1rem; padding-left: 1rem; padding-right: 1rem;">
+      <h2 style="font-size: 2.5rem; text-align: center; margin: 0 0 3rem 0;">Serving Pune's Tech Ecosystem</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Hinjewadi</h3>
+          <p style="margin: 0; color: #666;">IT Park Phase 1, 2 & 3<br>Easy collaboration with tech companies</p>
+        </div>
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Kharadi</h3>
+          <p style="margin: 0; color: #666;">EON IT Park vicinity<br>Close to major software companies</p>
+        </div>
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+          <h3 style="color: #8CC63F; margin: 0 0 1rem 0;">Baner</h3>
+          <p style="margin: 0; color: #666;">Startup hub area<br>Perfect for emerging businesses</p>
+        </div>
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+          <h3 style="color: #00A99D; margin: 0 0 1rem 0;">Koregaon Park</h3>
+          <p style="margin: 0; color: #666;">Creative district<br>Ideal for design collaborations</p>
+        </div>
+        
+      </div>
+      
+      <div style="text-align: center; margin-top: 2rem;">
+        <p style="color: #666;">Whether you're in Pune's tech corridors or anywhere in the world, we're ready to collaborate on your next digital product.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: #000; color: white; padding: 20px; text-align: center; font-family: sans-serif;">
+    <!-- Enhanced NAP (Name, Address, Phone) Information -->
+    <div style="margin-bottom: 1rem;">
+      <h3 style="margin: 0 0 1rem 0; font-size: 1.2rem; color: #8CC63F;">Userhood</h3>
+      <p style="margin: 0.5rem 0; font-size: 14px;">
+        Product Design & UX/UI Studio<br>
+        Pune, Maharashtra, India<br>
+        <a href="mailto:hello@userhood.in" style="color: #8CC63F; text-decoration: none;">hello@userhood.in</a>
+      </p>
+    </div>
+    
+    <p style="margin: 0; font-size: 16px;">
+      © 2025 Userhood. All rights reserved.
+      &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/company/userhood" target="_blank" style="display: inline-block; vertical-align: middle;" aria-label="Userhood on LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 34 34" fill="none">
+          <rect width="34" height="34" rx="4" fill="#8CC63F"/>
+          <path d="M10.2 13.5H13.8V25H10.2V13.5ZM12 9.75C12.83 9.75 13.5 10.42 13.5 11.25C13.5 12.08 12.83 12.75 12 12.75C11.17 12.75 10.5 12.08 10.5 11.25C10.5 10.42 11.17 9.75 12 9.75ZM15.3 13.5H18.75V15H18.8C19.28 14.09 20.42 13.2 22.02 13.2C25.35 13.2 26 15.37 26 18.18V25H22.4V18.8C22.4 17.5 22.37 15.8 20.6 15.8C18.8 15.8 18.5 17.27 18.5 18.7V25H15.3V13.5Z" fill="black"/>
+        </svg>
+      </a>
+    </p>
+    
+    <!-- Quick Navigation Links -->
+    <div style="margin-top: 1rem; font-size: 14px;">
+      <a href="/product-design" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Product Design</a> |
+      <a href="/ui-ux-design" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">UI/UX Design</a> |
+      <a href="/contact" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Contact</a> |
+      <a href="/pune" style="color: #8CC63F; text-decoration: none; margin: 0 0.5rem;">Pune</a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- FAQ Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What information should I include in my project brief?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Include your business goals, target audience, timeline, budget range, and any specific requirements or constraints. The more context you provide, the better we can tailor our proposal to your needs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer free consultations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we offer a complimentary 30-minute discovery call to understand your project and discuss how we can help. This helps us provide accurate timelines and pricing for your specific needs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How quickly can you start a new project?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our availability varies based on current projects. Typically, we can start new projects within 1-2 weeks. For urgent projects, we may be able to accommodate faster timelines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with international clients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely! We work with clients across different time zones and have experience collaborating remotely. We're flexible with meeting times and communication preferences."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's your payment structure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We typically work with a 50% upfront payment and 50% upon project completion for smaller projects. For larger projects, we can arrange milestone-based payments. All details are clearly outlined in our proposals."
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
