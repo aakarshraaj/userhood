@@ -18,22 +18,26 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     setResult("Sending transmission...");
 
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey) {
+      setResult("Error: Missing VITE_WEB3FORMS_ACCESS_KEY in .env");
+      setIsSubmitting(false);
+      return;
+    }
+
+    formData.append("access_key", accessKey);
 
     try {
-      const response = await fetch("/api/submit", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: formData,
       });
 
-      const resultData = await response.json();
+      const data = await response.json();
 
-      if (resultData.success) {
-        trackEvent('submit_contact_form', 'lead_generation', data.scope?.toString() || 'unknown');
+      if (data.success) {
+        trackEvent('submit_contact_form', 'lead_generation', formData.get("scope")?.toString() || 'unknown');
         setResult("Transmission successful. We will respond shortly.");
         const form = e.target as HTMLFormElement;
         form.reset();
@@ -42,7 +46,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           setResult("");
         }, 3000);
       } else {
-        setResult(`Transmission failed: ${resultData.message}`);
+        setResult(`Transmission failed: ${data.message}`);
       }
     } catch (error) {
       setResult("A network error occurred. Please try again.");
