@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- Core SEO Meta Tags -->
+  <title>Userhood - Brand & Engineering Aligned</title>
+  <meta name="description"
+    content="A design-driven, engineering-obsessed studio building scalable platforms where aesthetic vision dictates technical execution. High-stakes system architects." />
+  <meta name="keywords"
+    content="Userhood, design engineering, system architecture, UI/UX design, technical studio, frontend architecture, web development, brand alignment, software architecture, React, MVP buildup" />
+  <meta name="author" content="Userhood" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://userhood.in/" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://userhood.in/" />
+  <meta property="og:title" content="Userhood - Brand & Engineering Aligned" />
+  <meta property="og:description"
+    content="A design-driven, engineering-obsessed studio building scalable platforms where aesthetic vision dictates technical execution." />
+  <meta property="og:site_name" content="Userhood" />
+  <meta property="og:image" content="https://userhood.in/og-image.jpg" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://userhood.in/" />
+  <meta name="twitter:title" content="Userhood - Brand & Engineering Aligned" />
+  <meta name="twitter:description"
+    content="A design-driven, engineering-obsessed studio building scalable platforms where aesthetic vision dictates technical execution." />
+  <meta name="twitter:image" content="https://userhood.in/twitter-image.jpg" />
+
+  <!-- Organization Structured Data for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Userhood",
+    "url": "https://userhood.in/",
+    "logo": "https://userhood.in/logo.png",
+    "description": "A technical studio aligning brand, product, and engineering for high-stakes ventures.",
+    "sameAs": [
+      "https://twitter.com/userhood",
+      "https://linkedin.com/company/userhood"
+    ]
+  }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-690654KZJN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    // send_page_view false avoids double hits since we manual track in react-router
+    gtag('config', 'G-690654KZJN', { send_page_view: false });
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
