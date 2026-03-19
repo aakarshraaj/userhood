@@ -8,25 +8,44 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
   return (
     <section className="py-20 md:py-28 lg:py-36 px-5 md:px-8 border-t border-white/5 bg-white/[0.02]" id="contact">
       <div className="max-w-4xl mx-auto text-center">
-        <div className="font-mono text-[10px] text-primary mb-6 md:mb-8 uppercase tracking-widest">
-          [ FINAL_TRANSMISSION ]
-        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="font-mono text-[10px] text-primary mb-6 md:mb-8 uppercase tracking-widest"
+        >
+          [ ACT V // THE INVITATION ]
+        </motion.div>
+
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-[140px] font-black text-white leading-[0.85] tracking-tighter mb-6 md:mb-8"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-[110px] font-black text-white leading-[0.85] tracking-tighter mb-6 md:mb-8"
         >
-          BUILD<br />SOMETHING<br />SERIOUS<motion.span animate={{ opacity: [1, 0, 1] }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }} className="text-primary ml-1 md:ml-2">_</motion.span>
+          Time to<br />close the<br />
+          <span className="text-primary">
+            gap
+            <motion.span
+              animate={{ opacity: [1, 0, 1] }}
+              transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+              className="ml-1 md:ml-2"
+            >_</motion.span>
+          </span>
         </motion.h2>
-        <motion.p
+
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-lg sm:text-xl md:text-2xl text-slate-400 font-light leading-snug mb-10 md:mb-12 max-w-2xl mx-auto"
+          className="max-w-3xl mx-auto mb-12 md:mb-16"
         >
-          We are selective. We build for performance. If you want alignment between brand and engineering — let's talk.
-        </motion.p>
+          <p className="text-xl sm:text-2xl md:text-3xl text-slate-400 font-light leading-relaxed">
+            We work with a small number of founders and companies at a time. If your product deserves true alignment between design and engineering, let's talk.
+          </p>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -39,7 +58,7 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
             onClick={onContactClick}
             className="bg-primary text-black px-8 py-5 md:px-14 md:py-6 font-mono font-bold text-base md:text-lg transition-all min-h-[52px] w-full sm:w-auto whitespace-nowrap"
           >
-            START A CONVERSATION
+            START THE CONVERSATION
           </motion.button>
           <a
             href="/#case-studies"
@@ -48,6 +67,7 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
             See case studies first
           </a>
         </motion.div>
+
       </div>
     </section>
   );

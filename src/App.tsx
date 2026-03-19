@@ -10,12 +10,11 @@ import { trackPageView, trackEvent } from "./utils/analytics";
 import { useSEO } from "./utils/seo";
 
 // Below-the-fold homepage sections — lazy loaded
+const StatsStrip = lazy(() => import("./components/StatsStrip"));
 const ProblemSection = lazy(() => import("./components/ProblemSection"));
 const PhilosophySection = lazy(() => import("./components/PhilosophySection"));
-const OutcomesSection = lazy(() => import("./components/OutcomesSection"));
 const StrategicInterventions = lazy(() => import("./components/StrategicInterventions"));
 const ProcessGallery = lazy(() => import("./components/ProcessGallery"));
-const CriteriaSection = lazy(() => import("./components/CriteriaSection"));
 const EngagementModels = lazy(() => import("./components/EngagementModels"));
 const FounderOrigin = lazy(() => import("./components/FounderOrigin"));
 const FinalCTA = lazy(() => import("./components/FinalCTA"));
@@ -82,21 +81,11 @@ export default function App() {
             <main>
               <HomeSEO />
               <Hero onContactClick={() => handleContactClick('hero')} />
+              <StatsStrip />
               <ProblemSection />
               <PhilosophySection />
               <StrategicInterventions />
               <ProcessGallery />
-              <OutcomesSection />
-              <section className="py-16 md:py-24 lg:py-32 px-5 md:px-8 bg-surface border-y border-white/5">
-                <div className="max-w-[1440px] mx-auto">
-                  <div className="font-mono text-[10px] text-primary mb-6 uppercase tracking-[0.2em] flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-primary shrink-0" />
-                    [ ALIGNMENT_ARCHITECTURE // CORE_TOPOLOGY ]
-                  </div>
-                  <AlignmentNetwork />
-                </div>
-              </section>
-              <CriteriaSection />
               <EngagementModels onContactClick={() => handleContactClick('engagement_models')} />
               <FounderOrigin />
               <FinalCTA onContactClick={() => handleContactClick('final_cta')} />

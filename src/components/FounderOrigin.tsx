@@ -18,15 +18,15 @@ export default function FounderOrigin() {
                         </div>
 
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter leading-[1.1] mb-6 md:mb-8">
-                            Design-obsessed<br />architecture.
+                            Built by people<br />who closed<br /><span className="text-primary">the gap.</span>
                         </h2>
 
                         <div className="space-y-4 md:space-y-6 text-slate-400 text-base md:text-lg leading-relaxed max-w-lg">
                             <p>
-                                We are a design-driven studio. We believe that incredible engineering is useless if it's trapped behind a mediocre interface, and a beautiful interface is a liability if the code can't support it.
+                                We started Userhood because we'd lived both sides of the gap. We'd seen stunning design get mangled by engineering that didn't understand it. We'd seen great engineers waste months building on top of design that couldn't scale.
                             </p>
                             <p>
-                                We are two co-founders leading a specialized core team of design-obsessed engineers. You are partnering with hybrid domain experts who elevate aesthetic vision through rigid technical execution.
+                                We are two co-founders and a specialized core team who refuse to separate the disciplines. You're not hiring a design agency and an engineering firm. You're getting one unified team that holds both from concept to shipping.
                             </p>
                         </div>
 

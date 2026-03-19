@@ -1,63 +1,118 @@
-import { LayoutDashboard, Link2Off, Ruler } from "lucide-react";
 import { motion } from "motion/react";
 
-const problems = [
+const moments = [
   {
-    icon: <LayoutDashboard className="w-8 h-8" />,
-    title: "INTERFACE_FRAGMENTATION",
-    description: "Inconsistent user experiences state-machines causing cognitive friction, eroding trust, and bloating support overhead."
+    num: "01",
+    line: "Your last agency estimated 6 months.\u00a0It took 14.",
+    sub: "And what shipped still needed a redesign six months later. That's not a story about talent. That's a story about a broken process."
   },
   {
-    icon: <Link2Off className="w-8 h-8" />,
-    title: "CODEBASE_MISALIGNMENT",
-    description: "Visual identity fails to translate into functional logic, resulting in an 'uncanny valley' environment and severe technical debt."
+    num: "02",
+    line: "The designs were stunning.\u00a0Then engineering happened.",
+    sub: "What you approved in Figma and what got built were strangers. The proportions were off. The interactions felt cheap. The thing worked, but the magic was gone."
   },
   {
-    icon: <Ruler className="w-8 h-8" />,
-    title: "ARCHITECTURAL_DECAY",
-    description: "Scaling demands have exposed weak foundations. Rapid growth is throttled by legacy design inconsistencies and rigid architecture."
+    num: "03",
+    line: "You shipped. But you never stopped grieving what it could've been.",
+    sub: "And somewhere in a presentation, someone called it a \"v1\" and promised it would get fixed later. Both of you knew it wouldn't."
   }
 ];
 
 export default function ProblemSection() {
   return (
-    <section className="relative py-16 px-5 border-b border-white/5 bg-transparent pt-20 md:py-24 md:px-6 md:pt-32">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="font-mono text-[10px] text-red-500 uppercase tracking-[0.2em] mb-4 md:mb-6 flex items-center gap-2 flex-wrap">
-          <span className="w-1.5 h-1.5 bg-red-500 animate-pulse shrink-0" />
-          <span className="break-words">SYSTEM_VULNERABILITIES // THREAT_ASSESSMENT</span>
-        </h2>
-        <h3 className="text-3xl sm:text-4xl md:text-6xl font-black mb-10 md:mb-16 text-white tracking-tighter">
-          The true cost of <span className="text-red-500">misalignment.</span>
-        </h3>
+    <section className="relative py-20 px-5 border-b border-white/5 bg-transparent md:py-32 md:px-8">
+      <div className="max-w-[1440px] mx-auto">
 
-        <div className="grid md:grid-cols-3 gap-px bg-white/5 border border-white/5">
-          {problems.map((problem, index) => (
+        {/* Opening strike */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-20 md:mb-28 max-w-4xl"
+        >
+          <div className="font-mono text-[10px] text-red-500/80 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 bg-red-500 animate-pulse shrink-0" />
+            THE WOUND
+          </div>
+          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[96px] font-black text-white leading-[0.9] tracking-tighter mb-8">
+            You've been<br />
+            <span className="text-red-400">there.</span>
+          </h2>
+          <p className="text-xl md:text-2xl text-slate-400 font-light leading-relaxed max-w-2xl">
+            Every founder has felt it. The moment a product you cared deeply about got lost in time, translation, and the gap between the people who imagined it and those who built it.
+          </p>
+        </motion.div>
+
+        {/* Three moments of recognition */}
+        <div className="border border-white/5">
+          {moments.map((moment, i) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              key={i}
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-background-dark p-6 md:p-8 lg:p-12 flex flex-col gap-4 md:gap-6 relative overflow-hidden group cursor-default"
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="group relative border-b border-white/5 last:border-b-0 p-8 md:p-12 lg:p-16 bg-background-dark hover:bg-white/[0.015] transition-colors cursor-default"
             >
-              <div className="absolute top-0 right-0 p-3 md:p-4 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block">
-                <div className="font-mono text-[10px] text-red-500/60 uppercase">Alert_Level_{index + 1}</div>
-              </div>
-              <div className="absolute inset-0 bg-red-500/[0.02] group-hover:bg-red-500/[0.05] transition-colors pointer-events-none" />
+              {/* Accent bar */}
+              <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-red-500/0 group-hover:bg-red-500/60 transition-colors duration-500" />
 
-              <div className="text-red-500/50 transform transition-all duration-300 relative z-10 group-hover:text-red-500 [&>svg]:w-6 [&>svg]:h-6 md:[&>svg]:w-8 md:[&>svg]:h-8">
-                {problem.icon}
-              </div>
-              <div className="relative z-10">
-                <h4 className="font-mono text-[11px] md:text-[12px] uppercase tracking-widest mb-2 md:mb-4 text-white group-hover:text-red-500 transition-colors duration-300 break-words">
-                  {problem.title}
-                </h4>
-                <p className="text-slate-400 text-sm leading-relaxed">{problem.description}</p>
+              <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-12">
+                <div className="font-mono text-[10px] text-red-500/30 group-hover:text-red-500/60 transition-colors shrink-0 mt-1.5">
+                  {moment.num}
+                </div>
+                <div>
+                  <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-snug tracking-tight mb-4 group-hover:text-red-50 transition-colors duration-300">
+                    {moment.line}
+                  </p>
+                  <p className="text-slate-500 text-base md:text-lg leading-relaxed max-w-2xl group-hover:text-slate-400 transition-colors">
+                    {moment.sub}
+                  </p>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* AI provocation — new angle */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="mt-12 md:mt-16 border border-primary/10 bg-primary/[0.02] p-8 md:p-12 lg:p-14 relative overflow-hidden"
+        >
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[80px] rounded-full pointer-events-none" />
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-16">
+            <div className="shrink-0">
+              <div className="font-mono text-[10px] text-primary/60 uppercase tracking-[0.2em] mb-3">The AI era asks:</div>
+              <p className="text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tighter leading-[1]">
+                Why is it still<br />
+                <span className="text-primary">taking a year?</span>
+              </p>
+            </div>
+            <div className="max-w-md">
+              <p className="text-slate-400 text-base md:text-lg leading-relaxed">
+                Every team uses AI now. The difference is whether it's a party trick layered on a broken process or the fundamental operating model from discovery to deployment. When you strip away the bureaucratic bloat, 12 weeks isn't ambitious. It's just math.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Bridge */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mt-12 md:mt-16 text-center"
+        >
+          <p className="font-mono text-xs text-white/20 uppercase tracking-[0.3em]">
+            The problem was never the people. ↓
+          </p>
+        </motion.div>
+
       </div>
     </section>
   );
