@@ -25,6 +25,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
           <a href="/#case-studies" className="hover:text-primary transition-colors">// CASE_STUDIES</a>
           <a href="/#philosophy" className="hover:text-primary transition-colors">// PHILOSOPHY</a>
           <Link to="/services" className="hover:text-primary transition-colors">// SERVICES</Link>
+          <Link to="/careers" className="hover:text-primary transition-colors">// CAREERS</Link>
           <Link to="/about" className="hover:text-primary transition-colors">// THE_TEAM</Link>
           <a href="/#outcomes" className="hover:text-primary transition-colors">// OUTCOMES</a>
 
@@ -87,6 +88,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
             <a href="/#case-studies" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">// CASE_STUDIES</a>
             <a href="/#philosophy" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">// PHILOSOPHY</a>
             <Link to="/services" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">// SERVICES</Link>
+            <Link to="/careers" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">// CAREERS</Link>
             <Link to="/about" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">// THE_TEAM</Link>
             <a href="/#outcomes" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">// OUTCOMES</a>
             <button
