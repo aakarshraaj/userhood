@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Volume2, VolumeX } from "lucide-react";
+import { toggleMute, getMuteState, playTick } from "../utils/audio";
 
 interface NavbarProps {
   onContactClick: () => void;
@@ -9,10 +10,29 @@ interface NavbarProps {
 
 export default function Navbar({ onContactClick }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMuted, setIsMuted] = useState(getMuteState());
+
+  const handleMuteToggle = () => {
+    const nextMuted = toggleMute();
+    setIsMuted(nextMuted);
+    if (!nextMuted) {
+      playTick();
+    }
+  };
+
+  const handleMenuClick = () => {
+    playTick();
+    setIsOpen(!isOpen);
+  };
+
+  const handleLinkClick = () => {
+    playTick();
+    setIsOpen(false);
+  };
 
   return (
     <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-background-dark/90 backdrop-blur-xl safe-area-inset-top" aria-label="Main navigation">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 h-14 sm:h-16 flex items-center justify-between font-mono text-[10px] tracking-tighter uppercase relative z-50">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 h-14 sm:h-16 flex items-center justify-between font-mono text-xs tracking-tighter uppercase relative z-50">
         <div className="flex items-center gap-2 sm:gap-4 min-w-0">
           <Link to="/" className="hover:opacity-80 transition-opacity shrink-0 flex items-center" onClick={() => setIsOpen(false)} aria-label="Userhood — Home">
             <Logo />
@@ -22,14 +42,20 @@ export default function Navbar({ onContactClick }: NavbarProps) {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
-          <a href="/#case-studies" className="hover:text-primary transition-colors">// CASE_STUDIES</a>
-          <a href="/#philosophy" className="hover:text-primary transition-colors">// PHILOSOPHY</a>
-          <Link to="/services" className="hover:text-primary transition-colors">// SERVICES</Link>
-          <Link to="/careers" className="hover:text-primary transition-colors">// CAREERS</Link>
-          <Link to="/about" className="hover:text-primary transition-colors">// THE_TEAM</Link>
-          <a href="/#outcomes" className="hover:text-primary transition-colors">// OUTCOMES</a>
+          <a href="/#case-studies" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// CASE_STUDIES</a>
+          <Link to="/services" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// SERVICES</Link>
+          <Link to="/careers" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// CAREERS</Link>
+          <Link to="/about" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// THE_TEAM</Link>
+          <a href="/#outcomes" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// OUTCOMES</a>
 
           <div className="flex items-center gap-4">
+            <button
+              onClick={handleMuteToggle}
+              className="text-white/40 hover:text-primary transition-colors p-2 cursor-pointer flex items-center gap-1.5 font-mono text-xs uppercase font-bold"
+              aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
+            >
+              {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
+            </button>
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -44,7 +70,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={onContactClick}
+              onClick={() => { playTick(); onContactClick(); }}
               className="text-primary border border-primary/20 px-4 py-1.5 whitespace-nowrap"
             >
               ESTABLISH_CONTACT
@@ -67,7 +93,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
           </motion.a>
           <button
             className="text-white/70 hover:text-white p-2"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={handleMenuClick}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
           >
@@ -83,16 +109,28 @@ export default function Navbar({ onContactClick }: NavbarProps) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-14 sm:top-16 left-0 w-full bg-background-dark border-b border-white/5 p-5 sm:p-6 flex flex-col gap-5 sm:gap-6 md:hidden font-mono text-[10px] tracking-tighter uppercase z-40"
+            className="absolute top-14 sm:top-16 left-0 w-full bg-background-dark border-b border-white/5 p-5 sm:p-6 flex flex-col gap-5 sm:gap-6 md:hidden font-mono text-xs tracking-tighter uppercase z-40"
           >
-            <a href="/#case-studies" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">// CASE_STUDIES</a>
-            <a href="/#philosophy" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">// PHILOSOPHY</a>
-            <Link to="/services" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">// SERVICES</Link>
-            <Link to="/careers" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">// CAREERS</Link>
-            <Link to="/about" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">// THE_TEAM</Link>
-            <a href="/#outcomes" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">// OUTCOMES</a>
+            <a href="/#case-studies" onClick={handleLinkClick} className="hover:text-primary transition-colors">// CASE_STUDIES</a>
+            <Link to="/services" onClick={handleLinkClick} className="hover:text-primary transition-colors">// SERVICES</Link>
+            <Link to="/careers" onClick={handleLinkClick} className="hover:text-primary transition-colors">// CAREERS</Link>
+            <Link to="/about" onClick={handleLinkClick} className="hover:text-primary transition-colors">// THE_TEAM</Link>
+            <a href="/#outcomes" onClick={handleLinkClick} className="hover:text-primary transition-colors">// OUTCOMES</a>
+            
+            <div className="flex justify-between items-center py-2 border-t border-white/5">
+              <span className="text-white/30">System_Audio</span>
+              <button
+                onClick={handleMuteToggle}
+                className="text-primary flex items-center gap-1.5"
+              >
+                {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                <span>{isMuted ? "MUTED" : "ON"}</span>
+              </button>
+            </div>
+
             <button
               onClick={() => {
+                playTick();
                 setIsOpen(false);
                 onContactClick();
               }}

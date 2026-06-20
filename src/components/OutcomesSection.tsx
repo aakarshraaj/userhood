@@ -28,7 +28,7 @@ export default function OutcomesSection() {
     <section className="py-16 md:py-24 px-5 md:px-6 bg-background-dark" id="outcomes">
       <div className="max-w-[1440px] mx-auto">
         <div className="mb-10 md:mb-16 lg:mb-32">
-          <div className="font-mono text-[10px] text-primary mb-3 md:mb-4">[ INTERVENTION_CAPABILITIES ]</div>
+          <div className="font-mono text-xs text-primary mb-3 md:mb-4">[ INTERVENTION_CAPABILITIES ]</div>
           <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter">Integrated Outcomes</h3>
         </div>
 
@@ -42,7 +42,7 @@ export default function OutcomesSection() {
               transition={{ delay: index * 0.1 }}
               className="p-6 md:p-8 lg:p-12 bg-background-dark hover:bg-white/[0.02] transition-colors group cursor-default"
             >
-              <div className="font-mono text-[10px] text-white/20 mb-6 md:mb-12 group-hover:text-primary transition-colors">
+              <div className="font-mono text-xs text-white/20 mb-6 md:mb-12 group-hover:text-primary transition-colors">
                 {mod.id}
               </div>
               <h4 className="text-lg md:text-xl font-bold text-white mb-3 md:mb-4">{mod.title}</h4>

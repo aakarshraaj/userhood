@@ -41,10 +41,10 @@ export default function StatsStrip() {
                                 </span>
                                 <span className="text-primary font-mono text-sm mb-2 font-bold">{stat.unit}</span>
                             </div>
-                            <div className="font-mono text-[10px] text-white/50 uppercase tracking-[0.15em] mb-1">
+                            <div className="font-mono text-xs text-white/50 uppercase tracking-[0.15em] mb-1">
                                 {stat.label}
                             </div>
-                            <div className="font-mono text-[10px] text-white/20 uppercase tracking-[0.12em]">
+                            <div className="font-mono text-xs text-white/20 uppercase tracking-[0.12em]">
                                 {stat.sub}
                             </div>
                         </motion.div>

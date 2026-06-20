@@ -37,16 +37,16 @@ const services = [
     {
         id: "SVC_03",
         icon: <BrainCircuit className="w-8 h-8" />,
-        category: "AI_INTEGRATION",
-        title: "AI & Intelligent Systems",
+        category: "INTELLIGENT_SYSTEMS",
+        title: "Intelligent Systems",
         description:
-            "LLMs, agents, and custom AI pipelines embedded directly into your product layer. Not bolted-on features — native intelligence that changes what your product can do.",
+            "Custom API integration, automated workflows, and native intelligence built to scale. We embed intelligent layers directly into your product rather than bolting them on.",
         deliverables: [
             "LLM Integration & Fine-tuning",
             "AI-Powered Feature Engineering",
-            "Custom Chatbots & Conversational Agents",
-            "Intelligent Automation & Workflow AI",
-            "AI Strategy & Capability Roadmapping",
+            "Intelligent Automation & Workflow Systems",
+            "Custom Agents & Service Integrations",
+            "Systems Architecture & Scalability Planning",
         ],
     },
     {
@@ -144,7 +144,7 @@ export default function Services() {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="font-mono text-[10px] text-primary mb-6 uppercase tracking-[0.3em] flex items-center gap-2"
+                        className="font-mono text-xs text-primary mb-6 uppercase tracking-[0.3em] flex items-center gap-2"
                     >
                         <span className="w-1.5 h-1.5 bg-primary shrink-0 animate-pulse" />
                         [ SERVICE_CATALOGUE // CAPABILITY_INDEX ]
@@ -188,11 +188,11 @@ export default function Services() {
                                     <div className="text-primary/40 group-hover:text-primary transition-colors duration-500">
                                         {svc.icon}
                                     </div>
-                                    <span className="font-mono text-[9px] text-white/20 tracking-widest">{svc.id}</span>
+                                    <span className="font-mono text-xs text-white/20 tracking-widest">{svc.id}</span>
                                 </div>
 
                                 <div className="relative z-10 flex-grow">
-                                    <div className="font-mono text-[10px] text-primary mb-3 tracking-widest uppercase">{svc.category}</div>
+                                    <div className="font-mono text-xs text-primary mb-3 tracking-widest uppercase">{svc.category}</div>
                                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tighter mb-5 group-hover:text-primary transition-colors duration-500">
                                         {svc.title}
                                     </h2>
@@ -214,7 +214,7 @@ export default function Services() {
 
                 {/* FAQ Section */}
                 <section className="mb-24 sm:mb-40 max-w-3xl" aria-label="Frequently Asked Questions">
-                    <div className="font-mono text-[10px] text-primary mb-8 uppercase tracking-[0.2em] flex items-center gap-2">
+                    <div className="font-mono text-xs text-primary mb-8 uppercase tracking-[0.2em] flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-primary shrink-0" />
                         [ FAQ // COMMON_QUERIES ]
                     </div>
@@ -246,7 +246,7 @@ export default function Services() {
 
                 {/* Bottom CTA */}
                 <section className="border border-white/10 p-8 sm:p-12 lg:p-16 text-center bg-white/[0.01]">
-                    <div className="font-mono text-[10px] text-primary mb-6 uppercase tracking-widest">[ READY_TO_DEPLOY ]</div>
+                    <div className="font-mono text-xs text-primary mb-6 uppercase tracking-widest">[ READY_TO_DEPLOY ]</div>
                     <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white tracking-tighter leading-[0.9] mb-6">
                         Let's Build<br />Something Real.
                     </h2>
@@ -254,7 +254,7 @@ export default function Services() {
                         We run lean on purpose. You work directly with the architects — no account managers, no bloat.
                     </p>
                     <a
-                        href="/#contact"
+                        href="/?contact=true"
                         className="inline-flex items-center gap-3 bg-primary text-black font-mono font-bold text-sm px-10 py-5 hover:bg-white transition-colors"
                     >
                         ESTABLISH_CONTACT <ArrowRight className="w-4 h-4" />

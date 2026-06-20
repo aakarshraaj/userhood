@@ -60,7 +60,7 @@ export default function StrategicInterventions() {
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
-            className="fixed top-20 left-1/2 -translate-x-1/2 z-[200] bg-surface border border-primary/40 px-5 py-3 font-mono text-[11px] text-primary uppercase tracking-widest shadow-[0_0_30px_rgba(0,245,255,0.15)] flex items-center gap-3"
+            className="fixed top-20 left-1/2 -translate-x-1/2 z-[200] bg-surface border border-primary/40 px-5 py-3 font-mono text-xs text-primary uppercase tracking-widest shadow-[0_0_30px_rgba(0,245,255,0.15)] flex items-center gap-3"
           >
             <span className="w-1.5 h-1.5 bg-primary animate-pulse shrink-0" />
             CASE_STUDY: CLASSIFIED // Clearance_Pending
@@ -70,7 +70,7 @@ export default function StrategicInterventions() {
       <div className="max-w-[1440px] mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-6 md:gap-8">
           <div className="max-w-2xl">
-            <div className="font-mono text-[10px] text-primary mb-3 md:mb-4 uppercase tracking-[0.2em] flex items-center gap-2 flex-wrap">
+            <div className="font-mono text-xs text-primary mb-3 md:mb-4 uppercase tracking-[0.2em] flex items-center gap-2 flex-wrap">
               <span className="w-1.5 h-1.5 bg-primary shrink-0" />
               [ STRATEGIC_INTERVENTIONS // CASE_STUDIES ]
             </div>
@@ -99,7 +99,7 @@ export default function StrategicInterventions() {
 
               <div className="relative z-10 flex flex-col h-full min-w-0">
                 <div className="flex justify-between items-start gap-3 mb-8 md:mb-12">
-                  <span className="font-mono text-[10px] text-white/20 group-hover:text-primary transition-colors duration-500 shrink-0">
+                  <span className="font-mono text-xs text-white/20 group-hover:text-primary transition-colors duration-500 shrink-0">
                     {item.tag}
                   </span>
                   <div className="text-primary opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 shrink-0 [&>svg]:w-5 [&>svg]:h-5 md:[&>svg]:w-6 md:[&>svg]:h-6">
@@ -109,11 +109,11 @@ export default function StrategicInterventions() {
 
                 <div className="mt-auto min-w-0">
                   <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-3 md:mb-4">
-                    <span className="font-mono text-[10px] text-primary uppercase tracking-widest opacity-80 group-hover:opacity-100 truncate max-w-[180px] sm:max-w-none">
+                    <span className="font-mono text-xs text-primary uppercase tracking-widest opacity-80 group-hover:opacity-100 truncate max-w-[180px] sm:max-w-none">
                       {item.client}
                     </span>
                     <div className="h-px flex-1 min-w-[20px] bg-primary/10 group-hover:bg-primary/30 transition-colors duration-500 hidden sm:block" />
-                    <span className="font-mono text-[10px] text-primary font-bold bg-primary/10 px-2 py-1 border border-primary/20 group-hover:bg-primary/20 transition-colors shrink-0">
+                    <span className="font-mono text-xs text-primary font-bold bg-primary/10 px-2 py-1 border border-primary/20 group-hover:bg-primary/20 transition-colors shrink-0">
                       {item.metric}
                     </span>
                   </div>

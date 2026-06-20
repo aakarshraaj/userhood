@@ -24,7 +24,7 @@ export default function JobDetail() {
             <div className="min-h-screen bg-background-dark text-white pt-32 pb-20 flex flex-col items-center justify-center text-center px-4">
                 <h1 className="text-4xl md:text-6xl font-medium mb-6">Position not found</h1>
                 <p className="text-white/60 mb-8 max-w-md">The job you are looking for may have been filled or the link is incorrect.</p>
-                <Link to="/careers" className="text-primary hover:text-white transition-colors border border-primary/20 hover:border-white/20 px-6 py-3 font-mono text-[10px] uppercase tracking-widest inline-flex items-center gap-2">
+                <Link to="/careers" className="text-primary hover:text-white transition-colors border border-primary/20 hover:border-white/20 px-6 py-3 font-mono text-xs uppercase tracking-widest inline-flex items-center gap-2">
                     <ArrowLeft className="w-4 h-4" /> Back to Careers
                 </Link>
             </div>
@@ -41,7 +41,7 @@ export default function JobDetail() {
                     animate={{ opacity: 1, y: 0 }}
                     className="mb-12"
                 >
-                    <Link to="/careers" className="inline-flex items-center gap-2 text-white/50 hover:text-primary transition-colors font-mono text-[10px] tracking-widest uppercase mb-8">
+                    <Link to="/careers" className="inline-flex items-center gap-2 text-white/50 hover:text-primary transition-colors font-mono text-xs tracking-widest uppercase mb-8">
                         <ArrowLeft className="w-4 h-4" /> Back to open positions
                     </Link>
                 </motion.div>
@@ -54,14 +54,14 @@ export default function JobDetail() {
                         className="lg:col-span-8"
                     >
                         <div className="flex flex-wrap items-center gap-3 mb-6">
-                            <span className="font-mono text-[10px] uppercase text-primary bg-primary/10 px-3 py-1 tracking-widest border border-primary/20">
+                            <span className="font-mono text-xs uppercase text-primary bg-primary/10 px-3 py-1 tracking-widest border border-primary/20">
                                 {job.department}
                             </span>
-                            <span className="font-mono text-[10px] uppercase text-white/50 tracking-widest">
+                            <span className="font-mono text-xs uppercase text-white/50 tracking-widest">
                                 {job.type}
                             </span>
                             <span className="font-mono text-[1px] text-white/30">•</span>
-                            <span className="font-mono text-[10px] uppercase text-white/50 tracking-widest">
+                            <span className="font-mono text-xs uppercase text-white/50 tracking-widest">
                                 {job.location}
                             </span>
                         </div>

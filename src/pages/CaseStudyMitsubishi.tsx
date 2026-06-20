@@ -10,11 +10,11 @@ const Placeholder = ({ label, aspect = "aspect-video", className = "" }: { label
     <div className="absolute inset-0 flex items-center justify-center">
       <div className="text-center space-y-2">
         <div className="w-12 h-px bg-primary/20 mx-auto"></div>
-        <span className="font-mono text-[10px] text-white/20 uppercase tracking-[0.2em]">{label}</span>
+        <span className="font-mono text-xs text-white/20 uppercase tracking-[0.2em]">{label}</span>
         <div className="w-12 h-px bg-primary/20 mx-auto"></div>
       </div>
     </div>
-    <div className="absolute top-4 left-4 font-mono text-[8px] text-white/10 uppercase">Artifact_Ref // {label.replace(/\s+/g, '_')}</div>
+    <div className="absolute top-4 left-4 font-mono text-xs text-white/10 uppercase">Artifact_Ref // {label.replace(/\s+/g, '_')}</div>
   </div>
 );
 
@@ -36,7 +36,7 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
         >
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-primary font-mono text-[10px] uppercase tracking-[0.2em] hover:gap-4 transition-all min-h-[44px] items-center"
+            className="inline-flex items-center gap-2 text-primary font-mono text-xs uppercase tracking-[0.2em] hover:gap-4 transition-all min-h-[44px] items-center"
           >
             <ArrowLeft size={14} /> Back_to_Archives
           </Link>
@@ -47,7 +47,7 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-mono text-[10px] text-primary mb-6 sm:mb-8 uppercase tracking-[0.3em]"
+            className="font-mono text-xs text-primary mb-6 sm:mb-8 uppercase tracking-[0.3em]"
           >
             [ UX & ENGINEERING CASE STUDY ]
           </motion.div>
@@ -76,8 +76,8 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
             transition={{ delay: 0.15 }}
             className="flex items-center gap-4 mb-16"
           >
-            <span className="font-mono text-[10px] text-white/40 uppercase tracking-[0.2em] bg-white/5 py-1 px-3 border border-white/10">Client: Mitsubishi Motors Australia</span>
-            <span className="font-mono text-[10px] text-primary uppercase tracking-[0.2em] bg-primary/5 py-1 px-3 border border-primary/20 flex items-center gap-2">
+            <span className="font-mono text-xs text-white/40 uppercase tracking-[0.2em] bg-white/5 py-1 px-3 border border-white/10">Client: Mitsubishi Motors Australia</span>
+            <span className="font-mono text-xs text-primary uppercase tracking-[0.2em] bg-primary/5 py-1 px-3 border border-primary/20 flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
               Status: Deployed
             </span>
@@ -87,7 +87,7 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="grid grid-cols-2 md:grid-cols-3 gap-12 text-white/40 font-mono text-[10px] uppercase tracking-widest border-y border-white/5 py-12"
+            className="grid grid-cols-2 md:grid-cols-3 gap-12 text-white/40 font-mono text-xs uppercase tracking-widest border-y border-white/5 py-12"
           >
             <div className="space-y-3">
               <span className="text-primary/40 block">STRATEGY</span>
@@ -116,7 +116,7 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
         {/* Post-Incident Report */}
         <section className="grid md:grid-cols-12 gap-16 mb-32 border-t border-white/5 pt-16">
           <div className="md:col-span-4">
-            <h2 className="font-mono text-[10px] text-red-500 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+            <h2 className="font-mono text-xs text-red-500 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-red-500"></span>
               00_CRITICAL_FAILURE // THE_INCIDENT
             </h2>
@@ -125,7 +125,7 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
             <p className="text-2xl text-white font-light leading-relaxed tracking-tight mb-8">
               The hardware was ready. Sensors were streaming data. But the human interface was lagging, resulting in a disconnected driver experience that failed to utilize the available telemetry.
             </p>
-            <div className="p-8 bg-red-500/5 border border-red-500/20 font-mono text-[10px] text-red-400 uppercase tracking-widest leading-loose">
+            <div className="p-8 bg-red-500/5 border border-red-500/20 font-mono text-xs text-red-400 uppercase tracking-widest leading-loose">
               [SYSTEM_DIAGNOSIS]<br />
               &gt; COGNITIVE_LOAD: CRITICAL<br />
               &gt; DATA_VISUALIZATION: FRAGMENTED<br />
@@ -138,7 +138,7 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
         {/* The Architecture */}
         <section className="mb-32">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-t border-white/5 pt-16">
-            <h2 className="font-mono text-[10px] text-primary uppercase tracking-[0.2em] flex items-center gap-2">
+            <h2 className="font-mono text-xs text-primary uppercase tracking-[0.2em] flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-primary"></span>
               01_THE_ARCHITECTURE // SYSTEMS_LEVEL_FIXES
             </h2>
@@ -150,13 +150,13 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
               <div className="md:col-span-4 p-10 bg-white/[0.02] border border-white/5 flex flex-col">
                 <div className="inline-flex items-center gap-4 mb-6">
                   <Layout size={16} className="text-primary" />
-                  <span className="font-mono text-[10px] text-primary uppercase tracking-widest">Interface Restructuring</span>
+                  <span className="font-mono text-xs text-primary uppercase tracking-widest">Interface Restructuring</span>
                 </div>
                 <h3 className="text-3xl font-bold text-white tracking-tighter leading-[1] mb-6">Clarity at High Speed.</h3>
                 <p className="text-slate-400 leading-relaxed text-sm mb-8 flex-grow">
                   We reduced cognitive load by 40% through a radical simplification of the instrument cluster. Information is prioritized via state-machines dependent on driving context.
                 </p>
-                <div className="border-t border-white/5 pt-6 font-mono text-[10px] text-white/40 uppercase space-y-2">
+                <div className="border-t border-white/5 pt-6 font-mono text-xs text-white/40 uppercase space-y-2">
                   <div>Action // Refactored Component Hierarchy</div>
                   <div>Action // Implemented Dynamic Triage System</div>
                 </div>
@@ -191,7 +191,7 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
               <div className="md:col-span-5 space-y-8 order-1 md:order-2">
                 <div className="inline-flex items-center gap-4 px-4 py-2 bg-primary/5 border border-primary/10 rounded-full">
                   <Activity size={14} className="text-primary" />
-                  <span className="font-mono text-[10px] text-primary uppercase tracking-widest">Behavioral Design</span>
+                  <span className="font-mono text-xs text-primary uppercase tracking-widest">Behavioral Design</span>
                 </div>
                 <h3 className="text-5xl font-bold text-white tracking-tighter leading-[0.9]">Incentivizing<br />Efficiency.</h3>
                 <p className="text-slate-400 leading-relaxed">
@@ -200,11 +200,11 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
                 <div className="grid grid-cols-2 gap-4 pt-4">
                   <div className="p-4 border border-white/5 bg-white/[0.01]">
                     <div className="text-2xl font-bold text-white mb-1">+20%</div>
-                    <div className="font-mono text-[10px] text-white/40 uppercase">Efficiency Gain</div>
+                    <div className="font-mono text-xs text-white/40 uppercase">Efficiency Gain</div>
                   </div>
                   <div className="p-4 border border-white/5 bg-white/[0.01]">
                     <div className="text-2xl font-bold text-white mb-1">85%</div>
-                    <div className="font-mono text-[10px] text-white/40 uppercase">User Adoption</div>
+                    <div className="font-mono text-xs text-white/40 uppercase">User Adoption</div>
                   </div>
                 </div>
               </div>
@@ -215,7 +215,7 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
               <div className="md:col-span-5 space-y-8">
                 <div className="inline-flex items-center gap-4 px-4 py-2 bg-primary/5 border border-primary/10 rounded-full">
                   <Gauge size={14} className="text-primary" />
-                  <span className="font-mono text-[10px] text-primary uppercase tracking-widest">Predictive Service</span>
+                  <span className="font-mono text-xs text-primary uppercase tracking-widest">Predictive Service</span>
                 </div>
                 <h3 className="text-5xl font-bold text-white tracking-tighter leading-[0.9]">Proactive<br />Maintenance.</h3>
                 <p className="text-slate-400 leading-relaxed">
@@ -232,7 +232,7 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
 
         {/* Telemetry (Impact) */}
         <section className="mb-48 py-16 border-y border-white/5">
-          <h2 className="font-mono text-[10px] text-primary uppercase tracking-[0.2em] mb-16 flex items-center gap-2">
+          <h2 className="font-mono text-xs text-primary uppercase tracking-[0.2em] mb-16 flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-primary"></span>
             02_TELEMETRY // DEPLOYMENT_METRICS
           </h2>
@@ -241,7 +241,7 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
               <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                 <BarChart3 className="text-primary/40" size={24} />
               </div>
-              <h4 className="font-mono text-[10px] text-white/40 uppercase tracking-widest mb-6">Cognitive Load</h4>
+              <h4 className="font-mono text-xs text-white/40 uppercase tracking-widest mb-6">Cognitive Load</h4>
               <div className="text-6xl font-black text-white tracking-tighter mb-4">-40%</div>
               <p className="text-slate-400 text-sm leading-relaxed">Reduction in time-to-glance metrics verified by eye-tracking during QA.</p>
             </div>
@@ -249,7 +249,7 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
               <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                 <Activity className="text-primary/40" size={24} />
               </div>
-              <h4 className="font-mono text-[10px] text-white/40 uppercase tracking-widest mb-6">Eco-Driving Adoption</h4>
+              <h4 className="font-mono text-xs text-white/40 uppercase tracking-widest mb-6">Eco-Driving Adoption</h4>
               <div className="text-6xl font-black text-white tracking-tighter mb-4">85%</div>
               <p className="text-slate-400 text-sm leading-relaxed">Of daily active users engaged with the newly deployed gamification framework.</p>
             </div>
@@ -257,7 +257,7 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
               <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                 <CheckCircle2 className="text-primary/40" size={24} />
               </div>
-              <h4 className="font-mono text-[10px] text-white/40 uppercase tracking-widest mb-6">Maintenance Overhead</h4>
+              <h4 className="font-mono text-xs text-white/40 uppercase tracking-widest mb-6">Maintenance Overhead</h4>
               <div className="text-6xl font-black text-white tracking-tighter mb-4">-15%</div>
               <p className="text-slate-400 text-sm leading-relaxed">Reduction in catastrophic failures due to predictive telemetry analysis.</p>
             </div>
@@ -279,7 +279,7 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
               </motion.button>
               <Link
                 to="/"
-                className="text-white/40 hover:text-white font-mono text-[10px] uppercase tracking-[0.2em] transition-colors"
+                className="text-white/40 hover:text-white font-mono text-xs uppercase tracking-[0.2em] transition-colors"
               >
                 Return_to_Archives
               </Link>

@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Terminal, Code, Cpu, ShieldCheck, Users, Clock, Globe } from "lucide-react";
 import { useEffect } from "react";
 import { useSEO } from "../utils/seo";
+import { playTick } from "../utils/audio";
 
 export default function About() {
     useEffect(() => {
@@ -20,20 +21,13 @@ export default function About() {
         { year: "2024", title: "GLOBAL_DEPLOYMENT", desc: "Scaled operations to handle high-stakes, decentralized architecture for global enterprises." }
     ];
 
-    const team = [
-        { name: "Raj", role: "Co-Founder // Protocol Lead", icon: <Terminal size={20} />, desc: "Design Evangelist." },
-        { name: "Ashwin", role: "Co-Founder // Product and Brand Matrix", icon: <Code size={20} />, desc: "Product DNA and user cognitive load optimization." },
-        { name: "0xDesigner", role: "Lead UI/UX Architect", icon: <Cpu size={20} />, desc: "Translating brand systems into component libraries." },
-        { name: "Dev_Null", role: "Senior Systems Engineer", icon: <ShieldCheck size={20} />, desc: "Backend infrastructure and latency reduction." },
-    ];
-
     return (
         <div className="min-h-screen pt-20 sm:pt-28 md:pt-32 pb-16 sm:pb-24 px-5 sm:px-8 bg-background-dark">
             <div className="max-w-[1000px] mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="font-mono text-[10px] text-primary mb-4 sm:mb-6 flex items-center gap-2 flex-wrap"
+                    className="font-mono text-xs text-primary mb-4 sm:mb-6 flex items-center gap-2 flex-wrap"
                 >
                     <span className="w-2 h-2 bg-primary shrink-0" />
                     ACCESSING_ROOT_DIRECTORY // ABOUT_US
@@ -72,7 +66,7 @@ export default function About() {
 
                         <div className="md:col-span-4 space-y-6">
                             <div className="bg-surface border border-white/10 p-6">
-                                <div className="font-mono text-[10px] text-primary uppercase border-b border-primary/20 pb-4 mb-6">
+                                <div className="font-mono text-xs text-primary uppercase border-b border-primary/20 pb-4 mb-6">
                                     Operational_Tenets
                                 </div>
                                 <ul className="space-y-6">
@@ -108,7 +102,7 @@ export default function About() {
                                     </div>
 
                                     <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-surface border border-white/10 p-6 group-hover:border-primary/30 transition-colors">
-                                        <div className="font-mono text-primary text-[10px] mb-2">{item.year}</div>
+                                        <div className="font-mono text-primary text-xs mb-2">{item.year}</div>
                                         <h3 className="text-white font-bold mb-2">{item.title}</h3>
                                         <p className="text-sm text-slate-400">{item.desc}</p>
                                     </div>
@@ -131,17 +125,17 @@ export default function About() {
                         <div className="md:col-span-8">
                             <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-16">
                                 {[
-                                    { name: "Raj", role: "Co-founder", img: "/team/raj.png" },
-                                    { name: "Ashwin", role: "Co-founder", img: "/team/ashwin.png" },
-                                    { name: "Nishita", role: "Designer", img: "/team/nishita.png" },
-                                    { name: "Priya", role: "Sales Expert", img: "/team/priya.png" },
-                                    { name: "Somesh", role: "Product & Customer", img: "/team/somesh.png" },
-                                    { name: "Uttkarsh", role: "Product & Customer", img: "/team/uttkarsh.png" },
-                                    { name: "Priyanka", role: "Designer", img: "/team/priyanka.png" }
+                                    { name: "Kriti", role: "Co-founder", img: "/team/kriti.png", status: "DESIGNING", task: "Working on component systems v2" },
+                                    { name: "Ashwin", role: "Co-founder", img: "/team/ashwin.png", status: "OPTIMIZING", task: "Reviewing SSR & data latency profiles" },
+                                    { name: "Nishita", role: "Designer", img: "/team/nishita.png", status: "ACTIVE", task: "Drafting connected car user flows" },
+                                    { name: "Priya", role: "Growth Lead", img: "/team/priya.png", status: "STANDBY", task: "Onboarding upcoming quarter build pipelines" },
+                                    { name: "Somesh", role: "Product", img: "/team/somesh.png", status: "TESTING", task: "Debugging Hyundai Click to Buy API" },
+                                    { name: "Uttkarsh", role: "Product", img: "/team/uttkarsh.png", status: "STABLE", task: "Optimizing database queries & cache hit" },
+                                    { name: "Priyanka", role: "Designer", img: "/team/priyanka.png", status: "ACTIVE", task: "Designing userhood services visual assets" }
                                 ].map((member, idx) => (
-                                    <div key={idx} className="flex flex-col items-center group cursor-default">
+                                    <div key={idx} className="flex flex-col items-center group cursor-default" onMouseEnter={() => playTick()}>
                                         {/* Avatar Container */}
-                                        <div className="w-24 h-24 md:w-32 md:h-32 mb-6 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-primary transition-all duration-300 shadow-[0_0_0_0_rgba(0,245,255,0)] group-hover:shadow-[0_0_20px_2px_rgba(0,245,255,0.15)]">
+                                        <div className="w-24 h-24 md:w-32 md:h-32 mb-4 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-primary transition-all duration-300 shadow-[0_0_0_0_rgba(0,245,255,0)] group-hover:shadow-[0_0_20px_2px_rgba(0,245,255,0.15)] relative">
                                             <img
                                                 src={member.img}
                                                 alt={`${member.name}, ${member.role} at Userhood`}
@@ -151,10 +145,17 @@ export default function About() {
                                                 width="128"
                                                 height="128"
                                             />
+                                            {/* Live indicator overlay */}
+                                            <div className="absolute bottom-1 right-1 bg-background-dark border border-primary/20 rounded px-1 text-xs font-mono text-primary font-bold animate-pulse">
+                                                {member.status}
+                                            </div>
                                         </div>
                                         {/* Info */}
                                         <h3 className="font-mono text-lg text-white font-bold tracking-widest uppercase mb-1">{member.name}</h3>
-                                        <div className="text-slate-500 text-[10px] uppercase font-bold tracking-wider text-center">{member.role}</div>
+                                        <div className="text-slate-500 text-xs uppercase font-bold tracking-wider text-center mb-2">{member.role}</div>
+                                        <div className="text-slate-400 text-xs font-mono text-center max-w-[140px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 leading-snug">
+                                            &gt; {member.task}
+                                        </div>
                                     </div>
                                 ))}
                             </div>

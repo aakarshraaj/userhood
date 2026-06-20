@@ -13,7 +13,7 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="font-mono text-[10px] text-primary mb-6 md:mb-8 uppercase tracking-widest"
+          className="font-mono text-xs text-primary mb-6 md:mb-8 uppercase tracking-widest"
         >
           [ ACT V // THE INVITATION ]
         </motion.div>
@@ -62,7 +62,7 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
           </motion.button>
           <a
             href="/#case-studies"
-            className="font-mono text-[10px] text-white/50 hover:text-primary uppercase tracking-widest transition-colors"
+            className="font-mono text-xs text-white/50 hover:text-primary uppercase tracking-widest transition-colors"
           >
             See case studies first
           </a>

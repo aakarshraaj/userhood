@@ -23,7 +23,7 @@ export default function Careers() {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="max-w-4xl"
                 >
-                    <div className="font-mono text-[10px] text-primary tracking-widest uppercase mb-6 flex items-center gap-3">
+                    <div className="font-mono text-xs text-primary tracking-widest uppercase mb-6 flex items-center gap-3">
                         <span className="w-8 h-[1px] bg-primary"></span>
                         open_positions
                     </div>
@@ -55,10 +55,10 @@ export default function Careers() {
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
                                     <div className="space-y-4">
                                         <div className="flex flex-wrap items-center gap-3">
-                                            <span className="font-mono text-[10px] uppercase text-primary bg-primary/10 px-3 py-1 tracking-widest inline-block border border-primary/20">
+                                            <span className="font-mono text-xs uppercase text-primary bg-primary/10 px-3 py-1 tracking-widest inline-block border border-primary/20">
                                                 {job.department}
                                             </span>
-                                            <span className="font-mono text-[10px] uppercase text-white/50 tracking-widest inline-block">
+                                            <span className="font-mono text-xs uppercase text-white/50 tracking-widest inline-block">
                                                 {job.location} • {job.type}
                                             </span>
                                         </div>

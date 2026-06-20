@@ -29,10 +29,10 @@ export default function Hero({ onContactClick }: HeroProps) {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="font-mono text-[10px] text-primary mb-6 md:mb-10 flex items-center gap-2 flex-wrap"
+            className="font-mono text-xs text-primary mb-6 md:mb-10 flex items-center gap-2 flex-wrap"
           >
             <span className="w-2 h-2 bg-primary animate-pulse shrink-0" />
-            <span>DESIGN × ENGINEERING × AI. IN FULL ALIGNMENT.</span>
+            <span>DESIGN × ENGINEERING. IN FULL ALIGNMENT.</span>
           </motion.div>
 
           {/* The Indictment Headline */}
@@ -87,7 +87,7 @@ export default function Hero({ onContactClick }: HeroProps) {
               transition={{ duration: 0.7, delay: 1.1 }}
             >
               <p className="text-slate-300 text-xl sm:text-2xl md:text-3xl font-light tracking-tight mb-1">
-                In the AI era, that should take
+                It should take
               </p>
               <p
                 className="text-[min(22vw,120px)] sm:text-7xl md:text-8xl lg:text-[120px] font-black leading-none tracking-tighter text-primary drop-shadow-[0_0_60px_rgba(0,245,255,0.35)]"
@@ -105,7 +105,7 @@ export default function Hero({ onContactClick }: HeroProps) {
             className="border-l-2 border-primary/20 pl-5 md:pl-8 max-w-2xl"
           >
             <p className="text-base sm:text-lg md:text-xl text-slate-400 font-light leading-relaxed mb-8 md:mb-10">
-              Userhood builds world-class digital products by merging design and engineering into one force, accelerated by AI. No bloated cycles. No year-long timelines.
+              Userhood builds world-class digital products by merging design and engineering into one relentless discipline. No bloated cycles. No year-long timelines.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6 font-mono text-sm">

@@ -6,7 +6,7 @@ export default function CriteriaSection() {
       <div className="max-w-[1440px] mx-auto border border-white/10">
         <div className="grid md:grid-cols-2">
           <div className="p-6 sm:p-10 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r border-white/10">
-            <div className="font-mono text-[10px] text-primary mb-8 md:mb-12 uppercase">[ WHO THIS IS FOR ]</div>
+            <div className="font-mono text-xs text-primary mb-8 md:mb-12 uppercase">[ WHO THIS IS FOR ]</div>
             <ul className="space-y-5 md:space-y-8">
               {[
                 "Funded ventures (Seed to Series B) ready to scale.",
@@ -29,7 +29,7 @@ export default function CriteriaSection() {
           </div>
 
           <div className="p-6 sm:p-10 md:p-12 lg:p-16 bg-white/[0.01]">
-            <div className="font-mono text-[10px] text-white/20 mb-8 md:mb-12 uppercase">[ WHO THIS ISN'T FOR ]</div>
+            <div className="font-mono text-xs text-white/20 mb-8 md:mb-12 uppercase">[ WHO THIS ISN'T FOR ]</div>
             <ul className="space-y-5 md:space-y-8 opacity-40">
               {[
                 "Teams just looking for a quick, cosmetic rebrand.",

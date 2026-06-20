@@ -10,11 +10,11 @@ const Placeholder = ({ label, aspect = "aspect-video", className = "" }: { label
     <div className="absolute inset-0 flex items-center justify-center">
       <div className="text-center space-y-2">
         <div className="w-12 h-px bg-primary/20 mx-auto"></div>
-        <span className="font-mono text-[10px] text-white/20 uppercase tracking-[0.2em]">{label}</span>
+        <span className="font-mono text-xs text-white/20 uppercase tracking-[0.2em]">{label}</span>
         <div className="w-12 h-px bg-primary/20 mx-auto"></div>
       </div>
     </div>
-    <div className="absolute top-4 left-4 font-mono text-[8px] text-white/10 uppercase">Artifact_Ref // {label.replace(/\s+/g, '_')}</div>
+    <div className="absolute top-4 left-4 font-mono text-xs text-white/10 uppercase">Artifact_Ref // {label.replace(/\s+/g, '_')}</div>
   </div>
 );
 
@@ -36,7 +36,7 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
         >
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-primary font-mono text-[10px] uppercase tracking-[0.2em] hover:gap-4 transition-all min-h-[44px] items-center"
+            className="inline-flex items-center gap-2 text-primary font-mono text-xs uppercase tracking-[0.2em] hover:gap-4 transition-all min-h-[44px] items-center"
           >
             <ArrowLeft size={14} /> Back_to_Archives
           </Link>
@@ -47,7 +47,7 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-mono text-[10px] text-primary mb-6 sm:mb-8 uppercase tracking-[0.3em]"
+            className="font-mono text-xs text-primary mb-6 sm:mb-8 uppercase tracking-[0.3em]"
           >
             [ UX & ENGINEERING CASE STUDY ]
           </motion.div>
@@ -74,7 +74,7 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 }}
-            className="font-mono text-[10px] text-white/40 uppercase tracking-[0.2em] mb-16"
+            className="font-mono text-xs text-white/40 uppercase tracking-[0.2em] mb-16"
           >
             End-to-End Automotive E-Commerce
           </motion.div>
@@ -83,7 +83,7 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="grid grid-cols-2 md:grid-cols-3 gap-12 text-white/40 font-mono text-[10px] uppercase tracking-widest border-y border-white/5 py-12"
+            className="grid grid-cols-2 md:grid-cols-3 gap-12 text-white/40 font-mono text-xs uppercase tracking-widest border-y border-white/5 py-12"
           >
             <div className="space-y-3">
               <span className="text-primary/40 block">STRATEGY</span>
@@ -112,7 +112,7 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
         {/* The Brief */}
         <section className="grid md:grid-cols-12 gap-16 mb-48">
           <div className="md:col-span-5">
-            <h2 className="font-mono text-[10px] text-primary uppercase tracking-[0.2em] mb-8">00_THE_BRIEF</h2>
+            <h2 className="font-mono text-xs text-primary uppercase tracking-[0.2em] mb-8">00_THE_BRIEF</h2>
             <p className="text-xl text-slate-400 leading-relaxed font-light">
               The automotive industry is shifting from dealership-first purchasing to digital-first ownership journeys. Hyundai’s “Click to Buy” initiative aimed to provide customers with a fully online vehicle purchasing experience — from discovery to final order.
             </p>
@@ -129,7 +129,7 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
 
         {/* The Problem */}
         <section className="mb-48">
-          <h2 className="font-mono text-[10px] text-primary uppercase tracking-[0.2em] mb-16">01_THE_FRICTION</h2>
+          <h2 className="font-mono text-xs text-primary uppercase tracking-[0.2em] mb-16">01_THE_FRICTION</h2>
           <div className="grid md:grid-cols-3 gap-px bg-white/10 border border-white/10">
             {[
               { title: "Price Opacity", desc: "Traditional car buying involves hidden fees and complex dealership-only calculations." },
@@ -147,8 +147,8 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
         {/* UX Strategy: The 7 Stages */}
         <section className="mb-48">
           <div className="flex justify-between items-end mb-16">
-            <h2 className="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">02_UX_STRATEGY</h2>
-            <span className="font-mono text-[10px] text-white/20">METHODOLOGY: PROGRESSIVE_COMMITMENT</span>
+            <h2 className="font-mono text-xs text-primary uppercase tracking-[0.2em]">02_UX_STRATEGY</h2>
+            <span className="font-mono text-xs text-white/20">METHODOLOGY: PROGRESSIVE_COMMITMENT</span>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
@@ -157,7 +157,7 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
             ].map((stage, i) => (
               <div key={i} className="p-6 border border-white/5 bg-white/[0.01] text-center group hover:border-primary/40 transition-colors">
                 <div className="font-mono text-primary text-xs mb-4">STAGE_0{i + 1}</div>
-                <div className="text-white font-bold text-[10px] uppercase tracking-widest">{stage}</div>
+                <div className="text-white font-bold text-xs uppercase tracking-widest">{stage}</div>
               </div>
             ))}
           </div>
@@ -165,7 +165,7 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
 
         {/* Solution Pillars */}
         <section className="mb-48">
-          <h2 className="font-mono text-[10px] text-primary uppercase tracking-[0.2em] mb-24 text-center">03_SOLUTION_PILLARS</h2>
+          <h2 className="font-mono text-xs text-primary uppercase tracking-[0.2em] mb-24 text-center">03_SOLUTION_PILLARS</h2>
 
           <div className="space-y-32">
             {/* Pillar 1: Discovery & Configuration */}
@@ -173,7 +173,7 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
               <div className="md:col-span-5 space-y-8">
                 <div className="inline-flex items-center gap-4 px-4 py-2 bg-primary/5 border border-primary/10 rounded-full">
                   <Settings size={14} className="text-primary" />
-                  <span className="font-mono text-[10px] text-primary uppercase tracking-widest">Configuration Engine</span>
+                  <span className="font-mono text-xs text-primary uppercase tracking-widest">Configuration Engine</span>
                 </div>
                 <h3 className="text-5xl font-bold text-white tracking-tighter leading-[0.9]">Personalization<br />without Friction.</h3>
                 <p className="text-slate-400 leading-relaxed">
@@ -181,7 +181,7 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
                 </p>
                 <ul className="space-y-4">
                   {["Real-time Asset Rendering", "Variant Dependency Logic", "Price Recalculation Engine"].map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-white/60 font-mono text-[10px] uppercase tracking-widest">
+                    <li key={item} className="flex items-center gap-3 text-white/60 font-mono text-xs uppercase tracking-widest">
                       <CheckCircle2 size={12} className="text-primary" /> {item}
                     </li>
                   ))}
@@ -200,14 +200,14 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
               <div className="md:col-span-5 space-y-8 order-1 md:order-2">
                 <div className="inline-flex items-center gap-4 px-4 py-2 bg-primary/5 border border-primary/10 rounded-full">
                   <CreditCard size={14} className="text-primary" />
-                  <span className="font-mono text-[10px] text-primary uppercase tracking-widest">Financial Clarity</span>
+                  <span className="font-mono text-xs text-primary uppercase tracking-widest">Financial Clarity</span>
                 </div>
                 <h3 className="text-5xl font-bold text-white tracking-tighter leading-[0.9]">Transparent<br />Quotations.</h3>
                 <p className="text-slate-400 leading-relaxed">
                   Transforming hidden dealership calculations into digital clarity. Our EMI simulation engine provides real-time cost breakdowns, including taxes and registration fees.
                 </p>
                 <div className="p-6 bg-primary/5 border border-primary/20">
-                  <p className="text-[10px] text-primary font-mono leading-tight uppercase">
+                  <p className="text-xs text-primary font-mono leading-tight uppercase">
                     FINANCE_CALCULATION_ENGINE: AUTOMATED_TAX_LOGIC
                   </p>
                 </div>
@@ -219,7 +219,7 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
               <div className="md:col-span-5 space-y-8">
                 <div className="inline-flex items-center gap-4 px-4 py-2 bg-primary/5 border border-primary/10 rounded-full">
                   <ClipboardCheck size={14} className="text-primary" />
-                  <span className="font-mono text-[10px] text-primary uppercase tracking-widest">Hybrid Flow</span>
+                  <span className="font-mono text-xs text-primary uppercase tracking-widest">Hybrid Flow</span>
                 </div>
                 <h3 className="text-5xl font-bold text-white tracking-tighter leading-[0.9]">Digital to<br />Physical.</h3>
                 <p className="text-slate-400 leading-relaxed">
@@ -228,11 +228,11 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex items-center gap-3">
                     <Map size={16} className="text-primary" />
-                    <span className="font-mono text-[10px] text-white/40 uppercase">Dealer Sync</span>
+                    <span className="font-mono text-xs text-white/40 uppercase">Dealer Sync</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <ShoppingCart size={16} className="text-primary" />
-                    <span className="font-mono text-[10px] text-white/40 uppercase">Order Tracking</span>
+                    <span className="font-mono text-xs text-white/40 uppercase">Order Tracking</span>
                   </div>
                 </div>
               </div>
@@ -246,8 +246,8 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
         {/* System Architecture */}
         <section className="mb-48">
           <div className="flex justify-between items-end mb-16">
-            <h2 className="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">04_SYSTEM_ARCHITECTURE</h2>
-            <span className="font-mono text-[10px] text-white/20">INFRASTRUCTURE: MULTI_LAYER_INTEGRATION</span>
+            <h2 className="font-mono text-xs text-primary uppercase tracking-[0.2em]">04_SYSTEM_ARCHITECTURE</h2>
+            <span className="font-mono text-xs text-white/20">INFRASTRUCTURE: MULTI_LAYER_INTEGRATION</span>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -259,7 +259,7 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
             ].map((item, i) => (
               <div key={i} className="p-8 border border-white/5 bg-white/[0.01]">
                 <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                  <span className="font-mono text-[10px] text-primary">{i + 1}</span>
+                  <span className="font-mono text-xs text-primary">{i + 1}</span>
                 </div>
                 <h3 className="text-white font-bold mb-4 uppercase tracking-tight text-sm">{item.title}</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
@@ -272,17 +272,17 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
         <section className="mb-48 py-24 border-y border-white/5">
           <div className="grid md:grid-cols-3 gap-16">
             <div className="space-y-4">
-              <h4 className="font-mono text-[10px] text-primary uppercase tracking-widest">01_CONVERSION</h4>
+              <h4 className="font-mono text-xs text-primary uppercase tracking-widest">01_CONVERSION</h4>
               <div className="text-6xl font-black text-white tracking-tighter">+25%</div>
               <p className="text-slate-400 text-sm leading-relaxed">Increase in lead-to-booking conversion rate through simplified variant selection.</p>
             </div>
             <div className="space-y-4">
-              <h4 className="font-mono text-[10px] text-primary uppercase tracking-widest">02_TRUST_SCORE</h4>
+              <h4 className="font-mono text-xs text-primary uppercase tracking-widest">02_TRUST_SCORE</h4>
               <div className="text-6xl font-black text-white tracking-tighter">92%</div>
               <p className="text-slate-400 text-sm leading-relaxed">User rating for pricing transparency and financial clarity during the checkout process.</p>
             </div>
             <div className="space-y-4">
-              <h4 className="font-mono text-[10px] text-primary uppercase tracking-widest">03_VELOCITY</h4>
+              <h4 className="font-mono text-xs text-primary uppercase tracking-widest">03_VELOCITY</h4>
               <div className="text-6xl font-black text-white tracking-tighter">-30%</div>
               <p className="text-slate-400 text-sm leading-relaxed">Reduction in average buying decision timeline compared to traditional dealership journeys.</p>
             </div>
@@ -304,7 +304,7 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
               </motion.button>
               <Link
                 to="/"
-                className="text-white/40 hover:text-white font-mono text-[10px] uppercase tracking-[0.2em] transition-colors"
+                className="text-white/40 hover:text-white font-mono text-xs uppercase tracking-[0.2em] transition-colors"
               >
                 Return_to_Archives
               </Link>

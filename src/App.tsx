@@ -11,14 +11,13 @@ import { useSEO } from "./utils/seo";
 
 // Below-the-fold homepage sections — lazy loaded
 const StatsStrip = lazy(() => import("./components/StatsStrip"));
-const ProblemSection = lazy(() => import("./components/ProblemSection"));
-const PhilosophySection = lazy(() => import("./components/PhilosophySection"));
 const StrategicInterventions = lazy(() => import("./components/StrategicInterventions"));
 const ProcessGallery = lazy(() => import("./components/ProcessGallery"));
 const EngagementModels = lazy(() => import("./components/EngagementModels"));
 const FounderOrigin = lazy(() => import("./components/FounderOrigin"));
 const FinalCTA = lazy(() => import("./components/FinalCTA"));
-const AlignmentNetwork = lazy(() => import("./components/AlignmentNetwork"));
+const FigmaToCodeSlider = lazy(() => import("./components/FigmaToCodeSlider"));
+const OperationalHeartbeat = lazy(() => import("./components/OperationalHeartbeat"));
 
 const CaseStudyMitsubishi = lazy(() => import("./pages/CaseStudyMitsubishi"));
 const CaseStudyHyundai = lazy(() => import("./pages/CaseStudyHyundai"));
@@ -62,10 +61,19 @@ function RouteTracker() {
   }, [pathname]);
   return null;
 }
-
-
 export default function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.search.includes("contact=true")) {
+      setIsContactOpen(true);
+      // Remove contact=true parameter from URL
+      const url = new URL(window.location.href);
+      url.searchParams.delete("contact");
+      window.history.replaceState({}, document.title, url.pathname + url.search + url.hash);
+    }
+  }, [location]);
 
   const handleContactClick = (source: string) => {
     setIsContactOpen(true);
@@ -84,10 +92,12 @@ export default function App() {
               <HomeSEO />
               <Hero onContactClick={() => handleContactClick('hero')} />
               <StatsStrip />
-              <ProblemSection />
-              <PhilosophySection />
+              <OperationalHeartbeat />
               <StrategicInterventions />
               <ProcessGallery />
+
+              <FigmaToCodeSlider />
+
               <EngagementModels onContactClick={() => handleContactClick('engagement_models')} />
               <FounderOrigin />
               <FinalCTA onContactClick={() => handleContactClick('final_cta')} />

@@ -19,16 +19,16 @@ export default function Terms() {
         >
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-primary font-mono text-[10px] uppercase tracking-[0.2em] hover:gap-4 transition-all"
+            className="inline-flex items-center gap-2 text-primary font-mono text-xs uppercase tracking-[0.2em] hover:gap-4 transition-all"
           >
             <ArrowLeft size={14} /> Back_to_Home
           </Link>
         </motion.div>
 
         <header className="mb-24">
-          <div className="font-mono text-[10px] text-primary mb-4 uppercase tracking-[0.3em]">[ LEGAL_DOCUMENT // 0x02 ]</div>
+          <div className="font-mono text-xs text-primary mb-4 uppercase tracking-[0.3em]">[ LEGAL_DOCUMENT // 0x02 ]</div>
           <h1 className="text-6xl font-black text-white tracking-tighter">Terms of Service.</h1>
-          <p className="text-white/40 font-mono text-[10px] mt-4 uppercase tracking-widest">Last Updated: February 2026</p>
+          <p className="text-white/40 font-mono text-xs mt-4 uppercase tracking-widest">Last Updated: February 2026</p>
         </header>
 
         <div className="space-y-12 text-slate-400 leading-relaxed font-light">

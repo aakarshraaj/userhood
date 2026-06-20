@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <footer className="py-10 md:py-12 px-5 md:px-6 border-t border-white/5" role="contentinfo">
-      <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-12 font-mono text-[10px] text-white/30 uppercase tracking-widest">
+      <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-12 font-mono text-xs text-white/30 uppercase tracking-widest">
         <div className="space-y-3 md:space-y-4">
           <Link to="/" className="hover:opacity-80 transition-opacity inline-block" aria-label="Userhood — Back to homepage">
             <svg className="text-white/20 w-20 md:w-[100px]" fill="none" height="19" viewBox="0 0 360 69" width="100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -23,14 +23,13 @@ export default function Footer() {
               <path d="M49.6504 55.0594V45.7487H83.7897V55.0594H49.6504Z" fill="currentColor"></path>
             </svg>
           </Link>
-          <div className="text-[9px] md:text-[10px] break-words">© 2026 USERHOOD_SYSTEMS. ALL_RIGHTS_RESERVED.</div>
+          <div className="text-xs md:text-xs break-words">© 2026 USERHOOD_SYSTEMS. ALL_RIGHTS_RESERVED.</div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 md:gap-16 w-full md:w-auto">
           <div className="flex flex-col gap-2">
             <div className="text-white/50 mb-4">Navigation</div>
             <Link to="/" className="hover:text-primary transition-colors">Home</Link>
-            <a href="#philosophy" className="hover:text-primary transition-colors">Philosophy</a>
             <a href="#outcomes" className="hover:text-primary transition-colors">Outcomes</a>
             <Link to="/careers" className="hover:text-primary transition-colors">Careers</Link>
           </div>

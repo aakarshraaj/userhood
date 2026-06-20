@@ -149,7 +149,7 @@ const Placeholder = ({ label, AnimComponent, aspect = "aspect-[3/4]", className 
       <AnimComponent />
     </div>
     <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent opacity-80 pointer-events-none" />
-    <div className="absolute top-4 left-4 font-mono text-[10px] text-white/40 uppercase relative z-10 mix-blend-screen tracking-widest pl-2 border-l border-primary/50">
+    <div className="absolute top-4 left-4 font-mono text-xs text-white/40 uppercase relative z-10 mix-blend-screen tracking-widest pl-2 border-l border-primary/50">
       Artifact_Ref // {label.replace(/\s+/g, '_')}
     </div>
   </div>
@@ -161,7 +161,7 @@ export default function ProcessGallery() {
       <div className="max-w-[1440px] mx-auto">
         <div className="flex flex-col xl:flex-row justify-between xl:items-end mb-12 md:mb-24 gap-6 md:gap-8 relative z-10">
           <div className="max-w-2xl">
-            <div className="font-mono text-[10px] text-primary mb-3 md:mb-4 uppercase tracking-[0.2em] flex items-center gap-2">
+            <div className="font-mono text-xs text-primary mb-3 md:mb-4 uppercase tracking-[0.2em] flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-primary shrink-0" />
               [ PROCESS_ARTIFACTS // TANGIBLE_OUTPUT ]
             </div>
@@ -188,7 +188,7 @@ export default function ProcessGallery() {
               <div className="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none duration-500 hidden md:block" />
 
               <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 translate-y-0 md:translate-y-4 group-hover:translate-y-0 transition-all duration-500 pointer-events-none z-10">
-                <div className="font-mono text-[10px] text-primary mb-1 md:mb-2 uppercase tracking-widest">{artifact.category}</div>
+                <div className="font-mono text-xs text-primary mb-1 md:mb-2 uppercase tracking-widest">{artifact.category}</div>
                 <h3 className="text-white font-bold tracking-tight text-base md:text-lg">{artifact.title}</h3>
               </div>
             </motion.div>
