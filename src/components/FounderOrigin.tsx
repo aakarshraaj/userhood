@@ -53,7 +53,7 @@ export default function FounderOrigin() {
                             <div className="absolute inset-0 tech-grid opacity-10 max-md:opacity-5" />
 
                              <div className="relative z-10 w-full flex justify-center gap-8 sm:gap-12 md:gap-20 mb-8 md:mb-16 mt-4 md:mt-8">
-                                <div className="flex flex-col items-center group min-w-0" onMouseEnter={() => playTick()} data-cursor="ping">
+                                <div className="flex flex-col items-center group min-w-0" onMouseEnter={() => playTick()} data-cursor-text="Kriti: Designing component systems v2" data-cursor-color="#E100FF">
                                     <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full overflow-hidden mb-4 md:mb-8 border-2 md:border-4 border-white/10 group-hover:border-primary transition-all duration-300 shrink-0 relative">
                                         <img src="/team/kriti.png" alt="Kriti, Co-Founder at Userhood" className="w-full h-full object-cover" loading="lazy" decoding="async" width="176" height="176" />
                                         <div className="absolute bottom-1.5 right-1.5 bg-background-dark border border-primary/20 rounded px-1.5 py-0.5 text-xs font-mono text-primary font-bold animate-pulse">
@@ -66,7 +66,7 @@ export default function FounderOrigin() {
                                         &gt; Component systems v2
                                     </div>
                                 </div>
-                                <div className="flex flex-col items-center group min-w-0" onMouseEnter={() => playTick()} data-cursor="ping">
+                                <div className="flex flex-col items-center group min-w-0" onMouseEnter={() => playTick()} data-cursor-text="Ashwin: Optimizing SSR latency" data-cursor-color="#FF5C00">
                                     <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full overflow-hidden mb-4 md:mb-8 border-2 md:border-4 border-white/10 group-hover:border-primary transition-all duration-300 shrink-0 relative">
                                         <img src="/team/ashwin.png" alt="Ashwin, Co-Founder at Userhood" className="w-full h-full object-cover" loading="lazy" decoding="async" width="176" height="176" />
                                         <div className="absolute bottom-1.5 right-1.5 bg-background-dark border border-primary/20 rounded px-1.5 py-0.5 text-xs font-mono text-primary font-bold animate-pulse">
@@ -80,6 +80,7 @@ export default function FounderOrigin() {
                                     </div>
                                 </div>
                             </div>
+
 
 
                             <div className="w-full mt-auto relative z-10 px-0">

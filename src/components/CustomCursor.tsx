@@ -1,23 +1,17 @@
-import { useEffect, useState, useRef } from "react";
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { useEffect, useState } from "react";
+import { motion, useMotionValue } from "motion/react";
 
 export default function CustomCursor() {
   const [isTouch, setIsTouch] = useState(true);
   const [isRedline, setIsRedline] = useState(false);
-  const [cursorState, setCursorState] = useState<"default" | "hover" | "view" | "ping">("default");
-  const [isClicked, setIsClicked] = useState(false);
   const [hoverText, setHoverText] = useState("");
+  const [cursorColor, setCursorColor] = useState("#00f5ff"); // default cyan
 
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
-  // Smooth springs for the outer ring (creates the fluid, liquid lag effect)
-  const springConfig = { damping: 30, stiffness: 220, mass: 0.6 };
-  const ringX = useSpring(mouseX, springConfig);
-  const ringY = useSpring(mouseY, springConfig);
-
   useEffect(() => {
-    // Check if device supports touch
+    // Check if device supports hover/touch
     const checkDevice = () => {
       const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
       setIsTouch(hasTouch);
@@ -45,142 +39,113 @@ export default function CustomCursor() {
       mouseY.set(e.clientY);
     };
 
-    const handleMouseDown = () => setIsClicked(true);
-    const handleMouseUp = () => setIsClicked(false);
-
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (!target) return;
 
-      // Find nearest element with data-cursor attribute or interactive tags
-      const cursorTarget = target.closest("[data-cursor]") as HTMLElement;
-      const isInteractive = target.closest("a, button, [role='button'], input, select, textarea");
+      // Find nearest element with data-cursor-text or custom data-cursor
+      const cursorTarget = target.closest("[data-cursor-text]") as HTMLElement;
+      const isInteractive = target.closest("a, button, [role='button']");
 
       if (cursorTarget) {
-        const val = cursorTarget.getAttribute("data-cursor") as any;
-        setCursorState(val || "default");
-        
-        if (val === "view") {
-          setHoverText("VIEW_CASE");
-        } else if (val === "ping") {
-          setHoverText("PING_STATUS");
+        const text = cursorTarget.getAttribute("data-cursor-text") || "";
+        const customColor = cursorTarget.getAttribute("data-cursor-color");
+        setHoverText(text);
+        if (customColor) {
+          setCursorColor(customColor);
         } else {
-          setHoverText("");
+          setCursorColor("#00f5ff"); // default Userhood cyan
         }
       } else if (isInteractive) {
-        setCursorState("hover");
-        setHoverText("");
+        // Find if the link/button has some text we can show
+        const buttonText = isInteractive.textContent?.trim().slice(0, 24) || "";
+        if (buttonText.startsWith("//")) {
+          setHoverText(`Open ${buttonText.replace("//", "").trim()}`);
+        } else {
+          setHoverText(`Click to ${buttonText.toLowerCase() || "select"}`);
+        }
+        setCursorColor("#00f5ff");
       } else {
-        setCursorState("default");
         setHoverText("");
+        setCursorColor("#00f5ff");
       }
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mousedown", handleMouseDown);
-    window.addEventListener("mouseup", handleMouseUp);
     window.addEventListener("mouseover", handleMouseOver);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mousedown", handleMouseDown);
-      window.removeEventListener("mouseup", handleMouseUp);
       window.removeEventListener("mouseover", handleMouseOver);
     };
   }, [isTouch, isRedline, mouseX, mouseY]);
 
   if (isTouch || isRedline) return null;
 
-  // Dynamic values depending on cursor state
-  const getRingVariants = () => {
-    let size = 32;
-    let bg = "rgba(0, 245, 255, 0)";
-    let border = "1px solid rgba(0, 245, 255, 0.2)";
-
-    if (isClicked) {
-      size = 24;
-    } else {
-      switch (cursorState) {
-        case "hover":
-          size = 48;
-          bg = "rgba(0, 245, 255, 0.05)";
-          border = "1px solid rgba(0, 245, 255, 0.5)";
-          break;
-        case "view":
-          size = 72;
-          bg = "rgba(10, 10, 12, 0.9)";
-          border = "1px solid rgba(0, 245, 255, 0.4)";
-          break;
-        case "ping":
-          size = 64;
-          bg = "rgba(10, 10, 12, 0.9)";
-          border = "1px solid rgba(0, 245, 255, 0.4)";
-          break;
-        default:
-          size = 32;
-      }
-    }
-
-    return {
-      width: size,
-      height: size,
-      backgroundColor: bg,
-      border,
-    };
-  };
-
-  const getDotVariants = () => {
-    let scale = 1;
-    if (cursorState === "view" || cursorState === "ping" || cursorState === "hover") {
-      scale = 0;
-    }
-    return {
-      scale: isClicked ? 0.7 : scale,
-    };
-  };
-
-  const ringStyles = getRingVariants();
-  const dotStyles = getDotVariants();
-
   return (
-    <div className="fixed inset-0 pointer-events-none z-[9999] select-none mix-blend-screen">
-      
-      {/* Outer Spring Ring */}
-      <motion.div
-        className="absolute rounded-full flex items-center justify-center -translate-x-1/2 -translate-y-1/2 overflow-hidden"
+    <motion.div
+      className="fixed left-0 top-0 pointer-events-none z-[9999] select-none"
+      style={{
+        x: mouseX,
+        y: mouseY,
+      }}
+    >
+      {/* 1. Figma Pointer SVG Arrow */}
+      <svg 
+        width="14" 
+        height="20" 
+        viewBox="0 0 14 20" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
         style={{
-          left: 0,
-          top: 0,
-          x: ringX,
-          y: ringY,
-          width: ringStyles.width,
-          height: ringStyles.height,
-          backgroundColor: ringStyles.backgroundColor,
-          border: ringStyles.border,
+          filter: "drop-shadow(0px 2px 5px rgba(0,0,0,0.3))"
         }}
-        transition={{ duration: 0.15, ease: "easeOut" }}
       >
-        {/* Hover text label */}
-        {hoverText && (
-          <span className="font-mono text-[8px] text-primary tracking-widest font-black uppercase text-center leading-none select-none pointer-events-none">
-            {hoverText}
-          </span>
-        )}
-      </motion.div>
+        <path 
+          d="M0 0L13.5 13.5L5.5 14L0 19.5V0Z" 
+          fill={cursorColor} 
+          stroke="black" 
+          strokeWidth="1.5" 
+          strokeLinejoin="round" 
+        />
+      </svg>
 
-      {/* Inner precise dot */}
-      <motion.div
-        className="absolute w-1.5 h-1.5 bg-primary rounded-full -translate-x-1/2 -translate-y-1/2"
+      {/* 2. Figma Multiplayer Label/Chat Bubble */}
+      <div 
+        className="absolute left-[12px] top-[14px] flex flex-col items-start gap-1"
         style={{
-          left: 0,
-          top: 0,
-          x: mouseX,
-          y: mouseY,
+          transform: "translate3d(0, 0, 0)"
         }}
-        animate={dotStyles}
-        transition={{ duration: 0.1 }}
-      />
-      
-    </div>
+      >
+        {hoverText ? (
+          // Figma-style Live Chat Bubble
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0, y: 2 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.9, opacity: 0, y: 2 }}
+            transition={{ duration: 0.1, ease: "easeOut" }}
+            className="bg-primary text-black font-mono text-[9px] sm:text-[10px] font-black px-2 py-0.5 rounded-tr-md rounded-br-md rounded-bl-md shadow-lg border border-black/10 flex items-center gap-1.5 whitespace-nowrap"
+            style={{
+              backgroundColor: cursorColor,
+              color: cursorColor === "#00f5ff" ? "black" : "white"
+            }}
+          >
+            {/* Live Chat Indicator Dot */}
+            <span className="w-1 h-1 bg-current rounded-full animate-pulse" />
+            <span>{hoverText}</span>
+          </motion.div>
+        ) : (
+          // Figma-style User Name Tag
+          <div 
+            className="font-mono text-[8px] font-bold px-1.5 py-0.5 rounded-sm shadow-md uppercase tracking-wider text-black select-none"
+            style={{
+              backgroundColor: cursorColor,
+            }}
+          >
+            VISITOR
+          </div>
+        )}
+      </div>
+    </motion.div>
   );
 }
