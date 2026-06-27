@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { motion } from "motion/react";
 import { trackEvent } from "../utils/analytics";
 import { playStrike, playSuccess } from "../utils/audio";
+import KineticMesh from "./KineticMesh";
+
 
 interface HeroProps {
   onContactClick: () => void;
@@ -28,6 +30,10 @@ export default function Hero({ onContactClick }: HeroProps) {
   return (
     <section className="relative min-h-[100dvh] flex items-center overflow-hidden tech-grid px-5 md:px-8 pt-28 pb-20 md:pt-36 md:pb-28">
 
+      {/* Interactive Kinetic Mesh Overlay (Right Edge, Fades Leftwards, Hidden on Mobile) */}
+      <div className="absolute top-0 right-0 w-[55%] h-full z-0 hidden lg:block pointer-events-auto">
+        <KineticMesh />
+      </div>
 
       {/* Ambient glow — mobile */}
       <div className="absolute top-1/3 right-0 w-2/3 h-2/3 bg-primary/10 blur-[100px] rounded-full z-0 md:hidden pointer-events-none" />
@@ -176,12 +182,12 @@ export default function Hero({ onContactClick }: HeroProps) {
             </div>
           </motion.div>
 
-
         </div>
       </div>
 
       {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 w-full h-32 md:h-48 bg-gradient-to-t from-background-dark to-transparent pointer-events-none z-10" />
     </section>
+
   );
 }
