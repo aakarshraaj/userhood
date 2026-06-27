@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, Car, Zap, ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { playTick } from "../utils/audio";
 
 const interventions = [
   {
@@ -92,10 +93,16 @@ export default function StrategicInterventions() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               onClick={() => handleCardClick(item.link)}
+              onMouseEnter={() => playTick()}
               className={`${item.featured ? 'md:col-span-8' : 'md:col-span-4'}
-                p-6 sm:p-8 md:p-10 lg:p-12 bg-background-dark hover:bg-white/[0.04] transition-all duration-500 group relative overflow-hidden flex flex-col cursor-pointer hover:border-primary/30 border border-transparent active:scale-[0.99]`}
+                p-6 sm:p-8 md:p-10 lg:p-12 bg-background-dark hover:bg-white/[0.04] transition-all duration-500 group relative overflow-hidden flex flex-col cursor-pointer active:scale-[0.99]`}
             >
+              {/* Dynamic Accent Lines & Border Glow on Hover */}
+              <div className="absolute top-0 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-500 ease-out z-20" />
+              <div className="absolute -inset-px border border-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20" />
+              
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
 
               <div className="relative z-10 flex flex-col h-full min-w-0">
                 <div className="flex justify-between items-start gap-3 mb-8 md:mb-12">

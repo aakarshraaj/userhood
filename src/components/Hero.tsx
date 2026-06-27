@@ -1,13 +1,33 @@
+import { useEffect } from "react";
 import { motion } from "motion/react";
 import { trackEvent } from "../utils/analytics";
+import { playStrike, playSuccess } from "../utils/audio";
 
 interface HeroProps {
   onContactClick: () => void;
 }
 
 export default function Hero({ onContactClick }: HeroProps) {
+  useEffect(() => {
+    // Play strike sound after delay
+    const strikeTimer = setTimeout(() => {
+      playStrike();
+    }, 850); // Aligns with scaleX animation delay: 0.8s
+
+    // Play success sound after delay
+    const successTimer = setTimeout(() => {
+      playSuccess();
+    }, 1200); // Aligns with opacity animation delay: 1.1s
+
+    return () => {
+      clearTimeout(strikeTimer);
+      clearTimeout(successTimer);
+    };
+  }, []);
+
   return (
     <section className="relative min-h-[100dvh] flex items-center overflow-hidden tech-grid px-5 md:px-8 pt-28 pb-20 md:pt-36 md:pb-28">
+
 
       {/* Ambient glow — mobile */}
       <div className="absolute top-1/3 right-0 w-2/3 h-2/3 bg-primary/10 blur-[100px] rounded-full z-0 md:hidden pointer-events-none" />
@@ -127,6 +147,35 @@ export default function Hero({ onContactClick }: HeroProps) {
               </motion.a>
             </div>
           </motion.div>
+
+          {/* Brand Logo Marquee */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2.0, duration: 0.8 }}
+            className="mt-16 md:mt-24 pt-8 border-t border-white/5 max-w-4xl"
+          >
+            <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em] mb-5">
+              TRUSTED BY LEADING TEAMS AND GLOBAL ENTERPRISES
+            </p>
+            
+            <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]">
+              <div className="flex gap-16 md:gap-24 items-center animate-infinite-scroll w-max py-2 select-none">
+                {[
+                  "HYUNDAI", "MITSUBISHI MOTORS", "VOLTSYSTEMS", "APEX LOGISTICS", "PULSE ENERGY", "AETHER LABS",
+                  "HYUNDAI", "MITSUBISHI MOTORS", "VOLTSYSTEMS", "APEX LOGISTICS", "PULSE ENERGY", "AETHER LABS"
+                ].map((brand, i) => (
+                  <span
+                    key={i}
+                    className="font-mono text-xs md:text-sm font-black tracking-widest text-white/10 hover:text-white/30 transition-colors cursor-default"
+                  >
+                    {brand}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
 
         </div>
       </div>

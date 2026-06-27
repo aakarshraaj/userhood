@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
 import { playTick } from "../utils/audio";
-import { Activity, Cpu, RefreshCw } from "lucide-react";
 
 export default function FigmaToCodeSlider() {
   const [sliderPosition, setSliderPosition] = useState(40); // percentage (0 to 100)
@@ -119,17 +118,10 @@ export default function FigmaToCodeSlider() {
         
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6">
           <div>
-            <div className="font-mono text-xs text-primary mb-3 md:mb-4 uppercase tracking-[0.2em] flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-primary shrink-0 animate-pulse" />
-              [ EXPERIMENTAL_LABS // DEVIATION_MEASUREMENT ]
-            </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] tracking-tighter">
               Zero Drift.<br />Guaranteed.
             </h2>
           </div>
-          <p className="text-base sm:text-lg md:text-xl text-slate-400 max-w-sm font-light leading-relaxed">
-            Drag the slider to compare the design blueprints with the actual running, animated production code. High-fidelity layouts executed without compromise.
-          </p>
         </div>
 
         {/* Outer Slider Widget Box */}
@@ -142,21 +134,19 @@ export default function FigmaToCodeSlider() {
           {/* Background Grid */}
           <div className="absolute inset-0 tech-grid opacity-20 pointer-events-none" />
 
-          {/* FIXED Static Header Labels to prevent overlaps (text-xs for readability, hidden on extra small screens if necessary) */}
+          {/* FIXED Static Header Labels to prevent overlaps */}
           <div className="absolute top-4 left-4 z-20 font-mono text-[10px] sm:text-xs text-red-500/80 uppercase tracking-widest flex items-center gap-1.5 select-none pointer-events-none">
             <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
-            <span className="hidden xs:inline">[ FIGMA_SPECIFICATION_BLUEPRINT ]</span>
-            <span className="xs:hidden">FIGMA_SPEC</span>
+            <span>FIGMA_BLUEPRINT</span>
           </div>
           <div className="absolute top-4 right-4 z-20 font-mono text-[10px] sm:text-xs text-primary/80 uppercase tracking-widest flex items-center gap-1.5 select-none pointer-events-none">
             <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-            <span className="hidden xs:inline">[ SHIPPED_PRODUCTION_RENDER ]</span>
-            <span className="xs:hidden">PRODUCTION_CODE</span>
+            <span>PRODUCTION_RENDER</span>
           </div>
 
           {/* Left Side: Figma Specification Blueprints (0% to sliderPosition%) */}
           <div
-            className="absolute inset-0 bg-[#161618] overflow-hidden"
+            className="absolute inset-0 bg-[#121214] overflow-hidden"
             style={{ width: `${sliderPosition}%` }}
           >
             {/* Blueprint ruler lines overlay */}
@@ -166,48 +156,40 @@ export default function FigmaToCodeSlider() {
               className="absolute left-0 top-0 h-full p-4 sm:p-8 md:p-12 flex items-center justify-center font-mono select-none"
               style={{ width: containerWidth }}
             >
-              {/* Telemetry Panel Design Spec Layout */}
-              <div className="w-full max-w-[85%] xs:max-w-[90%] sm:max-w-xl border border-red-500/30 rounded-lg p-4 sm:p-6 bg-[#121213] relative space-y-4 sm:space-y-6">
+              {/* Figma Vector Spec Layout */}
+              <div className="w-full max-w-[85%] xs:max-w-[90%] sm:max-w-xl border border-red-500/20 rounded-lg p-6 bg-[#0c0c0d] relative space-y-4 sm:space-y-6">
                 
                 {/* Red Figma dimension indicator overlays */}
-                <div className="absolute -top-3 left-6 bg-red-500/90 text-white text-[8px] sm:text-[9px] px-2 py-0.5 font-bold font-mono rounded">
-                  FRAME: TelemetryCard // w: 480px
+                <div className="absolute -top-3 left-6 bg-red-500/80 text-white text-[8px] sm:text-[9px] px-2 py-0.5 font-bold font-mono rounded">
+                  W: 100% | H: 140px
                 </div>
 
-                <div className="flex justify-between items-start gap-4">
-                  <div className="space-y-1.5 min-w-0">
-                    <div className="text-[9px] sm:text-[10px] text-red-400 font-bold uppercase tracking-wider">
-                      SPEC // category_tag
-                    </div>
-                    <div className="w-28 sm:w-36 h-6 bg-red-500/10 border border-red-500/20 border-dashed rounded flex items-center px-2 text-[9px] sm:text-[10px] text-red-400/50 truncate">
-                      "DYNAMIC_WAVE"
-                    </div>
-                  </div>
-                  {/* Figma Red Comment Box */}
-                  <div className="bg-red-500/5 border border-red-500/20 p-2 sm:p-2.5 rounded text-[8px] sm:text-[10px] text-red-400 max-w-[120px] sm:max-w-[200px] shrink-0">
-                    <div className="font-bold flex items-center gap-0.5 sm:gap-1 mb-0.5 sm:mb-1">
-                      <span>#1</span> Kriti:
-                    </div>
-                    "Align SVG wave path stroke precisely."
-                  </div>
-                </div>
-
-                {/* Wireframe Mock Chart (Specs) */}
-                <div className="h-20 sm:h-28 border border-red-500/20 border-dashed bg-red-500/5 relative rounded flex items-center justify-center overflow-hidden">
-                  {/* SVG spec path */}
-                  <svg className="w-full h-full stroke-red-500/30 stroke-2 fill-none p-2 sm:p-4" viewBox="0 0 320 90" preserveAspectRatio="none">
-                    <path d="M 0 45 L 80 20 L 160 70 L 240 30 L 320 60" strokeDasharray="3 3" />
+                {/* Wireframe Mock Wave (Spec format) */}
+                <div className="h-24 sm:h-32 border border-red-500/20 border-dashed bg-red-500/5 relative rounded flex items-center justify-center overflow-hidden">
+                  <svg className="w-full h-full stroke-red-500/40 stroke-[1.5] fill-none p-4" viewBox="0 0 320 90" preserveAspectRatio="none">
+                    {/* Draw static waveform specification with anchor nodes highlighted */}
+                    <path d="M 0 45 C 40 10, 80 10, 120 45 C 160 80, 200 80, 240 45 C 280 10, 300 10, 320 45" />
+                    
+                    {/* Anchors/Vector Node Squares */}
+                    <rect x="0" y="42" width="6" height="6" className="fill-red-500 stroke-none -translate-x-1/2 -translate-y-1/2" />
+                    <rect x="120" y="42" width="6" height="6" className="fill-red-500 stroke-none -translate-x-1/2 -translate-y-1/2" />
+                    <rect x="240" y="42" width="6" height="6" className="fill-red-500 stroke-none -translate-x-1/2 -translate-y-1/2" />
+                    <rect x="320" y="42" width="6" height="6" className="fill-red-500 stroke-none -translate-x-1/2 -translate-y-1/2" />
                   </svg>
-                  <span className="absolute bottom-1 sm:bottom-2 right-1 sm:right-2 text-[8px] text-red-400/60 uppercase">PATH // static_spec</span>
+                  
+                  {/* Figma-style Dimension Guideline Overlay */}
+                  <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 flex justify-between items-center pointer-events-none">
+                    <div className="w-px h-3 bg-red-500/40" />
+                    <div className="h-px bg-red-500/30 flex-1 mx-1 border-t border-dashed border-red-500/40" />
+                    <span className="text-[8px] text-red-500/80 font-bold bg-[#0c0c0d] px-1">L: 320px</span>
+                    <div className="h-px bg-red-500/30 flex-1 mx-1 border-t border-dashed border-red-500/40" />
+                    <div className="w-px h-3 bg-red-500/40" />
+                  </div>
                 </div>
 
-                <div className="flex justify-between items-center pt-1 sm:pt-2 text-[8px] sm:text-[9px]">
-                  <div className="text-red-500/40 uppercase">Padding_x: 24px</div>
-                  {/* Spec alignment marker */}
-                  <div className="h-px bg-red-500/40 flex-1 mx-2 sm:mx-4 relative">
-                    <span className="absolute left-1/2 -top-2 bg-[#121213] px-1 text-[8px] text-red-400 font-bold">GRID_SYNC</span>
-                  </div>
-                  <div className="text-red-500/40 uppercase">Border: 1px_solid</div>
+                <div className="flex justify-between items-center text-[8px] sm:text-[9px] text-red-500/40 uppercase">
+                  <div>border-radius: 8px</div>
+                  <div>padding: 24px</div>
                 </div>
               </div>
             </div>
@@ -223,46 +205,21 @@ export default function FigmaToCodeSlider() {
               className="absolute left-0 top-0 h-full p-4 sm:p-8 md:p-12 flex items-center justify-center"
               style={{ width: containerWidth, marginLeft: `-${(sliderPosition / 100) * containerWidth}px` }}
             >
-              {/* Premium Shipped Component Visual (Telemetry Panel) */}
-              <div className="w-full max-w-[85%] xs:max-w-[90%] sm:max-w-xl border border-primary/20 bg-[#0c0c0e]/95 backdrop-blur-md rounded-lg p-4 sm:p-6 space-y-4 sm:space-y-6 shadow-[0_0_40px_rgba(0,245,255,0.05)] relative overflow-hidden">
+              {/* Premium Shipped Component Visual */}
+              <div className="w-full max-w-[85%] xs:max-w-[90%] sm:max-w-xl border border-primary/20 bg-[#0a0a0c]/90 backdrop-blur-md rounded-lg p-6 space-y-4 sm:space-y-6 shadow-[0_0_40px_rgba(0,245,255,0.03)] relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none" />
 
-                <div className="flex justify-between items-start gap-4 relative z-10">
-                  <div className="space-y-0.5 sm:space-y-1 min-w-0">
-                    <div className="font-mono text-[9px] sm:text-xs text-primary tracking-widest bg-primary/10 border border-primary/20 px-2 py-0.5 inline-block rounded">
-                      DYNAMIC_WAVE // INTERACTIVE
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
-                      Signal Diagnostics
-                    </h3>
-                  </div>
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-primary/30 flex items-center justify-center text-primary bg-primary/5 shrink-0">
-                    <Activity size={12} className="animate-pulse" />
-                  </div>
-                </div>
-
                 {/* Shipped Chart (Interactive SVG Sine Wave!) */}
-                <div className="h-20 sm:h-28 border border-white/5 bg-[#030304] relative rounded overflow-hidden flex items-center justify-center p-2 sm:p-4">
+                <div className="h-24 sm:h-32 border border-white/5 bg-[#030304] relative rounded overflow-hidden flex items-center justify-center p-4">
                   <svg className="w-full h-full stroke-primary stroke-[1.5] fill-none" viewBox="0 0 320 90" preserveAspectRatio="none">
                     <motion.path d={getWavePath(0)} />
-                    <motion.path d={getWavePath(1.5)} className="opacity-30 stroke-primary/50" />
+                    <motion.path d={getWavePath(1.5)} className="opacity-20 stroke-primary/30" />
                   </svg>
-                  
-                  {/* Floating real-time stats overlays */}
-                  <div className="absolute top-1 sm:top-2 right-1 sm:right-2 flex items-center gap-1 font-mono text-[8px] text-primary bg-primary/10 border border-primary/20 px-1.5 py-0.5 rounded">
-                    <Cpu size={8} className="animate-spin" style={{ animationDuration: '4s' }} />
-                    <span>60 FPS</span>
-                  </div>
                 </div>
 
-                <div className="flex justify-between items-center pt-1 sm:pt-2 relative z-10 text-[9px] sm:text-xs">
-                  <div className="font-mono text-slate-400 flex items-center gap-1.5">
-                    <RefreshCw size={10} className="text-primary animate-spin" style={{ animationDuration: '6s' }} />
-                    <span>Drift: 0.00%</span>
-                  </div>
-                  <div className="font-mono text-primary font-bold">
-                    LATENCY: &lt; 0.12ms
-                  </div>
+                <div className="flex justify-between items-center text-[8px] sm:text-[9px] text-primary/40 uppercase">
+                  <div>border-radius: 8px</div>
+                  <div>padding: 24px</div>
                 </div>
               </div>
             </div>
@@ -290,3 +247,4 @@ export default function FigmaToCodeSlider() {
     </section>
   );
 }
+

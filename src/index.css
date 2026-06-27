@@ -48,6 +48,15 @@
   }
 }
 
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @layer utilities {
   .safe-area-inset-top {
     padding-top: env(safe-area-inset-top, 0);
@@ -74,5 +83,9 @@
 
   .animate-spin-reverse {
     animation: spin-reverse 4s linear infinite;
+  }
+
+  .animate-infinite-scroll {
+    animation: infinite-scroll 35s linear infinite;
   }
 }
