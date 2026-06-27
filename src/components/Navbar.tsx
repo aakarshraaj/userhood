@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
-import { Menu, X, Volume2, VolumeX, Ruler } from "lucide-react";
+import { Menu, X, Volume2, VolumeX, Ruler, Terminal } from "lucide-react";
+
 import { toggleMute, getMuteState, playTick, playSuccess, playStrike } from "../utils/audio";
 
 interface NavbarProps {
@@ -30,6 +31,11 @@ export default function Navbar({ onContactClick }: NavbarProps) {
       playStrike();
     }
   };
+
+  const handleConsoleToggle = () => {
+    window.dispatchEvent(new CustomEvent("toggle-developer-console"));
+  };
+
 
   const handleMenuClick = () => {
     playTick();
@@ -71,10 +77,20 @@ export default function Navbar({ onContactClick }: NavbarProps) {
               <span className="hidden lg:inline">{isRedline ? "INSPECT: ON" : "INSPECT"}</span>
             </button>
             <button
+              onClick={handleConsoleToggle}
+              className="text-white/40 hover:text-primary transition-colors p-2 cursor-pointer flex items-center gap-1.5 font-mono text-xs uppercase font-bold"
+              title="Toggle Studio Console (Key: `)"
+              aria-label="Toggle Developer Console"
+            >
+              <Terminal size={13} />
+              <span className="hidden lg:inline">CONSOLE</span>
+            </button>
+            <button
               onClick={handleMuteToggle}
               className="text-white/40 hover:text-primary transition-colors p-2 cursor-pointer flex items-center gap-1.5 font-mono text-xs uppercase font-bold"
               aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
             >
+
 
               {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
             </button>
@@ -151,6 +167,21 @@ export default function Navbar({ onContactClick }: NavbarProps) {
             </div>
             
             <div className="flex justify-between items-center py-2 border-t border-white/5">
+              <span className="text-white/30">Developer_Console</span>
+              <button
+                onClick={() => {
+                  setIsOpen(false); // Close mobile menu first
+                  handleConsoleToggle();
+                }}
+                className="text-primary flex items-center gap-1.5"
+              >
+                <Terminal size={16} />
+                <span>TOGGLE</span>
+              </button>
+            </div>
+            
+            <div className="flex justify-between items-center py-2 border-t border-white/5">
+
               <span className="text-white/30">System_Audio</span>
               <button
                 onClick={handleMuteToggle}
