@@ -94,9 +94,11 @@ export default function StrategicInterventions() {
               transition={{ delay: index * 0.1 }}
               onClick={() => handleCardClick(item.link)}
               onMouseEnter={() => playTick()}
+              data-cursor="view"
               className={`${item.featured ? 'md:col-span-8' : 'md:col-span-4'}
                 p-6 sm:p-8 md:p-10 lg:p-12 bg-background-dark hover:bg-white/[0.04] transition-all duration-500 group relative overflow-hidden flex flex-col cursor-pointer active:scale-[0.99]`}
             >
+
               {/* Dynamic Accent Lines & Border Glow on Hover */}
               <div className="absolute top-0 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-500 ease-out z-20" />
               <div className="absolute -inset-px border border-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20" />

@@ -127,3 +127,19 @@ body.redline-active::after {
     opacity: 1;
   }
 }
+
+/* Hide default cursor on desktop when Redline inspector is inactive */
+@media (hover: hover) and (pointer: fine) {
+  body:not(.redline-active) {
+    cursor: none;
+  }
+  body:not(.redline-active) a,
+  body:not(.redline-active) button,
+  body:not(.redline-active) [role="button"],
+  body:not(.redline-active) input,
+  body:not(.redline-active) textarea,
+  body:not(.redline-active) select,
+  body:not(.redline-active) label {
+    cursor: none;
+  }
+}

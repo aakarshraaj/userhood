@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import ContactModal from "./components/ContactModal";
 import StickyContactCTA from "./components/StickyContactCTA";
 import RedlineInspector from "./components/RedlineInspector";
+import CustomCursor from "./components/CustomCursor";
+
 import { trackPageView, trackEvent } from "./utils/analytics";
 import { useSEO } from "./utils/seo";
 
@@ -86,7 +88,9 @@ export default function App() {
     <div className="min-h-screen selection:bg-primary selection:text-black">
       <RouteTracker />
       <RedlineInspector />
+      <CustomCursor />
       <Navbar onContactClick={() => handleContactClick('navbar')} />
+
 
 
       <Suspense fallback={<div className="min-h-screen bg-background-dark flex items-center justify-center"><div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin-slow"></div></div>}>
