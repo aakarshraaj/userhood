@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { playTick, playSuccess, playStrike } from "../utils/audio";
+import { X } from "lucide-react";
+
 
 interface TerminalLine {
   text: string;
@@ -86,7 +88,6 @@ export default function DeveloperConsole() {
     }
   }, [history, isOpen]);
 
-  if (!isOpen) return null;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputVal(e.target.value);
@@ -231,54 +232,91 @@ export default function DeveloperConsole() {
 
   return (
     <AnimatePresence>
-      <motion.div
-        initial={{ y: -300, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: -300, opacity: 0 }}
-        transition={{ type: "spring", damping: 25, stiffness: 220 }}
-        className="fixed top-0 inset-x-0 h-[380px] bg-background-dark/95 border-b border-primary/20 shadow-2xl backdrop-blur-xl z-[999] p-6 font-mono text-xs select-text overflow-hidden flex flex-col justify-between"
-        onClick={() => inputRef.current?.focus()}
-        data-cursor-text="TYPE TERMINAL COMMAND"
-        data-cursor-color="#00f5ff"
-      >
-        {/* Terminal Header */}
-        <div className="flex justify-between items-center border-b border-white/10 pb-3 mb-4 pointer-events-none">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
-            <span className="w-2.5 h-2.5 rounded-full bg-orange-500/40" />
-            <span className="w-2.5 h-2.5 rounded-full bg-green-500/40" />
-            <span className="text-[10px] text-white/30 tracking-widest ml-3 uppercase">STUDIO_SHELL // BASH</span>
-          </div>
-          <div className="text-[10px] text-primary/40 uppercase">
-            Press ` to close
-          </div>
-        </div>
-
-        {/* Console Logs */}
-        <div className="flex-1 overflow-y-auto space-y-2 mb-4 scrollbar-thin scrollbar-thumb-white/10 pr-2">
-          {history.map((line, idx) => (
-            <div key={idx} className={`${getLineColor(line.type)} leading-relaxed whitespace-pre-wrap`}>
-              {line.text}
-            </div>
-          ))}
-          <div ref={consoleEndRef} />
-        </div>
-
-        {/* Input Prompter */}
-        <div className="flex items-center gap-2 border-t border-white/5 pt-3">
-          <span className="text-primary font-bold shrink-0">userhood@studio:~$</span>
-          <input
-            ref={inputRef}
-            type="text"
-            value={inputVal}
-            onChange={handleInputChange}
-            onKeyDown={handleInputKeyDown}
-            className="flex-1 bg-transparent border-none outline-none text-white font-mono caret-primary p-0 text-xs focus:ring-0 focus:border-none focus:outline-none"
-            placeholder="enter command..."
-            autoFocus
+      {isOpen && (
+        <>
+          {/* Click Backdrop (closes console on background click) */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => {
+              setIsOpen(false);
+              playStrike();
+            }}
+            className="fixed inset-0 bg-black/50 z-[998] pointer-events-auto backdrop-blur-[2px]"
           />
-        </div>
-      </motion.div>
+
+          {/* Console Drawer Panel */}
+          <motion.div
+            initial={{ y: -380, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -380, opacity: 0 }}
+            transition={{ type: "spring", damping: 25, stiffness: 220 }}
+            className="fixed top-0 inset-x-0 h-[380px] bg-[#0c0c10]/98 border-b border-primary/20 shadow-2xl z-[999] p-6 font-mono text-xs select-text overflow-hidden flex flex-col justify-between"
+            onClick={(e) => {
+              // Stop propagation to prevent backdrop clicks and refocus input
+              e.stopPropagation();
+              inputRef.current?.focus();
+            }}
+            data-cursor-text="TYPE TERMINAL COMMAND"
+            data-cursor-color="#00f5ff"
+          >
+            {/* Terminal Header */}
+            <div className="flex justify-between items-center border-b border-white/10 pb-3 mb-4">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
+                <span className="w-2.5 h-2.5 rounded-full bg-orange-500/40" />
+                <span className="w-2.5 h-2.5 rounded-full bg-green-500/40" />
+                <span className="text-[10px] text-white/30 tracking-widest ml-3 uppercase">STUDIO_SHELL // BASH</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <span className="text-[10px] text-primary/40 uppercase hidden sm:inline">
+                  Press ` to close
+                </span>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsOpen(false);
+                    playStrike();
+                  }}
+                  className="text-white/40 hover:text-primary transition-colors p-1 rounded hover:bg-white/5 active:scale-95 flex items-center justify-center cursor-pointer pointer-events-auto"
+                  aria-label="Close Console"
+                  title="Close Console"
+                >
+                  <X size={14} />
+                </button>
+              </div>
+            </div>
+
+            {/* Console Logs */}
+            <div className="flex-1 overflow-y-auto space-y-2 mb-4 scrollbar-thin scrollbar-thumb-white/10 pr-2">
+              {history.map((line, idx) => (
+                <div key={idx} className={`${getLineColor(line.type)} leading-relaxed whitespace-pre-wrap`}>
+                  {line.text}
+                </div>
+              ))}
+              <div ref={consoleEndRef} />
+            </div>
+
+            {/* Input Prompter */}
+            <div className="flex items-center gap-2 border-t border-white/5 pt-3">
+              <span className="text-primary font-bold shrink-0">userhood@studio:~$</span>
+              <input
+                ref={inputRef}
+                type="text"
+                value={inputVal}
+                onChange={handleInputChange}
+                onKeyDown={handleInputKeyDown}
+                className="flex-1 bg-transparent border-none outline-none text-white font-mono caret-primary p-0 text-xs focus:ring-0 focus:border-none focus:outline-none"
+                placeholder="enter command..."
+                autoFocus
+              />
+            </div>
+          </motion.div>
+        </>
+      )}
     </AnimatePresence>
   );
 }
+
+
