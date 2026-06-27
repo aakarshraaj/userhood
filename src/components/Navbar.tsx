@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
-import { Menu, X, Volume2, VolumeX } from "lucide-react";
-import { toggleMute, getMuteState, playTick } from "../utils/audio";
+import { Menu, X, Volume2, VolumeX, Ruler } from "lucide-react";
+import { toggleMute, getMuteState, playTick, playSuccess, playStrike } from "../utils/audio";
 
 interface NavbarProps {
   onContactClick: () => void;
@@ -11,12 +11,23 @@ interface NavbarProps {
 export default function Navbar({ onContactClick }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMuted, setIsMuted] = useState(getMuteState());
+  const [isRedline, setIsRedline] = useState(document.body.classList.contains("redline-active"));
 
   const handleMuteToggle = () => {
     const nextMuted = toggleMute();
     setIsMuted(nextMuted);
     if (!nextMuted) {
       playTick();
+    }
+  };
+
+  const handleRedlineToggle = () => {
+    const active = document.body.classList.toggle("redline-active");
+    setIsRedline(active);
+    if (active) {
+      playSuccess();
+    } else {
+      playStrike();
     }
   };
 
@@ -29,6 +40,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
     playTick();
     setIsOpen(false);
   };
+
 
   return (
     <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-background-dark/90 backdrop-blur-xl safe-area-inset-top" aria-label="Main navigation">
@@ -50,10 +62,20 @@ export default function Navbar({ onContactClick }: NavbarProps) {
 
           <div className="flex items-center gap-4">
             <button
+              onClick={handleRedlineToggle}
+              className={`hover:text-primary transition-colors p-2 cursor-pointer flex items-center gap-1.5 font-mono text-xs uppercase font-bold ${isRedline ? "text-primary font-black" : "text-white/40"}`}
+              title="Inspect Spec (Redline Mode)"
+              aria-label="Inspect Spec Mode"
+            >
+              <Ruler size={13} className={isRedline ? "animate-pulse" : ""} />
+              <span className="hidden lg:inline">{isRedline ? "INSPECT: ON" : "INSPECT"}</span>
+            </button>
+            <button
               onClick={handleMuteToggle}
               className="text-white/40 hover:text-primary transition-colors p-2 cursor-pointer flex items-center gap-1.5 font-mono text-xs uppercase font-bold"
               aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
             >
+
               {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
             </button>
             <motion.a
@@ -118,6 +140,17 @@ export default function Navbar({ onContactClick }: NavbarProps) {
             <a href="/#outcomes" onClick={handleLinkClick} className="hover:text-primary transition-colors">// OUTCOMES</a>
             
             <div className="flex justify-between items-center py-2 border-t border-white/5">
+              <span className="text-white/30">Inspect_Spec</span>
+              <button
+                onClick={handleRedlineToggle}
+                className="text-primary flex items-center gap-1.5"
+              >
+                <Ruler size={16} className={isRedline ? "animate-pulse text-primary" : "text-white/50"} />
+                <span>{isRedline ? "ACTIVE" : "OFF"}</span>
+              </button>
+            </div>
+            
+            <div className="flex justify-between items-center py-2 border-t border-white/5">
               <span className="text-white/30">System_Audio</span>
               <button
                 onClick={handleMuteToggle}
@@ -127,6 +160,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
                 <span>{isMuted ? "MUTED" : "ON"}</span>
               </button>
             </div>
+
 
             <button
               onClick={() => {

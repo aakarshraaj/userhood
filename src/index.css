@@ -89,3 +89,41 @@
     animation: infinite-scroll 35s linear infinite;
   }
 }
+
+/* Redline Spec Mode Blueprint Grid Overlay */
+body.redline-active::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(0, 245, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 245, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 998;
+  opacity: 0;
+  animation: fadeInGrid 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+body.redline-active::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(239, 68, 68, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(239, 68, 68, 0.015) 1px, transparent 1px);
+  background-size: 8px 8px;
+  pointer-events: none;
+  z-index: 998;
+  opacity: 0;
+  animation: fadeInGrid 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInGrid {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -6,8 +6,10 @@ import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 import ContactModal from "./components/ContactModal";
 import StickyContactCTA from "./components/StickyContactCTA";
+import RedlineInspector from "./components/RedlineInspector";
 import { trackPageView, trackEvent } from "./utils/analytics";
 import { useSEO } from "./utils/seo";
+
 
 // Below-the-fold homepage sections — lazy loaded
 const StatsStrip = lazy(() => import("./components/StatsStrip"));
@@ -83,7 +85,9 @@ export default function App() {
   return (
     <div className="min-h-screen selection:bg-primary selection:text-black">
       <RouteTracker />
+      <RedlineInspector />
       <Navbar onContactClick={() => handleContactClick('navbar')} />
+
 
       <Suspense fallback={<div className="min-h-screen bg-background-dark flex items-center justify-center"><div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin-slow"></div></div>}>
         <Routes>
