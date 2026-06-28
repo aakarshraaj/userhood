@@ -9,8 +9,10 @@ import StickyContactCTA from "./components/StickyContactCTA";
 import RedlineInspector from "./components/RedlineInspector";
 import CustomCursor from "./components/CustomCursor";
 import DeveloperConsole from "./components/DeveloperConsole";
+import MultiplayerSim from "./components/MultiplayerSim";
 
 import { trackPageView, trackEvent } from "./utils/analytics";
+
 import { useSEO } from "./utils/seo";
 
 
@@ -91,7 +93,9 @@ export default function App() {
       <RedlineInspector />
       <CustomCursor />
       <DeveloperConsole />
+      <MultiplayerSim />
       <Navbar onContactClick={() => handleContactClick('navbar')} />
+
 
 
 
