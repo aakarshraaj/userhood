@@ -182,7 +182,7 @@ export default function StrategicInterventions() {
 
   const navigate = useNavigate();
   const [toast, setToast] = useState(false);
-  const [viewMode, setViewMode] = useState<"3d" | "grid">("3d");
+  const [viewMode, setViewMode] = useState<"3d" | "grid">("grid");
 
   const handleCardClick = (link: string) => {
     if (link === "#") {

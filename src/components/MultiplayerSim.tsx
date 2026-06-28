@@ -27,37 +27,37 @@ const interactionsPool: SimulatedInteraction[] = [
   {
     name: "Kriti",
     color: "#E100FF",
-    message: "Hey! Welcome to the Userhood canvas. Glad you're here.",
+    message: "Hi! I'm Kriti, co-founder of Userhood. Welcome to our canvas!",
     targetType: "hero_title",
   },
   {
     name: "Kriti",
     color: "#E100FF",
-    message: "Check out our Mitsubishi connected dashboard. We designed the full UX ecosystem.",
+    message: "Check out our Mitsubishi connected dashboard. We designed the full UX ecosystem in 12 weeks!",
     targetType: "mitsubishi_card",
   },
   {
     name: "Kriti",
     color: "#E100FF",
-    message: "Try clicking INSPECT in the navbar to see our live CSS blueprint overlay!",
+    message: "Try clicking INSPECT in the navbar to see our live CSS design spec overlay!",
     targetType: "inspect_btn",
   },
   {
     name: "Ashwin",
     color: "#FF5C00",
-    message: "Welcome! Press the ` backtick key to pull down our studio terminal console.",
+    message: "Hey! Ashwin here. Click Console or press ` to pull down our studio terminal.",
     targetType: "console_btn",
   },
   {
     name: "Ashwin",
     color: "#FF5C00",
-    message: "Scroll down to check our live operational heartbeat for active deployments.",
+    message: "Scroll down to check our live operational heartbeat showing active telemetry merges.",
     targetType: "heartbeat",
   },
   {
     name: "Ashwin",
     color: "#FF5C00",
-    message: "Ready to ship? Click here to start a direct channel with us.",
+    message: "Ready to launch? Let's start a direct channel to chat code!",
     targetType: "cta_btn",
   },
 ];
@@ -205,7 +205,6 @@ export default function MultiplayerSim() {
       // Play click ripple sound and visual
       playTick();
       setClickRipple({ x: activeCursor.endX, y: activeCursor.endY });
-
       // Start typewriter effect
       let currentIdx = 0;
       const text = activeCursor.chatText;
@@ -214,9 +213,6 @@ export default function MultiplayerSim() {
         if (currentIdx < text.length) {
           setTypedText(text.slice(0, currentIdx + 1));
           currentIdx++;
-          if (currentIdx % 3 === 0) {
-            playTick();
-          }
         } else {
           clearInterval(typeInterval);
         }
