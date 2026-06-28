@@ -143,3 +143,171 @@ body.redline-active::after {
     cursor: none;
   }
 }
+
+/* ==========================================
+   LIGHT MODE STYLING OVERRIDES
+   ========================================== */
+.light {
+  --color-background-dark: #f6f7fa;
+  --color-surface: #ffffff;
+  --color-primary: #0077ff; /* Darker blue/cyan for high-contrast on light backdrops */
+
+  background-color: #f6f7fa !important;
+  color: #1a1b1f !important;
+}
+
+/* Global body styling resets */
+.light body {
+  background-color: #f6f7fa !important;
+  color: #1a1b1f !important;
+}
+
+/* Headings and Main Text color resets */
+.light h1, 
+.light h2, 
+.light h3, 
+.light h4, 
+.light h5, 
+.light h6,
+.light .text-white,
+.light .text-slate-100,
+.light .text-white-override {
+  color: #0c0c0e !important;
+}
+
+/* Muted text color resets */
+.light .text-slate-400,
+.light .text-slate-300,
+.light .text-white\/40,
+.light .text-white\/30,
+.light .text-slate-400-override {
+  color: #4b5563 !important; /* slate-600 */
+}
+
+/* Semi-muted text color resets */
+.light .text-white\/60,
+.light .text-white\/80,
+.light .text-slate-200 {
+  color: #374151 !important; /* slate-700 */
+}
+
+/* Dim text color resets */
+.light .text-white\/20,
+.light .text-white\/10 {
+  color: #9ca3af !important; /* slate-400 */
+}
+
+/* Navbar glassmorphism overrides */
+.light nav {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+.light nav .text-white,
+.light nav .text-white\/40,
+.light nav Link,
+.light nav a {
+  color: #0c0c0e !important;
+}
+.light nav button {
+  color: #4b5563 !important;
+}
+.light nav button.text-primary,
+.light nav button.border-primary\/20 {
+  color: #0077ff !important;
+  border-color: rgba(0, 119, 255, 0.2) !important;
+}
+
+/* Global border and line resets */
+.light .border-white\/5,
+.light .border-white\/10,
+.light .border-white\/20,
+.light .border-white\/30,
+.light .border-y,
+.light .border-b,
+.light .border-t,
+.light .border-x,
+.light .border {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Tech Blueprint Grid lines */
+.light .tech-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 119, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 119, 255, 0.04) 1px, transparent 1px) !important;
+}
+
+/* Backgrounds - convert dark blocks to crisp white surface blocks */
+.light section,
+.light footer,
+.light .bg-background-dark,
+.light .bg-\[\#050506\],
+.light .bg-\[\#070708\],
+.light .bg-\[\#070709\],
+.light .bg-\[\#08080a\],
+.light .bg-\[\#030304\],
+.light .bg-\[\#0b0b0d\],
+.light .bg-\[\#0a0a0c\],
+.light .bg-surface,
+.light .bg-black\/60,
+.light .bg-black\/50,
+.light .bg-black\/45,
+.light .bg-black\/40,
+.light .bg-white\/\[0\.02\],
+.light .bg-white\/\[0\.04\] {
+  background-color: #ffffff !important;
+}
+
+/* Hover list changes */
+.light .hover\:bg-white\/\[0\.04\]:hover {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
+
+.light .bg-primary\/10 {
+  background-color: rgba(0, 119, 255, 0.08) !important;
+}
+.light .bg-primary\/5 {
+  background-color: rgba(0, 119, 255, 0.04) !important;
+}
+
+/* Keep Developer Console dark because it's a system terminal */
+.light #developer-console,
+.light #developer-console *,
+.light .bg-\[\#050506\].terminal-panel,
+.light .bg-\[\#050506\].terminal-panel * {
+  background-color: inherit !important;
+  color: inherit !important;
+  border-color: inherit !important;
+}
+
+/* Text selections */
+.light ::selection {
+  background-color: rgba(0, 119, 255, 0.15) !important;
+  color: #000000 !important;
+}
+
+/* Radial Glows */
+.light .bg-radial-glow {
+  opacity: 0.15 !important;
+}
+
+/* Dialog / Modal Overlays */
+.light .bg-surface\/95 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Interactive custom Figma cursor tag */
+.light .custom-cursor-tag {
+  color: #ffffff !important;
+}
+
+/* Fix case study telemetries SVG lines to show contrast */
+.light svg.stroke-white\/5 {
+  stroke: rgba(0, 0, 0, 0.06) !important;
+}
+.light svg.stroke-white\/10 {
+  stroke: rgba(0, 0, 0, 0.08) !important;
+}
+.light .text-emerald-400 {
+  color: #059669 !important; /* Darker emerald for light bg contrast */
+}
