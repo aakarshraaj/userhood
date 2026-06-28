@@ -3,6 +3,8 @@ import { ArrowRight, Car, Zap, ShoppingCart, Lock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { playTick } from "../utils/audio";
+import Showcase3D from "./Showcase3D";
+
 
 
 const interventions = [
@@ -180,6 +182,7 @@ export default function StrategicInterventions() {
 
   const navigate = useNavigate();
   const [toast, setToast] = useState(false);
+  const [viewMode, setViewMode] = useState<"3d" | "grid">("3d");
 
   const handleCardClick = (link: string) => {
     if (link === "#") {
@@ -216,47 +219,99 @@ export default function StrategicInterventions() {
               High-Stakes<br />Deployments.
             </h2>
           </div>
-          <p className="text-base sm:text-lg md:text-xl text-slate-400 max-w-sm font-light leading-snug">
-            We don't just build features. We architect ecosystems that redefine market positions and drive deterministic growth.
-          </p>
+          <div className="flex flex-col items-start md:items-end gap-4 shrink-0 animate-fade-in">
+            {/* View Mode Toggle */}
+            <div className="flex bg-white/5 border border-white/10 p-1 rounded-lg font-mono text-[9px] text-white">
+              <button
+                onClick={() => { playTick(); setViewMode("3d"); }}
+                className={`px-3 py-1.5 rounded-md cursor-pointer transition-colors ${viewMode === "3d" ? "bg-primary text-black font-bold" : "text-white/60 hover:text-white"}`}
+              >
+                3D_REVOLVER
+              </button>
+              <button
+                onClick={() => { playTick(); setViewMode("grid"); }}
+                className={`px-3 py-1.5 rounded-md cursor-pointer transition-colors ${viewMode === "grid" ? "bg-primary text-black font-bold" : "text-white/60 hover:text-white"}`}
+              >
+                GRID_DASHBOARD
+              </button>
+            </div>
+            <p className="text-base sm:text-lg text-slate-400 max-w-sm font-light leading-snug md:text-right">
+              We don't just build features. We architect ecosystems that redefine market positions and drive deterministic growth.
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-px bg-white/5 border border-white/5">
-          {interventions.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              onClick={() => handleCardClick(item.link)}
-              onMouseEnter={() => playTick()}
-              data-cursor-text={`Case: ${item.client} | ${item.metric}`}
-              className={`${item.featured ? 'lg:col-span-8 md:col-span-12 col-span-12' : 'lg:col-span-4 md:col-span-12 col-span-12'}
-                p-6 sm:p-8 md:p-10 lg:p-12 bg-background-dark hover:bg-white/[0.04] transition-all duration-500 group relative overflow-hidden flex flex-col cursor-pointer active:scale-[0.99]`}
-            >
+        {viewMode === "3d" ? (
+          <Showcase3D />
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-px bg-white/5 border border-white/5">
+            {interventions.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                onClick={() => handleCardClick(item.link)}
+                onMouseEnter={() => playTick()}
+                data-cursor-text={`Case: ${item.client} | ${item.metric}`}
+                className={`${item.featured ? 'lg:col-span-8 md:col-span-12 col-span-12' : 'lg:col-span-4 md:col-span-12 col-span-12'}
+                  p-6 sm:p-8 md:p-10 lg:p-12 bg-background-dark hover:bg-white/[0.04] transition-all duration-500 group relative overflow-hidden flex flex-col cursor-pointer active:scale-[0.99]`}
+              >
 
-              {/* Dynamic Accent Lines & Border Glow on Hover */}
-              <div className="absolute top-0 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-500 ease-out z-20" />
-              <div className="absolute -inset-px border border-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20" />
-              
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                {/* Dynamic Accent Lines & Border Glow on Hover */}
+                <div className="absolute top-0 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-500 ease-out z-20" />
+                <div className="absolute -inset-px border border-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20" />
+                
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-              <div className="relative z-10 flex flex-col h-full min-w-0">
-                <div className="flex justify-between items-start gap-3 mb-8 md:mb-10">
-                  <span className="font-mono text-xs text-white/20 group-hover:text-primary transition-colors duration-500 shrink-0">
-                    {item.tag}
-                  </span>
-                  <div className="text-primary opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 shrink-0 [&>svg]:w-5 [&>svg]:h-5 md:[&>svg]:w-6 md:[&>svg]:h-6">
-                    {item.icon}
+                <div className="relative z-10 flex flex-col h-full min-w-0">
+                  <div className="flex justify-between items-start gap-3 mb-8 md:mb-10">
+                    <span className="font-mono text-xs text-white/20 group-hover:text-primary transition-colors duration-500 shrink-0">
+                      {item.tag}
+                    </span>
+                    <div className="text-primary opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 shrink-0 [&>svg]:w-5 [&>svg]:h-5 md:[&>svg]:w-6 md:[&>svg]:h-6">
+                      {item.icon}
+                    </div>
                   </div>
-                </div>
 
-                {item.id === "mitsubishi" ? (
-                  // Asymmetric layout split for featured Mitsubishi dashboard
-                  <div className="flex flex-col lg:flex-row gap-8 items-stretch justify-between w-full h-full min-w-0 mt-auto">
-                    {/* Left Column: Description Details */}
-                    <div className="w-full lg:w-[58%] flex flex-col justify-between">
+                  {item.id === "mitsubishi" ? (
+                    // Asymmetric layout split for featured Mitsubishi dashboard
+                    <div className="flex flex-col lg:flex-row gap-8 items-stretch justify-between w-full h-full min-w-0 mt-auto">
+                      {/* Left Column: Description Details */}
+                      <div className="w-full lg:w-[58%] flex flex-col justify-between">
+                        <div>
+                          <div className="flex flex-wrap items-center gap-2 mb-3 md:mb-4">
+                            <span className="font-mono text-xs text-primary uppercase tracking-widest opacity-80 group-hover:opacity-100 truncate">
+                              {item.client}
+                            </span>
+                            <div className="h-px flex-1 min-w-[20px] bg-primary/10 group-hover:bg-primary/30 transition-colors duration-500" />
+                            <span className="font-mono text-xs text-primary font-bold bg-primary/10 px-2 py-1 border border-primary/20 group-hover:bg-primary/20 transition-colors shrink-0">
+                              {item.metric}
+                            </span>
+                          </div>
+                          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6 tracking-tight group-hover:text-primary transition-colors duration-500 break-words">
+                            {item.title}
+                          </h3>
+                          <p className="text-slate-400 text-base md:text-lg mb-6 md:mb-8 leading-relaxed group-hover:text-slate-300 transition-colors duration-500">
+                            {item.description}
+                          </p>
+                        </div>
+                        <div className="mt-auto pt-2">
+                          <span className="inline-flex items-center gap-2 text-primary font-mono text-xs uppercase tracking-widest group-hover:gap-4 transition-all duration-500">
+                            View_Case_Study <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-500 shrink-0" />
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Right Column: Live Vector Line Graph Dashboard */}
+                      <div className="w-full lg:w-[38%] flex items-center justify-center shrink-0">
+                        <MitsubishiTelemetry />
+                      </div>
+                    </div>
+                  ) : (
+                    // Vertical telemetry stack for smaller card modules (Hyundai & VoltSystems)
+                    <div className="mt-auto min-w-0 flex flex-col justify-between h-full">
                       <div>
                         <div className="flex flex-wrap items-center gap-2 mb-3 md:mb-4">
                           <span className="font-mono text-xs text-primary uppercase tracking-widest opacity-80 group-hover:opacity-100 truncate">
@@ -267,74 +322,43 @@ export default function StrategicInterventions() {
                             {item.metric}
                           </span>
                         </div>
-                        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6 tracking-tight group-hover:text-primary transition-colors duration-500 break-words">
+                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 md:mb-4 tracking-tight group-hover:text-primary transition-colors duration-500 break-words">
                           {item.title}
                         </h3>
-                        <p className="text-slate-400 text-base md:text-lg mb-6 md:mb-8 leading-relaxed group-hover:text-slate-300 transition-colors duration-500">
+                        <p className="text-slate-400 text-sm md:text-base mb-6 leading-relaxed group-hover:text-slate-300 transition-colors duration-500">
                           {item.description}
                         </p>
                       </div>
-                      <div className="mt-auto pt-2">
-                        <span className="inline-flex items-center gap-2 text-primary font-mono text-xs uppercase tracking-widest group-hover:gap-4 transition-all duration-500">
-                          View_Case_Study <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-500 shrink-0" />
-                        </span>
+
+                      {/* Embedded Telemetry Panel */}
+                      <div className="mb-6 z-20">
+                        {item.id === "hyundai" ? <HyundaiTelemetry /> : <VoltSystemsTelemetry />}
+                      </div>
+
+                      <div className="mt-auto">
+                        {item.link !== "#" ? (
+                          <span className="inline-flex items-center gap-2 text-primary font-mono text-xs uppercase tracking-widest group-hover:gap-4 transition-all duration-500">
+                            View_Case_Study <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-500 shrink-0" />
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-2 text-white/40 font-mono text-xs uppercase tracking-widest group-hover:text-white/60 transition-colors duration-500">
+                            Coming_Soon <ArrowRight size={14} className="shrink-0" />
+                          </span>
+                        )}
                       </div>
                     </div>
+                  )}
+                </div>
 
-                    {/* Right Column: Live Vector Line Graph Dashboard */}
-                    <div className="w-full lg:w-[38%] flex items-center justify-center shrink-0">
-                      <MitsubishiTelemetry />
-                    </div>
-                  </div>
-                ) : (
-                  // Vertical telemetry stack for smaller card modules (Hyundai & VoltSystems)
-                  <div className="mt-auto min-w-0 flex flex-col justify-between h-full">
-                    <div>
-                      <div className="flex flex-wrap items-center gap-2 mb-3 md:mb-4">
-                        <span className="font-mono text-xs text-primary uppercase tracking-widest opacity-80 group-hover:opacity-100 truncate">
-                          {item.client}
-                        </span>
-                        <div className="h-px flex-1 min-w-[20px] bg-primary/10 group-hover:bg-primary/30 transition-colors duration-500" />
-                        <span className="font-mono text-xs text-primary font-bold bg-primary/10 px-2 py-1 border border-primary/20 group-hover:bg-primary/20 transition-colors shrink-0">
-                          {item.metric}
-                        </span>
-                      </div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 md:mb-4 tracking-tight group-hover:text-primary transition-colors duration-500 break-words">
-                        {item.title}
-                      </h3>
-                      <p className="text-slate-400 text-sm md:text-base mb-6 leading-relaxed group-hover:text-slate-300 transition-colors duration-500">
-                        {item.description}
-                      </p>
-                    </div>
-
-                    {/* Embedded Telemetry Panel */}
-                    <div className="mb-6 z-20">
-                      {item.id === "hyundai" ? <HyundaiTelemetry /> : <VoltSystemsTelemetry />}
-                    </div>
-
-                    <div className="mt-auto">
-                      {item.link !== "#" ? (
-                        <span className="inline-flex items-center gap-2 text-primary font-mono text-xs uppercase tracking-widest group-hover:gap-4 transition-all duration-500">
-                          View_Case_Study <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-500 shrink-0" />
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center gap-2 text-white/40 font-mono text-xs uppercase tracking-widest group-hover:text-white/60 transition-colors duration-500">
-                          Coming_Soon <ArrowRight size={14} className="shrink-0" />
-                        </span>
-                      )}
-                    </div>
+                {item.featured && (
+                  <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.03] group-hover:opacity-10 transition-opacity duration-700 pointer-events-none mix-blend-screen scale-110 group-hover:scale-100 transform hidden md:block">
+                    <div className="absolute inset-0 tech-grid" />
                   </div>
                 )}
-              </div>
-
-              {item.featured && (
-                <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.03] group-hover:opacity-10 transition-opacity duration-700 pointer-events-none mix-blend-screen scale-110 group-hover:scale-100 transform hidden md:block">
-                  <div className="absolute inset-0 tech-grid" />
-                </div>
-              )}
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
