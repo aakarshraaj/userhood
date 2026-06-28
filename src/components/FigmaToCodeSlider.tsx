@@ -1,34 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useNavigate } from "react-router-dom";
-import { Car, Brain, Landmark, Terminal, ArrowRight } from "lucide-react";
+import { 
+  Factory, Plane, Zap, Building2, Heart, ShieldAlert, Trophy, DollarSign, ArrowRight 
+} from "lucide-react";
 import { playTick, playSuccess } from "../utils/audio";
 
-interface SectorCard {
+interface IndustryCard {
   id: string;
   num: string;
   name: string;
-  tag: string;
+  sub: string;
   color: string;
-  link: string;
   icon: React.ReactNode;
+  items: string[];
+  link: string;
 }
 
 export default function FigmaToCodeSlider() {
   const navigate = useNavigate();
   const [toast, setToast] = useState(false);
-  const [time, setTime] = useState(0);
-
-  // Animation ticks for graphics
-  useEffect(() => {
-    let animationId: number;
-    const tick = () => {
-      setTime((t) => t + 0.05);
-      animationId = requestAnimationFrame(tick);
-    };
-    animationId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(animationId);
-  }, []);
 
   const handleCardClick = (link: string) => {
     if (link === "#") {
@@ -41,181 +32,124 @@ export default function FigmaToCodeSlider() {
     }
   };
 
-  const sectors: SectorCard[] = [
+  const industries: IndustryCard[] = [
     {
-      id: "mobility",
+      id: "manufacturing",
       num: "01",
-      name: "Connected Mobility",
-      tag: "AUTOMOTIVE // TELEMATICS",
-      color: "#00f5ff", // Cyan
-      link: "/case-studies/mitsubishi",
-      icon: <Car size={14} />
+      name: "Manufacturing",
+      sub: "Industry 5.0 // Shopfloor",
+      color: "#FF9F00", // Amber
+      icon: <Factory size={16} />,
+      items: [
+        "Intelligent EHS Diagnostics",
+        "Asset Lifecycle Management",
+        "Digital Shopfloor Optimization"
+      ],
+      link: "#"
     },
     {
-      id: "ai",
+      id: "aviation",
       num: "02",
-      name: "Intelligent AI",
-      tag: "LLM AGENTS // VECTOR DB",
-      color: "#E100FF", // Purple
-      link: "#",
-      icon: <Brain size={14} />
+      name: "Aviation",
+      sub: "Airlines & Airports // Ops",
+      color: "#00b5ff", // Sky Blue
+      icon: <Plane size={16} />,
+      items: [
+        "Intelligent Baggage Routing",
+        "Digital Concierge Systems",
+        "Pilot & Crew Roster Management"
+      ],
+      link: "#"
+    },
+    {
+      id: "energy",
+      num: "03",
+      name: "Energy",
+      sub: "Mobility & Grid Stability",
+      color: "#FFE600", // Yellow
+      icon: <Zap size={16} />,
+      items: [
+        "AI Enabled Auditing",
+        "EV Charging Ecosystems",
+        "Fuel Spillage Detection"
+      ],
+      link: "#"
+    },
+    {
+      id: "corporate",
+      num: "04",
+      name: "Corporate",
+      sub: "Core Systems & Employee CX",
+      color: "#A0AEC0", // Slate
+      icon: <Building2 size={16} />,
+      items: [
+        "Intelligent Employee Portals",
+        "Corporate Comm Platforms",
+        "Visitor Experience Systems"
+      ],
+      link: "#"
+    },
+    {
+      id: "healthtech",
+      num: "05",
+      name: "HealthTech",
+      sub: "Medtech & Lifesciences",
+      color: "#FF3B30", // Red/Pink
+      icon: <Heart size={16} />,
+      items: [
+        "Plasma Donor Management",
+        "DNA Sequence Analysis",
+        "Cancer Detection Platforms"
+      ],
+      link: "#"
+    },
+    {
+      id: "government",
+      num: "06",
+      name: "Government",
+      sub: "State & Local Integrations",
+      color: "#00FF66", // Emerald
+      icon: <ShieldAlert size={16} />,
+      items: [
+        "Agent Management Portals",
+        "Senior Citizen Care",
+        "Secure NSDL Data Gateways"
+      ],
+      link: "#"
+    },
+    {
+      id: "sports",
+      num: "07",
+      name: "Sports",
+      sub: "Players & Fan Ecosystems",
+      color: "#7E57C2", // Indigo
+      icon: <Trophy size={16} />,
+      items: [
+        "Intelligent Video Streaming",
+        "Fan Engagement Applications",
+        "Players Fitness Telemetry"
+      ],
+      link: "#"
     },
     {
       id: "fintech",
-      num: "03",
-      name: "FinTech Infra",
-      tag: "LEDGERS // SECURE API",
-      color: "#00FF66", // Green
-      link: "#",
-      icon: <Landmark size={14} />
-    },
-    {
-      id: "saas",
-      num: "04",
-      name: "SaaS & DevTools",
-      tag: "MULTIPLAYER // CANVASES",
-      color: "#FF5C00", // Orange
-      link: "#",
-      icon: <Terminal size={14} />
+      num: "08",
+      name: "FinTech",
+      sub: "Banking & Insurance",
+      color: "#00F5FF", // Cyan
+      icon: <DollarSign size={16} />,
+      items: [
+        "CX for Retail Bank Branches",
+        "Agentic AI Cloud Governance",
+        "Payment Gateway Routing"
+      ],
+      link: "/case-studies/mitsubishi" // Connecting FinTech/Automotive cross section to Mitsubishi
     }
   ];
 
-  // Visual widgets for each card
-  const renderMobilityGraphic = (isHovered: boolean) => {
-    const scale = isHovered ? 1.05 : 1;
-    return (
-      <motion.div 
-        animate={{ scale }} 
-        className="w-full h-full flex items-center justify-center relative"
-      >
-        <div className="w-28 h-28 rounded-full border border-[#00f5ff]/15 flex items-center justify-center relative">
-          <div className="absolute inset-0 rounded-full border border-dashed border-[#00f5ff]/35 animate-spin-slow" />
-          <div className="w-16 h-16 rounded-full border border-[#00f5ff]/10" />
-          
-          {/* Scanning radar line */}
-          <div 
-            className="absolute w-1/2 h-[1px] bg-gradient-to-r from-transparent to-[#00f5ff] origin-left"
-            style={{ 
-              transform: `rotate(${time * 80}deg)`, 
-              left: "50%",
-              top: "50%",
-              boxShadow: "0 0 6px #00f5ff"
-            }}
-          />
-          {/* Needle speed indicator */}
-          <div 
-            className="w-1 h-12 bg-[#00f5ff] origin-bottom absolute bottom-1/2 transition-transform duration-300"
-            style={{ transform: `rotate(${-40 + Math.sin(time * 1.5) * 30}deg)` }}
-          />
-          <div className="w-3 h-3 rounded-full bg-black border border-[#00f5ff] absolute z-10" />
-        </div>
-      </motion.div>
-    );
-  };
-
-  const renderAIGraphic = (isHovered: boolean) => {
-    const scale = isHovered ? 1.05 : 1;
-    return (
-      <motion.div 
-        animate={{ scale }}
-        className="w-full h-full flex items-center justify-center relative"
-      >
-        <svg className="w-28 h-28 stroke-[#E100FF]/25 stroke-[1] fill-none overflow-visible">
-          {/* Constellation lines */}
-          <line x1="15%" y1="15%" x2="50%" y2="50%" />
-          <line x1="85%" y1="15%" x2="50%" y2="50%" />
-          <line x1="15%" y1="85%" x2="50%" y2="50%" />
-          <line x1="85%" y1="85%" x2="50%" y2="50%" />
-          <line x1="50%" y1="15%" x2="50%" y2="85%" />
-
-          {/* Core connection rings */}
-          <circle cx="50%" cy="50%" r={isHovered ? 8 + Math.sin(time * 3) * 2 : 6} className="stroke-[#E100FF] stroke-[2] fill-black" />
-          <circle cx="15%" cy="15%" r="3" className="fill-[#E100FF] stroke-none" />
-          <circle cx="85%" cy="15%" r="3" className="fill-[#E100FF] stroke-none" />
-          <circle cx="15%" cy="85%" r="3" className="fill-[#E100FF] stroke-none" />
-          <circle cx="85%" cy="85%" r="3" className="fill-[#E100FF] stroke-none" />
-          <circle cx="50%" cy="15%" r="3" className="fill-[#E100FF] stroke-none" />
-          <circle cx="50%" cy="85%" r="3" className="fill-[#E100FF] stroke-none" />
-        </svg>
-      </motion.div>
-    );
-  };
-
-  const renderFinTechGraphic = (isHovered: boolean) => {
-    const scale = isHovered ? 1.05 : 1;
-    return (
-      <motion.div 
-        animate={{ scale }}
-        className="w-full h-full flex flex-col justify-center items-center font-mono text-[8px] text-[#00FF66]/40 gap-1.5"
-      >
-        <div className="w-28 bg-[#00FF66]/5 border border-[#00FF66]/10 rounded p-2 space-y-1">
-          <div className="flex justify-between border-b border-[#00FF66]/10 pb-0.5 text-[7px] text-[#00FF66]/20">
-            <span>TX_HASH</span>
-            <span>STATUS</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-white/30">0x34a1</span>
-            <span className="text-[#00FF66]">SECURE</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-white/30">0x81b0</span>
-            <span className="text-[#00FF66]">SECURE</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-white/30">0x98f2</span>
-            <span className="text-[#E100FF] animate-pulse">PENDING</span>
-          </div>
-        </div>
-      </motion.div>
-    );
-  };
-
-  const renderSaaSGraphic = (isHovered: boolean) => {
-    const scale = isHovered ? 1.05 : 1;
-    return (
-      <motion.div 
-        animate={{ scale }}
-        className="w-full h-full flex items-center justify-center relative"
-      >
-        <div className="w-28 h-20 border border-[#FF5C00]/25 rounded bg-[#FF5C00]/5 relative overflow-hidden flex items-center justify-center">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,92,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,92,0,0.03)_1px,transparent_1px)] bg-[size:8px_8px]" />
-          
-          <motion.div 
-            className="w-14 h-8 border border-[#FF5C00]/40 rounded bg-black/60 flex items-center justify-center relative"
-            animate={{ 
-              rotateX: isHovered ? 15 : 0,
-              rotateY: isHovered ? 25 : 0,
-              scale: isHovered ? 1.1 : 1 
-            }}
-            style={{ transformStyle: "preserve-3d" }}
-          >
-            <div className="absolute -top-1 -left-1 w-2 h-2 border border-[#FF5C00] bg-black" />
-            <div className="absolute -bottom-1 -right-1 w-2 h-2 border border-[#FF5C00] bg-black" />
-            <span className="font-mono text-[6px] text-[#FF5C00] tracking-widest font-bold">GRID</span>
-          </motion.div>
-        </div>
-      </motion.div>
-    );
-  };
-
-  const renderCardGraphic = (id: string, isHovered: boolean) => {
-    switch (id) {
-      case "mobility":
-        return renderMobilityGraphic(isHovered);
-      case "ai":
-        return renderAIGraphic(isHovered);
-      case "fintech":
-        return renderFinTechGraphic(isHovered);
-      case "saas":
-        return renderSaaSGraphic(isHovered);
-      default:
-        return null;
-    }
-  };
-
   return (
     <section className="py-20 md:py-32 px-5 md:px-8 border-t border-white/5 bg-[#050506] relative overflow-hidden" id="sectors">
-      {/* Subtle global gradient grid */}
+      {/* Subtle background radial glows */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_-20%,rgba(0,245,255,0.01),transparent)] pointer-events-none" />
       
       <AnimatePresence>
@@ -227,37 +161,36 @@ export default function FigmaToCodeSlider() {
             className="fixed top-20 left-1/2 -translate-x-1/2 z-[200] bg-[#0c0c0e] border border-primary/40 px-5 py-3 font-mono text-xs text-primary uppercase tracking-widest shadow-[0_0_30px_rgba(0,245,255,0.15)] flex items-center gap-3"
           >
             <span className="w-1.5 h-1.5 bg-primary animate-pulse shrink-0" />
-            CASE_STUDY: CLASSIFIED // Clearance_Pending
+            FRAMEWORK: CLASSIFIED // Clearance_Pending
           </motion.div>
         )}
       </AnimatePresence>
 
       <div className="max-w-[1440px] mx-auto relative z-10">
         
-        {/* Header Block - extremely simple and clean */}
+        {/* Header Block */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-6">
-          <div className="max-w-xl">
+          <div className="max-w-2xl">
             <div className="font-mono text-xs text-primary mb-3 md:mb-4 uppercase tracking-[0.2em] flex items-center gap-2 flex-wrap">
               <span className="w-1.5 h-1.5 bg-primary shrink-0" />
-              [ VERTICAL_EXPERTISE // INDUSTRIES ]
+              [ ENTERPRISE_CAPABILITIES // SECTOR_FRAMEWORKS ]
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] tracking-tighter">
-              Vertical Focus.
+              Industry Frameworks.
             </h2>
           </div>
           <p className="text-base sm:text-lg text-slate-400 max-w-sm font-light leading-snug">
-            We build for high-stakes industries, mapping complex data structures to high-fidelity consumer experiences.
+            We deliver production-ready software frameworks across eight vertical domains, matching strict architecture rules to premium user experience.
           </p>
         </div>
 
-        {/* Clean, minimalist 4-column cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 items-stretch">
-          {sectors.map((s) => (
-            <SectorGridCard 
-              key={s.id} 
-              sector={s} 
+        {/* 8-Column Grid: 4 columns on desktop, 2 on tablet, 1 on mobile */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          {industries.map((ind) => (
+            <IndustryGridCard 
+              key={ind.id} 
+              industry={ind} 
               onCardClick={handleCardClick}
-              renderGraphic={renderCardGraphic}
             />
           ))}
         </div>
@@ -266,67 +199,72 @@ export default function FigmaToCodeSlider() {
     </section>
   );
 }
-
-interface SectorGridCardProps {
+interface IndustryGridCardProps {
   key?: string;
-  sector: SectorCard;
+  industry: IndustryCard;
   onCardClick: (link: string) => void;
-  renderGraphic: (id: string, isHovered: boolean) => React.ReactNode;
 }
 
-function SectorGridCard({ sector, onCardClick, renderGraphic }: SectorGridCardProps) {
+function IndustryGridCard({ industry, onCardClick }: IndustryGridCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
-      onClick={() => onCardClick(sector.link)}
+      onClick={() => onCardClick(industry.link)}
       onMouseEnter={() => { playTick(); setIsHovered(true); }}
       onMouseLeave={() => setIsHovered(false)}
-      data-cursor-text={sector.link !== "#" ? "VIEW CASE" : "CLASSIFIED"}
-      className="bg-[#08080a] border rounded-2xl p-6 relative group overflow-hidden flex flex-col justify-between cursor-pointer transition-all duration-500 h-[280px] sm:h-[300px] select-none"
+      data-cursor-text={industry.link !== "#" ? "EXPLORE" : "CLASSIFIED"}
+      className="bg-[#08080a] border rounded-none p-6 relative group overflow-hidden flex flex-col justify-between cursor-pointer transition-all duration-500 min-h-[260px] select-none"
       style={{
-        borderColor: isHovered ? `${sector.color}50` : "rgba(255,255,255,0.06)",
+        borderColor: isHovered ? `${industry.color}50` : "rgba(255,255,255,0.06)",
         boxShadow: isHovered 
-          ? `0 15px 35px rgba(0,0,0,0.6), 0 0 25px ${sector.color}08, inset 0 0 15px ${sector.color}03` 
+          ? `0 15px 30px rgba(0,0,0,0.5), 0 0 25px ${industry.color}05, inset 0 0 15px ${industry.color}02` 
           : "none"
       }}
     >
-      {/* Background ambient pulse on card hover */}
+      {/* Background ambient radial glow */}
       <div 
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{
-          background: `radial-gradient(circle 200px at 50% 50%, ${sector.color}08, transparent)`
+          background: `radial-gradient(circle 180px at 50% 50%, ${industry.color}05, transparent)`
         }}
       />
-
-      {/* Top Meta info */}
+      {/* Top Header */}
       <div className="relative z-10 flex justify-between items-center border-b border-white/5 pb-3">
-        <span className="font-mono text-[9px] text-white/30 tracking-widest uppercase">
-          {sector.num} // {sector.tag}
+        <span className="font-mono text-xs text-white/30 tracking-widest uppercase">
+          {industry.num} // {industry.sub}
         </span>
         <div 
-          className="text-white/20 transition-colors duration-300"
-          style={{ color: isHovered ? sector.color : "inherit" }}
+          className="transition-colors duration-300"
+          style={{ color: isHovered ? industry.color : "rgba(255,255,255,0.25)" }}
         >
-          {sector.icon}
+          {industry.icon}
         </div>
       </div>
 
-      {/* Middle Animated Graphic - The Hero element */}
-      <div className="relative z-10 flex-1 flex items-center justify-center my-4">
-        {renderGraphic(sector.id, isHovered)}
+      {/* Middle: Minimalist framework items list */}
+      <div className="relative z-10 flex-1 flex flex-col justify-center gap-3 my-5">
+        {industry.items.map((item, i) => (
+          <div key={i} className="flex gap-2.5 items-center">
+            <span 
+              className="w-1.5 h-1.5 rounded-full shrink-0 transition-colors duration-300" 
+              style={{ backgroundColor: isHovered ? industry.color : "rgba(255,255,255,0.15)" }}
+            />
+            <span className="text-[13.5px] text-slate-400 group-hover:text-slate-200 transition-colors duration-300 font-light truncate">
+              {item}
+            </span>
+          </div>
+        ))}
       </div>
 
       {/* Bottom Title */}
       <div className="relative z-10 flex justify-between items-center border-t border-white/5 pt-3">
-        <span 
-          className="text-sm font-bold text-white group-hover:text-white transition-colors duration-300"
-        >
-          {sector.name}
+        <span className="text-[15px] font-bold text-white">
+          {industry.name}
         </span>
         <div 
-          className="text-white/20 transition-all duration-500 transform group-hover:translate-x-1"
-          style={{ color: isHovered ? sector.color : "inherit" }}
+          className="text-white/20 group-hover:text-white transition-all duration-300 transform group-hover:translate-x-1"
+          style={{ color: isHovered ? industry.color : "inherit" }}
         >
           <ArrowRight size={14} />
         </div>
