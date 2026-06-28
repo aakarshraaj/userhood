@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
-import { Menu, X, Volume2, VolumeX, Ruler, Terminal, Sun, Moon } from "lucide-react";
+import { Menu, X, Volume2, VolumeX, Ruler, Terminal } from "lucide-react";
 
 import { toggleMute, getMuteState, playTick, playSuccess, playStrike } from "../utils/audio";
 
@@ -13,27 +13,6 @@ export default function Navbar({ onContactClick }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMuted, setIsMuted] = useState(getMuteState());
   const [isRedline, setIsRedline] = useState(document.body.classList.contains("redline-active"));
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-
-  useEffect(() => {
-    const activeTheme = document.documentElement.classList.contains("light") ? "light" : "dark";
-    setTheme(activeTheme);
-  }, []);
-
-  const handleThemeToggle = () => {
-    playTick();
-    const nextTheme = theme === "dark" ? "light" : "dark";
-    setTheme(nextTheme);
-    if (nextTheme === "light") {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.classList.add("light");
-      localStorage.setItem("theme", "light");
-    } else {
-      document.documentElement.classList.remove("light");
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    }
-  };
 
   const handleMuteToggle = () => {
     const nextMuted = toggleMute();
@@ -42,8 +21,6 @@ export default function Navbar({ onContactClick }: NavbarProps) {
       playTick();
     }
   };
-
-
 
   const handleRedlineToggle = () => {
     const active = document.body.classList.toggle("redline-active");
@@ -113,15 +90,9 @@ export default function Navbar({ onContactClick }: NavbarProps) {
               className="text-white/40 hover:text-primary transition-colors p-2 cursor-pointer flex items-center gap-1.5 font-mono text-xs uppercase font-bold"
               aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
             >
+
+
               {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
-            </button>
-            <button
-              onClick={handleThemeToggle}
-              className="text-white/40 hover:text-primary transition-colors p-2 cursor-pointer flex items-center gap-1.5 font-mono text-xs uppercase font-bold"
-              aria-label={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
-              title={theme === "dark" ? "Light Mode" : "Dark Mode"}
-            >
-              {theme === "dark" ? <Sun size={13} /> : <Moon size={13} />}
             </button>
             <motion.a
               whileHover={{ scale: 1.1 }}
@@ -210,6 +181,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
             </div>
             
             <div className="flex justify-between items-center py-2 border-t border-white/5">
+
               <span className="text-white/30">System_Audio</span>
               <button
                 onClick={handleMuteToggle}
@@ -217,17 +189,6 @@ export default function Navbar({ onContactClick }: NavbarProps) {
               >
                 {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
                 <span>{isMuted ? "MUTED" : "ON"}</span>
-              </button>
-            </div>
-
-            <div className="flex justify-between items-center py-2 border-t border-white/5">
-              <span className="text-white/30">Theme_Mode</span>
-              <button
-                onClick={handleThemeToggle}
-                className="text-primary flex items-center gap-1.5"
-              >
-                {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-                <span>{theme === "dark" ? "LIGHT" : "DARK"}</span>
               </button>
             </div>
 

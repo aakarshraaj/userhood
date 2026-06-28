@@ -27,38 +27,50 @@ const interactionsPool: SimulatedInteraction[] = [
   {
     name: "Kriti",
     color: "#E100FF",
-    message: "Hi! I'm Kriti, co-founder of Userhood. Welcome to our canvas!",
+    message: "Hey there! I'm Kriti. Exploring the canvas?",
     targetType: "hero_title",
   },
   {
     name: "Kriti",
     color: "#E100FF",
-    message: "Check out our Mitsubishi connected dashboard. We designed the full UX ecosystem in 12 weeks!",
+    message: "Hi! Just dropping by to say hello.",
     targetType: "mitsubishi_card",
-  },
-  {
-    name: "Kriti",
-    color: "#E100FF",
-    message: "Try clicking INSPECT in the navbar to see our live CSS design spec overlay!",
-    targetType: "inspect_btn",
   },
   {
     name: "Ashwin",
     color: "#FF5C00",
-    message: "Hey! Ashwin here. Click Console or press ` to pull down our studio terminal.",
+    message: "Hey! Ashwin here. Glad you stopped by.",
     targetType: "console_btn",
   },
   {
     name: "Ashwin",
     color: "#FF5C00",
-    message: "Scroll down to check our live operational heartbeat showing active telemetry merges.",
+    message: "Yo! Hope you're having a great day.",
     targetType: "heartbeat",
+  },
+  {
+    name: "Mia",
+    color: "#00f5ff",
+    message: "Hey! I'm Mia. Welcome to our little world!",
+    targetType: "hyundai_card",
+  },
+  {
+    name: "Liam",
+    color: "#00ff9d",
+    message: "Hello! Liam here. How's it going?",
+    targetType: "inspect_btn",
+  },
+  {
+    name: "Kriti",
+    color: "#E100FF",
+    message: "Hey! Thanks for checking out our work.",
+    targetType: "cta_btn",
   },
   {
     name: "Ashwin",
     color: "#FF5C00",
-    message: "Ready to launch? Let's start a direct channel to chat code!",
-    targetType: "cta_btn",
+    message: "Hi! Let us know if you want to chat.",
+    targetType: "hero_title",
   },
 ];
 
