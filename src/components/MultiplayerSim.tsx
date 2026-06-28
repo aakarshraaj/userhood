@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { playTick, playSuccess } from "../utils/audio";
+import { playTick } from "../utils/audio";
 
 interface SimulatedCursor {
   id: string;
@@ -16,36 +16,49 @@ interface SimulatedCursor {
   exitY: number;
 }
 
-const teammatePool = [
+interface SimulatedInteraction {
+  name: string;
+  color: string;
+  message: string;
+  targetType: "hero_title" | "mitsubishi_card" | "hyundai_card" | "inspect_btn" | "console_btn" | "cta_btn" | "heartbeat";
+}
+
+const interactionsPool: SimulatedInteraction[] = [
   {
     name: "Kriti",
     color: "#E100FF",
-    messages: [
-      "Aligning Mitsubishi dashboard columns...",
-      "Mitsubishi eco-gamification UI v2 updated",
-      "Obsessive design review: inspect tool verified",
-      "Checking Hyundai checkout CTA alignment...",
-    ],
-    targetSelectors: [
-      "#case-studies",
-      "[data-cursor-text*='Mitsubishi']",
-      "nav",
-    ],
+    message: "Hey! Welcome to the Userhood canvas. Glad you're here.",
+    targetType: "hero_title",
+  },
+  {
+    name: "Kriti",
+    color: "#E100FF",
+    message: "Check out our Mitsubishi connected dashboard. We designed the full UX ecosystem.",
+    targetType: "mitsubishi_card",
+  },
+  {
+    name: "Kriti",
+    color: "#E100FF",
+    message: "Try clicking INSPECT in the navbar to see our live CSS blueprint overlay!",
+    targetType: "inspect_btn",
   },
   {
     name: "Ashwin",
     color: "#FF5C00",
-    messages: [
-      "Optimizing SSR latency: payload < 12.5ms",
-      "Mesh canvas vertex update deployed",
-      "Auditing dealership consolidated database...",
-      "Grid baseline coordinate latency checks ok",
-    ],
-    targetSelectors: [
-      "#operational-heartbeat",
-      "[data-cursor-text*='Hyundai']",
-      "h1",
-    ],
+    message: "Welcome! Press the ` backtick key to pull down our studio terminal console.",
+    targetType: "console_btn",
+  },
+  {
+    name: "Ashwin",
+    color: "#FF5C00",
+    message: "Scroll down to check our live operational heartbeat for active deployments.",
+    targetType: "heartbeat",
+  },
+  {
+    name: "Ashwin",
+    color: "#FF5C00",
+    message: "Ready to ship? Click here to start a direct channel with us.",
+    targetType: "cta_btn",
   },
 ];
 
@@ -58,36 +71,65 @@ export default function MultiplayerSim() {
   useEffect(() => {
     // Check if device supports hover (desktop)
     const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-    if (hasTouch) return; // Disable multiplayer sim on mobile to keep it ultra clean
+    if (hasTouch) return;
 
     const spawnSimulation = () => {
-      // Pick a random teammate
-      const teammate = teammatePool[Math.floor(Math.random() * teammatePool.length)];
+      // Pick a random guided interaction from the pool
+      const interaction = interactionsPool[Math.floor(Math.random() * interactionsPool.length)];
       
       // Determine target coordinates on screen
-      let targetX = window.innerWidth * 0.65 + (Math.random() - 0.5) * 150;
-      let targetY = window.innerHeight * 0.45 + (Math.random() - 0.5) * 150;
+      let targetX = window.innerWidth * 0.65;
+      let targetY = window.innerHeight * 0.45;
 
-      // Try to find a target element to hover organically
-      for (const selector of teammate.targetSelectors) {
-        const el = document.querySelector(selector);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          // Hover near the element
-          targetX = rect.left + rect.width * 0.5 + (Math.random() - 0.5) * 40;
-          targetY = rect.top + rect.height * 0.5 + (Math.random() - 0.5) * 20;
+      // Find targets dynamically on the active DOM viewport
+      let targetElement: Element | null = null;
+
+      switch (interaction.targetType) {
+        case "hero_title":
+          targetElement = document.querySelector("h1") || document.querySelector("p.text-slate-400");
           break;
-        }
+        case "mitsubishi_card":
+          targetElement = document.querySelector("[data-cursor-text*='Mitsubishi']");
+          break;
+        case "hyundai_card":
+          targetElement = document.querySelector("[data-cursor-text*='Hyundai']");
+          break;
+        case "inspect_btn":
+          targetElement = document.querySelector("button[aria-label='Inspect Spec Mode']");
+          break;
+        case "console_btn":
+          targetElement = document.querySelector("button[aria-label='Toggle Developer Console']");
+          break;
+        case "cta_btn":
+          // Find the "START THE CONVERSATION" cta button
+          targetElement = Array.from(document.querySelectorAll("button")).find(
+            (b) => b.textContent?.includes("CONVERSATION") || b.textContent?.includes("START")
+          ) || null;
+          break;
+        case "heartbeat":
+          targetElement = document.querySelector("#operational-heartbeat") || document.querySelector("section.py-12");
+          break;
       }
 
-      // Constrain coordinates within screen margins
-      targetX = Math.max(50, Math.min(window.innerWidth - 200, targetX));
+      if (targetElement) {
+        const rect = targetElement.getBoundingClientRect();
+        // Hover coordinate: point slightly off-center (offset down-right)
+        targetX = rect.left + rect.width * 0.5 + (Math.random() - 0.5) * 20;
+        targetY = rect.top + rect.height * 0.5 + (Math.random() - 0.5) * 10;
+      } else {
+        // Fallback to random positions if target element is out of active scroll viewport
+        targetX = window.innerWidth * 0.5 + (Math.random() - 0.5) * 200;
+        targetY = window.innerHeight * 0.5 + (Math.random() - 0.5) * 200;
+      }
+
+      // Constrain coords to be within viewport margins
+      targetX = Math.max(50, Math.min(window.innerWidth - 220, targetX));
       targetY = Math.max(80, Math.min(window.innerHeight - 80, targetY));
 
       const id = Date.now().toString();
-      const name = teammate.name;
-      const color = teammate.color;
-      const chatText = teammate.messages[Math.floor(Math.random() * teammate.messages.length)];
+      const name = interaction.name;
+      const color = interaction.color;
+      const chatText = interaction.message;
       
       // Spawn from off-screen margins
       const side = Math.floor(Math.random() * 4);
@@ -134,7 +176,7 @@ export default function MultiplayerSim() {
         endX: targetX,
         endY: targetY,
         chatText,
-        delayBeforeTyping: 2500, // animation takes 2.2s
+        delayBeforeTyping: 2500, // wait for transition curve (2.2s)
         exitX,
         exitY,
       });
@@ -143,9 +185,9 @@ export default function MultiplayerSim() {
       setClickRipple(null);
     };
 
-    // Spawn first simulation after 18 seconds, then every 28 seconds
-    const initialTimer = setTimeout(spawnSimulation, 15000);
-    const interval = setInterval(spawnSimulation, 32000);
+    // Spawn first simulation after 12 seconds, then every 25 seconds
+    const initialTimer = setTimeout(spawnSimulation, 12000);
+    const interval = setInterval(spawnSimulation, 28000);
 
     return () => {
       clearTimeout(initialTimer);
@@ -153,15 +195,14 @@ export default function MultiplayerSim() {
     };
   }, []);
 
-  // Animate live chat typing sequence
+  // Typewriter and exit lifecycle
   useEffect(() => {
     if (!activeCursor) return;
 
-    // 1. Reveal chat bubble once cursor lands at destination
     const revealTimer = setTimeout(() => {
       setShowChat(true);
 
-      // Play soft click ripple
+      // Play click ripple sound and visual
       playTick();
       setClickRipple({ x: activeCursor.endX, y: activeCursor.endY });
 
@@ -173,23 +214,21 @@ export default function MultiplayerSim() {
         if (currentIdx < text.length) {
           setTypedText(text.slice(0, currentIdx + 1));
           currentIdx++;
-          // mechanical click sound periodically
           if (currentIdx % 3 === 0) {
             playTick();
           }
         } else {
           clearInterval(typeInterval);
         }
-      }, 55);
+      }, 50);
 
       return () => clearInterval(typeInterval);
     }, activeCursor.delayBeforeTyping);
 
-    // 2. Fly off-screen after collaboration is completed
+    // Slide off-screen after speech duration
     const exitTimer = setTimeout(() => {
       setShowChat(false);
       
-      // Trigger slide out exit
       setActiveCursor((prev) => {
         if (!prev) return null;
         return {
@@ -201,12 +240,12 @@ export default function MultiplayerSim() {
         };
       });
 
-      // Clear cursor model after exit slide concludes (1.5s)
+      // Clear cursor after fly out concludes (1.5s)
       setTimeout(() => {
         setActiveCursor(null);
       }, 1500);
 
-    }, activeCursor.delayBeforeTyping + 6500); // collaborate for 6.5 seconds
+    }, activeCursor.delayBeforeTyping + 7000); // Greet for 7s
 
     return () => {
       clearTimeout(revealTimer);
@@ -222,7 +261,7 @@ export default function MultiplayerSim() {
   return (
     <div className="fixed inset-0 pointer-events-none z-[9998] overflow-hidden select-none">
       
-      {/* Click ripple visual indicator */}
+      {/* Click ripple indicators */}
       <AnimatePresence>
         {clickRipple && (
           <motion.div
@@ -230,18 +269,18 @@ export default function MultiplayerSim() {
             animate={{ opacity: 0, scale: 2.2 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="absolute w-6 h-6 border border-primary rounded-full z-[9990]"
+            className="absolute w-6 h-6 border rounded-full z-[9990]"
             style={{
               left: clickRipple.x - 12,
               top: clickRipple.y - 12,
               borderColor: activeCursor.color,
-              boxShadow: `0 0 10px ${activeCursor.color}`
+              boxShadow: `0 0 12px ${activeCursor.color}`
             }}
           />
         )}
       </AnimatePresence>
 
-      {/* Simulated Teammate Cursor Pointer */}
+      {/* Simulated Teammate Cursor */}
       <motion.div
         initial={{ x: activeCursor.startX, y: activeCursor.startY }}
         animate={{ x: activeCursor.endX, y: activeCursor.endY }}
