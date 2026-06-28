@@ -26,49 +26,49 @@ interface SimulatedInteraction {
 const interactionsPool: SimulatedInteraction[] = [
   {
     name: "Kriti",
-    color: "#E100FF",
+    color: "#E100FF", // Deep Purple/Pink
     message: "Hey there! I'm Kriti. Exploring the canvas?",
     targetType: "hero_title",
   },
   {
-    name: "Kriti",
-    color: "#E100FF",
-    message: "Hi! Just dropping by to say hello.",
+    name: "Nishita",
+    color: "#0044CC", // Deep Blue
+    message: "Hi! I'm Nishita. Just dropping by to say hello.",
     targetType: "mitsubishi_card",
   },
   {
     name: "Ashwin",
-    color: "#FF5C00",
+    color: "#D94F00", // Darker Orange for better contrast
     message: "Hey! Ashwin here. Glad you stopped by.",
     targetType: "console_btn",
   },
   {
-    name: "Ashwin",
-    color: "#FF5C00",
-    message: "Yo! Hope you're having a great day.",
+    name: "Somesh",
+    color: "#007A33", // Deep Green
+    message: "Yo! Somesh here. Hope you're having a great day.",
     targetType: "heartbeat",
   },
   {
-    name: "Mia",
-    color: "#00f5ff",
-    message: "Hey! I'm Mia. Welcome to our little world!",
+    name: "Priyanka",
+    color: "#C20030", // Deep Crimson Red
+    message: "Hey! I'm Priyanka. Welcome to our little world!",
     targetType: "hyundai_card",
   },
   {
-    name: "Liam",
-    color: "#00ff9d",
-    message: "Hello! Liam here. How's it going?",
+    name: "Uttkarsh",
+    color: "#1E3A8A", // Navy Blue
+    message: "Hello! Uttkarsh here. How's it going?",
     targetType: "inspect_btn",
   },
   {
-    name: "Kriti",
-    color: "#E100FF",
-    message: "Hey! Thanks for checking out our work.",
+    name: "Priya",
+    color: "#6B21A8", // Deep Purple
+    message: "Hey! I'm Priya. Thanks for checking out our work.",
     targetType: "cta_btn",
   },
   {
     name: "Ashwin",
-    color: "#FF5C00",
+    color: "#D94F00", // Darker Orange
     message: "Hi! Let us know if you want to chat.",
     targetType: "hero_title",
   },
