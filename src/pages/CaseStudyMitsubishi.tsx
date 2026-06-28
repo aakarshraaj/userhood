@@ -1,22 +1,174 @@
 import { motion } from "motion/react";
 import { ArrowLeft, Clock, Car, Users, Lightbulb, Code, BarChart3, Zap, Map, Settings, ShieldCheck, CheckCircle2, Layout, Activity, Gauge } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSEO } from "../utils/seo";
+import { playTick } from "../utils/audio";
 
-const Placeholder = ({ label, aspect = "aspect-video", className = "" }: { label: string, aspect?: string, className?: string }) => (
-  <div className={`${aspect} bg-white/[0.03] border border-white/10 relative overflow-hidden group ${className}`}>
-    <div className="absolute inset-0 tech-grid opacity-20"></div>
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div className="text-center space-y-2">
-        <div className="w-12 h-px bg-primary/20 mx-auto"></div>
-        <span className="font-mono text-xs text-white/20 uppercase tracking-[0.2em]">{label}</span>
-        <div className="w-12 h-px bg-primary/20 mx-auto"></div>
+
+function EcoCockpitWidget() {
+  const [score, setScore] = useState(88);
+  return (
+    <div className="w-full aspect-video bg-black/60 border border-white/10 rounded-xl p-6 font-mono text-[10px] text-primary relative overflow-hidden flex flex-col justify-between select-none">
+      <div className="flex justify-between items-center opacity-40 border-b border-white/5 pb-2">
+        <span>ECO_DRIVING_GAMIFICATION // MODULE_08</span>
+        <span className="animate-pulse">● PILOT_ACTIVE</span>
+      </div>
+      
+      <div className="flex-1 flex items-center justify-around gap-6 my-4">
+        {/* Radial gauge */}
+        <div className="relative w-28 h-28 flex items-center justify-center">
+          <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.05)" strokeWidth="8" fill="none" />
+            <motion.circle
+              cx="50"
+              cy="50"
+              r="40"
+              stroke="#00f5ff"
+              strokeWidth="8"
+              fill="none"
+              strokeDasharray="251.2"
+              initial={{ strokeDashoffset: 251.2 }}
+              animate={{ strokeDashoffset: 251.2 - (251.2 * score) / 100 }}
+              transition={{ duration: 2, ease: "easeOut" }}
+            />
+          </svg>
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <span className="text-3xl font-black text-white">{score}</span>
+            <span className="text-[7px] text-white/40 tracking-wider">ECO_SCORE</span>
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div className="flex-grow space-y-3">
+          <div>
+            <div className="text-white/30 text-[8px] uppercase">FUEL_EFFICIENCY_GAIN</div>
+            <div className="text-xl font-bold text-white">+20.4%</div>
+          </div>
+          <div>
+            <div className="text-white/30 text-[8px] uppercase">REGEN_BRAKING</div>
+            <div className="text-xl font-bold text-white">821 <span className="text-[9px] text-white/40">Wh</span></div>
+          </div>
+          <div className="flex gap-2">
+            <button onClick={() => { playTick(); setScore(94); }} className="px-2 py-1 bg-primary/10 border border-primary/20 hover:bg-primary/20 text-white rounded text-[8px] active:scale-95 transition-all cursor-pointer">BOOST</button>
+            <button onClick={() => { playTick(); setScore(72); }} className="px-2 py-1 bg-white/5 border border-white/10 hover:bg-white/10 text-white/60 rounded text-[8px] active:scale-95 transition-all cursor-pointer">NORMAL</button>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-[8px] text-white/30 border-t border-white/5 pt-2 flex justify-between">
+        <span>METRIC: DRIVER_SCORE_LOG</span>
+        <span>SYS_STATUS: OPTIMAL</span>
       </div>
     </div>
-    <div className="absolute top-4 left-4 font-mono text-xs text-white/10 uppercase">Artifact_Ref // {label.replace(/\s+/g, '_')}</div>
-  </div>
-);
+  );
+}
+
+function DiagnosticScannerWidget() {
+  return (
+    <div className="w-full aspect-video bg-black/60 border border-white/10 rounded-xl p-6 font-mono text-[10px] text-primary relative overflow-hidden flex flex-col justify-between select-none">
+      <div className="flex justify-between items-center opacity-40 border-b border-white/5 pb-2">
+        <span>PREDICTIVE_MAINTENANCE_SCANNER</span>
+        <span className="animate-pulse">● TELEMETRY_STREAM</span>
+      </div>
+      
+      <div className="flex-1 flex gap-6 items-center my-2">
+        {/* Car vector graphic wireframe outline with sweeps */}
+        <div className="w-[45%] h-full relative border border-white/5 rounded flex items-center justify-center bg-white/[0.01]">
+          <svg className="w-4/5 h-4/5 text-primary opacity-40 overflow-visible" viewBox="0 0 100 60" fill="none">
+            {/* Top-down vehicle wireframe */}
+            <rect x="25" y="10" width="50" height="40" rx="10" stroke="currentColor" strokeWidth="1" />
+            <rect x="30" y="15" width="40" height="10" rx="2" stroke="currentColor" strokeWidth="0.5" />
+            <circle cx="20" cy="18" r="3" fill="currentColor" className="animate-pulse" />
+            <circle cx="20" cy="42" r="3" fill="currentColor" className="animate-pulse" />
+            <circle cx="80" cy="18" r="3" fill="currentColor" />
+            <circle cx="80" cy="42" r="3" fill="currentColor" />
+            
+            <motion.line
+              x1="0" y1="0" x2="100" y2="0"
+              stroke="#00f5ff"
+              strokeWidth="1.5"
+              animate={{ y: [5, 55, 5] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              style={{ filter: "drop-shadow(0 0 4px #00f5ff)" }}
+            />
+          </svg>
+          <div className="absolute top-2 left-2 text-[7px] text-white/30">SCAN_ROTATION // Z-100</div>
+        </div>
+
+        {/* Diagnostics status logs */}
+        <div className="flex-grow space-y-2.5">
+          <div className="flex justify-between items-center bg-white/5 p-1.5 rounded">
+            <span>ENGINE_TEMP:</span>
+            <span className="text-white font-bold">92°C</span>
+          </div>
+          <div className="flex justify-between items-center bg-white/5 p-1.5 rounded">
+            <span>BRAKE_WEAR_FL:</span>
+            <span className="text-white font-bold">12.4%</span>
+          </div>
+          <div className="flex justify-between items-center bg-[#ff3b30]/10 border border-[#ff3b30]/20 p-1.5 rounded text-red-500 font-bold">
+            <span>AIR_FILTER_HEALTH:</span>
+            <span className="animate-pulse">REQ_SERVICE</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-[8px] text-white/30 border-t border-white/5 pt-2 flex justify-between">
+        <span>PREDICTIVE_LOG // SCHEDULED_DEALER_ID: UH_04</span>
+        <span>LATENCY: 12ms</span>
+      </div>
+    </div>
+  );
+}
+
+function ServiceRouterWidget() {
+  return (
+    <div className="w-full aspect-video bg-black/60 border border-white/10 rounded-xl p-6 font-mono text-[10px] text-primary relative overflow-hidden flex flex-col justify-between select-none">
+      <div className="flex justify-between items-center opacity-40 border-b border-white/5 pb-2">
+        <span>DEALER_INTEGRATION_FLOW</span>
+        <span className="text-[#00f5ff]/40 font-bold">API // SECURE_SSL</span>
+      </div>
+
+      <div className="flex-grow flex flex-col justify-center gap-3 my-4">
+        {[
+          { label: "VEHICLE_HEALTH_REPORTED", time: "0.1ms" },
+          { label: "PREDICTIVE_ALGORITHMS_EVALUATED", time: "2.4ms" },
+          { label: "DEALER_SCHEDULER_SYNCED", time: "18.2ms" },
+        ].map((node, i) => (
+          <motion.div 
+            key={i} 
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: i * 0.4 }}
+            className="flex items-center justify-between bg-white/[0.02] border border-white/5 p-2 rounded"
+          >
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              <span>{node.label}</span>
+            </div>
+            <span className="text-white/40">{node.time}</span>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="text-[8px] text-white/30 border-t border-white/5 pt-2 flex justify-between">
+        <span>FLOW_SYNC_STATE: SUCCESS</span>
+        <span>REF: API_MMA_9410</span>
+      </div>
+    </div>
+  );
+}
+
+const InteractiveArtifact = ({ label }: { label: string }) => {
+  if (label.includes("Gamification")) {
+    return <EcoCockpitWidget />;
+  }
+  if (label.includes("Health") || label.includes("Predictive")) {
+    return <DiagnosticScannerWidget />;
+  }
+  return <ServiceRouterWidget />;
+};
+
 
 export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick: () => void }) {
   useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -186,7 +338,7 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
             {/* Pillar 2 */}
             <div className="grid md:grid-cols-12 gap-16 items-center">
               <div className="md:col-span-7 order-2 md:order-1">
-                <Placeholder label="Gamification & Feedback Loops" aspect="aspect-video" />
+                <InteractiveArtifact label="Gamification & Feedback Loops" />
               </div>
               <div className="md:col-span-5 space-y-8 order-1 md:order-2">
                 <div className="inline-flex items-center gap-4 px-4 py-2 bg-primary/5 border border-primary/10 rounded-full">
@@ -221,10 +373,12 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
                 <p className="text-slate-400 leading-relaxed">
                   Transforming vehicle health from a source of anxiety into a managed service. The system predicts maintenance needs and seamlessly integrates with dealership scheduling.
                 </p>
-                <Placeholder label="Service Integration Flow" aspect="aspect-[4/3]" className="md:hidden" />
+                <div className="md:hidden">
+                  <InteractiveArtifact label="Service Integration Flow" />
+                </div>
               </div>
               <div className="md:col-span-7">
-                <Placeholder label="Predictive Health Dashboard" aspect="aspect-video" />
+                <InteractiveArtifact label="Predictive Health Dashboard" />
               </div>
             </div>
           </div>

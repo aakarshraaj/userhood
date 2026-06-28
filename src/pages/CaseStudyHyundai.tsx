@@ -1,24 +1,286 @@
 import { motion } from "motion/react";
 import { ArrowLeft, Clock, Car, Users, Lightbulb, Code, BarChart3, Zap, Map, Settings, ShieldCheck, CheckCircle2, ShoppingCart, CreditCard, ClipboardCheck, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSEO } from "../utils/seo";
+import { playTick } from "../utils/audio";
 
-const Placeholder = ({ label, aspect = "aspect-video", className = "" }: { label: string, aspect?: string, className?: string }) => (
-  <div className={`${aspect} bg-white/[0.03] border border-white/10 relative overflow-hidden group ${className}`}>
-    <div className="absolute inset-0 tech-grid opacity-20"></div>
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div className="text-center space-y-2">
-        <div className="w-12 h-px bg-primary/20 mx-auto"></div>
-        <span className="font-mono text-xs text-white/20 uppercase tracking-[0.2em]">{label}</span>
-        <div className="w-12 h-px bg-primary/20 mx-auto"></div>
+
+function ConfiguratorWidget() {
+  const [activeColor, setActiveColor] = useState("#00f5ff");
+  const [colorName, setColorName] = useState("CYAN_NEON");
+
+  const colors = [
+    { hex: "#00f5ff", name: "CYAN_NEON" },
+    { hex: "#E100FF", name: "PURPLE_PHANTOM" },
+    { hex: "#FF5C00", name: "ORANGE_VELOCITY" },
+    { hex: "#ffffff", name: "WHITE_PULSE" },
+  ];
+
+  return (
+    <div className="w-full aspect-video bg-black/60 border border-white/10 rounded-xl p-6 font-mono text-[10px] text-primary relative overflow-hidden flex flex-col justify-between select-none">
+      <div className="flex justify-between items-center opacity-40 border-b border-white/5 pb-2">
+        <span>VARIANT_CONFIGURATOR // STEP_03</span>
+        <span className="animate-pulse">● STAGED</span>
+      </div>
+
+      <div className="flex-1 flex gap-6 items-center my-4">
+        {/* Car Outline Vector */}
+        <div className="w-3/5 h-full relative border border-white/5 rounded flex items-center justify-center bg-white/[0.01]">
+          <svg className="w-4/5 h-4/5 overflow-visible" viewBox="0 0 100 60" fill="none" style={{ color: activeColor }}>
+            <motion.path
+              d="M 10,40 C 10,40 12,30 20,28 C 28,26 35,12 55,12 C 75,12 85,25 90,30 C 95,35 95,40 95,40 L 90,45 L 75,45 C 75,40 70,40 70,45 L 30,45 C 30,40 25,40 25,45 L 10,40 Z"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              fill="rgba(255,255,255,0.01)"
+              animate={{ stroke: activeColor }}
+              transition={{ duration: 0.3 }}
+            />
+            {/* Wheels */}
+            <circle cx="27.5" cy="45" r="5" stroke="currentColor" strokeWidth="1" fill="#000" />
+            <circle cx="72.5" cy="45" r="5" stroke="currentColor" strokeWidth="1" fill="#000" />
+          </svg>
+          <div className="absolute top-2 left-2 text-[7px] text-white/30">MODEL_3D: OPT_LOADED</div>
+        </div>
+
+        {/* Color Chips */}
+        <div className="flex-1 flex flex-col justify-center gap-3">
+          <div className="text-white/40 text-[7px] uppercase">Select paint code:</div>
+          <div className="flex gap-2">
+            {colors.map((c) => (
+              <button
+                key={c.hex}
+                onClick={() => {
+                  playTick();
+                  setActiveColor(c.hex);
+                  setColorName(c.name);
+                }}
+                className="w-5 h-5 rounded-full border border-white/20 relative active:scale-90 transition-transform cursor-pointer"
+                style={{
+                  backgroundColor: c.hex,
+                  boxShadow: activeColor === c.hex ? `0 0 8px ${c.hex}` : "none",
+                  borderColor: activeColor === c.hex ? "#fff" : "rgba(255,255,255,0.2)",
+                }}
+                aria-label={c.name}
+              />
+            ))}
+          </div>
+          <div className="bg-white/5 p-2 rounded border border-white/5 mt-1">
+            <div className="text-white/30 text-[7px]">CONFIG_CODE:</div>
+            <div className="text-white font-bold">{colorName}</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-[8px] text-white/30 border-t border-white/5 pt-2 flex justify-between">
+        <span>ASSET_RENDER: STREAMING_CDN</span>
+        <span>INTEGRITY: 100%</span>
       </div>
     </div>
-    <div className="absolute top-4 left-4 font-mono text-xs text-white/10 uppercase">Artifact_Ref // {label.replace(/\s+/g, '_')}</div>
-  </div>
-);
+  );
+}
+
+function EmiSimulatorWidget() {
+  const [downPayment, setDownPayment] = useState(20); // 20% or 40%
+  const [tenure, setTenure] = useState(36); // 36 or 60 months
+
+  // Calculate mock values
+  const totalCost = 45000;
+  const downPaymentAmount = (totalCost * downPayment) / 100;
+  const financedAmount = totalCost - downPaymentAmount;
+  const monthlyEmi = Math.round((financedAmount * 1.05) / tenure); // 5% interest rate simple calc
+
+  return (
+    <div className="w-full aspect-video bg-black/60 border border-white/10 rounded-xl p-6 font-mono text-[10px] text-primary relative overflow-hidden flex flex-col justify-between select-none">
+      <div className="flex justify-between items-center opacity-40 border-b border-white/5 pb-2">
+        <span>EMI_SIMULATOR_ENGINE // FINANCE_LAYER</span>
+        <span className="animate-pulse">● EVALUATING</span>
+      </div>
+
+      <div className="flex-1 flex gap-6 items-center my-4">
+        {/* Cost breakdown visual split bar */}
+        <div className="w-[45%] h-full flex flex-col justify-center gap-4">
+          <div className="space-y-1">
+            <div className="flex justify-between text-white/40 text-[7px]">
+              <span>DOWN_PAYMENT</span>
+              <span className="text-white">{downPayment}%</span>
+            </div>
+            <div className="h-2 bg-white/5 rounded-full overflow-hidden flex">
+              <motion.div 
+                className="bg-primary h-full"
+                animate={{ width: `${downPayment}%` }}
+                transition={{ duration: 0.5 }}
+              />
+              <motion.div 
+                className="bg-white/10 h-full flex-grow"
+                animate={{ width: `${100 - downPayment}%` }}
+                transition={{ duration: 0.5 }}
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 text-[8px]">
+            <button 
+              onClick={() => { playTick(); setDownPayment(20); }} 
+              className={`py-1 border rounded text-[7px] cursor-pointer ${downPayment === 20 ? 'bg-primary/20 border-primary text-white' : 'bg-white/5 border-white/10 text-white/50'}`}
+            >
+              20% DOWN
+            </button>
+            <button 
+              onClick={() => { playTick(); setDownPayment(40); }} 
+              className={`py-1 border rounded text-[7px] cursor-pointer ${downPayment === 40 ? 'bg-primary/20 border-primary text-white' : 'bg-white/5 border-white/10 text-white/50'}`}
+            >
+              40% DOWN
+            </button>
+            <button 
+              onClick={() => { playTick(); setTenure(36); }} 
+              className={`py-1 border rounded text-[7px] cursor-pointer ${tenure === 36 ? 'bg-primary/20 border-primary text-white' : 'bg-white/5 border-white/10 text-white/50'}`}
+            >
+              36 MO
+            </button>
+            <button 
+              onClick={() => { playTick(); setTenure(60); }} 
+              className={`py-1 border rounded text-[7px] cursor-pointer ${tenure === 60 ? 'bg-primary/20 border-primary text-white' : 'bg-white/5 border-white/10 text-white/50'}`}
+            >
+              60 MO
+            </button>
+          </div>
+        </div>
+
+        {/* Calculated Monthly EMI */}
+        <div className="flex-grow flex flex-col justify-center bg-white/[0.01] border border-white/5 p-4 rounded text-center">
+          <div className="text-white/30 text-[7px] uppercase tracking-wider mb-1">ESTIMATED_PAYMENT</div>
+          <motion.div 
+            key={monthlyEmi}
+            initial={{ scale: 0.95, opacity: 0.5 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="text-3xl font-black text-white tracking-tight"
+          >
+            ${monthlyEmi}<span className="text-[10px] font-normal text-white/40">/MO</span>
+          </motion.div>
+          <div className="text-[7px] text-white/30 mt-2">
+            FINANCED: ${financedAmount.toLocaleString()}
+          </div>
+        </div>
+      </div>
+
+      <div className="text-[8px] text-white/30 border-t border-white/5 pt-2 flex justify-between">
+        <span>INTEREST_RATE: 5.0% APR</span>
+        <span>TAX_LOGIC: AUTOMATED</span>
+      </div>
+    </div>
+  );
+}
+
+function DealerMapWidget() {
+  const [selectedDealer, setSelectedDealer] = useState("HYUNDAI_CENTER_CITY");
+  const [inventory, setInventory] = useState(12);
+
+  const dealers = [
+    { id: "HYUNDAI_CENTER_CITY", name: "Hyundai Center City", dist: "1.2mi", stock: 12, x: 45, y: 35 },
+    { id: "METRO_AUTO_DEPOT", name: "Metro Auto Depot", dist: "3.4mi", stock: 8, x: 75, y: 25 },
+    { id: "PACIFIC_BAY_MOTORS", name: "Pacific Bay Motors", dist: "5.8mi", stock: 4, x: 25, y: 65 },
+  ];
+
+  return (
+    <div className="w-full aspect-video bg-black/60 border border-white/10 rounded-xl p-6 font-mono text-[10px] text-primary relative overflow-hidden flex flex-col justify-between select-none">
+      <div className="flex justify-between items-center opacity-40 border-b border-white/5 pb-2">
+        <span>DEALER_INVENTORY_MATCH // MAP_HUD</span>
+        <span className="animate-pulse">● LIVE_SYNC</span>
+      </div>
+
+      <div className="flex-1 flex gap-6 items-center my-4">
+        {/* Radar Map view grid */}
+        <div className="w-[45%] h-full relative border border-white/5 rounded flex items-center justify-center bg-white/[0.01] overflow-hidden">
+          {/* Coordinate grid lines */}
+          <div className="absolute inset-0 tech-grid opacity-10" />
+          
+          <svg className="w-full h-full absolute inset-0 overflow-visible" viewBox="0 0 100 100">
+            {/* Grid radar sweep */}
+            <circle cx="50" cy="50" r="45" stroke="rgba(0, 245, 255, 0.05)" strokeWidth="0.5" fill="none" />
+            <circle cx="50" cy="50" r="25" stroke="rgba(0, 245, 255, 0.05)" strokeWidth="0.5" fill="none" />
+            
+            {/* Dealer ping nodes */}
+            {dealers.map((d) => (
+              <g key={d.id}>
+                <circle 
+                  cx={d.x} 
+                  cy={d.y} 
+                  r={selectedDealer === d.id ? "4.5" : "3.5"} 
+                  fill={selectedDealer === d.id ? "#00f5ff" : "rgba(0, 245, 255, 0.4)"}
+                  className="cursor-pointer pointer-events-auto"
+                  onClick={() => {
+                    playTick();
+                    setSelectedDealer(d.id);
+                    setInventory(d.stock);
+                  }}
+                  style={{
+                    filter: selectedDealer === d.id ? "drop-shadow(0 0 4px #00f5ff)" : "none"
+                  }}
+                />
+                {selectedDealer === d.id && (
+                  <circle 
+                    cx={d.x} 
+                    cy={d.y} 
+                    r="8" 
+                    fill="none" 
+                    stroke="#00f5ff" 
+                    strokeWidth="0.5" 
+                    className="animate-ping" 
+                  />
+                )}
+              </g>
+            ))}
+          </svg>
+          <div className="absolute bottom-2 left-2 text-[7px] text-white/30">RADIUS: 10mi</div>
+        </div>
+
+        {/* Selected Dealer info box */}
+        <div className="flex-grow space-y-2">
+          {dealers.map((d) => (
+            <div 
+              key={d.id}
+              onClick={() => {
+                playTick();
+                setSelectedDealer(d.id);
+                setInventory(d.stock);
+              }}
+              className={`p-2 rounded border transition-all cursor-pointer ${selectedDealer === d.id ? 'bg-primary/10 border-primary text-white' : 'bg-white/[0.01] border-white/5 text-white/40'}`}
+            >
+              <div className="flex justify-between font-bold">
+                <span>{d.name.split(" ").slice(1).join("_").toUpperCase()}</span>
+                <span>{d.dist}</span>
+              </div>
+              {selectedDealer === d.id && (
+                <div className="text-[7.5px] text-primary mt-1">
+                  INVENTORY_MATCH // {d.stock} UNITS_FOUND
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="text-[8px] text-white/30 border-t border-white/5 pt-2 flex justify-between">
+        <span>FULFILLMENT_ROUTE: DIGITAL_SECURE_HOLD</span>
+        <span>LAST_SYNC: JUST_NOW</span>
+      </div>
+    </div>
+  );
+}
+
+const InteractiveArtifact = ({ label }: { label: string }) => {
+  if (label.includes("Configurator")) {
+    return <ConfiguratorWidget />;
+  }
+  if (label.includes("Simulation") || label.includes("Quotation")) {
+    return <EmiSimulatorWidget />;
+  }
+  return <DealerMapWidget />;
+};
 
 export default function CaseStudyHyundai({ onContactClick }: { onContactClick: () => void }) {
+
   useEffect(() => { window.scrollTo(0, 0); }, []);
   useSEO({
     title: "Hyundai Click to Buy — Automotive E-Commerce Case Study | Userhood",
@@ -188,14 +450,14 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
                 </ul>
               </div>
               <div className="md:col-span-7">
-                <Placeholder label="Variant Configurator UI" aspect="aspect-video" />
+                <InteractiveArtifact label="Variant Configurator UI" />
               </div>
             </div>
 
             {/* Pillar 2: Financial Transparency */}
             <div className="grid md:grid-cols-12 gap-16 items-center">
               <div className="md:col-span-7 order-2 md:order-1">
-                <Placeholder label="Quotation & EMI Simulation" aspect="aspect-video" />
+                <InteractiveArtifact label="Quotation & EMI Simulation" />
               </div>
               <div className="md:col-span-5 space-y-8 order-1 md:order-2">
                 <div className="inline-flex items-center gap-4 px-4 py-2 bg-primary/5 border border-primary/10 rounded-full">
@@ -237,7 +499,7 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
                 </div>
               </div>
               <div className="md:col-span-7">
-                <Placeholder label="Dealer Selection & Booking" aspect="aspect-video" />
+                <InteractiveArtifact label="Dealer Selection & Booking" />
               </div>
             </div>
           </div>
