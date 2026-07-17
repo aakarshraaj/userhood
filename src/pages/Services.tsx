@@ -128,9 +128,9 @@ export default function Services() {
     }, []);
 
     useSEO({
-        title: "Services — Product Design, AI Development & Branding | Userhood",
+        title: "Services — AI MVP Design & Development for Startups | Userhood",
         description:
-            "Userhood's full range of services: product UX design, full-stack software development, AI integration & intelligent systems, and brand identity. Built for ambitious operators.",
+            "Everything a funded startup needs to ship an AI-powered MVP: product UX design, full-stack engineering, and AI integration — owned by one team, delivered in 12 weeks.",
         canonical: "https://userhood.in/services",
         jsonLd: [serviceLd, faqLd] as any,
     });
@@ -165,7 +165,7 @@ export default function Services() {
                         transition={{ delay: 0.2 }}
                         className="text-lg sm:text-xl md:text-2xl text-slate-400 font-light leading-snug max-w-2xl border-l-2 border-primary/20 pl-6"
                     >
-                        Four disciplines. One studio. Zero handoff overhead between design, engineering, AI, and brand.
+                        Everything a funded startup needs to ship an AI-powered MVP — design, engineering, AI, and brand under one roof. Zero handoff overhead.
                     </motion.p>
                 </header>
 

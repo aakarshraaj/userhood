@@ -58,7 +58,7 @@ export default function Hero({ onContactClick }: HeroProps) {
             className="font-mono text-xs text-primary mb-6 md:mb-10 flex items-center gap-2 flex-wrap"
           >
             <span className="w-2 h-2 bg-primary animate-pulse shrink-0" />
-            <span>DESIGN × ENGINEERING. IN FULL ALIGNMENT.</span>
+            <span>AI-POWERED MVPS FOR FUNDED STARTUPS</span>
           </motion.div>
 
           {/* The Indictment Headline */}
@@ -131,7 +131,7 @@ export default function Hero({ onContactClick }: HeroProps) {
             className="border-l-2 border-primary/20 pl-5 md:pl-8 max-w-2xl"
           >
             <p className="text-base sm:text-lg md:text-xl text-slate-400 font-light leading-relaxed mb-8 md:mb-10">
-              Userhood builds world-class digital products by merging design and engineering into one relentless discipline. No bloated cycles. No year-long timelines.
+              Userhood designs and builds AI-powered MVPs for funded startups. One team owns product design, engineering, and the AI layer end to end — so nothing gets lost in handoff, and your runway buys a shipped product instead of a process.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6 font-mono text-sm">
@@ -162,14 +162,14 @@ export default function Hero({ onContactClick }: HeroProps) {
             className="mt-16 md:mt-24 pt-8 border-t border-white/5 max-w-4xl"
           >
             <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em] mb-5">
-              TRUSTED BY LEADING TEAMS AND GLOBAL ENTERPRISES
+              OUR TEAM HAS SHIPPED FOR
             </p>
-            
+
             <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]">
               <div className="flex gap-16 md:gap-24 items-center animate-infinite-scroll w-max py-2 select-none">
                 {[
-                  "HYUNDAI", "MITSUBISHI MOTORS", "VOLTSYSTEMS", "APEX LOGISTICS", "PULSE ENERGY", "AETHER LABS",
-                  "HYUNDAI", "MITSUBISHI MOTORS", "VOLTSYSTEMS", "APEX LOGISTICS", "PULSE ENERGY", "AETHER LABS"
+                  "HYUNDAI", "MITSUBISHI MOTORS", "HYUNDAI", "MITSUBISHI MOTORS",
+                  "HYUNDAI", "MITSUBISHI MOTORS", "HYUNDAI", "MITSUBISHI MOTORS"
                 ].map((brand, i) => (
                   <span
                     key={i}

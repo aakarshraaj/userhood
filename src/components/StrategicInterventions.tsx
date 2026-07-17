@@ -33,13 +33,13 @@ const interventions = [
   {
     id: "dummy-1",
     title: "Next-Gen Energy Grid Visualization",
-    client: "VoltSystems Global",
-    description: "Real-time monitoring and predictive maintenance for decentralized renewable energy networks. Enabled 10x throughput for grid operators.",
+    client: "Userhood R&D",
+    description: "Internal concept exploration: real-time monitoring and predictive maintenance interfaces for decentralized renewable energy networks.",
     icon: <Zap className="w-6 h-6" />,
-    tag: "ENERGY_INFRA",
+    tag: "CONCEPT_LAB",
     link: "#",
     featured: false,
-    metric: "10x Throughput"
+    metric: "R&D Concept"
   }
 ];
 

@@ -145,14 +145,14 @@ const projects: ProjectItem[] = [
   },
   {
     id: "voltsystems",
-    client: "Volt Systems",
-    metric: "CLASSIFIED // RESTRICTED",
+    client: "Userhood R&D",
+    metric: "CONCEPT // INTERNAL LAB",
     title: "Secured Grid Operations",
-    description: "Multi-layered grid cybersecurity HUD designed for tactical critical energy asset defense operations.",
+    description: "Internal concept: a multi-layered grid cybersecurity HUD exploring real-time interfaces for critical energy infrastructure.",
     link: "#",
     color: "#E100FF",
     secondaryColor: "rgba(225, 0, 255, 0.15)",
-    tags: ["CYBERSECURITY", "RESTRICTED", "TACTICAL_HUD"],
+    tags: ["CYBERSECURITY", "CONCEPT_LAB", "TACTICAL_HUD"],
     graphic: <VoltSystemsGraphic />,
   },
 ];

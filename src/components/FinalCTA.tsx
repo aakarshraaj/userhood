@@ -42,7 +42,7 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
           className="max-w-3xl mx-auto mb-12 md:mb-16"
         >
           <p className="text-xl sm:text-2xl md:text-3xl text-slate-400 font-light leading-relaxed">
-            We work with a small number of founders and companies at a time. If your product deserves true alignment between design and engineering, let's talk.
+            We take on a small number of MVP builds at a time. If you've raised and need your product designed, built, and shipped — not managed — let's talk.
           </p>
         </motion.div>
 
