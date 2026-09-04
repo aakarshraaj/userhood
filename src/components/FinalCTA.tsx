@@ -15,7 +15,7 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
           viewport={{ once: true }}
           className="font-mono text-xs text-primary mb-6 md:mb-8 uppercase tracking-widest"
         >
-          [ ACT V // THE INVITATION ]
+          [ 05 // THE_DECISION ]
         </motion.div>
 
         <motion.h2
@@ -24,9 +24,9 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
           viewport={{ once: true }}
           className="text-4xl sm:text-5xl md:text-7xl lg:text-[110px] font-black text-white leading-[0.85] tracking-tighter mb-6 md:mb-8"
         >
-          Time to<br />close the<br />
+          Twelve weeks<br />from now,<br />
           <span className="text-primary">
-            gap
+            what is live?
             <motion.span
               animate={{ opacity: [1, 0, 1] }}
               transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
@@ -42,7 +42,7 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
           className="max-w-3xl mx-auto mb-12 md:mb-16"
         >
           <p className="text-xl sm:text-2xl md:text-3xl text-slate-400 font-light leading-relaxed">
-            We take on a small number of MVP builds at a time. If you've raised and need your product designed, built, and shipped — not managed — let's talk.
+            If the problem is real, the decision-maker is in the room, and the first release can be sharply scoped, we can turn the next twelve weeks into a working product.
           </p>
         </motion.div>
 
@@ -58,7 +58,7 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
             onClick={onContactClick}
             className="bg-primary text-black px-8 py-5 md:px-14 md:py-6 font-mono font-bold text-base md:text-lg transition-all min-h-[52px] w-full sm:w-auto whitespace-nowrap"
           >
-            START THE CONVERSATION
+            DISCUSS YOUR 12-WEEK BUILD
           </motion.button>
           <a
             href="/#case-studies"

@@ -17,14 +17,11 @@ import { useSEO } from "./utils/seo";
 
 
 // Below-the-fold homepage sections — lazy loaded
-const StatsStrip = lazy(() => import("./components/StatsStrip"));
-const StrategicInterventions = lazy(() => import("./components/StrategicInterventions"));
-const ProcessGallery = lazy(() => import("./components/ProcessGallery"));
+const SelectedWork = lazy(() => import("./components/SelectedWork"));
+const TwelveWeekBuild = lazy(() => import("./components/TwelveWeekBuild"));
 const EngagementModels = lazy(() => import("./components/EngagementModels"));
 const FounderOrigin = lazy(() => import("./components/FounderOrigin"));
 const FinalCTA = lazy(() => import("./components/FinalCTA"));
-const FigmaToCodeSlider = lazy(() => import("./components/FigmaToCodeSlider"));
-const OperationalHeartbeat = lazy(() => import("./components/OperationalHeartbeat"));
 
 const CaseStudyMitsubishi = lazy(() => import("./pages/CaseStudyMitsubishi"));
 const CaseStudyHyundai = lazy(() => import("./pages/CaseStudyHyundai"));
@@ -41,19 +38,19 @@ const HOME_JSON_LD = {
   name: "Userhood",
   url: "https://userhood.in",
   logo: "https://userhood.in/logo.png",
-  description: "A design-led product studio building world-class digital products, AI solutions, and brand systems for ambitious founders and enterprises.",
+  description: "A senior product design and engineering studio that takes funded startups from product brief to a production-ready MVP in 12 weeks.",
   sameAs: [
     "https://twitter.com/userhood",
     "https://in.linkedin.com/company/userhood",
     "https://instagram.com/userhood.in"
   ],
-  knowsAbout: ["Product Design", "Software Engineering", "AI Integration", "Brand Identity", "UX Design"],
+  knowsAbout: ["MVP Development", "Product Design", "Software Engineering", "AI Product Development", "UX Design"],
 };
 
 function HomeSEO() {
   useSEO({
-    title: "Userhood — Product Design, Software Development & AI Services Studio",
-    description: "Design that makes engineers nervous. Engineering that makes designers proud. Userhood builds world-class digital products, AI solutions & brand systems.",
+    title: "Userhood — AI-Powered MVPs for Funded Startups, Shipped in 12 Weeks",
+    description: "One senior team takes your MVP from product brief to production in 12 weeks — strategy, product design, engineering, and AI without the handoff drag.",
     canonical: "https://userhood.in/",
     jsonLd: HOME_JSON_LD,
   });
@@ -106,13 +103,8 @@ export default function App() {
             <main>
               <HomeSEO />
               <Hero onContactClick={() => handleContactClick('hero')} />
-              <StatsStrip />
-              <OperationalHeartbeat />
-              <StrategicInterventions />
-              <ProcessGallery />
-
-              <FigmaToCodeSlider />
-
+              <SelectedWork />
+              <TwelveWeekBuild />
               <EngagementModels onContactClick={() => handleContactClick('engagement_models')} />
               <FounderOrigin />
               <FinalCTA onContactClick={() => handleContactClick('final_cta')} />

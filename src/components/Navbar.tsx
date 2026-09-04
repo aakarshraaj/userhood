@@ -60,11 +60,11 @@ export default function Navbar({ onContactClick }: NavbarProps) {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
-          <a href="/#case-studies" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// CASE_STUDIES</a>
+          <a href="/#case-studies" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// WORK</a>
+          <a href="/#process" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// 12_WEEK_BUILD</a>
           <Link to="/services" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// SERVICES</Link>
-          <Link to="/careers" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// CAREERS</Link>
           <Link to="/about" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// THE_TEAM</Link>
-          <a href="/#outcomes" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// OUTCOMES</a>
+          <Link to="/careers" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// CAREERS</Link>
 
           <div className="flex items-center gap-4">
             <button
@@ -149,11 +149,11 @@ export default function Navbar({ onContactClick }: NavbarProps) {
             exit={{ opacity: 0, y: -10 }}
             className="absolute top-14 sm:top-16 left-0 w-full bg-background-dark border-b border-white/5 p-5 sm:p-6 flex flex-col gap-5 sm:gap-6 md:hidden font-mono text-xs tracking-tighter uppercase z-40"
           >
-            <a href="/#case-studies" onClick={handleLinkClick} className="hover:text-primary transition-colors">// CASE_STUDIES</a>
+            <a href="/#case-studies" onClick={handleLinkClick} className="hover:text-primary transition-colors">// WORK</a>
+            <a href="/#process" onClick={handleLinkClick} className="hover:text-primary transition-colors">// 12_WEEK_BUILD</a>
             <Link to="/services" onClick={handleLinkClick} className="hover:text-primary transition-colors">// SERVICES</Link>
-            <Link to="/careers" onClick={handleLinkClick} className="hover:text-primary transition-colors">// CAREERS</Link>
             <Link to="/about" onClick={handleLinkClick} className="hover:text-primary transition-colors">// THE_TEAM</Link>
-            <a href="/#outcomes" onClick={handleLinkClick} className="hover:text-primary transition-colors">// OUTCOMES</a>
+            <Link to="/careers" onClick={handleLinkClick} className="hover:text-primary transition-colors">// CAREERS</Link>
             
             <div className="flex justify-between items-center py-2 border-t border-white/5">
               <span className="text-white/30">Inspect_Spec</span>

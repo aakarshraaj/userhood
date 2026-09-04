@@ -15,7 +15,7 @@ export default function FounderOrigin() {
                     >
                         <div className="font-mono text-xs text-primary uppercase tracking-[0.2em] flex items-center gap-2">
                             <Users size={12} className="shrink-0" />
-                            [ ORIGIN_NODE // ARCHITECTS ]
+                            [ 04 // THE_TEAM ]
                         </div>
 
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter leading-[1.1] mb-6 md:mb-8">

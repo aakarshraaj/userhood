@@ -13,7 +13,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState("");
   const [step, setStep] = useState(1);
-  const [engagementType, setEngagementType] = useState("THE_SYSTEM");
+  const [engagementType, setEngagementType] = useState("THE_12_WEEK_BUILD");
   const [frictionSource, setFrictionSource] = useState("HANDOFF_DRIFT");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -122,9 +122,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <div className="space-y-6">
                 <div className="grid grid-cols-1 gap-3">
                   {[
-                    { id: "THE_INTERVENTION", label: "Restructure & Audit (2-4 Weeks)", desc: "Critical UX/UI and technical codebase restructuring." },
-                    { id: "THE_SYSTEM", label: "End-to-End Build (3-6+ Months)", desc: "Embed as dynamic strike team. Concept to shipping." },
-                    { id: "THE_OVERSIGHT", label: "Retained Advisory (Ongoing)", desc: "Standby advisory, design QA, and code review." }
+                    { id: "THE_12_WEEK_BUILD", label: "12-Week MVP Build", desc: "One senior team takes a sharply scoped MVP from product brief to production." },
+                    { id: "THE_INTERVENTION", label: "Product Rescue (2-4 Weeks)", desc: "Diagnose and restructure a product, design system, or codebase already in motion." },
+                    { id: "THE_OVERSIGHT", label: "Post-Launch Support (Ongoing)", desc: "Iteration, design QA, engineering support, and product oversight after release." }
                   ].map((option) => (
                     <button
                       key={option.id}

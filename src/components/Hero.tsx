@@ -62,20 +62,20 @@ export default function Hero({ onContactClick }: HeroProps) {
           </motion.div>
 
           {/* The Indictment Headline */}
-          <div className="mb-8 md:mb-12 space-y-1">
+          <h1 className="mb-8 md:mb-12 space-y-1">
 
             {/* Line 1: soft accusation */}
-            <motion.p
+            <motion.span
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.05 }}
-              className="text-slate-400 text-xl sm:text-2xl md:text-3xl font-light tracking-tight"
+              className="block text-slate-400 text-xl sm:text-2xl md:text-3xl font-light tracking-tight"
             >
               Still taking
-            </motion.p>
+            </motion.span>
 
             {/* Line 2: the number — struck through */}
-            <motion.div
+            <motion.span
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.12 }}
@@ -91,37 +91,37 @@ export default function Hero({ onContactClick }: HeroProps) {
                   className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[6px] md:h-[8px] bg-red-500/70 origin-left block"
                 />
               </span>
-            </motion.div>
+            </motion.span>
 
             {/* Line 3: the bridge */}
-            <motion.p
+            <motion.span
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.22 }}
-              className="text-slate-400 text-xl sm:text-2xl md:text-3xl font-light tracking-tight"
+              className="block text-slate-400 text-xl sm:text-2xl md:text-3xl font-light tracking-tight"
             >
               to ship your product?
-            </motion.p>
+            </motion.span>
 
             {/* Spacer */}
             <div className="h-4 md:h-6" />
 
             {/* Line 4: the answer — glows in */}
-            <motion.div
+            <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 1.1 }}
             >
-              <p className="text-slate-300 text-xl sm:text-2xl md:text-3xl font-light tracking-tight mb-1">
+              <span className="block text-slate-300 text-xl sm:text-2xl md:text-3xl font-light tracking-tight mb-1">
                 It should take
-              </p>
-              <p
-                className="text-[min(22vw,120px)] sm:text-7xl md:text-8xl lg:text-[120px] font-black leading-none tracking-tighter text-primary drop-shadow-[0_0_60px_rgba(0,245,255,0.35)]"
+              </span>
+              <span
+                className="block text-[min(22vw,120px)] sm:text-7xl md:text-8xl lg:text-[120px] font-black leading-none tracking-tighter text-primary drop-shadow-[0_0_60px_rgba(0,245,255,0.35)]"
               >
                 12 weeks.
-              </p>
-            </motion.div>
-          </div>
+              </span>
+            </motion.span>
+          </h1>
 
           {/* Tagline + CTAs */}
           <motion.div
@@ -131,7 +131,7 @@ export default function Hero({ onContactClick }: HeroProps) {
             className="border-l-2 border-primary/20 pl-5 md:pl-8 max-w-2xl"
           >
             <p className="text-base sm:text-lg md:text-xl text-slate-400 font-light leading-relaxed mb-8 md:mb-10">
-              Userhood designs and builds AI-powered MVPs for funded startups. One team owns product design, engineering, and the AI layer end to end — so nothing gets lost in handoff, and your runway buys a shipped product instead of a process.
+              One senior team takes your MVP from product brief to production. Strategy, product design, engineering, and AI move in the same twelve-week build — so your runway buys a working product, not months of coordination.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6 font-mono text-sm">
@@ -141,7 +141,7 @@ export default function Hero({ onContactClick }: HeroProps) {
                 onClick={onContactClick}
                 className="bg-primary text-black px-6 py-4 min-h-[48px] font-bold transition-transform flex items-center justify-center gap-2 w-full sm:w-auto"
               >
-                START THE CONVERSATION
+                START YOUR 12-WEEK BUILD
               </motion.button>
               <motion.a
                 href="#case-studies"
@@ -149,7 +149,7 @@ export default function Hero({ onContactClick }: HeroProps) {
                 whileHover={{ backgroundColor: "rgba(255,255,255,0.05)" }}
                 className="text-white border border-white/10 px-6 py-4 min-h-[48px] transition-all flex items-center justify-center hover:border-white/30 w-full sm:w-auto"
               >
-                VIEW_ARCHIVES
+                SEE SELECTED WORK
               </motion.a>
             </div>
           </motion.div>
