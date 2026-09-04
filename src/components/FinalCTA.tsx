@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { trackAnalyticsEvent } from "../utils/analytics";
 
 interface FinalCTAProps {
   onContactClick: () => void;
@@ -62,6 +63,7 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
           </motion.button>
           <a
             href="/#case-studies"
+            onClick={() => trackAnalyticsEvent("selected_work_click", { source: "final_cta" })}
             className="font-mono text-xs text-white/50 hover:text-primary uppercase tracking-widest transition-colors"
           >
             See case studies first

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "motion/react";
-import { trackEvent } from "../utils/analytics";
+import { trackAnalyticsEvent } from "../utils/analytics";
 import { playStrike, playSuccess } from "../utils/audio";
 import KineticMesh from "./KineticMesh";
 
@@ -145,7 +145,7 @@ export default function Hero({ onContactClick }: HeroProps) {
               </motion.button>
               <motion.a
                 href="#case-studies"
-                onClick={() => trackEvent('click_view_archives', 'navigation', 'hero_cta')}
+                onClick={() => trackAnalyticsEvent("selected_work_click", { source: "hero" })}
                 whileHover={{ backgroundColor: "rgba(255,255,255,0.05)" }}
                 className="text-white border border-white/10 px-6 py-4 min-h-[48px] transition-all flex items-center justify-center hover:border-white/30 w-full sm:w-auto"
               >

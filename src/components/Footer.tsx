@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { trackAnalyticsEvent } from "../utils/analytics";
 
 export default function Footer() {
   return (
@@ -36,7 +37,7 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-2">
             <div className="text-white/50 mb-4">Social</div>
-            <a href={`https://wa.me/917498908702?text=${encodeURIComponent("Hey Userhood! I came across your work and want to chat about a potential collaboration.")}`} target="_blank" rel="noopener noreferrer" className="hover:text-[#25D366] transition-colors">WhatsApp</a>
+            <a href={`https://wa.me/917498908702?text=${encodeURIComponent("Hey Userhood! I came across your work and want to chat about a potential collaboration.")}`} onClick={() => trackAnalyticsEvent("whatsapp_click", { source: "footer" })} target="_blank" rel="noopener noreferrer" className="hover:text-[#25D366] transition-colors">WhatsApp</a>
             <a href="https://in.linkedin.com/company/userhood" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">LinkedIn</a>
             <a href="https://instagram.com/userhood.in" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Instagram</a>
           </div>

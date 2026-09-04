@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { trackAnalyticsEvent } from "../utils/analytics";
 
 const selectedWork = [
   {
@@ -58,6 +59,7 @@ export default function SelectedWork() {
             >
               <Link
                 to={item.link}
+                onClick={() => trackAnalyticsEvent("case_study_open", { source: "homepage_selected_work", organisation: item.organisation })}
                 aria-label={`Read the ${item.organisation} team-experience case study`}
                 className="group grid gap-6 border-b border-white/10 py-10 transition-colors hover:bg-white/[0.02] md:grid-cols-12 md:items-center md:gap-8 md:px-4 md:py-14"
               >

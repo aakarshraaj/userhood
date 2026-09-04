@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Menu, X, Volume2, VolumeX, Ruler } from "lucide-react";
 
 import { toggleMute, getMuteState, playTick, playSuccess, playStrike } from "../utils/audio";
+import { trackAnalyticsEvent } from "../utils/analytics";
 
 interface NavbarProps {
   onContactClick: () => void;
@@ -84,6 +85,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               href={`https://wa.me/917498908702?text=${encodeURIComponent("Hey Userhood! I came across your work and want to chat about a potential collaboration.")}`}
+              onClick={() => trackAnalyticsEvent("whatsapp_click", { source: "navbar_desktop" })}
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/40 hover:text-[#25D366] transition-colors"
@@ -108,6 +110,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             href={`https://wa.me/917498908702?text=${encodeURIComponent("Hey Userhood! I came across your work and want to chat about a potential collaboration.")}`}
+            onClick={() => trackAnalyticsEvent("whatsapp_click", { source: "navbar_mobile" })}
             target="_blank"
             rel="noopener noreferrer"
             className="text-white/40 hover:text-[#25D366] transition-colors p-2"

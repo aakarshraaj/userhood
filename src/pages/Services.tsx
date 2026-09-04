@@ -254,7 +254,7 @@ export default function Services() {
                         We run lean on purpose. You work directly with the architects — no account managers, no bloat.
                     </p>
                     <a
-                        href="/?contact=true"
+                        href="/?contact=true&source=services_page"
                         className="inline-flex items-center gap-3 bg-primary text-black font-mono font-bold text-sm px-10 py-5 hover:bg-white transition-colors"
                     >
                         ESTABLISH_CONTACT <ArrowRight className="w-4 h-4" />

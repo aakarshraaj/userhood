@@ -9,7 +9,7 @@ import StickyContactCTA from "./components/StickyContactCTA";
 import RedlineInspector from "./components/RedlineInspector";
 import CustomCursor from "./components/CustomCursor";
 
-import { trackPageView, trackEvent } from "./utils/analytics";
+import { captureAttribution, trackAnalyticsEvent, trackPageView } from "./utils/analytics";
 
 import { useSEO } from "./utils/seo";
 
@@ -65,65 +65,71 @@ function RouteTracker() {
 }
 export default function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [contactSource, setContactSource] = useState("unknown");
   const location = useLocation();
 
   useEffect(() => {
-    if (location.search.includes("contact=true")) {
+    captureAttribution();
+    const params = new URLSearchParams(location.search);
+    if (params.get("contact") === "true") {
+      const source = params.get("source") || "direct_contact_link";
+      setContactSource(source);
       setIsContactOpen(true);
+      trackAnalyticsEvent("lead_form_open", { source });
       // Remove contact=true parameter from URL
       const url = new URL(window.location.href);
       url.searchParams.delete("contact");
+      url.searchParams.delete("source");
       window.history.replaceState({}, document.title, url.pathname + url.search + url.hash);
     }
   }, [location]);
 
   const handleContactClick = (source: string) => {
+    setContactSource(source);
     setIsContactOpen(true);
-    trackEvent('open_contact_modal', 'conversion', source);
+    trackAnalyticsEvent("lead_form_open", { source });
   };
 
   return (
     <div className="min-h-screen selection:bg-primary selection:text-black">
-      <RouteTracker />
-      <RedlineInspector />
-      <CustomCursor />
-      <Navbar onContactClick={() => handleContactClick('navbar')} />
+      <div id="site-shell">
+        <RouteTracker />
+        <RedlineInspector />
+        <CustomCursor />
+        <Navbar onContactClick={() => handleContactClick('navbar')} />
 
+        <Suspense fallback={<div className="min-h-screen bg-background-dark flex items-center justify-center"><div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin-slow"></div></div>}>
+          <Routes>
+            <Route path="/" element={
+              <main>
+                <HomeSEO />
+                <Hero onContactClick={() => handleContactClick('hero')} />
+                <SelectedWork />
+                <TwelveWeekBuild />
+                <EngagementModels onContactClick={() => handleContactClick('engagement_models')} />
+                <FounderOrigin />
+                <FinalCTA onContactClick={() => handleContactClick('final_cta')} />
+              </main>
+            } />
+            <Route path="/case-study/mitsubishi" element={<CaseStudyMitsubishi onContactClick={() => handleContactClick('mitsubishi_case_study')} />} />
+            <Route path="/case-study/hyundai" element={<CaseStudyHyundai onContactClick={() => handleContactClick('hyundai_case_study')} />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/careers/:slug" element={<JobDetail />} />
+          </Routes>
+        </Suspense>
 
-
-
-
-      <Suspense fallback={<div className="min-h-screen bg-background-dark flex items-center justify-center"><div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin-slow"></div></div>}>
-        <Routes>
-          <Route path="/" element={
-            <main>
-              <HomeSEO />
-              <Hero onContactClick={() => handleContactClick('hero')} />
-              <SelectedWork />
-              <TwelveWeekBuild />
-              <EngagementModels onContactClick={() => handleContactClick('engagement_models')} />
-              <FounderOrigin />
-              <FinalCTA onContactClick={() => handleContactClick('final_cta')} />
-            </main>
-          } />
-          <Route path="/case-study/mitsubishi" element={<CaseStudyMitsubishi onContactClick={() => handleContactClick('mitsubishi_cs')} />} />
-          <Route path="/case-study/hyundai" element={<CaseStudyHyundai onContactClick={() => handleContactClick('hyundai_cs')} />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/careers/:slug" element={<JobDetail />} />
-        </Routes>
-      </Suspense>
-
-      <Footer />
-
-      <StickyContactCTA onContactClick={() => handleContactClick('sticky_cta')} />
+        <Footer />
+        <StickyContactCTA onContactClick={() => handleContactClick('sticky_mobile')} />
+      </div>
 
       <ContactModal
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
+        source={contactSource}
       />
     </div>
   );

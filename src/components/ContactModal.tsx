@@ -1,302 +1,475 @@
-import { motion, AnimatePresence } from "motion/react";
-import { X } from "lucide-react";
-import { useState, FormEvent } from "react";
-import { trackEvent } from "../utils/analytics";
-import { playTick } from "../utils/audio";
+import { AnimatePresence, motion } from "motion/react";
+import { ArrowRight, CheckCircle2, MessageCircle, X } from "lucide-react";
+import { FormEvent, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { getAttribution, trackAnalyticsEvent } from "../utils/analytics";
 
 interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
+  source: string;
 }
 
-export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [result, setResult] = useState("");
-  const [step, setStep] = useState(1);
-  const [engagementType, setEngagementType] = useState("THE_12_WEEK_BUILD");
-  const [frictionSource, setFrictionSource] = useState("HANDOFF_DRIFT");
+type SubmissionStatus = "idle" | "submitting" | "success" | "error";
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setResult("Sending transmission...");
+const projectTypes = [
+  {
+    id: "twelve_week_build",
+    label: "12-week MVP build",
+    detail: "A focused product from brief to production.",
+  },
+  {
+    id: "product_rescue",
+    label: "Product rescue",
+    detail: "Fix an existing product, system, or codebase.",
+  },
+  {
+    id: "post_launch_support",
+    label: "Post-launch support",
+    detail: "Iterate, stabilise, or extend a shipped product.",
+  },
+];
 
-    const formData = new FormData(e.currentTarget);
+const launchWindows = [
+  { value: "within_4_weeks", label: "Within 4 weeks" },
+  { value: "within_1_3_months", label: "Within 1–3 months" },
+  { value: "within_3_6_months", label: "Within 3–6 months" },
+  { value: "exploring", label: "Still exploring" },
+];
+
+const focusableSelector = [
+  "a[href]",
+  "button:not([disabled])",
+  "input:not([disabled]):not([type='hidden'])",
+  "select:not([disabled])",
+  "textarea:not([disabled])",
+  "[tabindex]:not([tabindex='-1'])",
+].join(",");
+
+export default function ContactModal({ isOpen, onClose, source }: ContactModalProps) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const firstFieldRef = useRef<HTMLInputElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+  const formStartedRef = useRef(false);
+  const statusRef = useRef<SubmissionStatus>("idle");
+  const requestControllerRef = useRef<AbortController | null>(null);
+
+  const [projectType, setProjectType] = useState("twelve_week_build");
+  const [status, setStatus] = useState<SubmissionStatus>("idle");
+  const [feedback, setFeedback] = useState("");
+
+  const closeModal = (method: string) => {
+    const activeRequest = requestControllerRef.current;
+    requestControllerRef.current = null;
+    activeRequest?.abort();
+    trackAnalyticsEvent("lead_form_close", {
+      source,
+      method,
+      form_started: formStartedRef.current,
+      submission_status: statusRef.current,
+    });
+    onClose();
+  };
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    previousFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    formStartedRef.current = false;
+    setProjectType("twelve_week_build");
+    setStatus("idle");
+    setFeedback("");
+
+    const siteShell = document.getElementById("site-shell");
+    const previousOverflow = document.body.style.overflow;
+    siteShell?.setAttribute("inert", "");
+    siteShell?.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "hidden";
+
+    const focusFrame = window.requestAnimationFrame(() => firstFieldRef.current?.focus());
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeModal("escape");
+        return;
+      }
+
+      if (event.key !== "Tab" || !dialogRef.current) return;
+
+      const focusable = (Array.from(
+        dialogRef.current.querySelectorAll(focusableSelector)
+      ) as HTMLElement[]).filter(
+        (element) =>
+          element.tabIndex >= 0 &&
+          element.getClientRects().length > 0 &&
+          element.getAttribute("aria-hidden") !== "true"
+      );
+
+      if (focusable.length === 0) {
+        event.preventDefault();
+        dialogRef.current.focus();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      const activeRequest = requestControllerRef.current;
+      requestControllerRef.current = null;
+      activeRequest?.abort();
+      window.cancelAnimationFrame(focusFrame);
+      document.removeEventListener("keydown", handleKeyDown);
+      siteShell?.removeAttribute("inert");
+      siteShell?.removeAttribute("aria-hidden");
+      document.body.style.overflow = previousOverflow;
+      previousFocusRef.current?.focus();
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    statusRef.current = status;
+    if (status === "success") successRef.current?.focus();
+  }, [status]);
+
+  const registerFormStart = () => {
+    if (formStartedRef.current) return;
+    formStartedRef.current = true;
+    trackAnalyticsEvent("lead_form_start", { source });
+  };
+
+  const handleProjectTypeChange = (nextProjectType: string) => {
+    registerFormStart();
+    setProjectType(nextProjectType);
+    trackAnalyticsEvent("lead_project_type_select", {
+      source,
+      project_type: nextProjectType,
+    });
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    registerFormStart();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    const launchWindow = String(formData.get("launch_window") ?? "");
+
+    trackAnalyticsEvent("lead_form_submit_attempt", {
+      source,
+      project_type: projectType,
+      launch_window: launchWindow,
+    });
 
     if (!accessKey) {
-      setResult("Error: Missing VITE_WEB3FORMS_ACCESS_KEY in .env");
-      setIsSubmitting(false);
+      setStatus("error");
+      setFeedback("The form is temporarily unavailable. Please use WhatsApp or email hello@userhood.in.");
+      trackAnalyticsEvent("lead_form_error", { source, reason: "missing_access_key" });
       return;
     }
 
+    setStatus("submitting");
+    setFeedback("Sending your project brief…");
+
     formData.append("access_key", accessKey);
-    formData.append("selected_engagement", engagementType);
-    formData.append("primary_friction", frictionSource);
+    formData.append("project_type", projectType);
+    formData.append("contact_source", source);
+    formData.append("subject", `New Userhood enquiry: ${projectType}`);
+
+    const attribution = getAttribution();
+    Object.entries(attribution).forEach(([key, value]) => formData.append(key, value));
+
+    const controller = new AbortController();
+    requestControllerRef.current = controller;
+    const timeoutId = window.setTimeout(() => controller.abort(), 15000);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData,
+        signal: controller.signal,
       });
-
       const data = await response.json();
 
-      if (data.success) {
-        trackEvent('submit_contact_form', 'lead_generation', engagementType);
-        setResult("Transmission successful. We will respond shortly.");
-        const form = e.target as HTMLFormElement;
-        form.reset();
-        setTimeout(() => {
-          onClose();
-          setResult("");
-          setStep(1); // reset step
-        }, 3000);
-      } else {
-        setResult(`Transmission failed: ${data.message}`);
-      }
-    } catch (error) {
-      setResult("A network error occurred. Please try again.");
-    }
+      if (!response.ok || !data.success) throw new Error("submission_failed");
 
-    setIsSubmitting(false);
+      form.reset();
+      setStatus("success");
+      setFeedback("Your brief is in. We will reply within one business day.");
+      trackAnalyticsEvent("generate_lead", {
+        source,
+        project_type: projectType,
+        launch_window: launchWindow,
+        utm_source: attribution.utm_source,
+        utm_medium: attribution.utm_medium,
+        utm_campaign: attribution.utm_campaign,
+      });
+    } catch (error) {
+      const modalWasClosed =
+        error instanceof DOMException &&
+        error.name === "AbortError" &&
+        requestControllerRef.current !== controller;
+
+      if (modalWasClosed) return;
+
+      const reason = error instanceof DOMException && error.name === "AbortError" ? "timeout" : "provider_error";
+      setStatus("error");
+      setFeedback("We could not send the form. Please try again or use WhatsApp or email hello@userhood.in.");
+      trackAnalyticsEvent("lead_form_error", { source, reason });
+    } finally {
+      window.clearTimeout(timeoutId);
+      if (requestControllerRef.current === controller) {
+        requestControllerRef.current = null;
+        setStatus((currentStatus) => (currentStatus === "submitting" ? "idle" : currentStatus));
+      }
+    }
   };
 
-  const handleModalClose = () => {
-    playTick();
-    onClose();
+  const handleWhatsAppClick = () => {
+    trackAnalyticsEvent("whatsapp_click", {
+      source: "contact_modal",
+      originating_cta: source,
+      project_type: projectType,
+    });
   };
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div className="fixed inset-0 z-[100] flex items-end justify-center p-0 sm:items-center sm:p-4">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={handleModalClose}
-            className="absolute inset-0 bg-background-dark/80 backdrop-blur-sm"
+            onClick={() => closeModal("backdrop")}
+            className="absolute inset-0 bg-background-dark/85 backdrop-blur-sm"
+            aria-hidden="true"
           />
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.98, y: 20 }}
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contact-dialog-title"
+            aria-describedby="contact-dialog-description"
+            tabIndex={-1}
+            initial={{ opacity: 0, scale: 0.98, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98, y: 20 }}
-            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-surface border border-white/10 border-b-0 sm:border-b p-5 sm:p-8 md:p-12 overflow-x-hidden rounded-t-2xl sm:rounded-none"
+            exit={{ opacity: 0, scale: 0.98, y: 24 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            className="relative max-h-[92dvh] w-full max-w-3xl overflow-y-auto overflow-x-hidden rounded-t-2xl border border-b-0 border-white/10 bg-surface p-5 sm:rounded-none sm:border-b sm:p-8 md:p-10"
           >
-            {/* Step Progress Line */}
-            <div className="absolute top-0 left-0 w-full h-1 bg-white/5">
-              <motion.div
-                animate={{ width: `${(step / 3) * 100}%` }}
-                transition={{ duration: 0.3 }}
-                className="h-full bg-primary"
-              />
-            </div>
-
             <button
-              onClick={handleModalClose}
-              aria-label="Close Contact Modal"
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/40 hover:text-white transition-colors p-2 -m-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              type="button"
+              onClick={() => closeModal("close_button")}
+              aria-label="Close project enquiry"
+              className="absolute right-4 top-4 flex min-h-[44px] min-w-[44px] items-center justify-center text-white/50 transition-colors hover:text-white sm:right-6 sm:top-6"
             >
-              <X size={22} className="sm:w-6 sm:h-6" />
+              <X className="h-5 w-5" />
             </button>
 
-            <div className="font-mono text-xs text-primary mb-6 sm:mb-8 uppercase tracking-widest">
-              [ ESTABLISH_CONNECTION_PROTOCOL // STEP_0{step}_OF_03 ]
-            </div>
-
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 tracking-tighter pr-10">
-              {step === 1 && "Configure engagement."}
-              {step === 2 && "Identify core friction."}
-              {step === 3 && "Initialize collaboration."}
-            </h2>
-            <p className="text-sm text-slate-400 mb-6 sm:mb-8 pr-8">
-              {step === 1 && "Select the pipeline that matches your project requirements."}
-              {step === 2 && "Identify the main bottleneck delaying your product launch."}
-              {step === 3 && "Tell us about the mission. We typically respond within 24 hours."}
-            </p>
-
-            {/* Step 1: Engagement Type */}
-            {step === 1 && (
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 gap-3">
-                  {[
-                    { id: "THE_12_WEEK_BUILD", label: "12-Week MVP Build", desc: "One senior team takes a sharply scoped MVP from product brief to production." },
-                    { id: "THE_INTERVENTION", label: "Product Rescue (2-4 Weeks)", desc: "Diagnose and restructure a product, design system, or codebase already in motion." },
-                    { id: "THE_OVERSIGHT", label: "Post-Launch Support (Ongoing)", desc: "Iteration, design QA, engineering support, and product oversight after release." }
-                  ].map((option) => (
-                    <button
-                      key={option.id}
-                      type="button"
-                      onClick={() => {
-                        setEngagementType(option.id);
-                        playTick();
-                      }}
-                      className={`text-left p-4 border font-mono transition-all flex flex-col ${engagementType === option.id ? 'border-primary bg-primary/5 text-white' : 'border-white/10 bg-white/[0.02] text-slate-400 hover:border-white/30'}`}
-                    >
-                      <span className="text-xs font-bold flex items-center justify-between">
-                        {option.label}
-                        {engagementType === option.id && <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />}
-                      </span>
-                      <span className="text-xs text-white/30 mt-1">{option.desc}</span>
-                    </button>
-                  ))}
-                </div>
+            {status === "success" ? (
+              <div ref={successRef} tabIndex={-1} className="py-8 outline-none sm:py-12">
+                <CheckCircle2 className="h-10 w-10 text-primary" />
+                <div className="mt-7 font-mono text-xs uppercase tracking-[0.2em] text-primary">Brief received</div>
+                <h2 id="contact-dialog-title" className="mt-4 max-w-xl text-4xl font-black tracking-tighter text-white sm:text-5xl">
+                  Now we do the useful part.
+                </h2>
+                <p id="contact-dialog-description" role="status" className="mt-6 max-w-xl text-base font-light leading-relaxed text-slate-300 md:text-lg">
+                  {feedback}
+                </p>
                 <button
                   type="button"
-                  onClick={() => { setStep(2); playTick(); }}
-                  className="w-full bg-primary text-black font-mono font-bold py-4 hover:bg-white transition-colors"
+                  onClick={() => closeModal("success_close")}
+                  className="mt-9 inline-flex min-h-[48px] items-center gap-3 bg-primary px-7 py-4 font-mono text-sm font-bold text-black transition-colors hover:bg-white"
                 >
-                  NEXT_PHASE &gt;
+                  CLOSE <X className="h-4 w-4" />
                 </button>
               </div>
-            )}
+            ) : (
+              <>
+                <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">[ PROJECT_BRIEF // ONE_STEP ]</div>
+                <h2 id="contact-dialog-title" className="mt-5 pr-12 text-3xl font-black tracking-tighter text-white sm:text-4xl md:text-5xl">
+                  What needs to be live?
+                </h2>
+                <p id="contact-dialog-description" className="mt-4 max-w-2xl text-sm font-light leading-relaxed text-slate-400 sm:text-base">
+                  Give us the release, the constraint, and the timing. We reply within one business day—usually with questions, not a sales deck.
+                </p>
 
-            {/* Step 2: Core Friction */}
-            {step === 2 && (
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 gap-3">
-                  {[
-                    { id: "SLOW_VELOCITY", label: "Slow Development Cycles", desc: "Estimates are too long. We need to launch fast." },
-                    { id: "HANDOFF_DRIFT", label: "Figma vs Shipped Code Drift", desc: "Design and engineering are strangers. The magic gets lost." },
-                    { id: "LEGACY_BURDEN", label: "UX Friction & Legacy Codebase", desc: "Poor usability, technical debt, or fragmenting user flow." }
-                  ].map((option) => (
-                    <button
-                      key={option.id}
-                      type="button"
-                      onClick={() => {
-                        setFrictionSource(option.id);
-                        playTick();
-                      }}
-                      className={`text-left p-4 border font-mono transition-all flex flex-col ${frictionSource === option.id ? 'border-primary bg-primary/5 text-white' : 'border-white/10 bg-white/[0.02] text-slate-400 hover:border-white/30'}`}
+                <form
+                  className="mt-8 space-y-7"
+                  onSubmit={handleSubmit}
+                  onInputCapture={registerFormStart}
+                  onInvalidCapture={(event) => {
+                    const field = event.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+                    trackAnalyticsEvent("lead_form_validation_error", {
+                      source,
+                      field: field.name || field.id,
+                    });
+                  }}
+                >
+                  <fieldset>
+                    <legend className="font-mono text-xs uppercase tracking-[0.14em] text-white/45">What kind of work is this?</legend>
+                    <div className="mt-3 grid gap-3 sm:grid-cols-3">
+                      {projectTypes.map((type, index) => (
+                        <label
+                          key={type.id}
+                          className={`cursor-pointer border p-4 transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-primary ${
+                            projectType === type.id
+                              ? "border-primary bg-primary/[0.06]"
+                              : "border-white/10 bg-white/[0.02] hover:border-white/30"
+                          }`}
+                        >
+                          <input
+                            ref={index === 0 ? firstFieldRef : undefined}
+                            type="radio"
+                            name="project_type_choice"
+                            value={type.id}
+                            checked={projectType === type.id}
+                            onChange={() => handleProjectTypeChange(type.id)}
+                            className="sr-only"
+                          />
+                          <span className="flex items-center justify-between gap-3 font-mono text-xs font-bold uppercase tracking-[0.08em] text-white">
+                            {type.label}
+                            <span className={`h-2 w-2 shrink-0 rounded-full ${projectType === type.id ? "bg-primary" : "bg-white/15"}`} />
+                          </span>
+                          <span className="mt-2 block text-xs font-light leading-relaxed text-white/40">{type.detail}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </fieldset>
+
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="contact-name" className="font-mono text-xs uppercase tracking-[0.12em] text-white/45">Name</label>
+                      <input
+                        id="contact-name"
+                        name="name"
+                        type="text"
+                        autoComplete="name"
+                        required
+                        className="mt-2 w-full border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/20 focus:border-primary"
+                        placeholder="Your name"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="contact-email" className="font-mono text-xs uppercase tracking-[0.12em] text-white/45">Work email</label>
+                      <input
+                        id="contact-email"
+                        name="email"
+                        type="email"
+                        inputMode="email"
+                        autoComplete="email"
+                        required
+                        className="mt-2 w-full border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/20 focus:border-primary"
+                        placeholder="you@company.com"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="contact-company" className="font-mono text-xs uppercase tracking-[0.12em] text-white/45">Company <span className="text-white/20">optional</span></label>
+                      <input
+                        id="contact-company"
+                        name="company"
+                        type="text"
+                        autoComplete="organization"
+                        className="mt-2 w-full border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/20 focus:border-primary"
+                        placeholder="Company or product"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="contact-launch-window" className="font-mono text-xs uppercase tracking-[0.12em] text-white/45">When do you want to start?</label>
+                      <select
+                        id="contact-launch-window"
+                        name="launch_window"
+                        required
+                        defaultValue=""
+                        className="mt-2 w-full border border-white/10 bg-[#18181b] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-primary"
+                      >
+                        <option value="" disabled>Choose a window</option>
+                        {launchWindows.map((window) => (
+                          <option key={window.value} value={window.value}>{window.label}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="contact-message" className="font-mono text-xs uppercase tracking-[0.12em] text-white/45">The release</label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      required
+                      minLength={20}
+                      rows={4}
+                      className="mt-2 w-full resize-none border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/20 focus:border-primary"
+                      placeholder="What are you building, what is blocking it, and what must be true when it launches?"
+                    />
+                  </div>
+
+                  <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
+
+                  {feedback && (
+                    <div
+                      role={status === "error" ? "alert" : "status"}
+                      aria-live="polite"
+                      className={`border p-4 text-sm ${
+                        status === "error"
+                          ? "border-red-500/40 bg-red-500/10 text-red-300"
+                          : "border-primary/30 bg-primary/10 text-primary"
+                      }`}
                     >
-                      <span className="text-xs font-bold flex items-center justify-between">
-                        {option.label}
-                        {frictionSource === option.id && <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />}
-                      </span>
-                      <span className="text-xs text-white/30 mt-1">{option.desc}</span>
-                    </button>
-                  ))}
+                      {feedback}
+                    </div>
+                  )}
+
+                  <div className="flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="max-w-sm text-xs font-light leading-relaxed text-white/35">
+                      We use these details only to respond to your enquiry. See our <Link to="/privacy" onClick={() => closeModal("privacy_link")} className="underline underline-offset-2 hover:text-white">privacy policy</Link>.
+                    </p>
+                    <motion.button
+                      whileHover={{ scale: 1.01 }}
+                      whileTap={{ scale: 0.99 }}
+                      type="submit"
+                      disabled={status === "submitting"}
+                      className="inline-flex min-h-[52px] shrink-0 items-center justify-center gap-3 bg-primary px-7 py-4 font-mono text-sm font-bold text-black transition-colors hover:bg-white disabled:cursor-wait disabled:opacity-60"
+                    >
+                      {status === "submitting" ? "SENDING…" : "SEND PROJECT BRIEF"}
+                      {status !== "submitting" && <ArrowRight className="h-4 w-4" />}
+                    </motion.button>
+                  </div>
+                </form>
+
+                <div className="relative my-7">
+                  <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/5" /></div>
+                  <div className="relative flex justify-center"><span className="bg-surface px-4 font-mono text-xs uppercase tracking-[0.2em] text-white/20">Or talk directly</span></div>
                 </div>
-                <div className="flex gap-4">
-                  <button
-                    type="button"
-                    onClick={() => { setStep(1); playTick(); }}
-                    className="flex-1 border border-white/10 text-white font-mono font-bold py-4 hover:bg-white/5 transition-colors"
-                  >
-                    &lt; PREV_PHASE
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => { setStep(3); playTick(); }}
-                    className="flex-1 bg-primary text-black font-mono font-bold py-4 hover:bg-white transition-colors"
-                  >
-                    NEXT_PHASE &gt;
-                  </button>
-                </div>
-              </div>
+
+                <a
+                  onClick={handleWhatsAppClick}
+                  href={`https://wa.me/917498908702?text=${encodeURIComponent("Hey Userhood! I want to discuss a potential product build.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex min-h-[48px] w-full items-center justify-center gap-3 border border-[#25D366]/30 bg-[#25D366]/10 py-3 text-[#25D366] transition-colors hover:bg-[#25D366]/20"
+                >
+                  <MessageCircle className="h-5 w-5" />
+                  <span className="font-mono text-xs font-bold uppercase tracking-[0.16em]">Continue on WhatsApp</span>
+                </a>
+              </>
             )}
-
-            {/* Step 3: Contact Form */}
-            {step === 3 && (
-              <form className="space-y-5 sm:space-y-6" onSubmit={handleSubmit}>
-                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="font-mono text-xs text-white/40 uppercase">Full_Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-white focus:border-primary focus:outline-none transition-colors font-mono text-sm"
-                      placeholder="IDENTIFY_YOURSELF"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="font-mono text-xs text-white/40 uppercase">Email_Address</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-white focus:border-primary focus:outline-none transition-colors font-mono text-sm"
-                      placeholder="COMM_CHANNEL"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="message" className="font-mono text-xs text-white/40 uppercase">Message_Payload</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={4}
-                    className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-white focus:border-primary focus:outline-none transition-colors font-mono text-sm resize-none"
-                    placeholder="DESCRIBE_THE_MISSION_GOALS"
-                  />
-                </div>
-
-                {result && (
-                  <div className={`font-mono text-[12px] p-3 border ${result.includes('successful') ? 'border-green-500/50 text-green-400 bg-green-500/10' : result.includes('Sending') ? 'border-primary/50 text-primary bg-primary/10' : 'border-red-500/50 text-red-400 bg-red-500/10'}`}>
-                    {result}
-                  </div>
-                )}
-
-                <div className="flex gap-4">
-                  <button
-                    type="button"
-                    onClick={() => { setStep(2); playTick(); }}
-                    className="flex-1 border border-white/10 text-white font-mono font-bold py-4 hover:bg-white/5 transition-colors"
-                  >
-                    &lt; PREV_PHASE
-                  </button>
-                  <motion.button
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="flex-[2] bg-primary text-black font-mono font-bold py-4 min-h-[48px] hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? "TRANSMITTING..." : "EXECUTE_TRANSMISSION"}
-                  </motion.button>
-                </div>
-              </form>
-            )}
-
-            <div className="relative py-4">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-white/5"></div>
-              </div>
-              <div className="relative flex justify-center text-xs uppercase tracking-[0.3em]">
-                <span className="bg-surface px-4 text-white/20 font-mono">Or_Direct_Access</span>
-              </div>
-            </div>
-
-            <motion.a
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
-              onClick={() => playTick()}
-              href={`https://wa.me/917498908702?text=${encodeURIComponent("Hey Userhood! I came across your work and want to chat about a potential collaboration.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 w-full bg-[#25D366]/10 border border-[#25D366]/30 hover:bg-[#25D366]/20 text-[#25D366] py-3 transition-all group"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className="w-5 h-5 fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-              </svg>
-              <span className="font-mono text-xs font-bold tracking-[0.2em] uppercase">Connect_via_WhatsApp</span>
-            </motion.a>
-
-            <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/5 flex flex-wrap justify-between items-center gap-2 font-mono text-xs text-white/20 uppercase">
-              <span>We only use these details to respond to your enquiry.</span>
-              <span>Status: {isSubmitting ? "Processing" : "Ready_to_send"}</span>
-            </div>
           </motion.div>
         </div>
       )}

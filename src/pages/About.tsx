@@ -143,7 +143,7 @@ export default function About() {
             ))}
 
             <Link
-              to="/?contact=true"
+              to="/?contact=true&source=about_page"
               className="mt-8 inline-flex min-h-[48px] items-center gap-3 font-mono text-sm font-bold uppercase tracking-[0.12em] text-primary transition-colors hover:text-white"
             >
               Start a direct conversation <ArrowRight className="h-4 w-4" />

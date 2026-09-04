@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { trackAnalyticsEvent } from "../utils/analytics";
 
 const fitSignals = [
   "You have funding and a real release window",
@@ -103,6 +104,7 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
 
             <Link
               to="/services"
+              onClick={() => trackAnalyticsEvent("services_click", { source: "homepage_engagement" })}
               className="mt-auto flex min-h-[48px] items-center justify-between border-t border-white/10 pt-8 font-mono text-xs uppercase tracking-[0.16em] text-white/50 transition-colors hover:text-primary"
             >
               Explore other services
