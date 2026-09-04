@@ -1,0 +1,128 @@
+{
+  "siteUrl": "https://www.userhood.in",
+  "defaultImage": "/og-image.jpg",
+  "defaultImageAlt": "Userhood — product design and engineering studio",
+  "lastModified": "2026-09-05",
+  "pages": [
+    {
+      "id": "home",
+      "path": "/",
+      "output": "index.html",
+      "canonicalPath": "/",
+      "title": "Userhood — AI-Powered MVPs for Funded Startups, Shipped in 12 Weeks",
+      "description": "One senior team takes your MVP from product brief to production in 12 weeks — strategy, product design, engineering, and AI without the handoff drag.",
+      "robots": "index, follow",
+      "ogType": "website",
+      "image": "/og-image.jpg",
+      "sitemap": true
+    },
+    {
+      "id": "services",
+      "path": "/services",
+      "output": "services.html",
+      "canonicalPath": "/services",
+      "title": "Services — AI MVP Design & Development for Startups | Userhood",
+      "description": "Everything a funded startup needs to ship an AI-powered MVP: product UX design, full-stack engineering, and AI integration — owned by one team, delivered in 12 weeks.",
+      "robots": "index, follow",
+      "ogType": "website",
+      "image": "/og-image.jpg",
+      "sitemap": true
+    },
+    {
+      "id": "about",
+      "path": "/about",
+      "output": "about.html",
+      "canonicalPath": "/about",
+      "title": "About Userhood — The Team Behind the 12-Week Build",
+      "description": "Meet the compact product, design, and engineering team behind Userhood's focused 12-week MVP engagements.",
+      "robots": "index, follow",
+      "ogType": "website",
+      "image": "/og-image.jpg",
+      "sitemap": true
+    },
+    {
+      "id": "hyundai",
+      "path": "/case-study/hyundai",
+      "output": "case-study/hyundai.html",
+      "canonicalPath": "/case-study/hyundai",
+      "title": "Hyundai Digital Buying Journey — Team Experience | Userhood",
+      "description": "A transparent team-experience case study covering the product decisions behind a connected automotive buying journey.",
+      "robots": "index, follow",
+      "ogType": "article",
+      "image": null,
+      "sitemap": true
+    },
+    {
+      "id": "mitsubishi",
+      "path": "/case-study/mitsubishi",
+      "output": "case-study/mitsubishi.html",
+      "canonicalPath": "/case-study/mitsubishi",
+      "title": "Mitsubishi Connected Ownership — Team Experience | Userhood",
+      "description": "A transparent team-experience case study covering the product decisions behind a connected vehicle ownership interface.",
+      "robots": "index, follow",
+      "ogType": "article",
+      "image": null,
+      "sitemap": true
+    },
+    {
+      "id": "careers",
+      "path": "/careers",
+      "output": "careers.html",
+      "canonicalPath": "/careers",
+      "title": "Careers | Userhood",
+      "description": "Join Userhood's compact product, design, engineering, and growth team.",
+      "robots": "index, follow",
+      "ogType": "website",
+      "image": "/og-image.jpg",
+      "sitemap": true
+    },
+    {
+      "id": "salesIntern",
+      "path": "/careers/sales-intern",
+      "output": "careers/sales-intern.html",
+      "canonicalPath": "/careers/sales-intern",
+      "title": "Sales Intern | Careers | Userhood",
+      "description": "Join Userhood's growth team as a Sales Intern working with ambitious founders, startups, and enterprise teams.",
+      "robots": "index, follow",
+      "ogType": "article",
+      "image": null,
+      "sitemap": true
+    },
+    {
+      "id": "privacy",
+      "path": "/privacy",
+      "output": "privacy.html",
+      "canonicalPath": "/privacy",
+      "title": "Privacy Policy | Userhood",
+      "description": "How Userhood collects, uses, shares, and protects information when you visit our website or contact the studio.",
+      "robots": "index, follow",
+      "ogType": "website",
+      "image": "/og-image.jpg",
+      "sitemap": true
+    },
+    {
+      "id": "terms",
+      "path": "/terms",
+      "output": "terms.html",
+      "canonicalPath": "/terms",
+      "title": "Terms of Service | Userhood",
+      "description": "The terms that apply when you use the Userhood website, and how they relate to separate client engagement agreements.",
+      "robots": "index, follow",
+      "ogType": "website",
+      "image": "/og-image.jpg",
+      "sitemap": true
+    },
+    {
+      "id": "notFound",
+      "path": "/route-not-found",
+      "output": "404.html",
+      "canonicalPath": "/404",
+      "title": "Page Not Found | Userhood",
+      "description": "The page you requested does not exist or has moved.",
+      "robots": "noindex, nofollow",
+      "ogType": "website",
+      "image": null,
+      "sitemap": false
+    }
+  ]
+}

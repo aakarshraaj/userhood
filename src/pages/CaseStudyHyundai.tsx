@@ -1,7 +1,9 @@
 import CaseStudyLayout, { type CaseStudyData } from "../components/CaseStudyLayout";
+import { getPageSEO } from "../data/siteMetadata";
 import { useSEO } from "../utils/seo";
 
 const caseStudy: CaseStudyData = {
+  pageId: "hyundai",
   brand: "Hyundai Global",
   category: "Automotive commerce",
   title: "Designing confidence into a high-consideration vehicle purchase.",
@@ -48,14 +50,7 @@ const caseStudy: CaseStudyData = {
 };
 
 export default function CaseStudyHyundai({ onContactClick }: { onContactClick: () => void }) {
-  useSEO({
-    title: "Hyundai Digital Buying Journey — Team Experience | Userhood",
-    description:
-      "A transparent team-experience case study covering the product decisions behind a connected automotive buying journey.",
-    canonical: "https://www.userhood.in/case-study/hyundai",
-    ogImage: null,
-    ogType: "article",
-  });
+  useSEO(getPageSEO("hyundai"));
 
   return <CaseStudyLayout data={caseStudy} onContactClick={onContactClick} />;
 }

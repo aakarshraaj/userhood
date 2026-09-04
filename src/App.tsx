@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import ContactModal from "./components/ContactModal";
 import { AnalyticsConsentBanner } from "./components/AnalyticsConsent";
 import StickyContactCTA from "./components/StickyContactCTA";
+import { getPageMetadata, getPageSEO } from "./data/siteMetadata";
 
 import { captureAttribution, trackAnalyticsEvent, trackPageView } from "./utils/analytics";
 
@@ -31,11 +32,7 @@ const JobDetail = lazy(() => import("./pages/JobDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function HomeSEO() {
-  useSEO({
-    title: "Userhood — AI-Powered MVPs for Funded Startups, Shipped in 12 Weeks",
-    description: "One senior team takes your MVP from product brief to production in 12 weeks — strategy, product design, engineering, and AI without the handoff drag.",
-    canonical: "https://www.userhood.in/",
-  });
+  useSEO(getPageSEO("home"));
   return null;
 }
 
@@ -125,8 +122,8 @@ export default function App() {
           <div id="main-content" tabIndex={-1} className="outline-none">
             <Suspense fallback={<div className="min-h-screen bg-background-dark flex items-center justify-center" role="status" aria-label="Loading page"><div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin-slow"></div></div>}>
               <Routes>
-                <Route path="/" element={
-                  <main>
+                <Route path={getPageMetadata("home").path} element={
+                  <main data-page-id="home">
                     <HomeSEO />
                     <Hero onContactClick={() => handleContactClick('hero')} />
                     <SelectedWork />
@@ -136,14 +133,14 @@ export default function App() {
                     <FinalCTA onContactClick={() => handleContactClick('final_cta')} />
                   </main>
                 } />
-                <Route path="/case-study/mitsubishi" element={<CaseStudyMitsubishi onContactClick={() => handleContactClick('mitsubishi_case_study')} />} />
-                <Route path="/case-study/hyundai" element={<CaseStudyHyundai onContactClick={() => handleContactClick('hyundai_case_study')} />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/privacy" element={<Privacy />} />
-                <Route path="/terms" element={<Terms />} />
-                <Route path="/careers" element={<Careers />} />
-                <Route path="/careers/:slug" element={<JobDetail />} />
+                <Route path={getPageMetadata("mitsubishi").path} element={<CaseStudyMitsubishi onContactClick={() => handleContactClick('mitsubishi_case_study')} />} />
+                <Route path={getPageMetadata("hyundai").path} element={<CaseStudyHyundai onContactClick={() => handleContactClick('hyundai_case_study')} />} />
+                <Route path={getPageMetadata("services").path} element={<Services />} />
+                <Route path={getPageMetadata("about").path} element={<About />} />
+                <Route path={getPageMetadata("privacy").path} element={<Privacy />} />
+                <Route path={getPageMetadata("terms").path} element={<Terms />} />
+                <Route path={getPageMetadata("careers").path} element={<Careers />} />
+                <Route path={`${getPageMetadata("careers").path}/:slug`} element={<JobDetail />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>

@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import type { PageId } from "../data/siteMetadata";
 
 export interface CaseStudyDecision {
   title: string;
@@ -8,6 +9,7 @@ export interface CaseStudyDecision {
 }
 
 export interface CaseStudyData {
+  pageId: PageId;
   brand: string;
   category: string;
   title: string;
@@ -27,7 +29,7 @@ interface CaseStudyLayoutProps {
 
 export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayoutProps) {
   return (
-    <main className="min-h-screen bg-background-dark pb-24 pt-28 sm:pt-32 md:pb-36 md:pt-40">
+    <main data-page-id={data.pageId} className="min-h-screen bg-background-dark pb-24 pt-28 sm:pt-32 md:pb-36 md:pt-40">
       <article>
         <header className="px-5 md:px-8">
           <div className="mx-auto max-w-[1200px]">

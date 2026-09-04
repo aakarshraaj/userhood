@@ -1,17 +1,14 @@
 import { motion } from "motion/react";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getPageSEO } from "../data/siteMetadata";
 import { useSEO } from "../utils/seo";
 import { AnalyticsPreferenceControl } from "../components/AnalyticsConsent";
 
 export default function Privacy() {
-  useSEO({
-    title: "Privacy Policy | Userhood",
-    description: "How Userhood collects, uses, shares, and protects information when you visit our website or contact the studio.",
-    canonical: "https://www.userhood.in/privacy",
-  });
+  useSEO(getPageSEO("privacy"));
   return (
-    <main className="min-h-screen bg-background-dark pt-32 pb-48 selection:bg-primary selection:text-black">
+    <main data-page-id="privacy" className="min-h-screen bg-background-dark pt-32 pb-48 selection:bg-primary selection:text-black">
       <div className="max-w-3xl mx-auto px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0, x: -20 }}

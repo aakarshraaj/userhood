@@ -1,18 +1,19 @@
 import { useEffect } from "react";
+import { SITE_METADATA, type PageOpenGraphType, type PageRobots } from "../data/siteMetadata";
 
-interface SEOConfig {
+export interface SEOConfig {
     title: string;
     description: string;
     canonical?: string;
     ogImage?: string | null;
-    ogType?: "website" | "article";
+    ogType?: PageOpenGraphType;
     imageAlt?: string;
-    robots?: "index, follow" | "noindex, nofollow";
+    robots?: PageRobots;
     jsonLd?: object | object[];
 }
 
-const BASE_URL = "https://www.userhood.in";
-const DEFAULT_OG = "/og-image.jpg";
+const BASE_URL = SITE_METADATA.siteUrl;
+const DEFAULT_OG = SITE_METADATA.defaultImage;
 
 function setMeta(selector: string, attrKey: string, attrVal: string, content: string) {
     let el = document.querySelector<HTMLMetaElement>(selector);
@@ -34,7 +35,7 @@ export function useSEO({
     canonical,
     ogImage = DEFAULT_OG,
     ogType = "website",
-    imageAlt = "Userhood — product design and engineering studio",
+    imageAlt = SITE_METADATA.defaultImageAlt,
     robots = "index, follow",
     jsonLd,
 }: SEOConfig) {

@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Cpu, Code2, BrainCircuit, Megaphone, ChevronRight, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getPageSEO, SITE_METADATA } from "../data/siteMetadata";
 import { useSEO } from "../utils/seo";
 
 const services = [
@@ -104,7 +105,7 @@ const serviceLd = {
             provider: {
                 "@type": "Organization",
                 name: "Userhood",
-                url: "https://www.userhood.in",
+                url: SITE_METADATA.siteUrl,
             },
         },
     })),
@@ -129,15 +130,12 @@ export default function Services() {
     }, []);
 
     useSEO({
-        title: "Services — AI MVP Design & Development for Startups | Userhood",
-        description:
-            "Everything a funded startup needs to ship an AI-powered MVP: product UX design, full-stack engineering, and AI integration — owned by one team, delivered in 12 weeks.",
-        canonical: "https://www.userhood.in/services",
+        ...getPageSEO("services"),
         jsonLd: [serviceLd, faqLd],
     });
 
     return (
-        <main className="min-h-screen bg-background-dark pt-20 sm:pt-28 pb-20 sm:pb-32 selection:bg-primary selection:text-black">
+        <main data-page-id="services" className="min-h-screen bg-background-dark pt-20 sm:pt-28 pb-20 sm:pb-32 selection:bg-primary selection:text-black">
             <div className="max-w-[1440px] mx-auto px-5 sm:px-8">
 
                 {/* Hero */}

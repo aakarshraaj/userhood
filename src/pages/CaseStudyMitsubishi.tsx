@@ -1,7 +1,9 @@
 import CaseStudyLayout, { type CaseStudyData } from "../components/CaseStudyLayout";
+import { getPageSEO } from "../data/siteMetadata";
 import { useSEO } from "../utils/seo";
 
 const caseStudy: CaseStudyData = {
+  pageId: "mitsubishi",
   brand: "Mitsubishi Motors Australia",
   category: "Connected ownership",
   title: "Giving vehicle intelligence a calmer human interface.",
@@ -48,14 +50,7 @@ const caseStudy: CaseStudyData = {
 };
 
 export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick: () => void }) {
-  useSEO({
-    title: "Mitsubishi Connected Ownership — Team Experience | Userhood",
-    description:
-      "A transparent team-experience case study covering the product decisions behind a connected vehicle ownership interface.",
-    canonical: "https://www.userhood.in/case-study/mitsubishi",
-    ogImage: null,
-    ogType: "article",
-  });
+  useSEO(getPageSEO("mitsubishi"));
 
   return <CaseStudyLayout data={caseStudy} onContactClick={onContactClick} />;
 }

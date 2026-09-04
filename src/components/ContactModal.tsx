@@ -113,8 +113,8 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
         return;
       }
 
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
+      const first = focusable[0]!;
+      const last = focusable[focusable.length - 1]!;
 
       if (event.shiftKey && document.activeElement === first) {
         event.preventDefault();

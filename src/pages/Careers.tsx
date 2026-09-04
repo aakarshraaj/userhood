@@ -2,17 +2,14 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Briefcase } from "lucide-react";
 import { jobs } from "../data/jobs";
+import { getPageSEO } from "../data/siteMetadata";
 import { useSEO } from "../utils/seo";
 
 export default function Careers() {
-    useSEO({
-        title: "Careers | Userhood",
-        description: "Join Userhood's compact product, design, engineering, and growth team.",
-        canonical: "https://www.userhood.in/careers",
-    });
+    useSEO(getPageSEO("careers"));
 
     return (
-        <main className="min-h-screen bg-background-dark text-white pt-24 pb-20 relative overflow-hidden">
+        <main data-page-id="careers" className="min-h-screen bg-background-dark text-white pt-24 pb-20 relative overflow-hidden">
             <div className="absolute inset-0 tech-grid opacity-30 pointer-events-none" />
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
 

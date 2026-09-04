@@ -1,18 +1,13 @@
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getPageSEO } from "../data/siteMetadata";
 import { useSEO } from "../utils/seo";
 
 export default function NotFound() {
-  useSEO({
-    title: "Page Not Found | Userhood",
-    description: "The page you requested does not exist or has moved.",
-    canonical: "https://www.userhood.in/404",
-    robots: "noindex, nofollow",
-    ogImage: null,
-  });
+  useSEO(getPageSEO("notFound"));
 
   return (
-    <main className="flex min-h-screen items-center bg-background-dark px-5 pb-24 pt-32 text-white">
+    <main data-page-id="notFound" className="flex min-h-screen items-center bg-background-dark px-5 pb-24 pt-32 text-white">
       <div className="mx-auto w-full max-w-[1200px]">
         <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">[ 404 // ROUTE_NOT_FOUND ]</div>
         <h1 className="mt-7 max-w-4xl text-5xl font-black leading-[0.9] tracking-tighter sm:text-7xl md:text-8xl">

@@ -1,16 +1,13 @@
 import { motion } from "motion/react";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getPageSEO } from "../data/siteMetadata";
 import { useSEO } from "../utils/seo";
 
 export default function Terms() {
-  useSEO({
-    title: "Terms of Service | Userhood",
-    description: "The terms that apply when you use the Userhood website, and how they relate to separate client engagement agreements.",
-    canonical: "https://www.userhood.in/terms",
-  });
+  useSEO(getPageSEO("terms"));
   return (
-    <main className="min-h-screen bg-background-dark pt-32 pb-48 selection:bg-primary selection:text-black">
+    <main data-page-id="terms" className="min-h-screen bg-background-dark pt-32 pb-48 selection:bg-primary selection:text-black">
       <div className="max-w-3xl mx-auto px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0, x: -20 }}

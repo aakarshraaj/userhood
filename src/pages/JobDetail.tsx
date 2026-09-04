@@ -3,22 +3,18 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { jobs } from "../data/jobs";
+import { getPageSEO } from "../data/siteMetadata";
 import { useSEO } from "../utils/seo";
 
 export default function JobDetail() {
     const { slug } = useParams<{ slug: string }>();
     const job = jobs.find(j => j.slug === slug);
 
-    // Fallback SEO for 404
-    useSEO({
-        title: job ? `${job.title} | Careers | Userhood` : "Job Not Found | Userhood",
-        description: job
-            ? "Join Userhood's growth team as a Sales Intern working with ambitious founders, startups, and enterprise teams."
-            : "This job listing is no longer available.",
-        canonical: job
-            ? `https://www.userhood.in/careers/${job.slug}`
-            : "https://www.userhood.in/careers",
-        robots: job ? "index, follow" : "noindex, nofollow",
+    useSEO(job ? getPageSEO("salesIntern") : {
+        title: "Job Not Found | Userhood",
+        description: "This job listing is no longer available.",
+        canonical: getPageSEO("careers").canonical,
+        robots: "noindex, nofollow",
         ogImage: null,
         ogType: "article",
     });
@@ -29,7 +25,7 @@ export default function JobDetail() {
 
     if (!job) {
         return (
-            <main className="min-h-screen bg-background-dark text-white pt-32 pb-20 flex flex-col items-center justify-center text-center px-4">
+            <main data-page-id="jobNotFound" className="min-h-screen bg-background-dark text-white pt-32 pb-20 flex flex-col items-center justify-center text-center px-4">
                 <h1 className="text-4xl md:text-6xl font-medium mb-6">Position not found</h1>
                 <p className="text-white/60 mb-8 max-w-md">The job you are looking for may have been filled or the link is incorrect.</p>
                 <Link to="/careers" className="text-primary hover:text-white transition-colors border border-primary/20 hover:border-white/20 px-6 py-3 font-mono text-xs uppercase tracking-widest inline-flex items-center gap-2">
@@ -40,7 +36,7 @@ export default function JobDetail() {
     }
 
     return (
-        <main className="min-h-screen bg-background-dark text-white pt-24 pb-32 relative">
+        <main data-page-id="salesIntern" className="min-h-screen bg-background-dark text-white pt-24 pb-32 relative">
             <div className="absolute inset-0 scanline opacity-20" />
 
             <div className="max-w-[1440px] mx-auto px-6 md:px-12 xl:px-24 relative z-10">

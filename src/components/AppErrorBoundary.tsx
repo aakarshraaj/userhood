@@ -9,7 +9,6 @@ interface AppErrorBoundaryState {
 }
 
 export default class AppErrorBoundary extends Component<AppErrorBoundaryProps, AppErrorBoundaryState> {
-  declare readonly props: Readonly<AppErrorBoundaryProps>;
   state: AppErrorBoundaryState = { hasError: false };
 
   static getDerivedStateFromError(): AppErrorBoundaryState {

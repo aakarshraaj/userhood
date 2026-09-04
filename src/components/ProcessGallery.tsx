@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
 
 const SystemArchitectureAnim = () => (
   <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity duration-500">

@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getPageSEO } from "../data/siteMetadata";
 import { useSEO } from "../utils/seo";
 
 const principles = [
@@ -32,15 +33,10 @@ const team = [
 ];
 
 export default function About() {
-  useSEO({
-    title: "About Userhood — The Team Behind the 12-Week Build",
-    description:
-      "Meet the compact product, design, and engineering team behind Userhood's focused 12-week MVP engagements.",
-    canonical: "https://www.userhood.in/about",
-  });
+  useSEO(getPageSEO("about"));
 
   return (
-    <main className="min-h-screen bg-background-dark pb-24 pt-28 sm:pt-32 md:pb-36 md:pt-40">
+    <main data-page-id="about" className="min-h-screen bg-background-dark pb-24 pt-28 sm:pt-32 md:pb-36 md:pt-40">
       <header className="px-5 md:px-8">
         <div className="mx-auto max-w-[1200px]">
           <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">[ STUDIO // ABOUT ]</div>

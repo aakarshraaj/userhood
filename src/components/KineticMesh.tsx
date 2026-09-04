@@ -98,8 +98,7 @@ export default function KineticMesh() {
       const ripples = ripplesRef.current;
 
       // Update physics for each node
-      for (let i = 0; i < nodes.length; i++) {
-        const node = nodes[i];
+      for (const node of nodes) {
 
         // 1. Spring back to original grid position
         const dxBase = node.baseX - node.x;
@@ -123,8 +122,7 @@ export default function KineticMesh() {
         }
 
         // 3. Click Ripple wave propagation
-        for (let r = 0; r < ripples.length; r++) {
-          const ripple = ripples[r];
+        for (const ripple of ripples) {
           const dxRipple = node.x - ripple.x;
           const dyRipple = node.y - ripple.y;
           const distRipple = Math.sqrt(dxRipple * dxRipple + dyRipple * dyRipple);
@@ -202,8 +200,7 @@ export default function KineticMesh() {
       }
 
       // Render Nodes (draw tiny dots at junctions)
-      for (let i = 0; i < nodes.length; i++) {
-        const node = nodes[i];
+      for (const node of nodes) {
         
         let glowRadius = 1;
         let isGlow = false;
