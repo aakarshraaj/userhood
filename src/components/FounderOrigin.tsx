@@ -68,7 +68,7 @@ export default function FounderOrigin() {
                 />
               </div>
               <h3 className="mt-5 text-xl font-bold text-white md:text-2xl">{founder.name}</h3>
-              <p className="mt-2 font-mono text-xs uppercase leading-relaxed tracking-[0.1em] text-white/40">{founder.role}</p>
+              <p className="mt-2 font-mono text-xs uppercase leading-relaxed tracking-[0.1em] text-white/60">{founder.role}</p>
             </motion.article>
           ))}
         </div>

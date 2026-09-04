@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Link } from "react-router-dom";
-import { Menu, X, Volume2, VolumeX, Ruler } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, Volume2, VolumeX } from "lucide-react";
 
-import { toggleMute, getMuteState, playTick, playSuccess, playStrike } from "../utils/audio";
+import { toggleMute, getMuteState, playTick } from "../utils/audio";
 import { trackAnalyticsEvent } from "../utils/analytics";
 
 interface NavbarProps {
@@ -11,25 +11,34 @@ interface NavbarProps {
 }
 
 export default function Navbar({ onContactClick }: NavbarProps) {
+  const { pathname } = useLocation();
   const [isOpen, setIsOpen] = useState(false);
-  const [isMuted, setIsMuted] = useState(getMuteState());
-  const [isRedline, setIsRedline] = useState(document.body.classList.contains("redline-active"));
+  const [isMuted, setIsMuted] = useState(true);
+
+  useEffect(() => {
+    setIsMuted(getMuteState());
+  }, []);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [isOpen]);
 
   const handleMuteToggle = () => {
     const nextMuted = toggleMute();
     setIsMuted(nextMuted);
     if (!nextMuted) {
       playTick();
-    }
-  };
-
-  const handleRedlineToggle = () => {
-    const active = document.body.classList.toggle("redline-active");
-    setIsRedline(active);
-    if (active) {
-      playSuccess();
-    } else {
-      playStrike();
     }
   };
 
@@ -51,31 +60,24 @@ export default function Navbar({ onContactClick }: NavbarProps) {
           <Link to="/" className="hover:opacity-80 transition-opacity shrink-0 flex items-center" onClick={() => setIsOpen(false)} aria-label="Userhood — Home">
             <Logo />
           </Link>
-          <span className="text-white/40 hidden sm:inline truncate">[ ARCH_SYST_v.01 ]</span>
+          <span className="text-white/60 hidden sm:inline truncate">[ ARCH_SYST_v.01 ]</span>
         </div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
           <a href="/#case-studies" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// WORK</a>
           <a href="/#process" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// 12_WEEK_BUILD</a>
-          <Link to="/services" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// SERVICES</Link>
-          <Link to="/about" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// THE_TEAM</Link>
-          <Link to="/careers" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// CAREERS</Link>
+          <Link to="/services" aria-current={pathname === "/services" ? "page" : undefined} onMouseEnter={() => playTick()} onClick={handleLinkClick} className={`hover:text-primary transition-colors ${pathname === "/services" ? "text-primary" : ""}`}>// SERVICES</Link>
+          <Link to="/about" aria-current={pathname === "/about" ? "page" : undefined} onMouseEnter={() => playTick()} onClick={handleLinkClick} className={`hover:text-primary transition-colors ${pathname === "/about" ? "text-primary" : ""}`}>// THE_TEAM</Link>
+          <Link to="/careers" aria-current={pathname.startsWith("/careers") ? "page" : undefined} onMouseEnter={() => playTick()} onClick={handleLinkClick} className={`hover:text-primary transition-colors ${pathname.startsWith("/careers") ? "text-primary" : ""}`}>// CAREERS</Link>
 
           <div className="flex items-center gap-4">
             <button
-              onClick={handleRedlineToggle}
-              className={`hover:text-primary transition-colors p-2 cursor-pointer flex items-center gap-1.5 font-mono text-xs uppercase font-bold ${isRedline ? "text-primary font-black" : "text-white/40"}`}
-              title="Inspect Spec (Redline Mode)"
-              aria-label="Inspect Spec Mode"
-            >
-              <Ruler size={13} className={isRedline ? "animate-pulse" : ""} />
-              <span className="hidden lg:inline">{isRedline ? "INSPECT: ON" : "INSPECT"}</span>
-            </button>
-            <button
+              type="button"
               onClick={handleMuteToggle}
-              className="text-white/40 hover:text-primary transition-colors p-2 cursor-pointer flex items-center gap-1.5 font-mono text-xs uppercase font-bold"
+              className="text-white/60 hover:text-primary transition-colors p-2 cursor-pointer flex items-center gap-1.5 font-mono text-xs uppercase font-bold"
               aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
+              aria-pressed={!isMuted}
             >
 
 
@@ -88,7 +90,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
               onClick={() => trackAnalyticsEvent("whatsapp_click", { source: "navbar_desktop" })}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/40 hover:text-[#25D366] transition-colors"
+              className="text-white/60 hover:text-[#25D366] transition-colors"
               aria-label="Connect via WhatsApp"
             >
               <WhatsAppIcon size={18} />
@@ -113,16 +115,18 @@ export default function Navbar({ onContactClick }: NavbarProps) {
             onClick={() => trackAnalyticsEvent("whatsapp_click", { source: "navbar_mobile" })}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/40 hover:text-[#25D366] transition-colors p-2"
+            className="text-white/60 hover:text-[#25D366] transition-colors p-2"
             aria-label="Connect via WhatsApp"
           >
             <WhatsAppIcon size={20} />
           </motion.a>
           <button
+            type="button"
             className="text-white/70 hover:text-white p-2"
             onClick={handleMenuClick}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
+            aria-controls="primary-mobile-menu"
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -133,6 +137,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="primary-mobile-menu"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -140,27 +145,19 @@ export default function Navbar({ onContactClick }: NavbarProps) {
           >
             <a href="/#case-studies" onClick={handleLinkClick} className="hover:text-primary transition-colors">// WORK</a>
             <a href="/#process" onClick={handleLinkClick} className="hover:text-primary transition-colors">// 12_WEEK_BUILD</a>
-            <Link to="/services" onClick={handleLinkClick} className="hover:text-primary transition-colors">// SERVICES</Link>
-            <Link to="/about" onClick={handleLinkClick} className="hover:text-primary transition-colors">// THE_TEAM</Link>
-            <Link to="/careers" onClick={handleLinkClick} className="hover:text-primary transition-colors">// CAREERS</Link>
-            
-            <div className="flex justify-between items-center py-2 border-t border-white/5">
-              <span className="text-white/30">Inspect_Spec</span>
-              <button
-                onClick={handleRedlineToggle}
-                className="text-primary flex items-center gap-1.5"
-              >
-                <Ruler size={16} className={isRedline ? "animate-pulse text-primary" : "text-white/50"} />
-                <span>{isRedline ? "ACTIVE" : "OFF"}</span>
-              </button>
-            </div>
+            <Link to="/services" aria-current={pathname === "/services" ? "page" : undefined} onClick={handleLinkClick} className={`hover:text-primary transition-colors ${pathname === "/services" ? "text-primary" : ""}`}>// SERVICES</Link>
+            <Link to="/about" aria-current={pathname === "/about" ? "page" : undefined} onClick={handleLinkClick} className={`hover:text-primary transition-colors ${pathname === "/about" ? "text-primary" : ""}`}>// THE_TEAM</Link>
+            <Link to="/careers" aria-current={pathname.startsWith("/careers") ? "page" : undefined} onClick={handleLinkClick} className={`hover:text-primary transition-colors ${pathname.startsWith("/careers") ? "text-primary" : ""}`}>// CAREERS</Link>
             
             <div className="flex justify-between items-center py-2 border-t border-white/5">
 
-              <span className="text-white/30">System_Audio</span>
+              <span className="text-white/60">System_Audio</span>
               <button
+                type="button"
                 onClick={handleMuteToggle}
                 className="text-primary flex items-center gap-1.5"
+                aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
+                aria-pressed={!isMuted}
               >
                 {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
                 <span>{isMuted ? "MUTED" : "ON"}</span>
@@ -169,6 +166,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
 
 
             <button
+              type="button"
               onClick={() => {
                 playTick();
                 setIsOpen(false);
@@ -214,6 +212,8 @@ function WhatsAppIcon({ size }: { size: number }) {
       height={size}
       className="fill-current"
       xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
     >
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
     </svg>

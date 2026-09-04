@@ -52,7 +52,9 @@ export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick
     title: "Mitsubishi Connected Ownership — Team Experience | Userhood",
     description:
       "A transparent team-experience case study covering the product decisions behind a connected vehicle ownership interface.",
-    canonical: "https://userhood.in/case-study/mitsubishi",
+    canonical: "https://www.userhood.in/case-study/mitsubishi",
+    ogImage: null,
+    ogType: "article",
   });
 
   return <CaseStudyLayout data={caseStudy} onContactClick={onContactClick} />;

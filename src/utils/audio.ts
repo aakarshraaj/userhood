@@ -1,9 +1,22 @@
 let audioCtx: AudioContext | null = null;
-let isMuted = localStorage.getItem("sound_muted") === "true";
+let isMuted = true;
+
+if (typeof window !== "undefined") {
+  try {
+    // Sound stays off until someone has explicitly enabled it.
+    isMuted = window.localStorage.getItem("sound_muted") !== "false";
+  } catch {
+    isMuted = true;
+  }
+}
 
 export function toggleMute(): boolean {
   isMuted = !isMuted;
-  localStorage.setItem("sound_muted", String(isMuted));
+  try {
+    window.localStorage.setItem("sound_muted", String(isMuted));
+  } catch {
+    // The preference can remain in memory when storage is unavailable.
+  }
   return isMuted;
 }
 
@@ -106,4 +119,3 @@ export function playSuccess() {
     // Silent catch
   }
 }
-

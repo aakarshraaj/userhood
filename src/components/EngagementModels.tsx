@@ -51,7 +51,7 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
               </div>
 
               <div>
-                <div className="mb-5 font-mono text-xs uppercase tracking-[0.16em] text-white/40">
+                <div className="mb-5 font-mono text-xs uppercase tracking-[0.16em] text-white/60">
                   Strong fit when
                 </div>
                 <ul className="space-y-4">
@@ -67,7 +67,7 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
 
             <div className="flex flex-col gap-5 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/35">Next step</div>
+                <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/55">Next step</div>
                 <div className="mt-2 text-base text-white">A direct fit conversation with the people who would lead the build.</div>
               </div>
               <motion.button
@@ -83,7 +83,7 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
           </div>
 
           <aside className="flex flex-col border border-white/10 bg-white/[0.02] p-7 sm:p-9 lg:col-span-4 lg:p-10" aria-label="Other ways to work with Userhood">
-            <div className="font-mono text-xs uppercase tracking-[0.18em] text-white/35">Not starting from zero?</div>
+            <div className="font-mono text-xs uppercase tracking-[0.18em] text-white/55">Not starting from zero?</div>
             <h3 className="mt-5 text-3xl font-black leading-tight tracking-tight text-white md:text-4xl">
               Existing products need a different first move.
             </h3>

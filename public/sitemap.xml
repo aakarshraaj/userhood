@@ -1,45 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://userhood.in/</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://www.userhood.in/</loc>
+    <lastmod>2026-09-05</lastmod>
   </url>
   <url>
-    <loc>https://userhood.in/services</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.95</priority>
+    <loc>https://www.userhood.in/services</loc>
+    <lastmod>2026-09-05</lastmod>
   </url>
   <url>
-    <loc>https://userhood.in/case-study/mitsubishi</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.userhood.in/case-study/mitsubishi</loc>
+    <lastmod>2026-09-05</lastmod>
   </url>
   <url>
-    <loc>https://userhood.in/case-study/hyundai</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.userhood.in/case-study/hyundai</loc>
+    <lastmod>2026-09-05</lastmod>
   </url>
   <url>
-    <loc>https://userhood.in/about</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.userhood.in/about</loc>
+    <lastmod>2026-09-05</lastmod>
   </url>
   <url>
-    <loc>https://userhood.in/privacy</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://www.userhood.in/careers</loc>
+    <lastmod>2026-09-05</lastmod>
   </url>
   <url>
-    <loc>https://userhood.in/terms</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://www.userhood.in/careers/sales-intern</loc>
+    <lastmod>2026-09-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.userhood.in/privacy</loc>
+    <lastmod>2026-09-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.userhood.in/terms</loc>
+    <lastmod>2026-09-05</lastmod>
   </url>
 </urlset>

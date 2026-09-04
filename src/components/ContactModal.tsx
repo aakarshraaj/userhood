@@ -323,7 +323,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                   }}
                 >
                   <fieldset>
-                    <legend className="font-mono text-xs uppercase tracking-[0.14em] text-white/45">What kind of work is this?</legend>
+                    <legend className="font-mono text-xs uppercase tracking-[0.14em] text-white/60">What kind of work is this?</legend>
                     <div className="mt-3 grid gap-3 sm:grid-cols-3">
                       {projectTypes.map((type, index) => (
                         <label
@@ -347,7 +347,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                             {type.label}
                             <span className={`h-2 w-2 shrink-0 rounded-full ${projectType === type.id ? "bg-primary" : "bg-white/15"}`} />
                           </span>
-                          <span className="mt-2 block text-xs font-light leading-relaxed text-white/40">{type.detail}</span>
+                          <span className="mt-2 block text-xs font-light leading-relaxed text-white/60">{type.detail}</span>
                         </label>
                       ))}
                     </div>
@@ -355,7 +355,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
 
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="contact-name" className="font-mono text-xs uppercase tracking-[0.12em] text-white/45">Name</label>
+                      <label htmlFor="contact-name" className="font-mono text-xs uppercase tracking-[0.12em] text-white/60">Name</label>
                       <input
                         id="contact-name"
                         name="name"
@@ -367,7 +367,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                       />
                     </div>
                     <div>
-                      <label htmlFor="contact-email" className="font-mono text-xs uppercase tracking-[0.12em] text-white/45">Work email</label>
+                      <label htmlFor="contact-email" className="font-mono text-xs uppercase tracking-[0.12em] text-white/60">Work email</label>
                       <input
                         id="contact-email"
                         name="email"
@@ -380,7 +380,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                       />
                     </div>
                     <div>
-                      <label htmlFor="contact-company" className="font-mono text-xs uppercase tracking-[0.12em] text-white/45">Company <span className="text-white/20">optional</span></label>
+                      <label htmlFor="contact-company" className="font-mono text-xs uppercase tracking-[0.12em] text-white/60">Company <span className="text-white/50">optional</span></label>
                       <input
                         id="contact-company"
                         name="company"
@@ -391,7 +391,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                       />
                     </div>
                     <div>
-                      <label htmlFor="contact-launch-window" className="font-mono text-xs uppercase tracking-[0.12em] text-white/45">When do you want to start?</label>
+                      <label htmlFor="contact-launch-window" className="font-mono text-xs uppercase tracking-[0.12em] text-white/60">When do you want to start?</label>
                       <select
                         id="contact-launch-window"
                         name="launch_window"
@@ -408,7 +408,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                   </div>
 
                   <div>
-                    <label htmlFor="contact-message" className="font-mono text-xs uppercase tracking-[0.12em] text-white/45">The release</label>
+                    <label htmlFor="contact-message" className="font-mono text-xs uppercase tracking-[0.12em] text-white/60">The release</label>
                     <textarea
                       id="contact-message"
                       name="message"
@@ -437,8 +437,8 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                   )}
 
                   <div className="flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-                    <p className="max-w-sm text-xs font-light leading-relaxed text-white/35">
-                      We use these details only to respond to your enquiry. See our <Link to="/privacy" onClick={() => closeModal("privacy_link")} className="underline underline-offset-2 hover:text-white">privacy policy</Link>.
+                    <p className="max-w-sm text-xs font-light leading-relaxed text-white/60">
+                      We use these details to assess and respond to your enquiry. See our <Link to="/privacy" onClick={() => closeModal("privacy_link")} className="underline underline-offset-2 hover:text-white">privacy policy</Link>.
                     </p>
                     <motion.button
                       whileHover={{ scale: 1.01 }}
@@ -455,7 +455,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
 
                 <div className="relative my-7">
                   <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/5" /></div>
-                  <div className="relative flex justify-center"><span className="bg-surface px-4 font-mono text-xs uppercase tracking-[0.2em] text-white/20">Or talk directly</span></div>
+                  <div className="relative flex justify-center"><span className="bg-surface px-4 font-mono text-xs uppercase tracking-[0.2em] text-white/55">Or talk directly</span></div>
                 </div>
 
                 <a

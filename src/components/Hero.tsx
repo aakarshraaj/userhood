@@ -81,7 +81,7 @@ export default function Hero({ onContactClick }: HeroProps) {
               transition={{ duration: 0.5, delay: 0.12 }}
               className="flex items-center gap-4 md:gap-6"
             >
-              <span className="relative text-[min(22vw,120px)] sm:text-7xl md:text-8xl lg:text-[120px] font-black leading-none tracking-tighter text-white/30 select-none">
+              <span className="relative text-[min(22vw,120px)] sm:text-7xl md:text-8xl lg:text-[120px] font-black leading-none tracking-tighter text-white/40 select-none">
                 12 months
                 {/* The strikethrough — draws across */}
                 <motion.span
@@ -161,14 +161,14 @@ export default function Hero({ onContactClick }: HeroProps) {
             transition={{ delay: 2.0, duration: 0.8 }}
             className="mt-16 md:mt-24 pt-8 border-t border-white/5 max-w-4xl"
           >
-            <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em] mb-4">
+            <p className="font-mono text-xs text-white/55 uppercase tracking-[0.2em] mb-4">
               SELECTED EXPERIENCE FROM THE TEAM BEHIND USERHOOD
             </p>
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs font-black tracking-widest text-white/30 md:gap-x-12 md:text-sm">
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs font-black tracking-widest text-white/55 md:gap-x-12 md:text-sm">
               <span>HYUNDAI</span>
               <span className="text-primary/40">+</span>
               <span>MITSUBISHI MOTORS</span>
-              <span className="font-normal text-white/20">Attribution clarified in each case study</span>
+              <span className="font-normal text-white/55">Attribution clarified in each case study</span>
             </div>
           </motion.div>
 

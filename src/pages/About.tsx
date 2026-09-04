@@ -36,7 +36,7 @@ export default function About() {
     title: "About Userhood — The Team Behind the 12-Week Build",
     description:
       "Meet the compact product, design, and engineering team behind Userhood's focused 12-week MVP engagements.",
-    canonical: "https://userhood.in/about",
+    canonical: "https://www.userhood.in/about",
   });
 
   return (
@@ -116,7 +116,7 @@ export default function About() {
                     />
                   </div>
                   <h3 className="mt-4 text-lg font-bold text-white">{member.name}</h3>
-                  <p className="mt-1 text-xs font-mono uppercase leading-relaxed tracking-[0.1em] text-white/40">{member.role}</p>
+                  <p className="mt-1 text-xs font-mono uppercase leading-relaxed tracking-[0.1em] text-white/60">{member.role}</p>
                 </motion.article>
               ))}
             </div>

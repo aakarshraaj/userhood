@@ -8,11 +8,11 @@ export default function Careers() {
     useSEO({
         title: "Careers | Userhood",
         description: "Join Userhood's compact product, design, engineering, and growth team.",
-        canonical: "https://userhood.in/careers",
+        canonical: "https://www.userhood.in/careers",
     });
 
     return (
-        <div className="min-h-screen bg-background-dark text-white pt-24 pb-20 relative overflow-hidden">
+        <main className="min-h-screen bg-background-dark text-white pt-24 pb-20 relative overflow-hidden">
             <div className="absolute inset-0 tech-grid opacity-30 pointer-events-none" />
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
 
@@ -30,7 +30,7 @@ export default function Careers() {
 
                     <h1 className="text-4xl sm:text-5xl md:text-7xl font-medium tracking-tight mb-8">
                         Build the future <br />
-                        <span className="text-white/40">with Userhood.</span>
+                        <span className="text-white/55">with Userhood.</span>
                     </h1>
 
                     <p className="text-lg md:text-xl text-white/60 mb-16 max-w-2xl leading-relaxed">
@@ -87,6 +87,6 @@ export default function Careers() {
                     )}
                 </div>
             </div>
-        </div>
+        </main>
     );
 }

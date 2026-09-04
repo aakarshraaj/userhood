@@ -58,7 +58,7 @@ export default function TwelveWeekBuild() {
             </p>
 
             <div className="mt-10 border border-white/10 bg-white/[0.02] p-6 md:p-8">
-              <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-white/40">
+              <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-white/60">
                 What the build includes
               </div>
               <ul className="space-y-4">
@@ -91,7 +91,7 @@ export default function TwelveWeekBuild() {
                   <p className="mt-4 max-w-2xl text-sm font-light leading-relaxed text-slate-400 md:text-base">
                     {phase.description}
                   </p>
-                  <div className="mt-5 font-mono text-xs uppercase tracking-[0.12em] text-white/35">
+                  <div className="mt-5 font-mono text-xs uppercase tracking-[0.12em] text-white/55">
                     Output // <span className="text-white/60">{phase.output}</span>
                   </div>
                 </div>

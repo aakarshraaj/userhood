@@ -52,7 +52,9 @@ export default function CaseStudyHyundai({ onContactClick }: { onContactClick: (
     title: "Hyundai Digital Buying Journey — Team Experience | Userhood",
     description:
       "A transparent team-experience case study covering the product decisions behind a connected automotive buying journey.",
-    canonical: "https://userhood.in/case-study/hyundai",
+    canonical: "https://www.userhood.in/case-study/hyundai",
+    ogImage: null,
+    ogType: "article",
   });
 
   return <CaseStudyLayout data={caseStudy} onContactClick={onContactClick} />;

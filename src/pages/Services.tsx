@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Cpu, Code2, BrainCircuit, Megaphone, ChevronRight, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSEO } from "../utils/seo";
 
 const services = [
@@ -103,7 +104,7 @@ const serviceLd = {
             provider: {
                 "@type": "Organization",
                 name: "Userhood",
-                url: "https://userhood.in",
+                url: "https://www.userhood.in",
             },
         },
     })),
@@ -131,12 +132,12 @@ export default function Services() {
         title: "Services — AI MVP Design & Development for Startups | Userhood",
         description:
             "Everything a funded startup needs to ship an AI-powered MVP: product UX design, full-stack engineering, and AI integration — owned by one team, delivered in 12 weeks.",
-        canonical: "https://userhood.in/services",
-        jsonLd: [serviceLd, faqLd] as any,
+        canonical: "https://www.userhood.in/services",
+        jsonLd: [serviceLd, faqLd],
     });
 
     return (
-        <div className="min-h-screen bg-background-dark pt-20 sm:pt-28 pb-20 sm:pb-32 selection:bg-primary selection:text-black">
+        <main className="min-h-screen bg-background-dark pt-20 sm:pt-28 pb-20 sm:pb-32 selection:bg-primary selection:text-black">
             <div className="max-w-[1440px] mx-auto px-5 sm:px-8">
 
                 {/* Hero */}
@@ -253,15 +254,15 @@ export default function Services() {
                     <p className="text-slate-400 text-base sm:text-lg font-light max-w-xl mx-auto mb-10">
                         We run lean on purpose. You work directly with the architects — no account managers, no bloat.
                     </p>
-                    <a
-                        href="/?contact=true&source=services_page"
+                    <Link
+                        to="/?contact=true&source=services_page"
                         className="inline-flex items-center gap-3 bg-primary text-black font-mono font-bold text-sm px-10 py-5 hover:bg-white transition-colors"
                     >
                         ESTABLISH_CONTACT <ArrowRight className="w-4 h-4" />
-                    </a>
+                    </Link>
                 </section>
 
             </div>
-        </div>
+        </main>
     );
 }

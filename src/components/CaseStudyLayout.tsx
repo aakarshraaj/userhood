@@ -33,7 +33,7 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
           <div className="mx-auto max-w-[1200px]">
             <Link
               to="/#case-studies"
-              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-white/40 transition-colors hover:text-primary"
+              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-white/60 transition-colors hover:text-primary"
             >
               <ArrowLeft className="h-4 w-4" /> Back to selected work
             </Link>
@@ -50,7 +50,7 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
 
               <div className="md:col-span-4 md:self-end">
                 <div className="border-l-2 border-primary/40 pl-5">
-                  <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/35">Organisation</div>
+                  <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/55">Organisation</div>
                   <div className="mt-2 text-xl font-bold text-white">{data.brand}</div>
                   <p className="mt-5 text-sm font-light leading-relaxed text-slate-400 md:text-base">{data.summary}</p>
                 </div>
@@ -75,7 +75,7 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
             <div className="space-y-8 md:col-span-8">
               <p className="text-xl font-light leading-relaxed text-slate-300 md:text-2xl">{data.context}</p>
               <div className="border-l border-white/15 pl-6">
-                <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/35">The central challenge</div>
+                <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/55">The central challenge</div>
                 <p className="mt-3 text-base font-light leading-relaxed text-slate-400 md:text-lg">{data.challenge}</p>
               </div>
             </div>
@@ -132,7 +132,7 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
               </ul>
 
               <div className="mt-8 border-l-2 border-primary/40 pl-6">
-                <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/35">Evidence boundary</div>
+                <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/55">Evidence boundary</div>
                 <p className="mt-3 text-sm font-light leading-relaxed text-slate-400 md:text-base">{data.evidenceBoundary}</p>
               </div>
             </div>
@@ -156,7 +156,7 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
             >
               DISCUSS YOUR BUILD <ArrowRight className="h-4 w-4" />
             </motion.button>
-            <p className="mt-12 text-xs font-light leading-relaxed text-white/25">{data.trademarkNote}</p>
+            <p className="mt-12 text-xs font-light leading-relaxed text-white/55">{data.trademarkNote}</p>
           </div>
         </section>
       </article>

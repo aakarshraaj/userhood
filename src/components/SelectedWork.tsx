@@ -89,7 +89,7 @@ export default function SelectedWork() {
           ))}
         </div>
 
-        <p className="mt-8 max-w-3xl font-mono text-xs uppercase leading-relaxed tracking-[0.12em] text-white/25">
+        <p className="mt-8 max-w-3xl font-mono text-xs uppercase leading-relaxed tracking-[0.12em] text-white/55">
           Evidence standard // We do not publish outcome numbers without an attributable source. Deeper artefacts are shared only where project permissions allow.
         </p>
       </div>

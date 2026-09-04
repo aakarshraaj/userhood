@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
   <link rel="preload" as="style"
     href="https://api.fontshare.com/v2/css?f[]=author@200,300,400,500,600,700,800&display=swap" />
   <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=author@200,300,400,500,600,700,800&display=swap"
@@ -21,110 +20,75 @@
     media="print" onload="this.media='all'" />
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" />
+    <style>
+      [style*="opacity:0"] { opacity: 1 !important; transform: none !important; }
+    </style>
   </noscript>
 
   <!-- Core SEO Meta Tags -->
   <title>Userhood — AI-Powered MVPs for Funded Startups, Shipped in 12 Weeks</title>
   <meta name="description"
-    content="Userhood is a product studio for funded startups. We design and engineer AI-powered MVPs — product design, full-stack engineering, and the AI layer, owned by one team — in 12 weeks, not 12 months." />
-  <meta name="keywords"
-    content="AI MVP development, MVP development agency, AI product studio, startup product design, build AI MVP, product design and engineering studio, seed stage startup development, AI integration, SaaS MVP, full stack development studio" />
+    content="One senior team takes your MVP from product brief to production in 12 weeks — strategy, product design, engineering, and AI without the handoff drag." />
   <meta name="author" content="Userhood" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://userhood.in/" />
+  <link rel="canonical" href="https://www.userhood.in/" />
   <meta name="theme-color" content="#000000" />
+  <meta name="color-scheme" content="dark" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://userhood.in/" />
+  <meta property="og:url" content="https://www.userhood.in/" />
   <meta property="og:title" content="Userhood — AI-Powered MVPs for Funded Startups, Shipped in 12 Weeks" />
   <meta property="og:description"
     content="Product design, full-stack engineering, and the AI layer — owned by one team. Your MVP shipped in 12 weeks, not 12 months." />
   <meta property="og:site_name" content="Userhood" />
-  <meta property="og:image" content="https://userhood.in/og-image.jpg" />
+  <meta property="og:image" content="https://www.userhood.in/og-image.jpg" />
+  <meta property="og:image:alt" content="Userhood — product design and engineering studio" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://userhood.in/" />
+  <meta name="twitter:url" content="https://www.userhood.in/" />
   <meta name="twitter:title" content="Userhood — AI-Powered MVPs for Funded Startups, Shipped in 12 Weeks" />
   <meta name="twitter:description"
     content="Product design, full-stack engineering, and the AI layer — owned by one team. Your MVP shipped in 12 weeks, not 12 months." />
-  <meta name="twitter:image" content="https://userhood.in/twitter-image.jpg" />
+  <meta name="twitter:image" content="https://www.userhood.in/twitter-image.jpg" />
+  <meta name="twitter:image:alt" content="Userhood — product design and engineering studio" />
 
-  <!-- Organization Structured Data -->
+  <!-- Site-wide structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Userhood",
-    "url": "https://userhood.in/",
-    "logo": "https://userhood.in/logo.png",
-    "description": "A product studio that designs and builds AI-powered MVPs for funded startups — product design, full-stack engineering, and AI integration owned by one team, shipped in 12 weeks.",
-    "sameAs": [
-      "https://in.linkedin.com/company/userhood",
-      "https://instagram.com/userhood.in"
-    ],
-    "knowsAbout": [
-      "Product Design",
-      "UX Design",
-      "Software Engineering",
-      "Full-Stack Development",
-      "AI Integration",
-      "Brand Identity",
-      "Marketing Strategy"
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Userhood Services",
-      "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Product Design" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Software Development" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI & Intelligent Systems" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand & Marketing" } }
-      ]
-    }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.userhood.in/#organization",
+        "name": "Userhood",
+        "url": "https://www.userhood.in/",
+        "logo": "https://www.userhood.in/logo.png",
+        "description": "A senior product design and engineering studio that takes funded startups from product brief to a production-ready MVP in 12 weeks.",
+        "sameAs": [
+          "https://in.linkedin.com/company/userhood",
+          "https://instagram.com/userhood.in"
+        ],
+        "knowsAbout": [
+          "MVP development",
+          "Product design",
+          "Software engineering",
+          "AI product development",
+          "UX design"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.userhood.in/#website",
+        "name": "Userhood",
+        "url": "https://www.userhood.in/",
+        "publisher": { "@id": "https://www.userhood.in/#organization" }
+      }
+    ]
   }
   </script>
-  <!-- WebSite Schema for Sitelinks -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Userhood",
-    "url": "https://userhood.in/",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://userhood.in/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-690654KZJN"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    // send_page_view false avoids double hits since we manual track in react-router
-    gtag('config', 'G-690654KZJN', { send_page_view: false });
-  </script>
-
-  <script>function initApollo() {
-      var n = Math.random().toString(36).substring(7), o = document.createElement("script");
-      o.src = "https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache=" + n, o.async = !0, o.defer = !0,
-        o.onload = function () {
-          try {
-            if (window.trackingFunctions) {
-              window.trackingFunctions.onLoad({ appId: "686cb7c72f4ffc0019456c5f" });
-            }
-          } catch (e) { /* tracker init failed silently */ }
-        },
-        o.onerror = function () { /* tracker load failed silently */ },
-        document.head.appendChild(o)
-    } initApollo();</script>
 
 </head>
 

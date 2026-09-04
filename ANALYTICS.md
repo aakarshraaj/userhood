@@ -2,6 +2,8 @@
 
 The primary conversion is a successfully delivered project brief. A WhatsApp click is a secondary conversion because it leaves the site before contact is confirmed.
 
+Google Analytics loads only after a visitor chooses **Allow analytics**. Declining analytics prevents page-view and conversion events from being sent. Local development never loads the production analytics tag, which keeps team testing out of the property.
+
 ## Lead funnel
 
 | Event | Fires when | Useful parameters |
@@ -35,4 +37,4 @@ Create a funnel exploration in this order:
 
 Break the funnel down by `source`, device category, and `project_type`. Review `lead_form_close.method`, `lead_form_validation_error.field`, and `lead_form_error.reason` beside it to identify the actual point of friction. Report `whatsapp_click` separately rather than treating it as a confirmed lead.
 
-Before evaluating conversion rate, exclude internal/team traffic in GA4 and test one real production submission after every form-provider or environment change.
+Conversion reports therefore describe consenting traffic, not every site visitor. Test one real production submission after every form-provider or environment change.

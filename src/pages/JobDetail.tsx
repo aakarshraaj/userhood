@@ -12,7 +12,15 @@ export default function JobDetail() {
     // Fallback SEO for 404
     useSEO({
         title: job ? `${job.title} | Careers | Userhood` : "Job Not Found | Userhood",
-        description: job?.description || "This job listing is no longer available.",
+        description: job
+            ? "Join Userhood's growth team as a Sales Intern working with ambitious founders, startups, and enterprise teams."
+            : "This job listing is no longer available.",
+        canonical: job
+            ? `https://www.userhood.in/careers/${job.slug}`
+            : "https://www.userhood.in/careers",
+        robots: job ? "index, follow" : "noindex, nofollow",
+        ogImage: null,
+        ogType: "article",
     });
 
     useEffect(() => {
@@ -21,18 +29,18 @@ export default function JobDetail() {
 
     if (!job) {
         return (
-            <div className="min-h-screen bg-background-dark text-white pt-32 pb-20 flex flex-col items-center justify-center text-center px-4">
+            <main className="min-h-screen bg-background-dark text-white pt-32 pb-20 flex flex-col items-center justify-center text-center px-4">
                 <h1 className="text-4xl md:text-6xl font-medium mb-6">Position not found</h1>
                 <p className="text-white/60 mb-8 max-w-md">The job you are looking for may have been filled or the link is incorrect.</p>
                 <Link to="/careers" className="text-primary hover:text-white transition-colors border border-primary/20 hover:border-white/20 px-6 py-3 font-mono text-xs uppercase tracking-widest inline-flex items-center gap-2">
                     <ArrowLeft className="w-4 h-4" /> Back to Careers
                 </Link>
-            </div>
+            </main>
         );
     }
 
     return (
-        <div className="min-h-screen bg-background-dark text-white pt-24 pb-32 relative">
+        <main className="min-h-screen bg-background-dark text-white pt-24 pb-32 relative">
             <div className="absolute inset-0 scanline opacity-20" />
 
             <div className="max-w-[1440px] mx-auto px-6 md:px-12 xl:px-24 relative z-10">
@@ -142,13 +150,13 @@ export default function JobDetail() {
                                 <ExternalLink className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                             </a>
 
-                            <div className="mt-6 text-center text-white/40 text-sm">
+                            <div className="mt-6 text-center text-white/60 text-sm">
                                 Takes about 5 minutes to apply.
                             </div>
                         </div>
                     </motion.div>
                 </div>
             </div>
-        </div>
+        </main>
     );
 }

@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build",
+    "build": "npm run build:client && npm run build:prerender && node scripts/prerender.mjs",
+    "build:client": "vite build",
+    "build:prerender": "vite build --ssr src/prerender.tsx --outDir .prerender --emptyOutDir",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"

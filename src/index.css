@@ -23,8 +23,17 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background-dark text-slate-100 font-sans antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
   }
 }
 
@@ -88,58 +97,39 @@
   .animate-infinite-scroll {
     animation: infinite-scroll 35s linear infinite;
   }
-}
 
-/* Redline Spec Mode Blueprint Grid Overlay */
-body.redline-active::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: 
-    linear-gradient(to right, rgba(0, 245, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 245, 255, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  z-index: 998;
-  opacity: 0;
-  animation: fadeInGrid 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-body.redline-active::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: 
-    linear-gradient(to right, rgba(239, 68, 68, 0.015) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(239, 68, 68, 0.015) 1px, transparent 1px);
-  background-size: 8px 8px;
-  pointer-events: none;
-  z-index: 998;
-  opacity: 0;
-  animation: fadeInGrid 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes fadeInGrid {
-  from {
-    opacity: 0;
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 120;
+    transform: translateY(-180%);
+    background: var(--color-primary);
+    color: #000;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: transform 120ms ease;
   }
-  to {
-    opacity: 1;
+
+  .skip-link:focus {
+    transform: translateY(0);
   }
 }
 
-/* Hide default cursor on desktop when Redline inspector is inactive */
-@media (hover: hover) and (pointer: fine) {
-  body:not(.redline-active) {
-    cursor: none;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  body:not(.redline-active) a,
-  body:not(.redline-active) button,
-  body:not(.redline-active) [role="button"],
-  body:not(.redline-active) input,
-  body:not(.redline-active) textarea,
-  body:not(.redline-active) select,
-  body:not(.redline-active) label {
-    cursor: none;
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

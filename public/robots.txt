@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://userhood.in/sitemap.xml
+Sitemap: https://www.userhood.in/sitemap.xml

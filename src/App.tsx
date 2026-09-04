@@ -1,13 +1,12 @@
-import { useState, Suspense, lazy } from "react";
+import { useEffect, useRef, useState, Suspense, lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { MotionConfig } from "motion/react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 import ContactModal from "./components/ContactModal";
+import { AnalyticsConsentBanner } from "./components/AnalyticsConsent";
 import StickyContactCTA from "./components/StickyContactCTA";
-import RedlineInspector from "./components/RedlineInspector";
-import CustomCursor from "./components/CustomCursor";
 
 import { captureAttribution, trackAnalyticsEvent, trackPageView } from "./utils/analytics";
 
@@ -29,38 +28,63 @@ const Terms = lazy(() => import("./pages/Terms"));
 const Services = lazy(() => import("./pages/Services"));
 const Careers = lazy(() => import("./pages/Careers"));
 const JobDetail = lazy(() => import("./pages/JobDetail"));
-
-const HOME_JSON_LD = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Userhood",
-  url: "https://userhood.in",
-  logo: "https://userhood.in/logo.png",
-  description: "A senior product design and engineering studio that takes funded startups from product brief to a production-ready MVP in 12 weeks.",
-  sameAs: [
-    "https://twitter.com/userhood",
-    "https://in.linkedin.com/company/userhood",
-    "https://instagram.com/userhood.in"
-  ],
-  knowsAbout: ["MVP Development", "Product Design", "Software Engineering", "AI Product Development", "UX Design"],
-};
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function HomeSEO() {
   useSEO({
     title: "Userhood — AI-Powered MVPs for Funded Startups, Shipped in 12 Weeks",
     description: "One senior team takes your MVP from product brief to production in 12 weeks — strategy, product design, engineering, and AI without the handoff drag.",
-    canonical: "https://userhood.in/",
-    jsonLd: HOME_JSON_LD,
+    canonical: "https://www.userhood.in/",
   });
   return null;
 }
 
 function RouteTracker() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
+  const previousPathRef = useRef<string | null>(null);
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-    trackPageView(pathname);
-  }, [pathname]);
+    const isRouteChange = previousPathRef.current !== null && previousPathRef.current !== pathname;
+    previousPathRef.current = pathname;
+
+    let hashObserver: MutationObserver | null = null;
+    let hashObserverTimeout: number | null = null;
+
+    if (hash) {
+      const scrollToHash = () => {
+        const target = document.getElementById(hash.slice(1));
+        if (!target) return false;
+        target.scrollIntoView();
+        return true;
+      };
+
+      if (!scrollToHash()) {
+        hashObserver = new MutationObserver(() => {
+          if (scrollToHash()) hashObserver?.disconnect();
+        });
+        const mainContent = document.getElementById("main-content");
+        if (mainContent) hashObserver.observe(mainContent, { childList: true, subtree: true });
+        hashObserverTimeout = window.setTimeout(() => hashObserver?.disconnect(), 3000);
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+
+    const routeUpdate = window.setTimeout(() => {
+      trackPageView(pathname);
+
+      const announcer = document.getElementById("route-announcer");
+      if (announcer) announcer.textContent = `${document.title} loaded`;
+
+      if (isRouteChange && !hash) document.getElementById("main-content")?.focus();
+    }, 0);
+
+    return () => {
+      window.clearTimeout(routeUpdate);
+      if (hashObserverTimeout) window.clearTimeout(hashObserverTimeout);
+      hashObserver?.disconnect();
+    };
+  }, [pathname, hash]);
   return null;
 }
 export default function App() {
@@ -91,46 +115,52 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen selection:bg-primary selection:text-black">
-      <div id="site-shell">
-        <RouteTracker />
-        <RedlineInspector />
-        <CustomCursor />
-        <Navbar onContactClick={() => handleContactClick('navbar')} />
+    <MotionConfig reducedMotion="user">
+      <div className="min-h-screen selection:bg-primary selection:text-black">
+        <div id="site-shell">
+          <a href="#main-content" className="skip-link">Skip to main content</a>
+          <RouteTracker />
+          <Navbar onContactClick={() => handleContactClick('navbar')} />
 
-        <Suspense fallback={<div className="min-h-screen bg-background-dark flex items-center justify-center"><div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin-slow"></div></div>}>
-          <Routes>
-            <Route path="/" element={
-              <main>
-                <HomeSEO />
-                <Hero onContactClick={() => handleContactClick('hero')} />
-                <SelectedWork />
-                <TwelveWeekBuild />
-                <EngagementModels onContactClick={() => handleContactClick('engagement_models')} />
-                <FounderOrigin />
-                <FinalCTA onContactClick={() => handleContactClick('final_cta')} />
-              </main>
-            } />
-            <Route path="/case-study/mitsubishi" element={<CaseStudyMitsubishi onContactClick={() => handleContactClick('mitsubishi_case_study')} />} />
-            <Route path="/case-study/hyundai" element={<CaseStudyHyundai onContactClick={() => handleContactClick('hyundai_case_study')} />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/careers/:slug" element={<JobDetail />} />
-          </Routes>
-        </Suspense>
+          <div id="main-content" tabIndex={-1} className="outline-none">
+            <Suspense fallback={<div className="min-h-screen bg-background-dark flex items-center justify-center" role="status" aria-label="Loading page"><div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin-slow"></div></div>}>
+              <Routes>
+                <Route path="/" element={
+                  <main>
+                    <HomeSEO />
+                    <Hero onContactClick={() => handleContactClick('hero')} />
+                    <SelectedWork />
+                    <TwelveWeekBuild />
+                    <EngagementModels onContactClick={() => handleContactClick('engagement_models')} />
+                    <FounderOrigin />
+                    <FinalCTA onContactClick={() => handleContactClick('final_cta')} />
+                  </main>
+                } />
+                <Route path="/case-study/mitsubishi" element={<CaseStudyMitsubishi onContactClick={() => handleContactClick('mitsubishi_case_study')} />} />
+                <Route path="/case-study/hyundai" element={<CaseStudyHyundai onContactClick={() => handleContactClick('hyundai_case_study')} />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/careers" element={<Careers />} />
+                <Route path="/careers/:slug" element={<JobDetail />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </div>
 
-        <Footer />
-        <StickyContactCTA onContactClick={() => handleContactClick('sticky_mobile')} />
+          <Footer />
+          <StickyContactCTA onContactClick={() => handleContactClick('sticky_mobile')} />
+          <AnalyticsConsentBanner />
+          <div id="route-announcer" className="sr-only" aria-live="polite" aria-atomic="true" />
+        </div>
+
+        <ContactModal
+          isOpen={isContactOpen}
+          onClose={() => setIsContactOpen(false)}
+          source={contactSource}
+        />
       </div>
-
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-        source={contactSource}
-      />
-    </div>
+    </MotionConfig>
   );
 }
