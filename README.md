@@ -1,19 +1,19 @@
-# Userhood: Brand & Engineering Aligned
+# Userhood
 
-A technical studio aligning brand, product, and engineering for high-stakes ventures. We build scalable platforms where the aesthetic vision dictates the technical execution without compromising on speed or core architecture stability.
+A product design and engineering studio for focused MVP releases. Userhood brings product strategy, interface design, software engineering, and useful AI integration into one accountable delivery team.
 
 ## Core Philosophy
-We operate as systems engineers. Brand is the source code. Engineering is the execution layer.
+Design and engineering share the same release boundary, product decisions, and accountability. Neither discipline exists to decorate or merely execute the other.
 
-> "Incredible engineering is useless if it's trapped behind a mediocre interface, and a beautiful interface is a liability if the code can't support it."
+The flagship engagement takes a deliberately scoped MVP from product brief to production in twelve weeks. Complexity that cannot responsibly fit is surfaced before kickoff.
 
 ## Tech Stack
 - React 19 + TypeScript
-- Framer Motion (Animation logic & Micro-interactions)
+- Motion (Animation logic & micro-interactions)
 - Tailwind CSS v4 (Custom terminal-style design system)
 - Vite Ecosystem
 
-## System Initialization
+## Local Development
 
 Run the application locally:
 

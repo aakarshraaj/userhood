@@ -216,10 +216,10 @@ export default function RedlineInspector() {
           </div>
         </div>
 
-        {/* Alignment status indicator */}
+        {/* Local overlay status indicator */}
         <div className="flex items-center gap-1.5 border-t border-white/5 pt-2 text-[8px] text-primary/80">
           <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-          <span>FIGMA_SYNC: 0.00px DRIFT</span>
+          <span>LOCAL_LAYOUT_OVERLAY</span>
         </div>
       </motion.div>
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
-import { Menu, X, Volume2, VolumeX, Ruler, Terminal } from "lucide-react";
+import { Menu, X, Volume2, VolumeX, Ruler } from "lucide-react";
 
 import { toggleMute, getMuteState, playTick, playSuccess, playStrike } from "../utils/audio";
 
@@ -31,11 +31,6 @@ export default function Navbar({ onContactClick }: NavbarProps) {
       playStrike();
     }
   };
-
-  const handleConsoleToggle = () => {
-    window.dispatchEvent(new CustomEvent("toggle-developer-console"));
-  };
-
 
   const handleMenuClick = () => {
     playTick();
@@ -75,15 +70,6 @@ export default function Navbar({ onContactClick }: NavbarProps) {
             >
               <Ruler size={13} className={isRedline ? "animate-pulse" : ""} />
               <span className="hidden lg:inline">{isRedline ? "INSPECT: ON" : "INSPECT"}</span>
-            </button>
-            <button
-              onClick={handleConsoleToggle}
-              className="text-white/40 hover:text-primary transition-colors p-2 cursor-pointer flex items-center gap-1.5 font-mono text-xs uppercase font-bold"
-              title="Toggle Studio Console (Key: `)"
-              aria-label="Toggle Developer Console"
-            >
-              <Terminal size={13} />
-              <span className="hidden lg:inline">CONSOLE</span>
             </button>
             <button
               onClick={handleMuteToggle}
@@ -163,20 +149,6 @@ export default function Navbar({ onContactClick }: NavbarProps) {
               >
                 <Ruler size={16} className={isRedline ? "animate-pulse text-primary" : "text-white/50"} />
                 <span>{isRedline ? "ACTIVE" : "OFF"}</span>
-              </button>
-            </div>
-            
-            <div className="flex justify-between items-center py-2 border-t border-white/5">
-              <span className="text-white/30">Developer_Console</span>
-              <button
-                onClick={() => {
-                  setIsOpen(false); // Close mobile menu first
-                  handleConsoleToggle();
-                }}
-                className="text-primary flex items-center gap-1.5"
-              >
-                <Terminal size={16} />
-                <span>TOGGLE</span>
               </button>
             </div>
             

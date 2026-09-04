@@ -154,31 +154,21 @@ export default function Hero({ onContactClick }: HeroProps) {
             </div>
           </motion.div>
 
-          {/* Brand Logo Marquee */}
+          {/* Transparent team-experience attribution */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.0, duration: 0.8 }}
             className="mt-16 md:mt-24 pt-8 border-t border-white/5 max-w-4xl"
           >
-            <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em] mb-5">
-              OUR TEAM HAS SHIPPED FOR
+            <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em] mb-4">
+              SELECTED EXPERIENCE FROM THE TEAM BEHIND USERHOOD
             </p>
-
-            <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]">
-              <div className="flex gap-16 md:gap-24 items-center animate-infinite-scroll w-max py-2 select-none">
-                {[
-                  "HYUNDAI", "MITSUBISHI MOTORS", "HYUNDAI", "MITSUBISHI MOTORS",
-                  "HYUNDAI", "MITSUBISHI MOTORS", "HYUNDAI", "MITSUBISHI MOTORS"
-                ].map((brand, i) => (
-                  <span
-                    key={i}
-                    className="font-mono text-xs md:text-sm font-black tracking-widest text-white/10 hover:text-white/30 transition-colors cursor-default"
-                  >
-                    {brand}
-                  </span>
-                ))}
-              </div>
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs font-black tracking-widest text-white/30 md:gap-x-12 md:text-sm">
+              <span>HYUNDAI</span>
+              <span className="text-primary/40">+</span>
+              <span>MITSUBISHI MOTORS</span>
+              <span className="font-normal text-white/20">Attribution clarified in each case study</span>
             </div>
           </motion.div>
 

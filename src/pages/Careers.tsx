@@ -7,7 +7,7 @@ import { useSEO } from "../utils/seo";
 export default function Careers() {
     useSEO({
         title: "Careers | Userhood",
-        description: "Join Userhood and help us build world-class digital products and AI solutions. We are looking for top-tier talent.",
+        description: "Join Userhood's compact product, design, engineering, and growth team.",
         canonical: "https://userhood.in/careers",
     });
 
@@ -34,7 +34,7 @@ export default function Careers() {
                     </h1>
 
                     <p className="text-lg md:text-xl text-white/60 mb-16 max-w-2xl leading-relaxed">
-                        We are always on the lookout for exceptional talent. If you have a passion for design, technology, and building products that matter, we'd love to hear from you.
+                        We value clear thinking, direct communication, and people who care about the quality of the work—not inflated titles or performative busyness.
                     </p>
                 </motion.div>
 

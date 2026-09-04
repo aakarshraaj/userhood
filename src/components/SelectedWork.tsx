@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const selectedWork = [
   {
     index: "01",
-    client: "Hyundai Global",
+    organisation: "Hyundai Global",
     category: "Automotive commerce",
     title: "Turning a dealership journey into one coherent digital purchase flow.",
     description:
@@ -14,7 +14,7 @@ const selectedWork = [
   },
   {
     index: "02",
-    client: "Mitsubishi Motors Australia",
+    organisation: "Mitsubishi Motors Australia",
     category: "Connected ownership",
     title: "Making a complex vehicle ecosystem feel calm behind the wheel.",
     description:
@@ -43,14 +43,14 @@ export default function SelectedWork() {
           </div>
 
           <p className="max-w-md text-base font-light leading-relaxed text-slate-400 md:col-span-4 md:justify-self-end md:text-lg">
-            Selected product work led or delivered by members of the team behind Userhood. Open a case study for the problem, decisions, and system.
+            Selected product work contributed to by members of the team behind Userhood. Open a case study for the problem, decisions, and system.
           </p>
         </div>
 
         <div>
           {selectedWork.map((item, index) => (
             <motion.div
-              key={item.client}
+              key={item.organisation}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -58,16 +58,16 @@ export default function SelectedWork() {
             >
               <Link
                 to={item.link}
-                aria-label={`Read the ${item.client} case study`}
+                aria-label={`Read the ${item.organisation} team-experience case study`}
                 className="group grid gap-6 border-b border-white/10 py-10 transition-colors hover:bg-white/[0.02] md:grid-cols-12 md:items-center md:gap-8 md:px-4 md:py-14"
               >
                 <div className="font-mono text-xs text-white/30 md:col-span-1">{item.index}</div>
 
                 <div className="md:col-span-3">
                   <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">
-                    {item.category}
+                    Team experience · {item.category}
                   </div>
-                  <div className="mt-2 text-lg font-bold text-white">{item.client}</div>
+                  <div className="mt-2 text-lg font-bold text-white">{item.organisation}</div>
                 </div>
 
                 <div className="md:col-span-7">
@@ -86,6 +86,10 @@ export default function SelectedWork() {
             </motion.div>
           ))}
         </div>
+
+        <p className="mt-8 max-w-3xl font-mono text-xs uppercase leading-relaxed tracking-[0.12em] text-white/25">
+          Evidence standard // We do not publish outcome numbers without an attributable source. Deeper artefacts are shared only where project permissions allow.
+        </p>
       </div>
     </section>
   );

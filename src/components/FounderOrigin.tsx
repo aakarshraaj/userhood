@@ -1,98 +1,78 @@
 import { motion } from "motion/react";
-import { Terminal, Users } from "lucide-react";
-import { playTick } from "../utils/audio";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const founders = [
+  {
+    name: "Kriti",
+    role: "Co-founder · Product & Design",
+    image: "/team/kriti.png",
+  },
+  {
+    name: "Ashwin",
+    role: "Co-founder · Engineering & Systems",
+    image: "/team/ashwin.png",
+  },
+];
 
 export default function FounderOrigin() {
-    return (
-        <section className="py-16 md:py-24 lg:py-32 px-5 md:px-6 bg-surface border-t border-white/5">
-            <div className="max-w-6xl mx-auto">
-                <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="space-y-6 md:space-y-8"
-                    >
-                        <div className="font-mono text-xs text-primary uppercase tracking-[0.2em] flex items-center gap-2">
-                            <Users size={12} className="shrink-0" />
-                            [ 04 // THE_TEAM ]
-                        </div>
+  return (
+    <section className="border-t border-white/5 bg-surface px-5 py-20 md:px-8 md:py-28 lg:py-32">
+      <div className="mx-auto grid max-w-[1200px] gap-12 md:grid-cols-12 md:items-center md:gap-16">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          className="md:col-span-5"
+        >
+          <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">[ 04 // ACCOUNTABILITY ]</div>
+          <h2 className="mt-6 text-4xl font-black leading-[0.95] tracking-tighter text-white sm:text-5xl md:text-6xl">
+            The people in the room stay <span className="text-primary">on the work.</span>
+          </h2>
+          <div className="mt-7 space-y-5 text-base font-light leading-relaxed text-slate-400 md:text-lg">
+            <p>
+              Userhood was built around a simple operating decision: product design and engineering should share the same release, the same constraints, and the same accountability.
+            </p>
+            <p>
+              The founders remain involved in product direction and delivery. The wider team is compact by design, so context does not disappear between a sales conversation and the build.
+            </p>
+          </div>
 
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter leading-[1.1] mb-6 md:mb-8">
-                            Built by people<br />who closed<br /><span className="text-primary">the gap.</span>
-                        </h2>
+          <Link
+            to="/about"
+            className="mt-9 inline-flex min-h-[48px] items-center gap-3 font-mono text-xs font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:text-white"
+          >
+            Meet the complete team <ArrowRight className="h-4 w-4" />
+          </Link>
+        </motion.div>
 
-                        <div className="space-y-4 md:space-y-6 text-slate-400 text-base md:text-lg leading-relaxed max-w-lg">
-                            <p>
-                                We started Userhood because we'd lived both sides of the gap. We'd seen stunning design get mangled by engineering that didn't understand it. We'd seen great engineers waste months building on top of design that couldn't scale.
-                            </p>
-                            <p>
-                                We are two co-founders and a specialized core team who refuse to separate the disciplines. You're not hiring a design agency and an engineering firm. You're getting one unified team that holds both from concept to shipping.
-                            </p>
-                        </div>
-
-                        <div className="pt-8 md:pt-12 flex items-center gap-4 md:gap-6">
-                            <div className="w-11 h-11 md:w-12 md:h-12 bg-white/[0.03] flex items-center justify-center text-primary font-mono text-xs border border-white/10 shrink-0">
-                                UH
-                            </div>
-                            <div className="flex flex-col min-w-0">
-                                <span className="text-white font-bold text-sm">Kriti & Ashwin</span>
-                                <span className="text-primary font-mono text-xs uppercase tracking-widest mt-1">Lead System Architects</span>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.98 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        className="relative h-full min-h-0"
-                    >
-                        <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full hidden md:block" />
-                        <div className="relative bg-[#0d0d0f] border border-white/5 p-6 md:p-8 lg:p-12 overflow-hidden flex flex-col items-center justify-center min-h-[320px] md:min-h-0 md:h-full">
-                            <div className="absolute inset-0 tech-grid opacity-10 max-md:opacity-5" />
-
-                             <div className="relative z-10 w-full flex justify-center gap-8 sm:gap-12 md:gap-20 mb-8 md:mb-16 mt-4 md:mt-8">
-                                <div className="flex flex-col items-center group min-w-0" onMouseEnter={() => playTick()} data-cursor-text="Kriti: Designing component systems v2" data-cursor-color="#E100FF">
-                                    <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full overflow-hidden mb-4 md:mb-8 border-2 md:border-4 border-white/10 group-hover:border-primary transition-all duration-300 shrink-0 relative">
-                                        <img src="/team/kriti.png" alt="Kriti, Co-Founder at Userhood" className="w-full h-full object-cover" loading="lazy" decoding="async" width="176" height="176" />
-                                        <div className="absolute bottom-1.5 right-1.5 bg-background-dark border border-primary/20 rounded px-1.5 py-0.5 text-xs font-mono text-primary font-bold animate-pulse">
-                                            DESIGNING
-                                        </div>
-                                    </div>
-                                    <h3 className="font-mono text-base md:text-xl text-white tracking-[0.2em] mb-1 md:mb-2">KRITI</h3>
-                                    <div className="font-mono text-xs md:text-xs text-primary tracking-widest uppercase mb-1">CO-FOUNDER</div>
-                                    <div className="font-mono text-xs text-slate-500 max-w-[120px] text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        &gt; Component systems v2
-                                    </div>
-                                </div>
-                                <div className="flex flex-col items-center group min-w-0" onMouseEnter={() => playTick()} data-cursor-text="Ashwin: Optimizing SSR latency" data-cursor-color="#FF5C00">
-                                    <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full overflow-hidden mb-4 md:mb-8 border-2 md:border-4 border-white/10 group-hover:border-primary transition-all duration-300 shrink-0 relative">
-                                        <img src="/team/ashwin.png" alt="Ashwin, Co-Founder at Userhood" className="w-full h-full object-cover" loading="lazy" decoding="async" width="176" height="176" />
-                                        <div className="absolute bottom-1.5 right-1.5 bg-background-dark border border-primary/20 rounded px-1.5 py-0.5 text-xs font-mono text-primary font-bold animate-pulse">
-                                            OPTIMIZING
-                                        </div>
-                                    </div>
-                                    <h3 className="font-mono text-base md:text-xl text-white tracking-[0.2em] mb-1 md:mb-2">ASHWIN</h3>
-                                    <div className="font-mono text-xs md:text-xs text-primary tracking-widest uppercase mb-1">CO-FOUNDER</div>
-                                    <div className="font-mono text-xs text-slate-500 max-w-[120px] text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        &gt; SSR latency audit
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div className="w-full mt-auto relative z-10 px-0">
-                                <a href="/about" className="w-full bg-[#141416] border border-white/[0.08] hover:border-primary/50 py-4 md:py-5 px-4 md:px-6 flex items-center justify-between gap-3 transition-all group min-h-[48px]">
-                                    <span className="font-mono text-xs sm:text-xs tracking-[0.2em] text-white/50 group-hover:text-white transition-colors truncate">VIEW_COMPLETE_ROSTER</span>
-                                    <span className="text-primary text-sm shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">↗</span>
-                                </a>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </div>
-        </section>
-    );
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:col-span-7">
+          {founders.map((founder, index) => (
+            <motion.article
+              key={founder.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.45, delay: index * 0.08 }}
+              className="group"
+            >
+              <div className="aspect-[4/5] overflow-hidden border border-white/10 bg-background-dark">
+                <img
+                  src={founder.image}
+                  alt={`${founder.name}, ${founder.role} at Userhood`}
+                  className="h-full w-full object-cover grayscale transition duration-500 group-hover:grayscale-0"
+                  loading="lazy"
+                  decoding="async"
+                  width="360"
+                  height="450"
+                />
+              </div>
+              <h3 className="mt-5 text-xl font-bold text-white md:text-2xl">{founder.name}</h3>
+              <p className="mt-2 font-mono text-xs uppercase leading-relaxed tracking-[0.1em] text-white/40">{founder.role}</p>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

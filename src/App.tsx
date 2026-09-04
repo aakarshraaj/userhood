@@ -8,8 +8,6 @@ import ContactModal from "./components/ContactModal";
 import StickyContactCTA from "./components/StickyContactCTA";
 import RedlineInspector from "./components/RedlineInspector";
 import CustomCursor from "./components/CustomCursor";
-import DeveloperConsole from "./components/DeveloperConsole";
-import MultiplayerSim from "./components/MultiplayerSim";
 
 import { trackPageView, trackEvent } from "./utils/analytics";
 
@@ -89,8 +87,6 @@ export default function App() {
       <RouteTracker />
       <RedlineInspector />
       <CustomCursor />
-      <DeveloperConsole />
-      <MultiplayerSim />
       <Navbar onContactClick={() => handleContactClick('navbar')} />
 
 

@@ -10,7 +10,7 @@ const services = [
         category: "PRODUCT_DESIGN",
         title: "Product Design",
         description:
-            "From zero-to-one discovery to pixel-perfect component systems. We design interfaces that convert, products that retain, and experiences that define categories.",
+            "Research, journey architecture, prototypes, and interface systems developed alongside the release they need to support.",
         deliverables: [
             "UX Research & User Journey Mapping",
             "Information Architecture",
@@ -25,7 +25,7 @@ const services = [
         category: "SOFTWARE_ENGINEERING",
         title: "Software Development",
         description:
-            "Hardened full-stack systems built for velocity. We architect and ship production-grade code — from API design to frontend interactions — with zero bloat.",
+            "Frontend, backend, APIs, and delivery infrastructure shaped around the product, its release boundary, and the team that will own it next.",
         deliverables: [
             "Full-Stack Web & Mobile Engineering",
             "API Architecture & Backend Systems",
@@ -40,13 +40,13 @@ const services = [
         category: "INTELLIGENT_SYSTEMS",
         title: "Intelligent Systems",
         description:
-            "Custom API integration, automated workflows, and native intelligence built to scale. We embed intelligent layers directly into your product rather than bolting them on.",
+            "Model integrations, retrieval, automation, and product workflows used where they improve a real user or operational outcome.",
         deliverables: [
-            "LLM Integration & Fine-tuning",
-            "AI-Powered Feature Engineering",
-            "Intelligent Automation & Workflow Systems",
-            "Custom Agents & Service Integrations",
-            "Systems Architecture & Scalability Planning",
+            "Model & API Integration",
+            "Retrieval & Knowledge Workflows",
+            "Automation & Agentic Workflows",
+            "Evaluation, Guardrails & Observability",
+            "AI Systems Architecture",
         ],
     },
     {
@@ -55,7 +55,7 @@ const services = [
         category: "BRAND_&_MARKETING",
         title: "Brand & Marketing",
         description:
-            "Brand identity systems that hold from a favicon to a billboard. Positioning strategy, visual language, and go-to-market assets built for operators who move fast.",
+            "Positioning, identity, and launch materials that help the market understand the product without creating a second, disconnected story.",
         deliverables: [
             "Brand Identity & Visual Design",
             "Positioning & Messaging Strategy",
@@ -69,11 +69,11 @@ const services = [
 const faqs = [
     {
         q: "What types of clients do you work with?",
-        a: "Funded startups from pre-seed to Series B, and enterprise teams modernizing their product stack. We're selective — we work best with operators who care deeply about craft and aren't afraid to move fast.",
+        a: "The 12-week build is designed for funded startups with a real release window and a decision-maker who can work with us weekly. Existing-product work begins with a separately scoped rescue or review.",
     },
     {
         q: "Do you work on AI-native products?",
-        a: "Yes. We architect and build AI-first products — from LLM integrations and custom fine-tuning to intelligent workflow automation and agentic systems. AI is not an add-on for us; it's a core engineering discipline.",
+        a: "Yes, when AI improves a defined product outcome. We work with model integrations, retrieval, automation, evaluation, and agentic workflows—and will recommend a simpler approach when AI adds cost without value.",
     },
     {
         q: "Can you redesign an existing product?",
@@ -81,7 +81,7 @@ const faqs = [
     },
     {
         q: "How quickly can you start?",
-        a: "We maintain limited bandwidth intentionally. Reach out via the contact form or WhatsApp — if there's a fit, we typically onboard within 1–2 weeks.",
+        a: "Availability is confirmed during the fit conversation. The twelve-week delivery window begins after scope, responsibilities, and commercial terms are agreed.",
     },
     {
         q: "Do you offer brand and marketing as a standalone service?",

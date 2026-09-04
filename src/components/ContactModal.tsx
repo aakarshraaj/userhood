@@ -294,7 +294,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </motion.a>
 
             <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/5 flex flex-wrap justify-between items-center gap-2 font-mono text-xs text-white/20 uppercase">
-              <span>Encryption: AES-256</span>
+              <span>We only use these details to respond to your enquiry.</span>
               <span>Status: {isSubmitting ? "Processing" : "Ready_to_send"}</span>
             </div>
           </motion.div>
