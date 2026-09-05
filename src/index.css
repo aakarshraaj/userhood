@@ -164,20 +164,42 @@
 @keyframes userhood-monogram-swap {
   /* The U bridge begins flush with the stems. Every animated offset stays
      non-positive so it can never fall below their shared baseline. */
-  0%, 38%, 73%, 100% {
+  0%, 10%, 40%, 100% {
     transform: translateY(0);
   }
 
-  44% {
+  15% {
     transform: translateY(-14.25px);
   }
 
-  47%, 63% {
+  18%, 28% {
     transform: translateY(-13px);
   }
 
-  69% {
+  35% {
     transform: translateY(-1px);
+  }
+}
+
+@keyframes userhood-monogram-intro {
+  0%, 45% {
+    transform: scale(1) rotate(0);
+  }
+
+  58% {
+    transform: scale(1.14) rotate(-4deg);
+  }
+
+  70% {
+    transform: scale(0.97) rotate(1.2deg);
+  }
+
+  82% {
+    transform: scale(1.02) rotate(-0.4deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0);
   }
 }
 
@@ -353,7 +375,12 @@
   transform-box: fill-box;
   transform-origin: center;
   will-change: transform;
-  animation: userhood-monogram-swap 8.2s var(--motion-ease-standard) 0.8s infinite;
+  animation: userhood-monogram-swap 8.2s var(--motion-ease-standard) 0.6s infinite;
+}
+
+.userhood-monogram-tile {
+  transform-origin: center;
+  animation: userhood-monogram-intro 2.1s var(--motion-ease-out) 0.5s both;
 }
 
 @media (hover: hover) and (pointer: fine) {
