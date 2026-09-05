@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getPageSEO } from "../data/siteMetadata";
@@ -44,10 +43,10 @@ export default function About() {
             One team.<br /><span className="text-primary">Both disciplines.</span>
           </h1>
           <div className="mt-12 grid gap-8 border-t border-white/10 pt-10 md:mt-16 md:grid-cols-12 md:gap-14 md:pt-14">
-            <p className="text-xl font-light leading-relaxed text-slate-300 md:col-span-7 md:text-2xl">
+            <p className="text-xl font-normal leading-relaxed text-slate-200 md:col-span-7 md:text-2xl">
               Userhood exists because product quality collapses when design and engineering optimise for different outcomes.
             </p>
-            <p className="text-base font-light leading-relaxed text-slate-400 md:col-span-5 md:text-lg">
+            <p className="text-base font-normal leading-relaxed text-slate-300 md:col-span-5 md:text-lg">
               We are a compact studio built around shared accountability. Design serves comprehension and conviction. Engineering serves reliability and speed. Product judgment decides what belongs in the release.
             </p>
           </div>
@@ -63,18 +62,14 @@ export default function About() {
 
           <div className="mt-12 grid border-l border-t border-white/10 md:mt-16 md:grid-cols-3">
             {principles.map((principle, index) => (
-              <motion.article
+              <article
                 key={principle.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.45, delay: index * 0.06 }}
                 className="border-b border-r border-white/10 p-7 md:p-9"
               >
                 <div className="font-mono text-xs text-primary">0{index + 1}</div>
                 <h3 className="mt-8 text-2xl font-bold tracking-tight text-white">{principle.title}</h3>
-                <p className="mt-4 text-sm font-light leading-relaxed text-slate-400 md:text-base">{principle.detail}</p>
-              </motion.article>
+                <p className="mt-4 text-sm font-normal leading-relaxed text-slate-300 md:text-base">{principle.detail}</p>
+              </article>
             ))}
           </div>
         </div>
@@ -86,20 +81,14 @@ export default function About() {
             <div className="md:col-span-4">
               <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">02 // The team</div>
               <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-5xl">Small enough to stay close to the work.</h2>
-              <p className="mt-6 text-base font-light leading-relaxed text-slate-400">
+              <p className="mt-6 text-base font-normal leading-relaxed text-slate-300">
                 These are the people behind the studio. Roles stay visible because a buyer should know what kind of team may be involved in the work.
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 md:col-span-8 md:gap-x-7 md:gap-y-12">
-              {team.map((member, index) => (
-                <motion.article
-                  key={member.name}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.4, delay: index * 0.04 }}
-                >
+              {team.map((member) => (
+                <article key={member.name}>
                   <div className="aspect-square overflow-hidden border border-white/10 bg-surface">
                     <img
                       src={member.image}
@@ -112,8 +101,8 @@ export default function About() {
                     />
                   </div>
                   <h3 className="mt-4 text-lg font-bold text-white">{member.name}</h3>
-                  <p className="mt-1 text-xs font-mono uppercase leading-relaxed tracking-[0.1em] text-white/60">{member.role}</p>
-                </motion.article>
+                  <p className="mt-1 text-sm leading-relaxed text-white/75">{member.role}</p>
+                </article>
               ))}
             </div>
           </div>
@@ -132,7 +121,7 @@ export default function About() {
               "If AI adds cost without improving the product, we will not force it into the scope.",
               "If another team is a better fit for the problem, we would rather make that clear before a proposal.",
             ].map((statement) => (
-              <div key={statement} className="flex items-start gap-4 border-b border-white/10 pb-5 text-base font-light leading-relaxed text-slate-300 md:text-lg">
+              <div key={statement} className="flex items-start gap-4 border-b border-white/10 pb-5 text-base font-normal leading-relaxed text-slate-200 md:text-lg">
                 <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-primary" />
                 <span>{statement}</span>
               </div>
@@ -140,9 +129,9 @@ export default function About() {
 
             <Link
               to="/?contact=true&source=about_page"
-              className="mt-8 inline-flex min-h-[48px] items-center gap-3 font-mono text-sm font-bold uppercase tracking-[0.12em] text-primary transition-colors hover:text-white"
+              className="mt-8 inline-flex min-h-[48px] items-center gap-3 text-base font-bold text-primary transition-colors hover:text-white"
             >
-              Start a direct conversation <ArrowRight className="h-4 w-4" />
+              Discuss your 12-week build <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>

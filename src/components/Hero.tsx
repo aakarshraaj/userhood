@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import { motion } from "motion/react";
 import { trackAnalyticsEvent } from "../utils/analytics";
-import { playStrike, playSuccess } from "../utils/audio";
 import KineticMesh from "./KineticMesh";
 
 
@@ -10,23 +8,6 @@ interface HeroProps {
 }
 
 export default function Hero({ onContactClick }: HeroProps) {
-  useEffect(() => {
-    // Play strike sound after delay
-    const strikeTimer = setTimeout(() => {
-      playStrike();
-    }, 850); // Aligns with scaleX animation delay: 0.8s
-
-    // Play success sound after delay
-    const successTimer = setTimeout(() => {
-      playSuccess();
-    }, 1200); // Aligns with opacity animation delay: 1.1s
-
-    return () => {
-      clearTimeout(strikeTimer);
-      clearTimeout(successTimer);
-    };
-  }, []);
-
   return (
     <section className="relative min-h-[100dvh] flex items-center overflow-hidden tech-grid px-5 md:px-8 pt-28 pb-20 md:pt-36 md:pb-28">
 
@@ -51,68 +32,44 @@ export default function Hero({ onContactClick }: HeroProps) {
         <div className="max-w-4xl">
 
           {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="font-mono text-xs text-primary mb-6 md:mb-10 flex items-center gap-2 flex-wrap"
-          >
+          <div className="font-mono text-xs text-primary mb-6 md:mb-10 flex items-center gap-2 flex-wrap">
             <span className="w-2 h-2 bg-primary animate-pulse shrink-0" />
             <span>AI-POWERED MVPS FOR FUNDED STARTUPS</span>
-          </motion.div>
+          </div>
 
           {/* The Indictment Headline */}
           <h1 className="mb-8 md:mb-12 space-y-1">
 
             {/* Line 1: soft accusation */}
-            <motion.span
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.05 }}
-              className="block text-slate-400 text-xl sm:text-2xl md:text-3xl font-light tracking-tight"
-            >
+            <span className="block text-slate-300 text-xl sm:text-2xl md:text-3xl font-normal tracking-tight">
               Still taking
-            </motion.span>
+            </span>
 
             {/* Line 2: the number — struck through */}
-            <motion.span
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.12 }}
-              className="flex items-center gap-4 md:gap-6"
-            >
-              <span className="relative text-[min(22vw,120px)] sm:text-7xl md:text-8xl lg:text-[120px] font-black leading-none tracking-tighter text-white/40 select-none">
+            <span className="flex items-center gap-4 md:gap-6">
+              <span className="relative text-[min(22vw,120px)] sm:text-7xl md:text-8xl lg:text-[120px] font-black leading-none tracking-tighter text-white/55 select-none">
                 12 months
                 {/* The strikethrough — draws across */}
                 <motion.span
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.5, delay: 0.8, ease: "easeOut" }}
+                  transition={{ duration: 0.32, delay: 0.12, ease: "easeOut" }}
                   className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[6px] md:h-[8px] bg-red-500/70 origin-left block"
                 />
               </span>
-            </motion.span>
+            </span>
 
             {/* Line 3: the bridge */}
-            <motion.span
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.22 }}
-              className="block text-slate-400 text-xl sm:text-2xl md:text-3xl font-light tracking-tight"
-            >
+            <span className="block text-slate-300 text-xl sm:text-2xl md:text-3xl font-normal tracking-tight">
               to ship your product?
-            </motion.span>
+            </span>
 
             {/* Spacer */}
             <div className="h-4 md:h-6" />
 
             {/* Line 4: the answer — glows in */}
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 1.1 }}
-            >
-              <span className="block text-slate-300 text-xl sm:text-2xl md:text-3xl font-light tracking-tight mb-1">
+            <span>
+              <span className="block text-slate-200 text-xl sm:text-2xl md:text-3xl font-normal tracking-tight mb-1">
                 It should take
               </span>
               <span
@@ -120,47 +77,34 @@ export default function Hero({ onContactClick }: HeroProps) {
               >
                 12 weeks.
               </span>
-            </motion.span>
+            </span>
           </h1>
 
           {/* Tagline + CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.6, duration: 0.6 }}
-            className="border-l-2 border-primary/20 pl-5 md:pl-8 max-w-2xl"
-          >
-            <p className="text-base sm:text-lg md:text-xl text-slate-400 font-light leading-relaxed mb-8 md:mb-10">
+          <div className="border-l-2 border-primary/30 pl-5 md:pl-8 max-w-2xl">
+            <p className="text-base sm:text-lg md:text-xl text-slate-300 font-normal leading-relaxed mb-8 md:mb-10">
               One senior team takes your MVP from product brief to production. Strategy, product design, engineering, and AI move in the same twelve-week build — so your runway buys a working product, not months of coordination.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6 font-mono text-sm">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6 text-base">
+              <button
                 onClick={onContactClick}
                 className="bg-primary text-black px-6 py-4 min-h-[48px] font-bold transition-transform flex items-center justify-center gap-2 w-full sm:w-auto"
               >
-                START YOUR 12-WEEK BUILD
-              </motion.button>
-              <motion.a
+                Discuss your 12-week build
+              </button>
+              <a
                 href="#case-studies"
                 onClick={() => trackAnalyticsEvent("selected_work_click", { source: "hero" })}
-                whileHover={{ backgroundColor: "rgba(255,255,255,0.05)" }}
                 className="text-white border border-white/10 px-6 py-4 min-h-[48px] transition-all flex items-center justify-center hover:border-white/30 w-full sm:w-auto"
               >
-                SEE SELECTED WORK
-              </motion.a>
+                See selected work
+              </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Transparent work provenance */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.0, duration: 0.8 }}
-            className="mt-16 md:mt-24 pt-8 border-t border-white/5 max-w-4xl"
-          >
+          <div className="mt-16 md:mt-24 pt-8 border-t border-white/10 max-w-4xl">
             <p className="font-mono text-xs text-white/65 uppercase tracking-[0.2em] mb-4">
               SELECTED PRODUCT WORK // PROVENANCE LABELLED IN EVERY CASE
             </p>
@@ -172,7 +116,7 @@ export default function Hero({ onContactClick }: HeroProps) {
               <span>HYUNDAI</span>
               <span>+ MITSUBISHI MOTORS</span>
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>

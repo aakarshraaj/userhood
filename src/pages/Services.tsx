@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { Cpu, Code2, BrainCircuit, Megaphone, ChevronRight, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -140,44 +139,26 @@ export default function Services() {
 
                 {/* Hero */}
                 <header className="mb-20 sm:mb-32 md:mb-40 border-b border-white/5 pb-16 sm:pb-24">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="font-mono text-xs text-primary mb-6 uppercase tracking-[0.3em] flex items-center gap-2"
-                    >
+                    <div className="font-mono text-xs text-primary mb-6 uppercase tracking-[0.18em] flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-primary shrink-0 animate-pulse" />
                         [ SERVICE_CATALOGUE // CAPABILITY_INDEX ]
-                    </motion.div>
+                    </div>
 
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-4xl sm:text-6xl md:text-8xl lg:text-[120px] font-black text-white leading-[0.85] tracking-tighter mb-8"
-                    >
+                    <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[120px] font-black text-white leading-[0.85] tracking-tighter mb-8">
                         What We<br /><span className="text-primary">Build.</span>
-                    </motion.h1>
+                    </h1>
 
-                    <motion.p
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-lg sm:text-xl md:text-2xl text-slate-400 font-light leading-snug max-w-2xl border-l-2 border-primary/20 pl-6"
-                    >
+                    <p className="text-lg sm:text-xl md:text-2xl text-slate-300 font-normal leading-snug max-w-2xl border-l-2 border-primary/30 pl-6">
                         Everything a funded startup needs to ship an AI-powered MVP — design, engineering, AI, and brand under one roof. Zero handoff overhead.
-                    </motion.p>
+                    </p>
                 </header>
 
                 {/* Services Grid */}
                 <section className="mb-24 sm:mb-40" aria-label="Services">
                     <div className="grid gap-px bg-white/5 border border-white/5 lg:grid-cols-2">
-                        {services.map((svc, index) => (
-                            <motion.article
+                        {services.map((svc) => (
+                            <article
                                 key={svc.id}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
                                 className="bg-background-dark p-8 sm:p-10 lg:p-14 flex flex-col group hover:bg-white/[0.02] transition-colors duration-500 relative overflow-hidden"
                                 aria-label={svc.title}
                             >
@@ -187,7 +168,7 @@ export default function Services() {
                                     <div className="text-primary/40 group-hover:text-primary transition-colors duration-500">
                                         {svc.icon}
                                     </div>
-                                    <span className="font-mono text-xs text-white/20 tracking-widest">{svc.id}</span>
+                                    <span className="font-mono text-xs text-white/65 tracking-[0.14em]">{svc.id}</span>
                                 </div>
 
                                 <div className="relative z-10 flex-grow">
@@ -195,7 +176,7 @@ export default function Services() {
                                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tighter mb-5 group-hover:text-primary transition-colors duration-500">
                                         {svc.title}
                                     </h2>
-                                    <p className="text-slate-400 leading-relaxed mb-8 text-base">{svc.description}</p>
+                                    <p className="text-slate-300 leading-relaxed mb-8 text-base">{svc.description}</p>
 
                                     <ul className="space-y-3" aria-label={`${svc.title} deliverables`}>
                                         {svc.deliverables.map((d, i) => (
@@ -206,7 +187,7 @@ export default function Services() {
                                         ))}
                                     </ul>
                                 </div>
-                            </motion.article>
+                            </article>
                         ))}
                     </div>
                 </section>
@@ -223,22 +204,18 @@ export default function Services() {
 
                     <div className="space-y-px border border-white/5 divide-y divide-white/5">
                         {faqs.map((faq, i) => (
-                            <motion.details
+                            <details
                                 key={i}
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.05 }}
                                 className="group bg-background-dark open:bg-white/[0.02] transition-colors"
                             >
                                 <summary className="flex items-center justify-between gap-4 p-6 sm:p-8 cursor-pointer list-none font-bold text-white text-base sm:text-lg tracking-tight hover:text-primary transition-colors">
                                     {faq.q}
                                     <ArrowRight className="w-4 h-4 shrink-0 text-primary/40 group-open:rotate-90 transition-transform duration-300" />
                                 </summary>
-                                <p className="px-6 sm:px-8 pb-6 sm:pb-8 text-slate-400 leading-relaxed text-sm sm:text-base">
+                                <p className="px-6 sm:px-8 pb-6 sm:pb-8 text-slate-300 leading-relaxed text-sm sm:text-base">
                                     {faq.a}
                                 </p>
-                            </motion.details>
+                            </details>
                         ))}
                     </div>
                 </section>
@@ -249,14 +226,14 @@ export default function Services() {
                     <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white tracking-tighter leading-[0.9] mb-6">
                         Let's Build<br />Something Real.
                     </h2>
-                    <p className="text-slate-400 text-base sm:text-lg font-light max-w-xl mx-auto mb-10">
+                    <p className="text-slate-300 text-base sm:text-lg font-normal max-w-xl mx-auto mb-10">
                         We run lean on purpose. You work directly with the architects — no account managers, no bloat.
                     </p>
                     <Link
                         to="/?contact=true&source=services_page"
-                        className="inline-flex items-center gap-3 bg-primary text-black font-mono font-bold text-sm px-10 py-5 hover:bg-white transition-colors"
+                        className="inline-flex items-center gap-3 bg-primary text-black font-bold text-base px-10 py-5 hover:bg-white transition-colors"
                     >
-                        ESTABLISH_CONTACT <ArrowRight className="w-4 h-4" />
+                        Discuss your 12-week build <ArrowRight className="w-4 h-4" />
                     </Link>
                 </section>
 

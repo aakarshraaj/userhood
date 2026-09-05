@@ -60,7 +60,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
           <Link to="/" className="hover:opacity-80 transition-opacity shrink-0 flex items-center" onClick={() => setIsOpen(false)} aria-label="Userhood — Home">
             <Logo />
           </Link>
-          <span className="text-white/60 hidden sm:inline truncate">[ ARCH_SYST_v.01 ]</span>
+          <span className="text-white/70 hidden sm:inline truncate">[ ARCH_SYST_v.01 ]</span>
         </div>
 
         {/* Desktop Menu */}
@@ -75,7 +75,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
             <button
               type="button"
               onClick={handleMuteToggle}
-              className="text-white/60 hover:text-primary transition-colors p-2 cursor-pointer flex items-center gap-1.5 font-mono text-xs uppercase font-bold"
+              className="text-white/70 hover:text-primary transition-colors p-2 cursor-pointer flex items-center gap-1.5 font-mono text-xs uppercase font-bold"
               aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
               aria-pressed={!isMuted}
             >
@@ -90,7 +90,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
               onClick={() => trackAnalyticsEvent("whatsapp_click", { source: "navbar_desktop" })}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/60 hover:text-[#25D366] transition-colors"
+              className="text-white/70 hover:text-[#25D366] transition-colors"
               aria-label="Connect via WhatsApp"
             >
               <WhatsAppIcon size={18} />
@@ -115,7 +115,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
             onClick={() => trackAnalyticsEvent("whatsapp_click", { source: "navbar_mobile" })}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/60 hover:text-[#25D366] transition-colors p-2"
+            className="text-white/70 hover:text-[#25D366] transition-colors p-2"
             aria-label="Connect via WhatsApp"
           >
             <WhatsAppIcon size={20} />
@@ -151,7 +151,7 @@ export default function Navbar({ onContactClick }: NavbarProps) {
             
             <div className="flex justify-between items-center py-2 border-t border-white/5">
 
-              <span className="text-white/60">System_Audio</span>
+              <span className="text-white/70">System_Audio</span>
               <button
                 type="button"
                 onClick={handleMuteToggle}

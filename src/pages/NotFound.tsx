@@ -13,12 +13,12 @@ export default function NotFound() {
         <h1 className="mt-7 max-w-4xl text-5xl font-black leading-[0.9] tracking-tighter sm:text-7xl md:text-8xl">
           This route leads <span className="text-primary">nowhere useful.</span>
         </h1>
-        <p className="mt-8 max-w-xl text-lg font-light leading-relaxed text-slate-400">
+        <p className="mt-8 max-w-xl text-lg font-normal leading-relaxed text-slate-300">
           The page may have moved, or the address may be wrong. The homepage is the cleanest way back into the work.
         </p>
         <Link
           to="/"
-          className="mt-10 inline-flex min-h-12 items-center gap-3 bg-primary px-6 py-4 font-mono text-xs font-bold uppercase tracking-[0.12em] text-black transition-colors hover:bg-white"
+          className="mt-10 inline-flex min-h-12 items-center gap-3 bg-primary px-6 py-4 text-base font-bold text-black transition-colors hover:bg-white"
         >
           <ArrowLeft className="h-4 w-4" /> Back to Userhood
         </Link>

@@ -45,7 +45,7 @@ These remain clearly labelled as experience contributed by members of the team. 
 
 ## Phase 1 — proof architecture and new case studies
 
-Status: in progress
+Status: complete
 
 Deliverables:
 
@@ -66,6 +66,8 @@ Acceptance criteria:
 
 ## Phase 2 — legibility and motion
 
+Status: complete
+
 Deliverables:
 
 - Raise body, supporting, footer, metadata, and secondary-action contrast.
@@ -84,6 +86,8 @@ Acceptance criteria:
 - Motion never delays navigation, comprehension, or interaction.
 
 ## Phase 3 — homepage composition and conversion hierarchy
+
+Status: next
 
 Deliverables:
 

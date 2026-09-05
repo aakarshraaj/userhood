@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -19,17 +18,12 @@ export default function FounderOrigin() {
   return (
     <section className="border-t border-white/5 bg-surface px-5 py-20 md:px-8 md:py-28 lg:py-32">
       <div className="mx-auto grid max-w-[1200px] gap-12 md:grid-cols-12 md:items-center md:gap-16">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          className="md:col-span-5"
-        >
+        <div className="md:col-span-5">
           <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">[ 04 // ACCOUNTABILITY ]</div>
           <h2 className="mt-6 text-4xl font-black leading-[0.95] tracking-tighter text-white sm:text-5xl md:text-6xl">
             The people in the room stay <span className="text-primary">on the work.</span>
           </h2>
-          <div className="mt-7 space-y-5 text-base font-light leading-relaxed text-slate-400 md:text-lg">
+          <div className="mt-7 space-y-5 text-base font-normal leading-relaxed text-slate-300 md:text-lg">
             <p>
               Userhood was built around a simple operating decision: product design and engineering should share the same release, the same constraints, and the same accountability.
             </p>
@@ -44,16 +38,12 @@ export default function FounderOrigin() {
           >
             Meet the complete team <ArrowRight className="h-4 w-4" />
           </Link>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-2 gap-4 sm:gap-6 md:col-span-7">
-          {founders.map((founder, index) => (
-            <motion.article
+          {founders.map((founder) => (
+            <article
               key={founder.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.45, delay: index * 0.08 }}
               className="group"
             >
               <div className="aspect-[4/5] overflow-hidden border border-white/10 bg-background-dark">
@@ -68,8 +58,8 @@ export default function FounderOrigin() {
                 />
               </div>
               <h3 className="mt-5 text-xl font-bold text-white md:text-2xl">{founder.name}</h3>
-              <p className="mt-2 font-mono text-xs uppercase leading-relaxed tracking-[0.1em] text-white/60">{founder.role}</p>
-            </motion.article>
+              <p className="mt-2 text-sm leading-relaxed text-white/75">{founder.role}</p>
+            </article>
           ))}
         </div>
       </div>

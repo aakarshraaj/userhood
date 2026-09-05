@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getPageSEO } from "../data/siteMetadata";
@@ -9,26 +8,22 @@ export default function Terms() {
   return (
     <main data-page-id="terms" className="min-h-screen bg-background-dark pt-32 pb-48 selection:bg-primary selection:text-black">
       <div className="max-w-3xl mx-auto px-5 sm:px-8">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="mb-16"
-        >
+        <div className="mb-16">
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-primary font-mono text-xs uppercase tracking-[0.2em] hover:gap-4 transition-all"
           >
             <ArrowLeft size={14} /> Back_to_Home
           </Link>
-        </motion.div>
+        </div>
 
         <header className="mb-24">
           <div className="font-mono text-xs text-primary mb-4 uppercase tracking-[0.3em]">[ LEGAL_DOCUMENT // 0x02 ]</div>
           <h1 className="text-6xl font-black text-white tracking-tighter">Terms of Service.</h1>
-          <p className="text-white/50 font-mono text-xs mt-4 uppercase tracking-widest">Last updated: 5 September 2026</p>
+          <p className="text-white/70 font-mono text-xs mt-4 uppercase tracking-[0.14em]">Last updated: 5 September 2026</p>
         </header>
 
-        <div className="space-y-12 text-slate-300 leading-relaxed font-light">
+        <div className="space-y-12 text-slate-200 leading-relaxed font-normal">
           <section>
             <h2 className="text-white font-bold uppercase tracking-widest text-xs mb-6 font-mono">01. These are website terms</h2>
             <p>

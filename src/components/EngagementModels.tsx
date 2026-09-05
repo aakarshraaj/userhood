@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { trackAnalyticsEvent } from "../utils/analytics";
@@ -45,13 +44,13 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
                 <p className="text-xl font-light leading-relaxed text-slate-300 md:text-2xl">
                   A senior product, design, and engineering team owns one sharply scoped release from the first decision to the production deploy.
                 </p>
-                <p className="mt-5 text-sm font-light leading-relaxed text-slate-500 md:text-base">
+                <p className="mt-5 text-sm font-normal leading-relaxed text-slate-300 md:text-base">
                   The twelve weeks begin after scope and commercial terms are agreed. Complexity that cannot responsibly fit is surfaced before kickoff, not hidden inside the schedule.
                 </p>
               </div>
 
               <div>
-                <div className="mb-5 font-mono text-xs uppercase tracking-[0.16em] text-white/60">
+                <div className="mb-5 font-mono text-xs uppercase tracking-[0.14em] text-white/70">
                   Strong fit when
                 </div>
                 <ul className="space-y-4">
@@ -67,31 +66,29 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
 
             <div className="flex flex-col gap-5 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/55">Next step</div>
+                <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/70">Next step</div>
                 <div className="mt-2 text-base text-white">A direct fit conversation with the people who would lead the build.</div>
               </div>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+              <button
                 onClick={onContactClick}
-                className="flex min-h-[52px] shrink-0 items-center justify-center gap-3 bg-primary px-7 py-4 font-mono text-sm font-bold text-black transition-colors hover:bg-white"
+                className="flex min-h-[52px] shrink-0 items-center justify-center gap-3 bg-primary px-7 py-4 text-base font-bold text-black transition-colors hover:bg-white"
               >
-                DISCUSS YOUR BUILD
+                Discuss your 12-week build
                 <ArrowRight className="h-4 w-4" />
-              </motion.button>
+              </button>
             </div>
           </div>
 
           <aside className="flex flex-col border border-white/10 bg-white/[0.02] p-7 sm:p-9 lg:col-span-4 lg:p-10" aria-label="Other ways to work with Userhood">
-            <div className="font-mono text-xs uppercase tracking-[0.18em] text-white/55">Not starting from zero?</div>
+            <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/70">Not starting from zero?</div>
             <h3 className="mt-5 text-3xl font-black leading-tight tracking-tight text-white md:text-4xl">
               Existing products need a different first move.
             </h3>
-            <p className="mt-5 text-base font-light leading-relaxed text-slate-400">
+            <p className="mt-5 text-base font-normal leading-relaxed text-slate-300">
               Product rescue, architecture review, design-system repair, and post-launch iteration remain available—but they are not the promise this homepage is built around.
             </p>
 
-            <div className="mt-10 space-y-3 border-t border-white/10 pt-8 font-mono text-xs uppercase tracking-[0.14em] text-white/50">
+            <div className="mt-10 space-y-3 border-t border-white/10 pt-8 font-mono text-xs uppercase tracking-[0.12em] text-white/70">
               <div className="flex items-center justify-between gap-4">
                 <span>Product rescue</span>
                 <span className="text-primary">2–4 weeks</span>
@@ -105,7 +102,7 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
             <Link
               to="/services"
               onClick={() => trackAnalyticsEvent("services_click", { source: "homepage_engagement" })}
-              className="mt-auto flex min-h-[48px] items-center justify-between border-t border-white/10 pt-8 font-mono text-xs uppercase tracking-[0.16em] text-white/50 transition-colors hover:text-primary"
+              className="mt-auto flex min-h-[48px] items-center justify-between border-t border-white/10 pt-8 font-mono text-xs uppercase tracking-[0.14em] text-white/75 transition-colors hover:text-primary"
             >
               Explore other services
               <ArrowRight className="h-4 w-4" />

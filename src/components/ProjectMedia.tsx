@@ -53,7 +53,7 @@ export default function ProjectMedia({
 
           <div className="absolute inset-0 flex items-center justify-center p-7 text-center md:p-12">
             <div className="max-w-2xl">
-              <div className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-[var(--project-accent)]">
+              <div className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--project-accent)]">
                 Visual proof slot
               </div>
               <div className={`${compact ? "mt-3 text-3xl" : "mt-5 text-5xl md:text-7xl"} font-black tracking-tighter text-white/10`}>
@@ -68,11 +68,11 @@ export default function ProjectMedia({
       )}
 
       <figcaption className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between gap-4 border-t border-white/10 bg-[#090a0d]/90 px-4 py-3 backdrop-blur-sm md:px-6">
-        <span className="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-white/75">
+        <span className="font-mono text-xs uppercase tracking-[0.11em] text-white/80">
           {media.label}
         </span>
         {!media.src && (
-          <span className="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-[var(--project-accent)]">
+          <span className="shrink-0 font-mono text-xs uppercase tracking-[0.1em] text-[var(--project-accent)]">
             Image pending
           </span>
         )}

@@ -92,7 +92,7 @@ export default function SelectedWork() {
             </h2>
           </div>
 
-          <p className="max-w-md text-base font-light leading-relaxed text-slate-300 md:col-span-4 md:justify-self-end md:text-lg">
+          <p className="max-w-md text-base font-normal leading-relaxed text-slate-300 md:col-span-4 md:justify-self-end md:text-lg">
             Repository-backed product builds lead. Clearly labelled team experience follows. The distinction is intentional.
           </p>
         </div>
@@ -110,7 +110,7 @@ export default function SelectedWork() {
 
               <div className="flex flex-1 flex-col px-1 pb-3 pt-7 md:px-2 md:pb-4 md:pt-8">
                 <div className="flex items-center justify-between gap-4">
-                  <div className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-[var(--color-primary)]">
+                  <div className="font-mono text-xs uppercase tracking-[0.12em] text-[var(--color-primary)]">
                     {item.relationship} · {item.category}
                   </div>
                   <div className="font-mono text-xs text-white/45">{item.index}</div>
@@ -120,9 +120,9 @@ export default function SelectedWork() {
                 <h3 className="mt-5 max-w-2xl text-2xl font-bold leading-tight tracking-tight text-white transition-colors group-hover:text-primary md:text-4xl">
                   {item.title}
                 </h3>
-                <p className="mt-4 max-w-2xl text-base font-light leading-relaxed text-slate-300">{item.description}</p>
+                <p className="mt-4 max-w-2xl text-base font-normal leading-relaxed text-slate-300">{item.description}</p>
 
-                <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-5 font-mono text-xs uppercase tracking-[0.14em] text-white/75">
+                <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-5 text-sm font-bold text-white/80">
                   <span>Open case study</span>
                   <span className="flex h-11 w-11 items-center justify-center border border-white/15 text-white transition-all group-hover:border-primary group-hover:bg-primary group-hover:text-black">
                     <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -133,7 +133,7 @@ export default function SelectedWork() {
           ))}
         </div>
 
-        <p className="mt-7 max-w-4xl font-mono text-[0.7rem] uppercase leading-relaxed tracking-[0.11em] text-white/65">
+        <p className="mt-7 max-w-4xl font-mono text-xs uppercase leading-relaxed tracking-[0.1em] text-white/75">
           Evidence standard // Repository-backed builds are described from working code and product documentation. Team-experience work is labelled. No outcome number appears without an attributable source.
         </p>
       </div>

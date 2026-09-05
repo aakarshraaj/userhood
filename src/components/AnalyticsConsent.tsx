@@ -38,7 +38,7 @@ export function AnalyticsConsentBanner() {
       <div className="grid gap-5 sm:grid-cols-[1fr_auto] sm:items-center">
         <div>
           <h2 className="text-base font-bold text-white">Analytics are your choice.</h2>
-          <p className="mt-2 text-sm font-light leading-relaxed text-slate-400">
+          <p className="mt-2 text-sm font-normal leading-relaxed text-slate-300">
             We use optional Google Analytics to understand which pages and calls to action are useful. No advertising cookies, and no analytics until you allow it. <Link to="/privacy" className="text-white underline underline-offset-4 hover:text-primary">Read the privacy policy</Link>.
           </p>
         </div>

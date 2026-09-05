@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Briefcase } from "lucide-react";
 import { jobs } from "../data/jobs";
@@ -14,12 +13,7 @@ export default function Careers() {
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="max-w-[1440px] mx-auto px-6 md:px-12 xl:px-24 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-4xl"
-                >
+                <div className="max-w-4xl">
                     <div className="font-mono text-xs text-primary tracking-widest uppercase mb-6 flex items-center gap-3">
                         <span className="w-8 h-[1px] bg-primary"></span>
                         open_positions
@@ -27,22 +21,17 @@ export default function Careers() {
 
                     <h1 className="text-4xl sm:text-5xl md:text-7xl font-medium tracking-tight mb-8">
                         Build the future <br />
-                        <span className="text-white/55">with Userhood.</span>
+                        <span className="text-white/75">with Userhood.</span>
                     </h1>
 
-                    <p className="text-lg md:text-xl text-white/60 mb-16 max-w-2xl leading-relaxed">
+                    <p className="text-lg md:text-xl text-white/75 mb-16 max-w-2xl leading-relaxed">
                         We value clear thinking, direct communication, and people who care about the quality of the work—not inflated titles or performative busyness.
                     </p>
-                </motion.div>
+                </div>
 
                 <div className="flex flex-col gap-6 max-w-5xl">
-                    {jobs.map((job, index) => (
-                        <motion.div
-                            key={job.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.1 * index, ease: [0.16, 1, 0.3, 1] }}
-                        >
+                    {jobs.map((job) => (
+                        <div key={job.id}>
                             <Link
                                 to={`/careers/${job.slug}`}
                                 className="group block border border-white/10 bg-white/[0.02] p-6 md:p-8 hover:bg-white/[0.04] hover:border-primary/30 transition-all duration-300 relative overflow-hidden"
@@ -55,7 +44,7 @@ export default function Careers() {
                                             <span className="font-mono text-xs uppercase text-primary bg-primary/10 px-3 py-1 tracking-widest inline-block border border-primary/20">
                                                 {job.department}
                                             </span>
-                                            <span className="font-mono text-xs uppercase text-white/50 tracking-widest inline-block">
+                                            <span className="font-mono text-xs uppercase text-white/70 tracking-[0.14em] inline-block">
                                                 {job.location} • {job.type}
                                             </span>
                                         </div>
@@ -72,14 +61,14 @@ export default function Careers() {
                                     </div>
                                 </div>
                             </Link>
-                        </motion.div>
+                        </div>
                     ))}
 
                     {jobs.length === 0 && (
                         <div className="py-12 border border-white/10 bg-white/[0.02] flex flex-col items-center justify-center text-center">
                             <Briefcase className="w-12 h-12 text-white/20 mb-4" />
                             <h3 className="text-xl font-medium mb-2">No open positions currently</h3>
-                            <p className="text-white/50 max-w-md">We aren't actively hiring for any specific roles right now, but feel free to reach out with your portfolio anyway.</p>
+                            <p className="text-white/70 max-w-md">We aren't actively hiring for any specific roles right now, but feel free to reach out with your portfolio anyway.</p>
                         </div>
                     )}
                 </div>

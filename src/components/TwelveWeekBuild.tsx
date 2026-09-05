@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { Check } from "lucide-react";
 
 const phases = [
@@ -53,12 +52,12 @@ export default function TwelveWeekBuild() {
             <h2 className="text-4xl font-black leading-[0.95] tracking-tighter text-white sm:text-5xl md:text-7xl">
               One outcome.<br />Four decisive<br /><span className="text-primary">moves.</span>
             </h2>
-            <p className="mt-8 max-w-lg text-base font-light leading-relaxed text-slate-400 md:text-lg">
+            <p className="mt-8 max-w-lg text-base font-normal leading-relaxed text-slate-300 md:text-lg">
               Twelve weeks is a focused delivery cadence, not a magic trick. We lock the release boundary, expose risk early, and keep product decisions beside the people writing the code.
             </p>
 
             <div className="mt-10 border border-white/10 bg-white/[0.02] p-6 md:p-8">
-              <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-white/60">
+              <div className="mb-5 font-mono text-xs uppercase tracking-[0.16em] text-white/70">
                 What the build includes
               </div>
               <ul className="space-y-4">
@@ -74,12 +73,8 @@ export default function TwelveWeekBuild() {
 
           <ol className="border-t border-white/10 lg:col-span-7">
             {phases.map((phase, index) => (
-              <motion.li
+              <li
                 key={phase.weeks}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: index * 0.06 }}
                 className="grid gap-5 border-b border-white/10 py-9 md:grid-cols-[110px_1fr] md:gap-8 md:py-12"
               >
                 <div>
@@ -88,14 +83,14 @@ export default function TwelveWeekBuild() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold tracking-tight text-white md:text-3xl">{phase.title}</h3>
-                  <p className="mt-4 max-w-2xl text-sm font-light leading-relaxed text-slate-400 md:text-base">
+                  <p className="mt-4 max-w-2xl text-sm font-normal leading-relaxed text-slate-300 md:text-base">
                     {phase.description}
                   </p>
-                  <div className="mt-5 font-mono text-xs uppercase tracking-[0.12em] text-white/55">
-                    Output // <span className="text-white/60">{phase.output}</span>
+                  <div className="mt-5 font-mono text-xs uppercase tracking-[0.1em] text-white/70">
+                    Output // <span className="text-white/75">{phase.output}</span>
                   </div>
                 </div>
-              </motion.li>
+              </li>
             ))}
           </ol>
         </div>

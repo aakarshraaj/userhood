@@ -4,10 +4,10 @@ import { trackAnalyticsEvent } from "../utils/analytics";
 export default function Footer() {
   return (
     <footer className="py-10 md:py-12 px-5 md:px-6 border-t border-white/5" role="contentinfo">
-      <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-12 font-mono text-xs text-white/60 uppercase tracking-widest">
+      <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-12 font-mono text-xs text-white/75 uppercase tracking-[0.1em]">
         <div className="space-y-3 md:space-y-4">
           <Link to="/" className="hover:opacity-80 transition-opacity inline-block" aria-label="Userhood — Back to homepage">
-            <svg className="text-white/50 w-20 md:w-[100px]" fill="none" height="19" viewBox="0 0 360 69" width="100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <svg className="text-white/70 w-20 md:w-[100px]" fill="none" height="19" viewBox="0 0 360 69" width="100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
               <path clipRule="evenodd" d="M31.1441 13.773L31.1441 46.8461L9.83001 46.8461L9.83001 0.000344416L0.0183765 0.000343559L-0.00025177 56.6602L40.9561 56.6602L40.9561 13.773L31.1441 13.773Z" fill="currentColor" fillRule="evenodd"></path>
               <path clipRule="evenodd" d="M316.957 22.3862L350.03 22.3862L350.03 43.7003L316.957 43.7003L316.957 53.5119L359.844 53.5305L359.844 12.5742L316.957 12.5742L316.957 22.3862Z" fill="currentColor" fillRule="evenodd"></path>
               <path clipRule="evenodd" d="M252.775 10.0586C240.391 10.0586 229.927 18.6526 229.927 32.1868C229.927 45.7208 240.385 54.5842 252.775 54.5842C265.166 54.5842 275.717 45.7146 275.717 32.1868C275.717 18.6588 265.157 10.0586 252.775 10.0586ZM252.775 45.4806C245.643 45.4806 239.668 40.1594 239.668 32.1868C239.668 24.2141 245.637 19.0731 252.775 19.0731C259.914 19.0731 265.974 24.3115 265.974 32.1868C265.974 40.0619 259.912 45.4806 252.775 45.4806Z" fill="currentColor" fillRule="evenodd"></path>
@@ -29,7 +29,7 @@ export default function Footer() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 md:gap-16 w-full md:w-auto">
           <div className="flex flex-col gap-2">
-            <div className="text-white/50 mb-4">Navigation</div>
+            <div className="text-white mb-4">Navigation</div>
             <Link to="/" className="hover:text-primary transition-colors">Home</Link>
             <a href="/#case-studies" className="hover:text-primary transition-colors">Selected work</a>
             <a href="/#process" className="hover:text-primary transition-colors">12-week build</a>
@@ -45,7 +45,7 @@ export default function Footer() {
             <a href="https://instagram.com/userhood.in" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Instagram</a>
           </div>
           <div className="flex flex-col gap-2">
-            <div className="text-white/50 mb-4">Legal</div>
+            <div className="text-white mb-4">Legal</div>
             <Link to="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
             <Link to="/terms" className="hover:text-primary transition-colors">Terms</Link>
           </div>
