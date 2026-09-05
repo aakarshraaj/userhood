@@ -80,7 +80,7 @@ const selectedWork: WorkItem[] = [
     relationship: "Team experience",
     title: "Turning a dealership journey into one coherent digital purchase flow.",
     description:
-      "Model discovery, configuration, finance, and dealer handoff brought into a single customer experience.",
+      "A team member’s experience shaping a staged path through model discovery, configuration, finance, and dealer fulfilment.",
     link: "/case-study/hyundai",
     accent: "#00f5ff",
     media: {
@@ -95,7 +95,7 @@ const selectedWork: WorkItem[] = [
     relationship: "Team experience",
     title: "Making a complex vehicle ecosystem feel calm behind the wheel.",
     description:
-      "Vehicle health, servicing, and driving feedback shaped into an interface designed around clarity and confidence.",
+      "A team member’s experience translating vehicle health, servicing, and driving feedback into calmer ownership decisions.",
     link: "/case-study/mitsubishi",
     accent: "#00f5ff",
     media: {
@@ -199,7 +199,8 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
                 Team experience
               </div>
               <p className="max-w-2xl text-sm leading-relaxed text-slate-300 md:justify-self-end md:text-right">
-                Automotive product work contributed by members of the team.
+              Automotive product work contributed by members of the team.
+              These were not Userhood engagements or client endorsements; no outcome claims are made.
               </p>
             </div>
 
@@ -209,7 +210,7 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
                   key={item.organisation}
                   to={item.link}
                   onClick={() => trackAnalyticsEvent("case_study_open", { source: "work_page_team_experience", organisation: item.organisation })}
-                  aria-label={`Read the ${item.organisation} team experience case study`}
+                  aria-label={`Read the ${item.organisation} attributed team experience note`}
                   className="motion-card group flex flex-col bg-[#08080a] py-6 hover:bg-white/[0.025] md:px-6"
                 >
                   <div className="flex items-center justify-between gap-4 font-mono text-xs uppercase tracking-[0.11em] text-white/60">

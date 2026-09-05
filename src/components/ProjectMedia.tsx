@@ -11,6 +11,8 @@ export interface ProjectMediaSpec {
   secondaryObjectPosition?: string;
   treatment?: "cover" | "inset" | "layered";
   priority?: boolean;
+  placeholderLabel?: string;
+  placeholderStatus?: string;
 }
 
 interface ProjectMediaProps {
@@ -97,7 +99,7 @@ export default function ProjectMedia({
       ) : (
         <div
           role="img"
-          aria-label={`Reserved product image for ${project}: ${media.description}`}
+          aria-label={`${media.placeholderLabel ?? "Reserved product image"} for ${project}: ${media.description}`}
           className="absolute inset-0"
         >
           <div className="tech-grid absolute inset-0 opacity-50" />
@@ -109,7 +111,7 @@ export default function ProjectMedia({
           <div className={`absolute inset-0 flex items-center justify-center text-center ${resolvedSize === "mini" ? "px-6 pb-14 pt-6" : "p-7 md:p-12"}`}>
             <div className="max-w-2xl">
               <div className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--project-accent)]">
-                Visual proof slot
+                {media.placeholderLabel ?? "Visual proof slot"}
               </div>
               <div className={`${resolvedSize === "default" ? "mt-5 text-5xl md:text-7xl" : resolvedSize === "mini" ? "mt-2 text-2xl" : "mt-3 text-3xl"} font-black tracking-tighter text-white/10`}>
                 {project}
@@ -128,7 +130,7 @@ export default function ProjectMedia({
         </span>
         {!media.src && (
           <span className="shrink-0 font-mono text-xs uppercase tracking-[0.1em] text-[var(--project-accent)]">
-            Image pending
+            {media.placeholderStatus ?? "Image pending"}
           </span>
         )}
       </figcaption>

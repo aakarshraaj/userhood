@@ -119,7 +119,7 @@ export default function About() {
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold text-white/70 sm:text-sm md:justify-end">
               <span className="text-primary">Product builds: Rentnama + Tirch</span>
               <span className="hidden text-primary/40 sm:inline">//</span>
-              <span>Team experience: Hyundai + Mitsubishi Motors</span>
+              <span>Attributed team experience: Hyundai + Mitsubishi Motors</span>
             </div>
           </div>
         </div>
@@ -184,7 +184,8 @@ export default function About() {
             </div>
 
             <div className="bg-[#08080a] p-7 md:p-9">
-              <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/60">Team experience</div>
+              <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/60">Attributed team experience</div>
+              <p className="mt-3 text-xs leading-relaxed text-white/55">Not Userhood engagements or client endorsements. No outcome claims are made.</p>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 <Link to="/case-study/hyundai" className="group flex min-h-[112px] flex-col justify-between border border-white/10 p-5 transition-colors hover:border-primary">
                   <span className="text-xl font-bold text-white group-hover:text-primary">Hyundai Global</span>

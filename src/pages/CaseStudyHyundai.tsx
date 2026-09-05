@@ -12,16 +12,18 @@ const caseStudy: CaseStudyData = {
     "A digital buying journey connecting vehicle discovery, configuration, finance exploration, and dealership fulfilment.",
   facts: [
     { label: "Surface", value: "Digital vehicle purchase journey" },
-    { label: "Contribution", value: "Team experience" },
+    { label: "Attribution", value: "Team member contribution" },
     { label: "Focus", value: "Discovery to dealer fulfilment" },
-    { label: "Evidence", value: "Reasoning; no outcome metrics" },
+    { label: "Public evidence", value: "Reasoning only; no outcome claims" },
   ],
   heroMedia: {
-    label: "Hero image // Vehicle purchase journey",
-    description: "Replace with an approved or anonymised journey view connecting model discovery, configuration, finance, and dealer fulfilment.",
+    label: "Project visual // Publication restricted",
+    description: "Client-confidential imagery is not published here. An approved or anonymised journey visual can be added after clearance.",
+    placeholderLabel: "Confidential project visual",
+    placeholderStatus: "Withheld",
   },
   proofNote:
-    "This page documents work and experience contributed by members of the team behind Userhood. It is not presented as a current Userhood studio engagement or client endorsement. Commercial details and client-confidential results are intentionally omitted.",
+    "Attributed team experience only. This was not a Userhood engagement, and Hyundai has not endorsed this page. Confidential delivery details and results are omitted.",
   context:
     "Buying a vehicle online compresses a long, assisted dealership process into a product experience. Customers still need to compare variants, understand financial implications, locate fulfilment, and know what happens after they commit.",
   challenge:
@@ -30,34 +32,34 @@ const caseStudy: CaseStudyData = {
     {
       title: "Sequence commitment instead of demanding it.",
       detail:
-        "The journey was structured so customers could move from exploration to configuration and then to transactional decisions without confronting every dependency at once.",
+        "The contribution focused on a staged journey: explore, configure, understand financing, then move into a dealer-supported commitment.",
     },
     {
       title: "Turn configuration into comparison.",
       detail:
-        "Variant, colour, feature, and price decisions were treated as one connected choice system. The interface needed to show what changed, what it cost, and what remained available.",
+        "Variant, colour, feature, and price were treated as one connected choice system that made change, cost, and availability easier to compare.",
     },
     {
       title: "Make finance legible before it becomes a form.",
       detail:
-        "Finance exploration was positioned as a decision aid rather than a sudden application wall, allowing customers to understand trade-offs before supplying personal information.",
+        "The work treated finance exploration as a decision aid before any application flow or request for personal information.",
     },
     {
-      title: "Treat dealer handoff as part of the product.",
+      title: "Design the dealer handoff as a product moment.",
       detail:
-        "The experience preserved continuity between digital intent and physical fulfilment so the customer did not feel abandoned at the moment the organisation changed channels.",
+        "The journey direction preserved context between digital intent and physical fulfilment instead of ending when the organisation changed channels.",
     },
   ],
   documentedScope: [
-    "End-to-end journey architecture",
-    "Vehicle configuration interaction model",
-    "Finance-exploration experience",
+    "Journey-architecture contribution",
+    "Vehicle-configuration interaction direction",
+    "Finance-exploration principles",
     "Dealer discovery and fulfilment handoff",
-    "Reusable interface-system direction",
-    "Prototyping of core flows",
+    "Reusable interface-system thinking",
+    "Core-flow prototyping experience",
   ],
   evidenceBoundary:
-    "We do not publish an attributable conversion study for this work. This page therefore makes no numerical performance claim; it documents the product problem and the reasoning behind the experience.",
+    "No approved product imagery, client endorsement, research record, launch data, or attributable conversion metric is public. Treat this as a record of relevant team experience—not verified delivery or results by Userhood.",
   trademarkNote:
     "Hyundai and related marks belong to their respective owners. Their appearance here is solely to identify the organisation associated with this team experience.",
   accent: "#00f5ff",

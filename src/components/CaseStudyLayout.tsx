@@ -93,8 +93,13 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
             <div className="mt-8 grid items-center gap-9 md:mt-10 md:grid-cols-12 md:gap-10 lg:gap-14">
               <div className="md:col-span-6 lg:col-span-7">
                 <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-primary">
-                  [ {data.relationship} // {data.category} ]
+                  [ {isTeamExperience ? "Attributed team experience" : data.relationship} // {data.category} ]
                 </div>
+                {isTeamExperience && (
+                  <div className="mb-6 w-fit border border-white/15 bg-white/[0.025] px-3 py-2 font-mono text-[10px] uppercase tracking-[0.13em] text-white/70">
+                    Not a Userhood client engagement
+                  </div>
+                )}
                 <h1 className="max-w-5xl text-[clamp(3.15rem,6vw,5.7rem)] font-black leading-[0.92] tracking-tighter text-white">
                   {data.title}
                 </h1>
@@ -203,11 +208,17 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
           <div className="mx-auto max-w-[1280px]">
             <div className="motion-reveal grid gap-8 border-b border-white/10 pb-10 md:grid-cols-12 md:items-end md:pb-12">
               <div className="md:col-span-8">
-                <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">{hasOutcome ? "03" : "02"} // The intervention</div>
-                <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-6xl">The decisions that changed the product.</h2>
+                <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">
+                  {hasOutcome ? "03" : "02"} // {isTeamExperience ? "Product reasoning" : "The intervention"}
+                </div>
+                <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-6xl">
+                  {isTeamExperience ? "The principles carried into the work." : "The decisions that changed the product."}
+                </h2>
               </div>
               <p className="text-base font-normal leading-relaxed text-slate-300 md:col-span-4">
-                Four constraints. Four deliberate moves. Four consequences.
+                {isTeamExperience
+                  ? "The decision logic is public. Client-confidential execution detail and outcomes are not."
+                  : "Four constraints. Four deliberate moves. Four consequences."}
               </p>
             </div>
 
@@ -256,8 +267,12 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
         <section className="border-y border-white/5 bg-white/[0.025] px-5 py-16 md:px-8 md:py-20">
           <div className="motion-reveal mx-auto grid max-w-[1280px] gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-5">
-              <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">{hasOutcome ? "04" : "03"} // The shipped system</div>
-              <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-5xl">What actually exists.</h2>
+              <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">
+                {hasOutcome ? "04" : "03"} // {isTeamExperience ? "Contribution scope" : "The shipped system"}
+              </div>
+              <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-5xl">
+                {isTeamExperience ? "What this experience covered." : "What actually exists."}
+              </h2>
             </div>
             <div className="md:col-span-7">
               <ul className="grid gap-3 sm:grid-cols-2">

@@ -12,16 +12,18 @@ const caseStudy: CaseStudyData = {
     "A connected-ownership experience bringing vehicle health, servicing, and driving feedback into one understandable system.",
   facts: [
     { label: "Surface", value: "Connected ownership experience" },
-    { label: "Contribution", value: "Team experience" },
+    { label: "Attribution", value: "Team member contribution" },
     { label: "Focus", value: "Health, service, and driving feedback" },
-    { label: "Evidence", value: "Reasoning; no outcome metrics" },
+    { label: "Public evidence", value: "Reasoning only; no outcome claims" },
   ],
   heroMedia: {
-    label: "Hero image // Connected vehicle experience",
-    description: "Replace with an approved or anonymised product view showing vehicle health, servicing, and driving feedback as one calm system.",
+    label: "Project visual // Publication restricted",
+    description: "Client-confidential imagery is not published here. An approved or anonymised ownership visual can be added after clearance.",
+    placeholderLabel: "Confidential project visual",
+    placeholderStatus: "Withheld",
   },
   proofNote:
-    "This page documents work and experience contributed by members of the team behind Userhood. It is not presented as a current Userhood studio engagement or client endorsement. Commercial details and client-confidential results are intentionally omitted.",
+    "Attributed team experience only. This was not a Userhood engagement, and Mitsubishi Motors has not endorsed this page. Confidential delivery details and results are omitted.",
   context:
     "Connected vehicles can produce more information than a driver can reasonably absorb. The product challenge was not to display every available signal, but to turn telemetry into timely, comprehensible actions across the ownership journey.",
   challenge:
@@ -30,34 +32,34 @@ const caseStudy: CaseStudyData = {
     {
       title: "Prioritise by driving context.",
       detail:
-        "Information was organised around what a driver needed now, what could wait, and what required action after the journey. Availability of data did not automatically justify visibility.",
+        "The contribution focused on what a driver needed now, what could wait, and what required action after the journey. Available data did not automatically earn screen space.",
     },
     {
       title: "Translate diagnostics into decisions.",
       detail:
-        "Vehicle-health signals were framed in plain consequences and next steps, moving the experience away from technical codes and towards understandable ownership actions.",
+        "Vehicle-health direction moved from technical codes towards plain consequences, next steps, and understandable ownership actions.",
     },
     {
       title: "Connect maintenance to fulfilment.",
       detail:
-        "A warning without a resolution path creates anxiety. The journey connected detected needs to service discovery and scheduling so the product could help complete the task.",
+        "The journey connected detected needs to service discovery and scheduling because a warning without a resolution path only creates anxiety.",
     },
     {
       title: "Use feedback without manufacturing urgency.",
       detail:
-        "Driving feedback was designed to encourage useful habits while avoiding noisy scores, false precision, and competitive mechanics that could distract from the road.",
+        "Driving-feedback principles encouraged useful habits without noisy scores, false precision, or competitive mechanics that could distract from the road.",
     },
   ],
   documentedScope: [
-    "Connected-ownership journey architecture",
-    "Information-priority model",
-    "Vehicle-health communication patterns",
+    "Connected-ownership journey contribution",
+    "Information-priority direction",
+    "Vehicle-health communication principles",
     "Service discovery and scheduling flow",
     "Driving-feedback interaction direction",
     "Reusable interface-system thinking",
   ],
   evidenceBoundary:
-    "We do not publish a client-approved research report or pilot dataset for this work. This page therefore makes no numerical claim about cognitive load, adoption, fuel efficiency, or system performance.",
+    "No approved product imagery, client endorsement, research record, pilot dataset, or attributable performance metric is public. Treat this as a record of relevant team experience—not verified delivery or results by Userhood.",
   trademarkNote:
     "Mitsubishi Motors and related marks belong to their respective owners. Their appearance here is solely to identify the organisation associated with this team experience.",
   accent: "#00f5ff",
