@@ -6,6 +6,8 @@ export type PageId =
   | "about"
   | "hyundai"
   | "mitsubishi"
+  | "rentnama"
+  | "tirch"
   | "careers"
   | "salesIntern"
   | "privacy"

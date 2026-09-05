@@ -6,9 +6,22 @@ const caseStudy: CaseStudyData = {
   pageId: "mitsubishi",
   brand: "Mitsubishi Motors Australia",
   category: "Connected ownership",
+  relationship: "Team experience",
   title: "Giving vehicle intelligence a calmer human interface.",
   summary:
     "A connected-ownership experience bringing vehicle health, servicing, and driving feedback into one understandable system.",
+  facts: [
+    { label: "Surface", value: "Connected ownership experience" },
+    { label: "Contribution", value: "Team experience" },
+    { label: "Focus", value: "Health, service, and driving feedback" },
+    { label: "Evidence", value: "Reasoning; no outcome metrics" },
+  ],
+  heroMedia: {
+    label: "Hero image // Connected vehicle experience",
+    description: "Replace with an approved or anonymised product view showing vehicle health, servicing, and driving feedback as one calm system.",
+  },
+  proofNote:
+    "This page documents work and experience contributed by members of the team behind Userhood. It is not presented as a current Userhood studio engagement or client endorsement. Commercial details and client-confidential results are intentionally omitted.",
   context:
     "Connected vehicles can produce more information than a driver can reasonably absorb. The product challenge was not to display every available signal, but to turn telemetry into timely, comprehensible actions across the ownership journey.",
   challenge:
@@ -47,6 +60,7 @@ const caseStudy: CaseStudyData = {
     "We do not publish a client-approved research report or pilot dataset for this work. This page therefore makes no numerical claim about cognitive load, adoption, fuel efficiency, or system performance.",
   trademarkNote:
     "Mitsubishi Motors and related marks belong to their respective owners. Their appearance here is solely to identify the organisation associated with this team experience.",
+  accent: "#00f5ff",
 };
 
 export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick: () => void }) {

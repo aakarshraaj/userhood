@@ -6,9 +6,22 @@ const caseStudy: CaseStudyData = {
   pageId: "hyundai",
   brand: "Hyundai Global",
   category: "Automotive commerce",
+  relationship: "Team experience",
   title: "Designing confidence into a high-consideration vehicle purchase.",
   summary:
     "A digital buying journey connecting vehicle discovery, configuration, finance exploration, and dealership fulfilment.",
+  facts: [
+    { label: "Surface", value: "Digital vehicle purchase journey" },
+    { label: "Contribution", value: "Team experience" },
+    { label: "Focus", value: "Discovery to dealer fulfilment" },
+    { label: "Evidence", value: "Reasoning; no outcome metrics" },
+  ],
+  heroMedia: {
+    label: "Hero image // Vehicle purchase journey",
+    description: "Replace with an approved or anonymised journey view connecting model discovery, configuration, finance, and dealer fulfilment.",
+  },
+  proofNote:
+    "This page documents work and experience contributed by members of the team behind Userhood. It is not presented as a current Userhood studio engagement or client endorsement. Commercial details and client-confidential results are intentionally omitted.",
   context:
     "Buying a vehicle online compresses a long, assisted dealership process into a product experience. Customers still need to compare variants, understand financial implications, locate fulfilment, and know what happens after they commit.",
   challenge:
@@ -47,6 +60,7 @@ const caseStudy: CaseStudyData = {
     "We do not publish an attributable conversion study for this work. This page therefore makes no numerical performance claim; it documents the product problem and the reasoning behind the experience.",
   trademarkNote:
     "Hyundai and related marks belong to their respective owners. Their appearance here is solely to identify the organisation associated with this team experience.",
+  accent: "#00f5ff",
 };
 
 export default function CaseStudyHyundai({ onContactClick }: { onContactClick: () => void }) {

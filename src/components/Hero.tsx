@@ -154,21 +154,23 @@ export default function Hero({ onContactClick }: HeroProps) {
             </div>
           </motion.div>
 
-          {/* Transparent team-experience attribution */}
+          {/* Transparent work provenance */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.0, duration: 0.8 }}
             className="mt-16 md:mt-24 pt-8 border-t border-white/5 max-w-4xl"
           >
-            <p className="font-mono text-xs text-white/55 uppercase tracking-[0.2em] mb-4">
-              SELECTED EXPERIENCE FROM THE TEAM BEHIND USERHOOD
+            <p className="font-mono text-xs text-white/65 uppercase tracking-[0.2em] mb-4">
+              SELECTED PRODUCT WORK // PROVENANCE LABELLED IN EVERY CASE
             </p>
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs font-black tracking-widest text-white/55 md:gap-x-12 md:text-sm">
-              <span>HYUNDAI</span>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs font-black tracking-widest text-white/70 md:gap-x-9 md:text-sm">
+              <span className="text-primary">RENTNAMA</span>
               <span className="text-primary/40">+</span>
-              <span>MITSUBISHI MOTORS</span>
-              <span className="font-normal text-white/55">Attribution clarified in each case study</span>
+              <span className="text-primary">TIRCH</span>
+              <span className="text-primary/40">//</span>
+              <span>HYUNDAI</span>
+              <span>+ MITSUBISHI MOTORS</span>
             </div>
           </motion.div>
 

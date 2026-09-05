@@ -23,6 +23,8 @@ const FinalCTA = lazy(() => import("./components/FinalCTA"));
 
 const CaseStudyMitsubishi = lazy(() => import("./pages/CaseStudyMitsubishi"));
 const CaseStudyHyundai = lazy(() => import("./pages/CaseStudyHyundai"));
+const CaseStudyRentnama = lazy(() => import("./pages/CaseStudyRentnama"));
+const CaseStudyTirch = lazy(() => import("./pages/CaseStudyTirch"));
 const About = lazy(() => import("./pages/About"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
@@ -135,6 +137,8 @@ export default function App() {
                 } />
                 <Route path={getPageMetadata("mitsubishi").path} element={<CaseStudyMitsubishi onContactClick={() => handleContactClick('mitsubishi_case_study')} />} />
                 <Route path={getPageMetadata("hyundai").path} element={<CaseStudyHyundai onContactClick={() => handleContactClick('hyundai_case_study')} />} />
+                <Route path={getPageMetadata("rentnama").path} element={<CaseStudyRentnama onContactClick={() => handleContactClick('rentnama_case_study')} />} />
+                <Route path={getPageMetadata("tirch").path} element={<CaseStudyTirch onContactClick={() => handleContactClick('tirch_case_study')} />} />
                 <Route path={getPageMetadata("services").path} element={<Services />} />
                 <Route path={getPageMetadata("about").path} element={<About />} />
                 <Route path={getPageMetadata("privacy").path} element={<Privacy />} />
