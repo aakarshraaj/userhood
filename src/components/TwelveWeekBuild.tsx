@@ -40,7 +40,7 @@ const included = [
 
 export default function TwelveWeekBuild() {
   return (
-    <section id="process" className="relative overflow-hidden bg-background-dark px-5 py-20 md:px-8 md:py-28 lg:py-32">
+    <section id="process" className="relative overflow-hidden bg-background-dark px-5 py-16 md:px-8 md:py-20 lg:py-24">
       <div className="absolute right-[-20%] top-1/4 h-[600px] w-[600px] rounded-full bg-primary/5 blur-[160px] pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-[1440px]">
@@ -52,11 +52,11 @@ export default function TwelveWeekBuild() {
             <h2 className="text-4xl font-black leading-[0.95] tracking-tighter text-white sm:text-5xl md:text-7xl">
               One outcome.<br />Four decisive<br /><span className="text-primary">moves.</span>
             </h2>
-            <p className="mt-8 max-w-lg text-base font-normal leading-relaxed text-slate-300 md:text-lg">
+            <p className="mt-7 max-w-lg text-base font-normal leading-relaxed text-slate-300 md:text-lg">
               Twelve weeks is a focused delivery cadence, not a magic trick. We lock the release boundary, expose risk early, and keep product decisions beside the people writing the code.
             </p>
 
-            <div className="mt-10 border border-white/10 bg-white/[0.02] p-6 md:p-8">
+            <div className="mt-8 border border-white/10 bg-white/[0.02] p-6 md:p-7">
               <div className="mb-5 font-mono text-xs uppercase tracking-[0.16em] text-white/70">
                 What the build includes
               </div>
@@ -75,7 +75,7 @@ export default function TwelveWeekBuild() {
             {phases.map((phase, index) => (
               <li
                 key={phase.weeks}
-                className="grid gap-5 border-b border-white/10 py-9 md:grid-cols-[110px_1fr] md:gap-8 md:py-12"
+                className="grid gap-5 border-b border-white/10 py-7 md:grid-cols-[100px_1fr] md:gap-7 md:py-9"
               >
                 <div>
                   <div className="font-mono text-xs font-bold tracking-[0.16em] text-primary">{phase.weeks}</div>

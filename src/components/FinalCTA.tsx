@@ -6,14 +6,14 @@ interface FinalCTAProps {
 
 export default function FinalCTA({ onContactClick }: FinalCTAProps) {
   return (
-    <section className="py-20 md:py-28 lg:py-36 px-5 md:px-8 border-t border-white/5 bg-white/[0.02]" id="contact">
+    <section className="border-t border-white/5 bg-white/[0.02] px-5 py-16 md:px-8 md:py-20 lg:py-24" id="contact">
       <div className="max-w-4xl mx-auto text-center">
 
         <div className="font-mono text-xs text-primary mb-6 md:mb-8 uppercase tracking-widest">
           [ 05 // THE_DECISION ]
         </div>
 
-        <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-[110px] font-black text-white leading-[0.85] tracking-tighter mb-6 md:mb-8">
+        <h2 className="mb-6 text-4xl font-black leading-[0.85] tracking-tighter text-white sm:text-5xl md:mb-8 md:text-7xl lg:text-[96px]">
           Twelve weeks<br />from now,<br />
           <span className="text-primary">
             what is live?
@@ -21,8 +21,8 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
           </span>
         </h2>
 
-        <div className="max-w-3xl mx-auto mb-12 md:mb-16">
-          <p className="text-xl sm:text-2xl md:text-3xl text-slate-300 font-normal leading-relaxed">
+        <div className="mx-auto mb-9 max-w-3xl md:mb-12">
+          <p className="text-lg font-normal leading-relaxed text-slate-300 sm:text-xl md:text-2xl">
             If the problem is real, the decision-maker is in the room, and the first release can be sharply scoped, we can turn the next twelve weeks into a working product.
           </p>
         </div>

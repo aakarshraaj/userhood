@@ -12,6 +12,7 @@ interface ProjectMediaProps {
   media: ProjectMediaSpec;
   accent?: string;
   compact?: boolean;
+  size?: "default" | "compact" | "mini";
   className?: string;
 }
 
@@ -20,8 +21,10 @@ export default function ProjectMedia({
   media,
   accent = "#00f5ff",
   compact = false,
+  size,
   className = "",
 }: ProjectMediaProps) {
+  const resolvedSize = size ?? (compact ? "compact" : "default");
   const style = {
     "--project-accent": accent,
     background: `radial-gradient(circle at 82% 18%, ${accent}26 0, transparent 34%), linear-gradient(145deg, #12151a 0%, #090a0d 72%)`,
@@ -29,7 +32,13 @@ export default function ProjectMedia({
 
   return (
     <figure
-      className={`relative isolate overflow-hidden border border-white/10 bg-[#0b0c0f] ${compact ? "min-h-[240px]" : "min-h-[320px] md:min-h-[520px]"} ${className}`}
+      className={`relative isolate overflow-hidden border border-white/10 bg-[#0b0c0f] ${
+        resolvedSize === "mini"
+          ? "min-h-[205px]"
+          : resolvedSize === "compact"
+            ? "min-h-[215px] md:min-h-[225px]"
+            : "min-h-[320px] md:min-h-[520px]"
+      } ${className}`}
       style={style}
     >
       {media.src ? (
@@ -51,15 +60,15 @@ export default function ProjectMedia({
           <div className="absolute left-5 top-5 h-8 w-8 border-l border-t border-[var(--project-accent)] md:left-7 md:top-7" />
           <div className="absolute bottom-5 right-5 h-8 w-8 border-b border-r border-[var(--project-accent)] md:bottom-7 md:right-7" />
 
-          <div className="absolute inset-0 flex items-center justify-center p-7 text-center md:p-12">
+          <div className={`absolute inset-0 flex items-center justify-center text-center ${resolvedSize === "mini" ? "px-6 pb-14 pt-6" : "p-7 md:p-12"}`}>
             <div className="max-w-2xl">
               <div className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--project-accent)]">
                 Visual proof slot
               </div>
-              <div className={`${compact ? "mt-3 text-3xl" : "mt-5 text-5xl md:text-7xl"} font-black tracking-tighter text-white/10`}>
+              <div className={`${resolvedSize === "default" ? "mt-5 text-5xl md:text-7xl" : resolvedSize === "mini" ? "mt-2 text-2xl" : "mt-3 text-3xl"} font-black tracking-tighter text-white/10`}>
                 {project}
               </div>
-              <p className={`${compact ? "mt-3 text-sm" : "mt-5 text-base md:text-lg"} mx-auto max-w-xl leading-relaxed text-slate-300`}>
+              <p className={`${resolvedSize === "default" ? "mt-5 text-base md:text-lg" : resolvedSize === "mini" ? "mt-2 text-xs" : "mt-3 text-sm"} mx-auto max-w-xl leading-relaxed text-slate-300`}>
                 {media.description}
               </p>
             </div>

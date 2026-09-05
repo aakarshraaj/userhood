@@ -87,7 +87,7 @@ Acceptance criteria:
 
 ## Phase 3 — homepage composition and conversion hierarchy
 
-Status: next
+Status: complete
 
 Deliverables:
 
@@ -107,6 +107,8 @@ Acceptance criteria:
 - Decorative elements never receive more space than proof.
 
 ## Phase 4 — final case-study media
+
+Status: waiting on approved product images
 
 Deliverables:
 
@@ -147,6 +149,8 @@ Asset contract:
 - Each file requires descriptive alt text and a source/permission note in the asset inventory.
 
 ## Phase 5 — Services and About
+
+Status: next
 
 Deliverables:
 

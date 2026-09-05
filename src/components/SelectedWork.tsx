@@ -78,13 +78,16 @@ const selectedWork: WorkItem[] = [
   },
 ];
 
+const repositoryBackedWork = selectedWork.filter((item) => item.relationship === "Repository-backed build");
+const teamExperience = selectedWork.filter((item) => item.relationship === "Team experience");
+
 export default function SelectedWork() {
   return (
-    <section id="case-studies" className="relative border-y border-white/5 bg-[#08080a] px-5 py-16 md:px-8 md:py-24">
+    <section id="case-studies" className="relative border-y border-white/5 bg-[#08080a] px-5 py-14 md:px-8 md:py-20">
       <div className="tech-grid pointer-events-none absolute inset-0 opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-[1440px]">
-        <div className="grid gap-8 border-b border-white/10 pb-10 md:grid-cols-12 md:items-end md:pb-12">
+        <div className="grid gap-7 border-b border-white/10 pb-8 md:grid-cols-12 md:items-end md:pb-10">
           <div className="md:col-span-8">
             <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-primary">[ 01 // SELECTED_WORK ]</div>
             <h2 className="max-w-4xl text-4xl font-black leading-[0.96] tracking-tighter text-white sm:text-5xl md:text-7xl">
@@ -98,17 +101,17 @@ export default function SelectedWork() {
         </div>
 
         <div className="grid gap-px bg-white/10 lg:grid-cols-2">
-          {selectedWork.map((item) => (
+          {repositoryBackedWork.map((item) => (
             <Link
               key={item.organisation}
               to={item.link}
               onClick={() => trackAnalyticsEvent("case_study_open", { source: "homepage_selected_work", organisation: item.organisation })}
               aria-label={`Read the ${item.organisation} ${item.relationship.toLowerCase()} case study`}
-              className="group flex min-w-0 flex-col bg-[#08080a] p-4 transition-colors hover:bg-white/[0.025] md:p-6"
+              className="group flex min-w-0 flex-col bg-[#08080a] p-4 transition-colors hover:bg-white/[0.025] md:p-5"
             >
               <ProjectMedia project={item.organisation} media={item.media} accent={item.accent} compact />
 
-              <div className="flex flex-1 flex-col px-1 pb-3 pt-7 md:px-2 md:pb-4 md:pt-8">
+              <div className="flex flex-1 flex-col px-1 pb-2 pt-6 md:px-2 md:pb-3 md:pt-7">
                 <div className="flex items-center justify-between gap-4">
                   <div className="font-mono text-xs uppercase tracking-[0.12em] text-[var(--color-primary)]">
                     {item.relationship} · {item.category}
@@ -117,12 +120,12 @@ export default function SelectedWork() {
                 </div>
 
                 <div className="mt-3 text-xl font-bold text-white">{item.organisation}</div>
-                <h3 className="mt-5 max-w-2xl text-2xl font-bold leading-tight tracking-tight text-white transition-colors group-hover:text-primary md:text-4xl">
+                <h3 className="mt-4 max-w-2xl text-2xl font-bold leading-tight tracking-tight text-white transition-colors group-hover:text-primary md:text-3xl">
                   {item.title}
                 </h3>
                 <p className="mt-4 max-w-2xl text-base font-normal leading-relaxed text-slate-300">{item.description}</p>
 
-                <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-5 text-sm font-bold text-white/80">
+                <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4 text-sm font-bold text-white/80">
                   <span>Open case study</span>
                   <span className="flex h-11 w-11 items-center justify-center border border-white/15 text-white transition-all group-hover:border-primary group-hover:bg-primary group-hover:text-black">
                     <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -133,7 +136,43 @@ export default function SelectedWork() {
           ))}
         </div>
 
-        <p className="mt-7 max-w-4xl font-mono text-xs uppercase leading-relaxed tracking-[0.1em] text-white/75">
+        <div className="border-x border-b border-white/10 bg-[#08080a] p-5 md:p-7">
+          <div className="grid gap-6 border-b border-white/10 pb-5 md:grid-cols-[0.75fr_1.25fr] md:items-end">
+            <div className="font-mono text-xs uppercase tracking-[0.15em] text-white/65">
+              Team experience
+            </div>
+            <p className="max-w-2xl text-sm leading-relaxed text-slate-300 md:justify-self-end md:text-right">
+              Relevant work contributed by members of the team before or outside Userhood. Kept separate from repository-backed builds on purpose.
+            </p>
+          </div>
+
+          <div className="grid gap-px bg-white/10 md:grid-cols-2">
+            {teamExperience.map((item) => (
+              <Link
+                key={item.organisation}
+                to={item.link}
+                onClick={() => trackAnalyticsEvent("case_study_open", { source: "homepage_team_experience", organisation: item.organisation })}
+                aria-label={`Read the ${item.organisation} team experience case study`}
+                className="group flex flex-col bg-[#08080a] py-6 transition-colors hover:bg-white/[0.025] md:px-6"
+              >
+                <div className="flex items-center justify-between gap-4 font-mono text-xs uppercase tracking-[0.11em] text-white/60">
+                  <span>{item.category}</span>
+                  <span>{item.index}</span>
+                </div>
+                <div className="mt-4 text-lg font-bold text-white">{item.organisation}</div>
+                <h3 className="mt-3 max-w-xl text-xl font-bold leading-tight tracking-tight text-white transition-colors group-hover:text-primary md:text-2xl">
+                  {item.title}
+                </h3>
+                <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-300">{item.description}</p>
+                <div className="mt-5 flex items-center gap-2 text-sm font-bold text-white/75 transition-colors group-hover:text-primary">
+                  Read experience note <ArrowUpRight className="h-4 w-4" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <p className="mt-6 max-w-4xl font-mono text-xs uppercase leading-relaxed tracking-[0.1em] text-white/75">
           Evidence standard // Repository-backed builds are described from working code and product documentation. Team-experience work is labelled. No outcome number appears without an attributable source.
         </p>
       </div>
