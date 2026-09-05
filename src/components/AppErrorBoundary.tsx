@@ -34,7 +34,7 @@ export default class AppErrorBoundary extends Component<AppErrorBoundaryProps, A
             <button
               type="button"
               onClick={() => window.location.reload()}
-              className="min-h-12 bg-primary px-6 py-3 text-black hover:bg-white"
+              className="min-h-12 bg-primary px-6 py-3 text-black hover:bg-white/80"
             >
               Reload page
             </button>

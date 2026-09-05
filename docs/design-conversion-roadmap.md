@@ -13,7 +13,7 @@ Turn Userhood from a visually distinctive agency site into a high-trust product-
 3. Is the 12-week offer credible and right for my situation?
 4. Do I trust the people who will be in the room after I sign?
 
-The redesign keeps the black, white, and cyan identity. It removes legibility debt, unnecessary techno theatre, empty vertical space, and any proof claim the available evidence cannot support.
+The redesign keeps Userhood achromatic. Black, white, typography, space, and motion belong to the studio; color belongs only to the work, people, or functional state it represents. It removes legibility debt, unnecessary techno theatre, empty vertical space, and any proof claim the available evidence cannot support.
 
 ## Non-negotiables
 

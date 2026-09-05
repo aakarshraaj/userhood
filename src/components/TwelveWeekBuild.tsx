@@ -30,9 +30,9 @@ export default function TwelveWeekBuild() {
       <div className="relative z-10 mx-auto max-w-[1440px]">
         <div className="motion-reveal mb-10 grid gap-7 md:mb-14 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
-            <div className="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-primary">[ 02 // THE_BUILD ]</div>
-            <h2 className="max-w-4xl text-4xl font-black leading-[0.95] tracking-tighter text-white sm:text-5xl md:text-7xl">
-              How twelve weeks <span className="text-primary">move.</span>
+            <div className="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-white/50">[ 02 // THE_BUILD ]</div>
+            <h2 className="max-w-4xl text-4xl font-black leading-[0.95] tracking-tighter text-white/55 sm:text-5xl md:text-7xl">
+              How twelve weeks <span className="text-white">move.</span>
             </h2>
           </div>
           <div className="md:col-span-4 md:justify-self-end">
@@ -46,7 +46,7 @@ export default function TwelveWeekBuild() {
         <ol className="motion-reveal grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {phases.map((phase, index) => (
             <li key={phase.weeks} className="content-card motion-card flex min-h-[240px] flex-col p-6 hover:border-white/20 md:p-7">
-              <div className="flex items-center justify-between gap-4 font-mono text-xs uppercase tracking-[0.13em] text-primary">
+              <div className="flex items-center justify-between gap-4 font-mono text-xs uppercase tracking-[0.13em] text-white/55">
                 <span>{phase.weeks}</span>
                 <span className="text-white/35">0{index + 1}</span>
               </div>

@@ -79,7 +79,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
     <main
       data-page-id={data.pageId}
       className="min-h-screen bg-background-dark pb-20 pt-28 sm:pt-32 md:pb-28 md:pt-36"
-      style={{ "--color-primary": data.accent ?? "#00f5ff" } as CSSProperties}
+      style={{ "--color-primary": data.accent ?? "#ffffff" } as CSSProperties}
     >
       <article>
         <header className="px-5 md:px-8">
@@ -181,7 +181,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
               <dl className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {data.outcome.metrics.map((metric) => (
                   <div key={metric.label} className="content-card p-6 md:min-h-[235px] md:p-8">
-                    <dd className="text-5xl font-black leading-none tracking-tighter md:text-7xl" style={{ color: data.accent ?? "#00f5ff" }}>
+                    <dd className="text-5xl font-black leading-none tracking-tighter md:text-7xl" style={{ color: data.accent ?? "#ffffff" }}>
                       {metric.value}
                     </dd>
                     <dt className="mt-7 text-base font-bold leading-tight text-white md:text-lg">{metric.label}</dt>

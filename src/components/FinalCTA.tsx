@@ -10,13 +10,13 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
     <section className="section-band section-band-deep px-5 py-20 md:px-8 md:py-28" id="contact">
       <div className="content-card motion-reveal mx-auto max-w-5xl px-6 py-14 text-center sm:px-10 md:px-16 md:py-20">
 
-        <div className="font-mono text-xs text-primary mb-6 md:mb-8 uppercase tracking-widest">
+        <div className="font-mono text-xs text-white/50 mb-6 md:mb-8 uppercase tracking-widest">
           [ 05 // THE_DECISION ]
         </div>
 
-        <h2 className="mb-6 text-4xl font-black leading-[0.85] tracking-tighter text-white sm:text-5xl md:mb-8 md:text-7xl lg:text-[96px]">
+        <h2 className="mb-6 text-4xl font-black leading-[0.85] tracking-tighter text-white/55 sm:text-5xl md:mb-8 md:text-7xl lg:text-[96px]">
           Twelve weeks<br />from now,<br />
-          <span className="text-primary">
+          <span className="text-white">
             what is live?
             <span className="ml-1 md:ml-2">_</span>
           </span>
@@ -31,7 +31,7 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
           <button
             onClick={onContactClick}
-            className="motion-button min-h-[52px] w-full whitespace-nowrap bg-primary px-8 py-5 text-base font-bold text-black hover:bg-white sm:w-auto md:px-14 md:py-6 md:text-lg"
+            className="motion-button min-h-[52px] w-full whitespace-nowrap bg-primary px-8 py-5 text-base font-bold text-black hover:bg-white/80 sm:w-auto md:px-14 md:py-6 md:text-lg"
           >
             Discuss your 12-week build
           </button>

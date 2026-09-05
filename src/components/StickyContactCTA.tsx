@@ -60,7 +60,7 @@ export default function StickyContactCTA({ onContactClick, suppressed = false }:
           <button
             type="button"
             onClick={onContactClick}
-            className="motion-button pointer-events-auto flex min-h-[48px] items-center gap-3 rounded-full bg-primary px-6 py-3 text-sm font-bold text-black shadow-2xl hover:bg-white"
+            className="motion-button pointer-events-auto flex min-h-[48px] items-center gap-3 rounded-full bg-primary px-6 py-3 text-sm font-bold text-black shadow-2xl hover:bg-white/80"
           >
             Discuss your build <ArrowRight className="h-4 w-4" />
           </button>

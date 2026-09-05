@@ -5,10 +5,10 @@ interface HeroProps {
 export default function Hero({ onContactClick }: HeroProps) {
   return (
     <section className="tech-grid relative overflow-hidden px-5 pb-14 pt-28 md:px-8 md:pb-16 md:pt-32 lg:pb-20 lg:pt-36">
-      <div className="absolute top-1/3 right-0 w-2/3 h-2/3 bg-primary/10 blur-[100px] rounded-full z-0 md:hidden pointer-events-none" />
+      <div className="absolute top-1/3 right-0 w-2/3 h-2/3 bg-white/[0.045] blur-[100px] rounded-full z-0 md:hidden pointer-events-none" />
       <div className="absolute top-0 right-0 w-[60%] h-full z-0 hidden md:block pointer-events-none">
-        <div className="absolute top-1/2 right-[-10%] -translate-y-1/2 w-[700px] h-[700px] bg-primary/8 blur-[180px] rounded-full mix-blend-screen" />
-        <div className="absolute top-1/3 right-[10%] w-[300px] h-[300px] bg-primary/5 blur-[80px] rounded-full" />
+        <div className="absolute top-1/2 right-[-10%] -translate-y-1/2 w-[700px] h-[700px] bg-white/[0.035] blur-[180px] rounded-full mix-blend-screen" />
+        <div className="absolute top-1/3 right-[10%] w-[300px] h-[300px] bg-white/[0.025] blur-[80px] rounded-full" />
       </div>
       <div className="scanline absolute inset-0 opacity-20 pointer-events-none z-0 hidden md:block" />
 
@@ -32,7 +32,7 @@ export default function Hero({ onContactClick }: HeroProps) {
               <span className="block text-lg font-normal tracking-tight text-slate-200 sm:text-xl md:text-2xl">
                 It should take
               </span>
-              <span className="block text-[min(21vw,104px)] font-black leading-none tracking-tighter text-primary drop-shadow-[0_0_60px_rgba(0,245,255,0.35)] sm:text-7xl md:text-8xl lg:text-[clamp(76px,6.8vw,104px)]">
+              <span className="block text-[min(21vw,104px)] font-black leading-none tracking-tighter text-white drop-shadow-[0_0_60px_rgba(255,255,255,0.14)] sm:text-7xl md:text-8xl lg:text-[clamp(76px,6.8vw,104px)]">
                 12 weeks.
               </span>
             </h1>
@@ -45,7 +45,7 @@ export default function Hero({ onContactClick }: HeroProps) {
               <div className="flex flex-col items-stretch gap-3 text-base sm:flex-row sm:items-center">
                 <button
                   onClick={onContactClick}
-                  className="motion-button flex min-h-[48px] w-full items-center justify-center gap-2 bg-primary px-6 py-4 font-bold text-black hover:bg-white sm:w-auto"
+                  className="motion-button flex min-h-[48px] w-full items-center justify-center gap-2 bg-primary px-6 py-4 font-bold text-black hover:bg-white/80 sm:w-auto"
                 >
                   Discuss your 12-week build
                 </button>

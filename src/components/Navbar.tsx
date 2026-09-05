@@ -93,7 +93,7 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
         <div className="flex min-w-0 items-center">
           <Link to="/" className="flex min-h-11 shrink-0 items-center gap-2.5 transition-opacity hover:opacity-80" onClick={() => setIsOpen(false)} aria-label="Userhood home">
             <span className="userhood-monogram-tile flex h-8 w-8 shrink-0 items-center justify-center bg-white sm:h-9 sm:w-9" aria-hidden="true">
-              <UserhoodMonogram className="h-[22px] w-[22px] text-[#090b0e] sm:h-6 sm:w-6" />
+              <UserhoodMonogram className="h-[22px] w-[22px] text-[#0a0a0a] sm:h-6 sm:w-6" />
             </span>
             <UserhoodLogo className="h-[19px] w-[100px] text-white sm:h-[23px] sm:w-[120px]" />
           </Link>
@@ -111,7 +111,7 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
             <button
               type="button"
               onClick={onContactClick}
-              className="motion-button min-h-[42px] whitespace-nowrap bg-primary px-4 py-2 text-sm font-bold text-black hover:bg-white"
+              className="motion-button min-h-[42px] whitespace-nowrap bg-primary px-4 py-2 text-sm font-bold text-black hover:bg-white/80"
             >
               Discuss your build
             </button>
@@ -147,7 +147,7 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
               className="motion-drawer absolute right-0 top-full z-40 flex h-[calc(100dvh-3.5rem)] w-full max-w-sm flex-col overflow-y-auto bg-background-dark p-5 shadow-2xl sm:h-[calc(100dvh-4rem)] sm:p-7 md:hidden"
             >
               <div className="border-b border-white/10 pb-5">
-                <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">Navigate</div>
+                <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/50">Navigate</div>
                 <p className="mt-2 text-sm leading-relaxed text-slate-300">Inspect the work, understand the engagement, or speak directly with the team.</p>
               </div>
 
@@ -165,7 +165,7 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
                     setIsOpen(false);
                     onContactClick();
                   }}
-                  className="motion-button flex min-h-[52px] w-full items-center justify-between bg-primary px-5 py-4 text-base font-bold text-black hover:bg-white"
+                  className="motion-button flex min-h-[52px] w-full items-center justify-between bg-primary px-5 py-4 text-base font-bold text-black hover:bg-white/80"
                 >
                   Discuss your build <ArrowRight className="h-4 w-4" />
                 </button>

@@ -293,7 +293,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                 <button
                   type="button"
                   onClick={() => closeModal("success_close")}
-                  className="motion-button mt-9 inline-flex min-h-[48px] items-center gap-3 bg-primary px-7 py-4 text-sm font-bold text-black hover:bg-white"
+                  className="motion-button mt-9 inline-flex min-h-[48px] items-center gap-3 bg-primary px-7 py-4 text-sm font-bold text-black hover:bg-white/80"
                 >
                   Close <X className="h-4 w-4" />
                 </button>
@@ -398,7 +398,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                       id="contact-timeline"
                       name="timeline"
                       defaultValue=""
-                      className="mt-2 w-full border border-white/15 bg-[#18181b] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-primary"
+                      className="mt-2 w-full border border-white/15 bg-[#181818] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-primary"
                     >
                       <option value="">No fixed date yet</option>
                       {launchWindows.map((window) => (
@@ -430,7 +430,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                     <button
                       type="submit"
                       disabled={status === "submitting"}
-                      className="motion-button inline-flex min-h-[52px] shrink-0 items-center justify-center gap-3 bg-primary px-7 py-4 text-base font-bold text-black hover:bg-white disabled:cursor-wait disabled:opacity-60"
+                      className="motion-button inline-flex min-h-[52px] shrink-0 items-center justify-center gap-3 bg-primary px-7 py-4 text-base font-bold text-black hover:bg-white/80 disabled:cursor-wait disabled:opacity-60"
                     >
                       {status === "submitting" ? "Sending…" : "Send project brief"}
                       {status !== "submitting" && <ArrowRight className="h-4 w-4" />}

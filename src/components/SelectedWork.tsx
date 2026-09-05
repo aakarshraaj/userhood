@@ -83,7 +83,7 @@ const selectedWork: WorkItem[] = [
     description:
       "A team member’s experience shaping a staged path through model discovery, configuration, finance, and dealer fulfilment.",
     link: "/case-study/hyundai",
-    accent: "#00f5ff",
+    accent: "#ffffff",
     media: {
       label: "Product image // Vehicle purchase journey",
       description: "An approved or anonymised view of the connected purchase journey will live here.",
@@ -98,7 +98,7 @@ const selectedWork: WorkItem[] = [
     description:
       "A team member’s experience translating vehicle health, servicing, and driving feedback into calmer ownership decisions.",
     link: "/case-study/mitsubishi",
-    accent: "#00f5ff",
+    accent: "#ffffff",
     media: {
       label: "Product image // Connected ownership",
       description: "An approved or anonymised view of the connected ownership experience will live here.",
@@ -128,7 +128,7 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
       <div className="relative z-10 mx-auto max-w-[1440px]">
         <div className="motion-reveal mb-10 md:mb-14">
           <div>
-            <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-primary">[ {standalone ? "SELECTED_WORK" : "01 // SELECTED_WORK"} ]</div>
+            <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-white/50">[ {standalone ? "SELECTED_WORK" : "01 // SELECTED_WORK"} ]</div>
             <Heading className="max-w-4xl text-4xl font-black leading-[0.96] tracking-tighter text-white sm:text-5xl md:text-7xl">
               Recent product builds.
             </Heading>

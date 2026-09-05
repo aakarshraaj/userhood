@@ -69,19 +69,19 @@ export default function About() {
     <main data-page-id="about" className="min-h-screen bg-background-dark pb-24 pt-28 selection:bg-primary selection:text-black md:pb-28 md:pt-36">
       <header className="px-5 md:px-8">
         <div className="mx-auto max-w-[1440px]">
-          <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Studio // founder accountability</div>
+          <div className="font-mono text-xs uppercase tracking-[0.2em] text-white/50">Studio // founder accountability</div>
 
           <div className="mt-6 grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-14">
             <div className="lg:col-span-6">
-              <h1 className="text-5xl font-black leading-[0.88] tracking-tighter text-white sm:text-6xl md:text-8xl lg:text-[92px]">
-                The founders<br />you meet stay<br /><span className="text-primary">on the build.</span>
+              <h1 className="text-5xl font-black leading-[0.88] tracking-tighter text-white/55 sm:text-6xl md:text-8xl lg:text-[92px]">
+                The founders<br />you meet stay<br /><span className="text-white">on the build.</span>
               </h1>
               <p className="mt-8 max-w-2xl text-lg font-normal leading-relaxed text-slate-200 md:text-xl">
                 Userhood is a compact product studio built around shared accountability. Product design and engineering own the same release, the same constraints, and the same weekly decisions.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link to="/?contact=true&source=about_hero" className="inline-flex min-h-[50px] items-center justify-center gap-3 bg-primary px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-white">
+                <Link to="/?contact=true&source=about_hero" className="inline-flex min-h-[50px] items-center justify-center gap-3 bg-primary px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-white/80">
                   Discuss your 12-week build <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a href="https://in.linkedin.com/company/userhood" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[50px] items-center justify-center gap-3 border border-white/15 px-6 py-4 text-sm font-bold text-white transition-colors hover:border-primary hover:text-primary">
@@ -98,7 +98,7 @@ export default function About() {
                   </div>
                   <div className="px-2 pb-2 pt-5 md:px-3 md:pb-3 md:pt-6">
                     <h2 className="text-2xl font-black tracking-tight text-white">{founder.name}</h2>
-                    <p className="mt-1 text-sm font-bold text-primary">{founder.role}</p>
+                    <p className="mt-1 text-sm font-bold text-white/70">{founder.role}</p>
                     <div className="mt-5 bg-black/25 p-4">
                       <div className="font-mono text-xs uppercase tracking-[0.12em] text-white/55">Owns during an engagement</div>
                       <p className="mt-3 text-sm leading-relaxed text-slate-300">{founder.responsibility}</p>
@@ -112,8 +112,8 @@ export default function About() {
           <div className="content-card mt-12 grid gap-4 p-5 md:grid-cols-[auto_1fr] md:items-center md:gap-8">
             <p className="font-mono text-xs uppercase tracking-[0.16em] text-white/60">Work shown</p>
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold text-white/70 sm:text-sm md:justify-end">
-              <span className="text-primary">Product builds: Rentnama + Tirch</span>
-              <span className="hidden text-primary/40 sm:inline">//</span>
+              <span className="text-white/80">Product builds: Rentnama + Tirch</span>
+              <span className="hidden text-white/25 sm:inline">//</span>
               <span>Attributed team experience: Hyundai + Mitsubishi Motors</span>
             </div>
           </div>
@@ -153,9 +153,9 @@ export default function About() {
         <div className="mx-auto max-w-[1440px]">
           <div className="grid gap-8 md:grid-cols-12 md:items-end">
             <div className="md:col-span-7">
-              <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">02 // Relevant product work</div>
-              <h2 id="proof-title" className="mt-4 text-4xl font-black leading-[0.94] tracking-tighter text-white md:text-6xl">
-                Inspect the work.<br /><span className="text-primary">Understand the decisions.</span>
+              <div className="font-mono text-xs uppercase tracking-[0.18em] text-white/50">02 // Relevant product work</div>
+              <h2 id="proof-title" className="mt-4 text-4xl font-black leading-[0.94] tracking-tighter text-white/55 md:text-6xl">
+                Inspect the work.<br /><span className="text-white">Understand the decisions.</span>
               </h2>
             </div>
             <p className="max-w-xl text-base leading-relaxed text-slate-300 md:col-span-5 md:justify-self-end md:text-lg">
@@ -165,7 +165,7 @@ export default function About() {
 
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             <div className="content-card p-7 md:p-9">
-              <div className="font-mono text-xs uppercase tracking-[0.14em] text-primary">Product builds</div>
+              <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/55">Product builds</div>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 <Link
                   to="/case-study/rentnama"
@@ -207,7 +207,7 @@ export default function About() {
       <section className="section-band section-band-raised px-5 py-20 md:px-8 md:py-28" aria-labelledby="team-title">
         <div className="mx-auto grid max-w-[1440px] gap-10 md:grid-cols-12 md:gap-14">
           <div className="md:col-span-4">
-            <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">03 // The wider team</div>
+            <div className="font-mono text-xs uppercase tracking-[0.18em] text-white/50">03 // The wider team</div>
             <h2 id="team-title" className="mt-4 text-4xl font-black leading-[0.95] tracking-tighter text-white md:text-5xl">Specialists join around the release.</h2>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-slate-300">
               Product, design, engineering, and growth capacity changes with the work. Ownership does not: the founders remain accountable for the direction and delivery model.
@@ -231,7 +231,7 @@ export default function About() {
       <section className="section-band section-band-deep px-5 py-20 md:px-8 md:py-28" aria-labelledby="commitments-title">
         <div className="mx-auto grid max-w-[1440px] gap-10 md:grid-cols-12 md:gap-14">
           <div className="md:col-span-5">
-            <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">04 // What you can expect</div>
+            <div className="font-mono text-xs uppercase tracking-[0.18em] text-white/50">04 // What you can expect</div>
             <h2 id="commitments-title" className="mt-4 text-4xl font-black leading-[0.95] tracking-tighter text-white md:text-6xl">
               We will tell you the uncomfortable thing early.
             </h2>
@@ -241,13 +241,13 @@ export default function About() {
             <div className="grid gap-3">
               {commitments.map((commitment) => (
                 <div key={commitment} className="content-card flex items-start gap-4 p-5 text-base leading-relaxed text-slate-200 md:p-6 md:text-lg">
-                  <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-primary" />
+                  <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-white/70" />
                   <span>{commitment}</span>
                 </div>
               ))}
             </div>
 
-            <Link to="/?contact=true&source=about_footer" className="mt-8 inline-flex min-h-[52px] items-center gap-3 bg-primary px-7 py-4 text-base font-bold text-black transition-colors hover:bg-white">
+            <Link to="/?contact=true&source=about_footer" className="mt-8 inline-flex min-h-[52px] items-center gap-3 bg-primary px-7 py-4 text-base font-bold text-black transition-colors hover:bg-white/80">
               Discuss your 12-week build <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

@@ -72,8 +72,8 @@ const profiles: Record<string, AvatarProfile> = {
 };
 
 const fallbackProfile: AvatarProfile = {
-  color: "#00f5ff",
-  background: "#e8fbfc",
+  color: "#ffffff",
+  background: "#e9e9e9",
   shape: "orb",
   expression: "bright",
   rotation: 0,
@@ -219,7 +219,7 @@ export default function TeamAvatar({ name, className = "" }: TeamAvatarProps) {
       context.save();
       context.translate(size * 0.045, size * 0.06);
       traceShape(context, profile.shape, size);
-      context.fillStyle = "rgba(8, 12, 16, 0.1)";
+      context.fillStyle = "rgba(12, 12, 12, 0.1)";
       context.fill();
       context.restore();
 
@@ -243,7 +243,7 @@ export default function TeamAvatar({ name, className = "" }: TeamAvatarProps) {
         context.scale(1, blink);
         context.beginPath();
         context.roundRect(-eyeWidth / 2, -eyeHeight / 2, eyeWidth, eyeHeight, eyeWidth / 2);
-        context.fillStyle = "#11161c";
+        context.fillStyle = "#121212";
         context.fill();
         context.restore();
       };

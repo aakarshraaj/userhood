@@ -13,8 +13,8 @@
       letter-spacing: -2px;
     }
     @media (prefers-color-scheme: dark) {
-      .border { stroke: #00f5ff; }
-      .text { fill: #00f5ff; }
+      .border { stroke: #ffffff; }
+      .text { fill: #ffffff; }
     }
   </style>
   <!-- Optional inner grid aesthetic -->

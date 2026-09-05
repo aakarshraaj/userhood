@@ -47,7 +47,7 @@ export function AnalyticsConsentBanner({ suppressed = false }: { suppressed?: bo
           <button
             type="button"
             onClick={allowAnalytics}
-            className="min-h-11 bg-primary px-4 py-2 text-sm font-bold text-black transition-colors hover:bg-white"
+            className="min-h-11 bg-primary px-4 py-2 text-sm font-bold text-black transition-colors hover:bg-white/80"
           >
             Allow
           </button>

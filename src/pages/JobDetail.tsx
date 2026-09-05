@@ -123,7 +123,7 @@ export default function JobDetail() {
                                 href={job.googleFormLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full flex items-center justify-center gap-3 bg-primary text-background-dark py-4 px-6 hover:bg-white transition-all text-base font-bold group"
+                                className="w-full flex items-center justify-center gap-3 bg-primary text-background-dark py-4 px-6 hover:bg-white/80 transition-all text-base font-bold group"
                             >
                                 Apply for this role
                                 <ExternalLink className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />

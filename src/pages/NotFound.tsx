@@ -18,7 +18,7 @@ export default function NotFound() {
         </p>
         <Link
           to="/"
-          className="mt-10 inline-flex min-h-12 items-center gap-3 bg-primary px-6 py-4 text-base font-bold text-black transition-colors hover:bg-white"
+          className="mt-10 inline-flex min-h-12 items-center gap-3 bg-primary px-6 py-4 text-base font-bold text-black transition-colors hover:bg-white/80"
         >
           <ArrowLeft className="h-4 w-4" /> Back to Userhood
         </Link>

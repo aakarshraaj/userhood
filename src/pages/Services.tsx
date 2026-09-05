@@ -172,7 +172,7 @@ function EngagementDetails({ engagement }: { engagement: Engagement }) {
     <section
       id={engagement.id}
       aria-labelledby={`${engagement.id}-title`}
-      className={isLaunch ? "scroll-mt-24 bg-primary p-7 text-black shadow-[0_28px_90px_rgba(0,245,255,0.12)] sm:p-10 md:p-12 lg:p-14" : "content-card scroll-mt-24 p-7 sm:p-9 lg:p-10"}
+      className={isLaunch ? "scroll-mt-24 bg-white p-7 text-black shadow-[0_28px_90px_rgba(255,255,255,0.06)] sm:p-10 md:p-12 lg:p-14" : "content-card scroll-mt-24 p-7 sm:p-9 lg:p-10"}
     >
       <div className={`flex flex-col gap-6 border-b pb-8 sm:flex-row sm:items-start sm:justify-between ${isLaunch ? "border-black/20" : "border-white/10"}`}>
         <div>
@@ -231,7 +231,7 @@ function EngagementDetails({ engagement }: { engagement: Engagement }) {
 
       <Link
         to={`/?contact=true&source=services_${engagement.id}`}
-        className={`mt-8 inline-flex min-h-[50px] items-center gap-3 px-6 py-4 text-sm font-bold transition-colors ${isLaunch ? "bg-black text-white hover:bg-white hover:text-black" : "bg-primary text-black hover:bg-white"}`}
+        className={`mt-8 inline-flex min-h-[50px] items-center gap-3 px-6 py-4 text-sm font-bold transition-colors ${isLaunch ? "bg-black text-white hover:bg-white hover:text-black" : "bg-primary text-black hover:bg-white/80"}`}
       >
         Discuss {engagement.id === "launch" ? "your 12-week build" : `a ${engagement.title.toLowerCase()} engagement`}
         <ArrowRight className="h-4 w-4" />
@@ -252,12 +252,12 @@ export default function Services() {
         <div className="mx-auto max-w-[1440px]">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-14">
             <div className="lg:col-span-7">
-              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-primary">
-                <span className="h-1.5 w-1.5 shrink-0 animate-pulse bg-primary" />
+              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-white/50">
+                <span className="h-1.5 w-1.5 shrink-0 animate-pulse bg-white/65" />
                 Services // choose the first move
               </div>
-              <h1 className="mt-6 text-5xl font-black leading-[0.86] tracking-tighter text-white sm:text-6xl md:text-8xl lg:text-[104px]">
-                Launch.<br />Rescue.<br /><span className="text-primary">Extend.</span>
+              <h1 className="mt-6 text-5xl font-black leading-[0.86] tracking-tighter text-white/55 sm:text-6xl md:text-8xl lg:text-[104px]">
+                Launch.<br />Rescue.<br /><span className="text-white">Extend.</span>
               </h1>
             </div>
 
@@ -266,7 +266,7 @@ export default function Services() {
                 Start with the condition of the product instead of a shopping list of disciplines. The 12-week build is our default for a new, sharply scoped release. Existing products begin somewhere else.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <Link to="/?contact=true&source=services_hero" className="inline-flex min-h-[50px] items-center justify-center gap-3 bg-primary px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-white">
+                <Link to="/?contact=true&source=services_hero" className="inline-flex min-h-[50px] items-center justify-center gap-3 bg-primary px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-white/80">
                   Discuss your 12-week build <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link to="/work" className="inline-flex min-h-[50px] items-center justify-center border border-white/15 px-6 py-4 text-sm font-bold text-white transition-colors hover:border-primary hover:text-primary">
@@ -278,7 +278,7 @@ export default function Services() {
 
           <section className="mt-14 grid gap-4 md:mt-18 md:grid-cols-3" aria-label="Engagement overview">
             {engagements.map((engagement, index) => (
-              <article key={engagement.id} className={`flex min-h-[140px] items-end p-6 ${engagement.primary ? "bg-primary text-black shadow-[0_20px_60px_rgba(0,245,255,0.1)]" : "content-card text-white"}`}>
+              <article key={engagement.id} className={`flex min-h-[140px] items-end p-6 ${engagement.primary ? "bg-white text-black shadow-[0_20px_60px_rgba(255,255,255,0.05)]" : "content-card text-white"}`}>
                 <div>
                   <div className={`font-mono text-xs font-bold uppercase tracking-[0.13em] ${engagement.primary ? "text-black/60" : "text-white/50"}`}>0{index + 1} // {engagement.duration}</div>
                   <div className="mt-3 text-xl font-bold">{engagement.situation}</div>
@@ -304,9 +304,9 @@ export default function Services() {
         <div className="mx-auto max-w-[1440px]">
           <div className="grid gap-7 md:grid-cols-12 md:items-end">
             <div className="md:col-span-7">
-              <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Supporting capabilities</div>
-              <h2 id="capabilities-title" className="mt-4 text-4xl font-black leading-[0.94] tracking-tighter text-white md:text-6xl">
-                Disciplines move together.<br /><span className="text-primary">The outcome stays in charge.</span>
+              <div className="font-mono text-xs uppercase tracking-[0.18em] text-white/50">Supporting capabilities</div>
+              <h2 id="capabilities-title" className="mt-4 text-4xl font-black leading-[0.94] tracking-tighter text-white/55 md:text-6xl">
+                Disciplines move together.<br /><span className="text-white">The outcome stays in charge.</span>
               </h2>
             </div>
             <p className="max-w-xl text-base leading-relaxed text-slate-300 md:col-span-5 md:justify-self-end md:text-lg">
@@ -317,7 +317,7 @@ export default function Services() {
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {capabilities.map((capability, index) => (
               <article key={capability.title} className="content-card min-h-[220px] p-6 md:p-7">
-                <div className="font-mono text-xs text-primary">0{index + 1}</div>
+                <div className="font-mono text-xs text-white/50">0{index + 1}</div>
                 <h3 className="mt-6 text-xl font-bold text-white">{capability.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-300">{capability.detail}</p>
               </article>
@@ -328,7 +328,7 @@ export default function Services() {
 
       <section className="mx-auto grid max-w-[1440px] gap-10 px-5 py-16 md:grid-cols-12 md:px-8 md:py-20" aria-labelledby="faq-title">
         <div className="md:col-span-4">
-          <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">The fine print</div>
+          <div className="font-mono text-xs uppercase tracking-[0.18em] text-white/50">The fine print</div>
           <h2 id="faq-title" className="mt-4 text-4xl font-black tracking-tighter text-white md:text-5xl">Useful answers before a call.</h2>
         </div>
         <div className="content-card px-6 md:col-span-8 md:px-8">
@@ -347,10 +347,10 @@ export default function Services() {
       <section className="mx-auto max-w-[1440px] px-5 md:px-8">
         <div className="content-card grid gap-8 p-7 md:grid-cols-12 md:items-center md:p-10 lg:p-12">
           <div className="md:col-span-8">
-            <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">Still deciding?</div>
+            <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/50">Still deciding?</div>
             <h2 className="mt-4 text-3xl font-black tracking-tighter text-white md:text-5xl">Bring the product condition. We will help choose the first move.</h2>
           </div>
-          <Link to="/?contact=true&source=services_footer" className="inline-flex min-h-[52px] items-center justify-center gap-3 bg-primary px-7 py-4 text-base font-bold text-black transition-colors hover:bg-white md:col-span-4 md:justify-self-end">
+          <Link to="/?contact=true&source=services_footer" className="inline-flex min-h-[52px] items-center justify-center gap-3 bg-primary px-7 py-4 text-base font-bold text-black transition-colors hover:bg-white/80 md:col-span-4 md:justify-self-end">
             Start a fit conversation <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

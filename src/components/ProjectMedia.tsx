@@ -27,7 +27,7 @@ interface ProjectMediaProps {
 export default function ProjectMedia({
   project,
   media,
-  accent = "#00f5ff",
+  accent = "#ffffff",
   compact = false,
   size,
   className = "",
@@ -36,12 +36,12 @@ export default function ProjectMedia({
   const treatment = media.treatment ?? (media.secondarySrc ? "layered" : "cover");
   const style = {
     "--project-accent": accent,
-    background: `radial-gradient(circle at 82% 18%, ${accent}26 0, transparent 34%), linear-gradient(145deg, #12151a 0%, #090a0d 72%)`,
+    background: `radial-gradient(circle at 82% 18%, ${accent}26 0, transparent 34%), linear-gradient(145deg, #151515 0%, #090909 72%)`,
   } as CSSProperties;
 
   return (
     <figure
-      className={`project-media relative isolate w-full min-w-0 max-w-full overflow-hidden border border-white/10 bg-[#0b0c0f] ${
+      className={`project-media relative isolate w-full min-w-0 max-w-full overflow-hidden border border-white/10 bg-[#0b0b0b] ${
         resolvedSize === "mini"
           ? "aspect-video min-h-[205px]"
           : resolvedSize === "compact"
@@ -119,7 +119,7 @@ export default function ProjectMedia({
         </div>
       )}
 
-      <figcaption className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between gap-4 bg-[#090a0d]/94 px-4 py-3 backdrop-blur-sm md:px-6">
+      <figcaption className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between gap-4 bg-[#090909]/94 px-4 py-3 backdrop-blur-sm md:px-6">
         <span className="font-mono text-xs uppercase tracking-[0.11em] text-white/80">
           {media.label}
         </span>

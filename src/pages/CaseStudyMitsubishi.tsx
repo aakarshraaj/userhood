@@ -62,7 +62,7 @@ const caseStudy: CaseStudyData = {
     "No approved product imagery, client endorsement, research record, pilot dataset, or attributable performance metric is public. This records relevant team experience and does not claim verified delivery or results by Userhood.",
   trademarkNote:
     "Mitsubishi Motors and related marks belong to their respective owners. Their appearance here is solely to identify the organisation associated with this team experience.",
-  accent: "#00f5ff",
+  accent: "#ffffff",
 };
 
 export default function CaseStudyMitsubishi({ onContactClick }: { onContactClick: () => void }) {
