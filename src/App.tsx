@@ -43,17 +43,47 @@ function RouteTracker() {
   const previousPathRef = useRef<string | null>(null);
 
   useEffect(() => {
+    const previousRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    return () => {
+      window.history.scrollRestoration = previousRestoration;
+    };
+  }, []);
+
+  useEffect(() => {
     const isRouteChange = previousPathRef.current !== null && previousPathRef.current !== pathname;
     previousPathRef.current = pathname;
 
     let hashObserver: MutationObserver | null = null;
     let hashObserverTimeout: number | null = null;
+    let positionFrame: number | null = null;
+    let previousScrollBehavior: string | null = null;
+
+    const placeViewport = (target?: HTMLElement) => {
+      const root = document.documentElement;
+      if (previousScrollBehavior === null) previousScrollBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+
+      if (target) {
+        target.scrollIntoView({ block: "start" });
+      } else {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      }
+
+      if (positionFrame) window.cancelAnimationFrame(positionFrame);
+      positionFrame = window.requestAnimationFrame(() => {
+        if (!target) window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        root.style.scrollBehavior = previousScrollBehavior ?? "";
+        previousScrollBehavior = null;
+        positionFrame = null;
+      });
+    };
 
     if (hash) {
       const scrollToHash = () => {
         const target = document.getElementById(hash.slice(1));
         if (!target) return false;
-        target.scrollIntoView();
+        placeViewport(target);
         return true;
       };
 
@@ -66,7 +96,7 @@ function RouteTracker() {
         hashObserverTimeout = window.setTimeout(() => hashObserver?.disconnect(), 3000);
       }
     } else {
-      window.scrollTo(0, 0);
+      placeViewport();
     }
 
     const routeUpdate = window.setTimeout(() => {
@@ -81,6 +111,8 @@ function RouteTracker() {
     return () => {
       window.clearTimeout(routeUpdate);
       if (hashObserverTimeout) window.clearTimeout(hashObserverTimeout);
+      if (positionFrame) window.cancelAnimationFrame(positionFrame);
+      if (previousScrollBehavior !== null) document.documentElement.style.scrollBehavior = previousScrollBehavior;
       hashObserver?.disconnect();
     };
   }, [pathname, hash]);
@@ -88,6 +120,7 @@ function RouteTracker() {
 }
 export default function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [contactSource, setContactSource] = useState("unknown");
   const location = useLocation();
 
@@ -119,7 +152,7 @@ export default function App() {
         <div id="site-shell">
           <a href="#main-content" className="skip-link">Skip to main content</a>
           <RouteTracker />
-          <Navbar onContactClick={() => handleContactClick('navbar')} />
+          <Navbar onContactClick={() => handleContactClick('navbar')} onMenuOpenChange={setIsMenuOpen} />
 
           <div id="main-content" tabIndex={-1} className="outline-none">
             <Suspense fallback={<div className="min-h-screen bg-background-dark flex items-center justify-center" role="status" aria-label="Loading page"><div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin-slow"></div></div>}>
@@ -151,8 +184,11 @@ export default function App() {
           </div>
 
           <Footer />
-          <StickyContactCTA onContactClick={() => handleContactClick('sticky_mobile')} />
-          <AnalyticsConsentBanner />
+          <StickyContactCTA
+            onContactClick={() => handleContactClick('sticky_mobile')}
+            suppressed={isContactOpen || isMenuOpen}
+          />
+          <AnalyticsConsentBanner suppressed={isContactOpen || isMenuOpen} />
           <div id="route-announcer" className="sr-only" aria-live="polite" aria-atomic="true" />
         </div>
 

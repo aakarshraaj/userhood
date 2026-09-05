@@ -66,7 +66,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-white font-bold uppercase tracking-widest text-xs mb-6 font-mono">05. Cookies and browser storage</h2>
             <p className="mb-6">
-              Before you choose, analytics remain off. Your analytics choice and sound preference are stored locally on your device. Session storage holds lead-attribution details only for the current browser session. If you allow Google Analytics, it may set first-party measurement cookies. You can change that choice below; turning analytics off also attempts to remove Google Analytics cookies set for this site.
+              Before you choose, analytics remain off. Your analytics choice is stored locally on your device. Session storage holds lead-attribution details only for the current browser session. If you allow Google Analytics, it may set first-party measurement cookies. You can change that choice below; turning analytics off also attempts to remove Google Analytics cookies set for this site.
             </p>
             <AnalyticsPreferenceControl />
           </section>

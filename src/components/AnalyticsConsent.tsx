@@ -8,7 +8,7 @@ import {
   type AnalyticsConsent,
 } from "../utils/analytics";
 
-export function AnalyticsConsentBanner() {
+export function AnalyticsConsentBanner({ suppressed = false }: { suppressed?: boolean }) {
   const location = useLocation();
   const [consent, setConsent] = useState<AnalyticsConsent | "loading">("loading");
 
@@ -16,7 +16,7 @@ export function AnalyticsConsentBanner() {
     setConsent(getAnalyticsConsent());
   }, []);
 
-  if (location.pathname === "/privacy" || consent !== null) return null;
+  if (suppressed || location.pathname === "/privacy" || consent !== null) return null;
 
   const allowAnalytics = () => {
     setAnalyticsConsent(true);
@@ -32,30 +32,31 @@ export function AnalyticsConsentBanner() {
 
   return (
     <aside
+      data-analytics-consent-banner
       aria-label="Analytics preference"
-      className="fixed bottom-4 left-4 right-4 z-[80] mx-auto max-w-3xl border border-white/15 bg-surface p-5 shadow-2xl sm:bottom-6 sm:p-6"
+      className="fixed bottom-0 left-0 right-0 z-[80] border-t border-white/15 bg-surface/95 px-4 py-3 shadow-2xl backdrop-blur-xl sm:bottom-4 sm:left-4 sm:right-4 sm:mx-auto sm:max-w-5xl sm:border sm:px-5 sm:py-4"
     >
-      <div className="grid gap-5 sm:grid-cols-[1fr_auto] sm:items-center">
+      <div className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-6">
         <div>
-          <h2 className="text-base font-bold text-white">Analytics are your choice.</h2>
-          <p className="mt-2 text-sm font-normal leading-relaxed text-slate-300">
-            We use optional Google Analytics to understand which pages and calls to action are useful. No advertising cookies, and no analytics until you allow it. <Link to="/privacy" className="text-white underline underline-offset-4 hover:text-primary">Read the privacy policy</Link>.
+          <h2 className="text-sm font-bold text-white">Optional analytics</h2>
+          <p className="mt-1 text-xs font-normal leading-relaxed text-slate-300 sm:text-sm">
+            Help us understand which pages and actions are useful. Nothing loads until you allow it, and we use no advertising cookies. <Link to="/privacy" className="text-white underline underline-offset-4 hover:text-primary">Privacy details</Link>.
           </p>
         </div>
-        <div className="flex flex-col gap-2 sm:min-w-44">
+        <div className="grid grid-cols-2 gap-2 sm:min-w-[220px]">
           <button
             type="button"
             onClick={allowAnalytics}
-            className="min-h-11 bg-primary px-5 py-3 font-mono text-xs font-bold uppercase tracking-[0.1em] text-black transition-colors hover:bg-white"
+            className="min-h-11 bg-primary px-4 py-2 text-sm font-bold text-black transition-colors hover:bg-white"
           >
-            Allow analytics
+            Allow
           </button>
           <button
             type="button"
             onClick={declineAnalytics}
-            className="min-h-11 border border-white/15 px-5 py-3 font-mono text-xs uppercase tracking-[0.1em] text-white/70 transition-colors hover:border-white/40 hover:text-white"
+            className="min-h-11 border border-white/20 px-4 py-2 text-sm font-bold text-white transition-colors hover:border-white/50 hover:text-primary"
           >
-            Continue without
+            No thanks
           </button>
         </div>
       </div>

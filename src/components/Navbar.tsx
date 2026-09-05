@@ -1,182 +1,192 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Volume2, VolumeX } from "lucide-react";
-
-import { toggleMute, getMuteState, playTick } from "../utils/audio";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { trackAnalyticsEvent } from "../utils/analytics";
 
 interface NavbarProps {
   onContactClick: () => void;
+  onMenuOpenChange?: (isOpen: boolean) => void;
 }
 
-export default function Navbar({ onContactClick }: NavbarProps) {
-  const { pathname } = useLocation();
+const menuFocusableSelector = "a[href], button:not([disabled])";
+
+export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps) {
+  const { pathname, hash } = useLocation();
   const [isOpen, setIsOpen] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    setIsMuted(getMuteState());
-  }, []);
+    onMenuOpenChange?.(isOpen);
+  }, [isOpen, onMenuOpenChange]);
 
   useEffect(() => {
     setIsOpen(false);
-  }, [pathname]);
+  }, [pathname, hash]);
 
   useEffect(() => {
     if (!isOpen) return;
 
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsOpen(false);
+    const previousOverflow = document.body.style.overflow;
+    const mainContent = document.getElementById("main-content");
+    const footer = document.getElementById("site-footer");
+    document.body.style.overflow = "hidden";
+    mainContent?.setAttribute("inert", "");
+    mainContent?.setAttribute("aria-hidden", "true");
+    footer?.setAttribute("inert", "");
+    footer?.setAttribute("aria-hidden", "true");
+    const focusFrame = window.requestAnimationFrame(() => {
+      const firstLink = menuRef.current?.querySelector<HTMLElement>("a[href]");
+      firstLink?.focus();
+    });
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setIsOpen(false);
+        toggleRef.current?.focus();
+        return;
+      }
+
+      if (event.key !== "Tab" || !menuRef.current) return;
+
+      const menuItems = Array.from(menuRef.current.querySelectorAll<HTMLElement>(menuFocusableSelector)).filter(
+        (element) => element.getClientRects().length > 0
+      );
+      const firstItem = menuItems[0];
+      const lastItem = menuItems[menuItems.length - 1];
+      if (!firstItem || !lastItem) return;
+
+      if (event.shiftKey && document.activeElement === firstItem) {
+        event.preventDefault();
+        toggleRef.current?.focus();
+      } else if (!event.shiftKey && document.activeElement === lastItem) {
+        event.preventDefault();
+        toggleRef.current?.focus();
+      } else if (document.activeElement === toggleRef.current) {
+        event.preventDefault();
+        (event.shiftKey ? lastItem : firstItem).focus();
+      }
     };
 
-    document.addEventListener("keydown", closeOnEscape);
-    return () => document.removeEventListener("keydown", closeOnEscape);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.cancelAnimationFrame(focusFrame);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      mainContent?.removeAttribute("inert");
+      mainContent?.removeAttribute("aria-hidden");
+      footer?.removeAttribute("inert");
+      footer?.removeAttribute("aria-hidden");
+    };
   }, [isOpen]);
 
-  const handleMuteToggle = () => {
-    const nextMuted = toggleMute();
-    setIsMuted(nextMuted);
-    if (!nextMuted) {
-      playTick();
-    }
-  };
-
-  const handleMenuClick = () => {
-    playTick();
-    setIsOpen(!isOpen);
-  };
-
   const handleLinkClick = () => {
-    playTick();
     setIsOpen(false);
   };
 
-
   return (
-    <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-background-dark/90 backdrop-blur-xl safe-area-inset-top" aria-label="Main navigation">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 h-14 sm:h-16 flex items-center justify-between font-mono text-xs tracking-tighter uppercase relative z-50">
-        <div className="flex items-center gap-2 sm:gap-4 min-w-0">
+    <nav className="safe-area-inset-top fixed top-0 z-[90] w-full border-b border-white/10 bg-background-dark/95 backdrop-blur-xl" aria-label="Main navigation">
+      <div className="relative z-50 mx-auto flex h-14 max-w-[1440px] items-center justify-between px-4 sm:h-16 sm:px-6 md:px-8">
+        <div className="flex min-w-0 items-center">
           <Link to="/" className="hover:opacity-80 transition-opacity shrink-0 flex items-center" onClick={() => setIsOpen(false)} aria-label="Userhood — Home">
             <Logo />
           </Link>
-          <span className="text-white/70 hidden sm:inline truncate">[ ARCH_SYST_v.01 ]</span>
         </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6 lg:gap-8">
-          <a href="/#case-studies" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// WORK</a>
-          <a href="/#process" onMouseEnter={() => playTick()} onClick={handleLinkClick} className="hover:text-primary transition-colors">// 12_WEEK_BUILD</a>
-          <Link to="/services" aria-current={pathname === "/services" ? "page" : undefined} onMouseEnter={() => playTick()} onClick={handleLinkClick} className={`hover:text-primary transition-colors ${pathname === "/services" ? "text-primary" : ""}`}>// SERVICES</Link>
-          <Link to="/about" aria-current={pathname === "/about" ? "page" : undefined} onMouseEnter={() => playTick()} onClick={handleLinkClick} className={`hover:text-primary transition-colors ${pathname === "/about" ? "text-primary" : ""}`}>// THE_TEAM</Link>
-          <Link to="/careers" aria-current={pathname.startsWith("/careers") ? "page" : undefined} onMouseEnter={() => playTick()} onClick={handleLinkClick} className={`hover:text-primary transition-colors ${pathname.startsWith("/careers") ? "text-primary" : ""}`}>// CAREERS</Link>
+        <div className="hidden items-center gap-5 md:flex lg:gap-7">
+          <div className="flex items-center gap-5 text-sm font-medium text-white/75 lg:gap-7">
+            <a href="/#case-studies" onClick={handleLinkClick} className="transition-colors hover:text-primary">Work</a>
+            <a href="/#process" onClick={handleLinkClick} className="transition-colors hover:text-primary">12-week build</a>
+            <Link to="/services" aria-current={pathname === "/services" ? "page" : undefined} onClick={handleLinkClick} className={`transition-colors hover:text-primary ${pathname === "/services" ? "text-primary" : ""}`}>Services</Link>
+            <Link to="/about" aria-current={pathname === "/about" ? "page" : undefined} onClick={handleLinkClick} className={`transition-colors hover:text-primary ${pathname === "/about" ? "text-primary" : ""}`}>About</Link>
+            <Link to="/careers" aria-current={pathname.startsWith("/careers") ? "page" : undefined} onClick={handleLinkClick} className={`hidden transition-colors hover:text-primary lg:inline ${pathname.startsWith("/careers") ? "text-primary" : ""}`}>Careers</Link>
+          </div>
 
-          <div className="flex items-center gap-4">
+          <div className="border-l border-white/10 pl-5">
             <button
               type="button"
-              onClick={handleMuteToggle}
-              className="text-white/70 hover:text-primary transition-colors p-2 cursor-pointer flex items-center gap-1.5 font-mono text-xs uppercase font-bold"
-              aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
-              aria-pressed={!isMuted}
+              onClick={onContactClick}
+              className="min-h-[42px] whitespace-nowrap bg-primary px-4 py-2 text-sm font-bold text-black transition-colors hover:bg-white"
             >
-
-
-              {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
+              Discuss your build
             </button>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href={`https://wa.me/917498908702?text=${encodeURIComponent("Hey Userhood! I came across your work and want to chat about a potential collaboration.")}`}
-              onClick={() => trackAnalyticsEvent("whatsapp_click", { source: "navbar_desktop" })}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/70 hover:text-[#25D366] transition-colors"
-              aria-label="Connect via WhatsApp"
-            >
-              <WhatsAppIcon size={18} />
-            </motion.a>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => { playTick(); onContactClick(); }}
-              className="text-primary border border-primary/20 px-4 py-1.5 whitespace-nowrap"
-            >
-              ESTABLISH_CONTACT
-            </motion.button>
           </div>
         </div>
 
-        {/* Mobile Toggle & Direct Actions */}
-        <div className="md:hidden flex items-center gap-2">
-          <motion.a
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            href={`https://wa.me/917498908702?text=${encodeURIComponent("Hey Userhood! I came across your work and want to chat about a potential collaboration.")}`}
-            onClick={() => trackAnalyticsEvent("whatsapp_click", { source: "navbar_mobile" })}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white/70 hover:text-[#25D366] transition-colors p-2"
-            aria-label="Connect via WhatsApp"
-          >
-            <WhatsAppIcon size={20} />
-          </motion.a>
-          <button
-            type="button"
-            className="text-white/70 hover:text-white p-2"
-            onClick={handleMenuClick}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-            aria-controls="primary-mobile-menu"
-          >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
+        <button
+          ref={toggleRef}
+          type="button"
+          className="flex min-h-[44px] min-w-[44px] items-center justify-center text-white/75 transition-colors hover:text-white md:hidden"
+          onClick={() => setIsOpen((current) => !current)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          aria-controls="primary-mobile-menu"
+        >
+          {isOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            id="primary-mobile-menu"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="absolute top-14 sm:top-16 left-0 w-full bg-background-dark border-b border-white/5 p-5 sm:p-6 flex flex-col gap-5 sm:gap-6 md:hidden font-mono text-xs tracking-tighter uppercase z-40"
-          >
-            <a href="/#case-studies" onClick={handleLinkClick} className="hover:text-primary transition-colors">// WORK</a>
-            <a href="/#process" onClick={handleLinkClick} className="hover:text-primary transition-colors">// 12_WEEK_BUILD</a>
-            <Link to="/services" aria-current={pathname === "/services" ? "page" : undefined} onClick={handleLinkClick} className={`hover:text-primary transition-colors ${pathname === "/services" ? "text-primary" : ""}`}>// SERVICES</Link>
-            <Link to="/about" aria-current={pathname === "/about" ? "page" : undefined} onClick={handleLinkClick} className={`hover:text-primary transition-colors ${pathname === "/about" ? "text-primary" : ""}`}>// THE_TEAM</Link>
-            <Link to="/careers" aria-current={pathname.startsWith("/careers") ? "page" : undefined} onClick={handleLinkClick} className={`hover:text-primary transition-colors ${pathname.startsWith("/careers") ? "text-primary" : ""}`}>// CAREERS</Link>
-            
-            <div className="flex justify-between items-center py-2 border-t border-white/5">
-
-              <span className="text-white/70">System_Audio</span>
-              <button
-                type="button"
-                onClick={handleMuteToggle}
-                className="text-primary flex items-center gap-1.5"
-                aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
-                aria-pressed={!isMuted}
-              >
-                {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-                <span>{isMuted ? "MUTED" : "ON"}</span>
-              </button>
-            </div>
-
-
-            <button
-              type="button"
-              onClick={() => {
-                playTick();
-                setIsOpen(false);
-                onContactClick();
-              }}
-              className="text-primary border border-primary/20 px-4 py-3 w-full text-left bg-primary/5"
+          <>
+            <motion.div
+              aria-hidden="true"
+              onClick={() => setIsOpen(false)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 top-14 z-30 bg-black/70 backdrop-blur-sm sm:top-16 md:hidden"
+            />
+            <motion.div
+              ref={menuRef}
+              id="primary-mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Site menu"
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 24 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="fixed bottom-0 right-0 top-14 z-40 flex w-full max-w-sm flex-col border-l border-white/10 bg-background-dark p-5 shadow-2xl sm:top-16 sm:p-7 md:hidden"
             >
-              ESTABLISH_CONTACT
-            </button>
-          </motion.div>
+              <div className="border-b border-white/10 pb-5">
+                <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">Navigate</div>
+                <p className="mt-2 text-sm leading-relaxed text-slate-300">Inspect the work, understand the engagement, or speak directly with the team.</p>
+              </div>
+
+              <div className="flex flex-col border-b border-white/10 py-3 text-xl font-bold text-white">
+                <a href="/#case-studies" onClick={handleLinkClick} className="flex min-h-[54px] items-center justify-between border-b border-white/5 transition-colors hover:text-primary">Selected work <ArrowRight className="h-4 w-4" /></a>
+                <a href="/#process" onClick={handleLinkClick} className="flex min-h-[54px] items-center justify-between border-b border-white/5 transition-colors hover:text-primary">The 12-week build <ArrowRight className="h-4 w-4" /></a>
+                <Link to="/services" aria-current={pathname === "/services" ? "page" : undefined} onClick={handleLinkClick} className={`flex min-h-[54px] items-center justify-between border-b border-white/5 transition-colors hover:text-primary ${pathname === "/services" ? "text-primary" : ""}`}>Services <ArrowRight className="h-4 w-4" /></Link>
+                <Link to="/about" aria-current={pathname === "/about" ? "page" : undefined} onClick={handleLinkClick} className={`flex min-h-[54px] items-center justify-between border-b border-white/5 transition-colors hover:text-primary ${pathname === "/about" ? "text-primary" : ""}`}>About <ArrowRight className="h-4 w-4" /></Link>
+                <Link to="/careers" aria-current={pathname.startsWith("/careers") ? "page" : undefined} onClick={handleLinkClick} className={`flex min-h-[54px] items-center justify-between transition-colors hover:text-primary ${pathname.startsWith("/careers") ? "text-primary" : ""}`}>Careers <ArrowRight className="h-4 w-4" /></Link>
+              </div>
+
+              <div className="mt-auto space-y-3 pt-6">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsOpen(false);
+                    onContactClick();
+                  }}
+                  className="flex min-h-[52px] w-full items-center justify-between bg-primary px-5 py-4 text-base font-bold text-black transition-colors hover:bg-white"
+                >
+                  Discuss your build <ArrowRight className="h-4 w-4" />
+                </button>
+                <a
+                  href={`https://wa.me/917498908702?text=${encodeURIComponent("Hey Userhood! I came across your work and want to chat about a potential collaboration.")}`}
+                  onClick={() => trackAnalyticsEvent("whatsapp_click", { source: "navbar_mobile_menu" })}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex min-h-[48px] items-center justify-center gap-3 border border-white/15 text-sm font-bold text-white transition-colors hover:border-[#25D366] hover:text-[#25D366]"
+                >
+                  <WhatsAppIcon size={18} /> Talk on WhatsApp
+                </a>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>

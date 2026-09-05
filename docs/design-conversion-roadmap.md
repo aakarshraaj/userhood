@@ -175,7 +175,7 @@ Acceptance criteria:
 
 ## Phase 6 — navigation, enquiry, and mobile polish
 
-Status: next
+Status: complete
 
 Deliverables:
 
@@ -196,6 +196,8 @@ Acceptance criteria:
 - Every route begins at the correct position.
 
 ## Phase 7 — final quality and measurement
+
+Status: next
 
 Deliverables:
 

@@ -37,6 +37,13 @@ const launchWindows = [
   { value: "exploring", label: "Still exploring" },
 ];
 
+function projectTypeFromSource(source: string) {
+  const normalisedSource = source.toLowerCase();
+  if (normalisedSource.includes("rescue")) return "product_rescue";
+  if (normalisedSource.includes("extend") || normalisedSource.includes("post_launch")) return "post_launch_support";
+  return "twelve_week_build";
+}
+
 const focusableSelector = [
   "a[href]",
   "button:not([disabled])",
@@ -77,7 +84,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
 
     previousFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     formStartedRef.current = false;
-    setProjectType("twelve_week_build");
+    setProjectType(projectTypeFromSource(source));
     setStatus("idle");
     setFeedback("");
 
@@ -138,7 +145,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
       document.body.style.overflow = previousOverflow;
       previousFocusRef.current?.focus();
     };
-  }, [isOpen]);
+  }, [isOpen, source]);
 
   useEffect(() => {
     statusRef.current = status;
@@ -167,12 +174,12 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
     const form = event.currentTarget;
     const formData = new FormData(form);
     const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
-    const launchWindow = String(formData.get("launch_window") ?? "");
+    const timeline = String(formData.get("timeline") ?? "");
 
     trackAnalyticsEvent("lead_form_submit_attempt", {
       source,
       project_type: projectType,
-      launch_window: launchWindow,
+      timeline,
     });
 
     if (!accessKey) {
@@ -213,7 +220,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
       trackAnalyticsEvent("generate_lead", {
         source,
         project_type: projectType,
-        launch_window: launchWindow,
+        timeline,
         utm_source: attribution.utm_source,
         utm_medium: attribution.utm_medium,
         utm_campaign: attribution.utm_campaign,
@@ -271,7 +278,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.98, y: 24 }}
             transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-            className="relative max-h-[92dvh] w-full max-w-3xl overflow-y-auto overflow-x-hidden rounded-t-2xl border border-b-0 border-white/10 bg-surface p-5 sm:rounded-none sm:border-b sm:p-8 md:p-10"
+            className="relative max-h-[92dvh] w-full max-w-2xl overflow-y-auto overflow-x-hidden rounded-t-2xl border border-b-0 border-white/10 bg-surface p-5 sm:rounded-none sm:border-b sm:p-8"
           >
             <button
               type="button"
@@ -295,23 +302,23 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                 <button
                   type="button"
                   onClick={() => closeModal("success_close")}
-                  className="mt-9 inline-flex min-h-[48px] items-center gap-3 bg-primary px-7 py-4 font-mono text-sm font-bold text-black transition-colors hover:bg-white"
+                  className="mt-9 inline-flex min-h-[48px] items-center gap-3 bg-primary px-7 py-4 text-sm font-bold text-black transition-colors hover:bg-white"
                 >
-                  CLOSE <X className="h-4 w-4" />
+                  Close <X className="h-4 w-4" />
                 </button>
               </div>
             ) : (
               <>
-                <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">[ PROJECT_BRIEF // ONE_STEP ]</div>
+                <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Project enquiry</div>
                 <h2 id="contact-dialog-title" className="mt-5 pr-12 text-3xl font-black tracking-tighter text-white sm:text-4xl md:text-5xl">
                   What needs to be live?
                 </h2>
                 <p id="contact-dialog-description" className="mt-4 max-w-2xl text-sm font-normal leading-relaxed text-slate-300 sm:text-base">
-                  Give us the release, the constraint, and the timing. We reply within one business day—usually with questions, not a sales deck.
+                  Give us the release, the constraint, and the timing. We reply within one business day—usually with useful questions, not a sales deck.
                 </p>
 
                 <form
-                  className="mt-8 space-y-7"
+                  className="mt-7 space-y-6"
                   onSubmit={handleSubmit}
                   onInputCapture={registerFormStart}
                   onInvalidCapture={(event) => {
@@ -325,17 +332,17 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                   <fieldset>
                     <legend className="font-mono text-xs uppercase tracking-[0.12em] text-white/75">What kind of work is this?</legend>
                     <div className="mt-3 grid gap-3 sm:grid-cols-3">
-                      {projectTypes.map((type, index) => (
+                      {projectTypes.map((type) => (
                         <label
                           key={type.id}
-                          className={`cursor-pointer border p-4 transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-primary ${
+                          className={`cursor-pointer border p-3.5 transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-primary ${
                             projectType === type.id
                               ? "border-primary bg-primary/[0.06]"
                               : "border-white/10 bg-white/[0.02] hover:border-white/30"
                           }`}
                         >
                           <input
-                            ref={index === 0 ? firstFieldRef : undefined}
+                            ref={projectType === type.id ? firstFieldRef : undefined}
                             type="radio"
                             name="project_type_choice"
                             value={type.id}
@@ -379,32 +386,6 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                         placeholder="you@company.com"
                       />
                     </div>
-                    <div>
-                      <label htmlFor="contact-company" className="font-mono text-xs uppercase tracking-[0.12em] text-white/75">Company <span className="text-white/60">optional</span></label>
-                      <input
-                        id="contact-company"
-                        name="company"
-                        type="text"
-                        autoComplete="organization"
-                        className="mt-2 w-full border border-white/15 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/50 focus:border-primary"
-                        placeholder="Company or product"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="contact-launch-window" className="font-mono text-xs uppercase tracking-[0.12em] text-white/75">When do you want to start?</label>
-                      <select
-                        id="contact-launch-window"
-                        name="launch_window"
-                        required
-                        defaultValue=""
-                        className="mt-2 w-full border border-white/15 bg-[#18181b] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-primary"
-                      >
-                        <option value="" disabled>Choose a window</option>
-                        {launchWindows.map((window) => (
-                          <option key={window.value} value={window.value}>{window.label}</option>
-                        ))}
-                      </select>
-                    </div>
                   </div>
 
                   <div>
@@ -414,10 +395,25 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                       name="message"
                       required
                       minLength={20}
-                      rows={4}
+                      rows={3}
                       className="mt-2 w-full resize-none border border-white/15 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/50 focus:border-primary"
                       placeholder="What are you building, what is blocking it, and what must be true when it launches?"
                     />
+                  </div>
+
+                  <div>
+                    <label htmlFor="contact-timeline" className="font-mono text-xs uppercase tracking-[0.12em] text-white/75">Preferred start <span className="text-white/55">optional</span></label>
+                    <select
+                      id="contact-timeline"
+                      name="timeline"
+                      defaultValue=""
+                      className="mt-2 w-full border border-white/15 bg-[#18181b] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-primary"
+                    >
+                      <option value="">No fixed date yet</option>
+                      {launchWindows.map((window) => (
+                        <option key={window.value} value={window.value}>{window.label}</option>
+                      ))}
+                    </select>
                   </div>
 
                   <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
@@ -436,7 +432,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                     </div>
                   )}
 
-                  <div className="flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
                     <p className="max-w-sm text-xs font-normal leading-relaxed text-white/75">
                       We use these details to assess and respond to your enquiry. See our <Link to="/privacy" onClick={() => closeModal("privacy_link")} className="underline underline-offset-2 hover:text-white">privacy policy</Link>.
                     </p>
@@ -453,7 +449,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                   </div>
                 </form>
 
-                <div className="relative my-7">
+                <div className="relative my-6">
                   <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/5" /></div>
                   <div className="relative flex justify-center"><span className="bg-surface px-4 font-mono text-xs uppercase tracking-[0.14em] text-white/70">Or talk directly</span></div>
                 </div>
