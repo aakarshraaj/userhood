@@ -1,4 +1,5 @@
 import CaseStudyLayout, { type CaseStudyData } from "../components/CaseStudyLayout";
+import RentnamaEvidenceFlow from "../components/case-studies/RentnamaEvidenceFlow";
 import { getPageSEO } from "../data/siteMetadata";
 import { useSEO } from "../utils/seo";
 
@@ -121,5 +122,5 @@ const caseStudy: CaseStudyData = {
 export default function CaseStudyRentnama({ onContactClick }: { onContactClick: () => void }) {
   useSEO(getPageSEO("rentnama"));
 
-  return <CaseStudyLayout data={caseStudy} onContactClick={onContactClick} />;
+  return <CaseStudyLayout data={caseStudy} onContactClick={onContactClick} signatureStory={<RentnamaEvidenceFlow />} />;
 }

@@ -1,3 +1,4 @@
+import type { CSSProperties, ReactNode } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { PageId } from "../data/siteMetadata";
@@ -61,14 +62,19 @@ export interface CaseStudyData {
 interface CaseStudyLayoutProps {
   data: CaseStudyData;
   onContactClick: () => void;
+  signatureStory?: ReactNode;
 }
 
-export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayoutProps) {
+export default function CaseStudyLayout({ data, onContactClick, signatureStory }: CaseStudyLayoutProps) {
   const isTeamExperience = data.relationship === "Team experience";
   const hasOutcome = Boolean(data.outcome);
 
   return (
-    <main data-page-id={data.pageId} className="min-h-screen bg-background-dark pb-20 pt-28 sm:pt-32 md:pb-28 md:pt-36">
+    <main
+      data-page-id={data.pageId}
+      className="min-h-screen bg-background-dark pb-20 pt-28 sm:pt-32 md:pb-28 md:pt-36"
+      style={{ "--color-primary": data.accent ?? "#00f5ff" } as CSSProperties}
+    >
       <article>
         <header className="px-5 md:px-8">
           <div className="mx-auto max-w-[1280px]">
@@ -169,6 +175,8 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
             </div>
           </section>
         )}
+
+        {signatureStory}
 
         <section className={`${hasOutcome ? "" : "mt-16 md:mt-24"} border-b border-white/5 bg-[#08080a] px-5 py-16 md:px-8 md:py-24`}>
           <div className="mx-auto grid max-w-[1280px] gap-10 md:grid-cols-12 md:gap-16">
