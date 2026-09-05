@@ -8,7 +8,7 @@ const caseStudy: CaseStudyData = {
   brand: "Tirch",
   category: "End-to-end commerce engine",
   relationship: "Product build",
-  title: "Building the complete commerce engine behind a fashion brand, far beyond the storefront.",
+  title: "Building Tirch’s end-to-end commerce engine.",
   summary:
     "An end-to-end commerce product spanning merchandising, bag, server-priced checkout, customer accounts, orders, transactional systems, analytics, and controlled launch operations.",
   facts: [

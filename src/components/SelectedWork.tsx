@@ -54,7 +54,7 @@ const selectedWork: WorkItem[] = [
     organisation: "Tirch",
     category: "End-to-end commerce engine",
     relationship: "Product build",
-    title: "The complete commerce engine behind a fashion brand, far beyond the storefront.",
+    title: "Building Tirch’s end-to-end commerce engine.",
     problem: "A campaign-ready storefront still fails when price, identity, checkout, and orders disagree.",
     intervention: "Put merchandising, server-priced checkout, OTP accounts, orders, email, analytics, and launch controls behind one brand.",
     proof: [
@@ -130,7 +130,7 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
           <div>
             <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-primary">[ {standalone ? "SELECTED_WORK" : "01 // SELECTED_WORK"} ]</div>
             <Heading className="max-w-4xl text-4xl font-black leading-[0.96] tracking-tighter text-white sm:text-5xl md:text-7xl">
-              Products you can inspect. <span className="text-primary">Decisions we can defend.</span>
+              Recent product builds.
             </Heading>
           </div>
         </div>

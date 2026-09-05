@@ -162,20 +162,20 @@
 }
 
 @keyframes userhood-monogram-swap {
-  0%, 12%, 54%, 100% {
+  0%, 38%, 73%, 100% {
     transform: translateY(0);
   }
 
-  20% {
-    transform: translateY(-15px);
+  44% {
+    transform: translateY(-14.25px);
   }
 
-  24%, 40% {
+  47%, 63% {
     transform: translateY(-13px);
   }
 
-  48% {
-    transform: translateY(1.5px);
+  69% {
+    transform: translateY(1.25px);
   }
 }
 
@@ -351,7 +351,7 @@
   transform-box: fill-box;
   transform-origin: center;
   will-change: transform;
-  animation: userhood-monogram-swap 6.8s var(--motion-ease-out) 1.1s infinite;
+  animation: userhood-monogram-swap 8.2s var(--motion-ease-standard) 0.8s infinite;
 }
 
 @media (hover: hover) and (pointer: fine) {

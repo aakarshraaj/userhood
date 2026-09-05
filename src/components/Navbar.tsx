@@ -92,7 +92,9 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
       <div className="relative z-50 mx-auto flex h-14 max-w-[1440px] items-center justify-between px-4 sm:h-16 sm:px-6 md:px-8">
         <div className="flex min-w-0 items-center">
           <Link to="/" className="flex min-h-11 shrink-0 items-center gap-2.5 transition-opacity hover:opacity-80" onClick={() => setIsOpen(false)} aria-label="Userhood home">
-            <UserhoodMonogram className="h-6 w-6 shrink-0 text-white sm:h-7 sm:w-7" />
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center bg-white sm:h-9 sm:w-9" aria-hidden="true">
+              <UserhoodMonogram className="h-[22px] w-[22px] text-[#090b0e] sm:h-6 sm:w-6" />
+            </span>
             <UserhoodLogo className="h-[19px] w-[100px] text-white sm:h-[23px] sm:w-[120px]" />
           </Link>
         </div>

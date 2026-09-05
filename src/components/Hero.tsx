@@ -15,11 +15,6 @@ export default function Hero({ onContactClick }: HeroProps) {
       <div className="max-w-[1440px] mx-auto w-full relative z-10">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-16">
           <div className="lg:col-span-7">
-            <div className="mb-6 flex flex-wrap items-center gap-2 font-mono text-xs text-primary md:mb-8">
-              <span className="h-2 w-2 shrink-0 animate-pulse bg-primary" />
-              <span>AI-POWERED MVPS FOR FUNDED STARTUPS</span>
-            </div>
-
             <h1 className="mb-8 space-y-1 md:mb-9">
               <span className="block text-lg font-normal tracking-tight text-slate-300 sm:text-xl md:text-2xl">
                 Still taking
