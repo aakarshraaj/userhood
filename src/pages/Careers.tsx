@@ -25,7 +25,7 @@ export default function Careers() {
                     </h1>
 
                     <p className="text-lg md:text-xl text-white/75 mb-16 max-w-2xl leading-relaxed">
-                        We value clear thinking, direct communication, and people who care about the quality of the work—not inflated titles or performative busyness.
+                        We value clear thinking, direct communication, and people who care about the quality of the work. Inflated titles and performative busyness do not impress us.
                     </p>
                 </div>
 

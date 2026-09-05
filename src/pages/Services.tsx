@@ -48,7 +48,7 @@ const engagements: Engagement[] = [
     title: "Product Rescue",
     duration: "2–4 weeks",
     description:
-      "A focused intervention for a live or half-built product whose UX, architecture, or release process is blocking progress. The first job is diagnosis and a defensible recovery sequence—not another cosmetic redesign.",
+      "A focused intervention for a live or half-built product whose UX, architecture, or release process is blocking progress. The first job is diagnosis and a defensible recovery sequence. A cosmetic redesign alone will not fix it.",
     fit: [
       "The core journey is confusing, fragile, or unfinished",
       "Design and engineering disagree on where the problem lives",
@@ -120,7 +120,7 @@ const faqs = [
   },
   {
     q: "Do you build AI-native products?",
-    a: "Yes, when AI improves a defined user or operational outcome. We work with model integrations, retrieval, automation, evaluation, and agentic workflows—and recommend the simpler system when AI adds cost without useful leverage.",
+    a: "Yes, when AI improves a defined user or operational outcome. We work with model integrations, retrieval, automation, evaluation, and agentic workflows. When AI adds cost without useful leverage, we recommend the simpler system.",
   },
   {
     q: "Do you sell branding or marketing separately?",
@@ -263,7 +263,7 @@ export default function Services() {
 
             <div className="lg:col-span-5">
               <p className="border-l-2 border-primary/30 pl-6 text-lg font-normal leading-relaxed text-slate-200 md:text-xl">
-                Start with the condition of the product—not a shopping list of disciplines. The 12-week build is our default for a new, sharply scoped release. Existing products begin somewhere else.
+                Start with the condition of the product instead of a shopping list of disciplines. The 12-week build is our default for a new, sharply scoped release. Existing products begin somewhere else.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Link to="/?contact=true&source=services_hero" className="inline-flex min-h-[50px] items-center justify-center gap-3 bg-primary px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-white">

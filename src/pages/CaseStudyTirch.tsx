@@ -8,7 +8,7 @@ const caseStudy: CaseStudyData = {
   brand: "Tirch",
   category: "End-to-end commerce engine",
   relationship: "Product build",
-  title: "Building the commerce engine behind a fashion brand—not just its storefront.",
+  title: "Building the complete commerce engine behind a fashion brand, far beyond the storefront.",
   summary:
     "An end-to-end commerce product spanning merchandising, bag, server-priced checkout, customer accounts, orders, transactional systems, analytics, and controlled launch operations.",
   facts: [
@@ -28,7 +28,7 @@ const caseStudy: CaseStudyData = {
     priority: true,
   },
   proofNote:
-    "These live screens show shipped behaviour and explicit release boundaries—not unverified commercial results.",
+    "These live screens show shipped behaviour and explicit release boundaries. They do not claim unverified commercial results.",
   outcome: {
     title: "One engine now carries the brand from discovery to post-purchase state.",
     summary:
@@ -46,7 +46,7 @@ const caseStudy: CaseStudyData = {
     "Keep the brand fast and distinctive while price, private state, payment success, and operational promises remain server-controlled.",
   decisions: [
     {
-      title: "Make checkout a backend responsibility—not a dressed-up bag.",
+      title: "Make checkout a backend responsibility instead of a dressed-up bag.",
       story: {
         before: "A browser-held price can be stale, altered, or attached to a product that is no longer live.",
         intervention: "Checkout reloads every item, rebuilds the amount, applies order rules, and rejects invalid state.",

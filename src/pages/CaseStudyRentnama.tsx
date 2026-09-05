@@ -30,7 +30,7 @@ const caseStudy: CaseStudyData = {
   proofNote:
     "These live screens show what was designed and shipped. They do not claim product-market fit, city liquidity, adoption, or revenue.",
   outcome: {
-    title: "Rent decisions can begin with what tenants paid—not what owners asked.",
+    title: "Rent decisions can begin with what tenants paid instead of what owners asked.",
     summary:
       "The result is a live public intelligence layer: renters can search a society, inspect the evidence behind its answer, compare nearby places, and contribute the next verified rent without exposing their flat number.",
     metrics: [
@@ -43,7 +43,7 @@ const caseStudy: CaseStudyData = {
   context:
     "Rental portals show asking prices. Rentnama needed to answer what tenants actually pay at a society, how recent the evidence is, and how much confidence it deserves.",
   challenge:
-    "Be useful before density is even—without false certainty, wrong building identity, exposed tenant details, or premature city expansion.",
+    "Be useful before data density is even, while avoiding false certainty, wrong building identity, exposed tenant details, and premature city expansion.",
   decisions: [
     {
       title: "Make the society the unit of usefulness.",

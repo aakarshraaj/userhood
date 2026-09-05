@@ -6,7 +6,7 @@ export default function Footer() {
     <footer id="site-footer" className="py-10 md:py-12 px-5 md:px-6 border-t border-white/5" role="contentinfo">
       <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-12 font-mono text-xs text-white/75 uppercase tracking-[0.1em]">
         <div className="space-y-3 md:space-y-4">
-          <Link to="/" className="hover:opacity-80 transition-opacity inline-block" aria-label="Userhood — Back to homepage">
+          <Link to="/" className="hover:opacity-80 transition-opacity inline-block" aria-label="Userhood homepage">
             <svg className="text-white/70 w-20 md:w-[100px]" fill="none" height="19" viewBox="0 0 360 69" width="100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
               <path clipRule="evenodd" d="M31.1441 13.773L31.1441 46.8461L9.83001 46.8461L9.83001 0.000344416L0.0183765 0.000343559L-0.00025177 56.6602L40.9561 56.6602L40.9561 13.773L31.1441 13.773Z" fill="currentColor" fillRule="evenodd"></path>
               <path clipRule="evenodd" d="M316.957 22.3862L350.03 22.3862L350.03 43.7003L316.957 43.7003L316.957 53.5119L359.844 53.5305L359.844 12.5742L316.957 12.5742L316.957 22.3862Z" fill="currentColor" fillRule="evenodd"></path>

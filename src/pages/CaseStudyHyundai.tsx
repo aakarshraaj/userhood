@@ -59,7 +59,7 @@ const caseStudy: CaseStudyData = {
     "Core-flow prototyping experience",
   ],
   evidenceBoundary:
-    "No approved product imagery, client endorsement, research record, launch data, or attributable conversion metric is public. Treat this as a record of relevant team experience—not verified delivery or results by Userhood.",
+    "No approved product imagery, client endorsement, research record, launch data, or attributable conversion metric is public. This records relevant team experience and does not claim verified delivery or results by Userhood.",
   trademarkNote:
     "Hyundai and related marks belong to their respective owners. Their appearance here is solely to identify the organisation associated with this team experience.",
   accent: "#00f5ff",

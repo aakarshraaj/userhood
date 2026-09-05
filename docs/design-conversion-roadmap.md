@@ -27,23 +27,23 @@ The redesign keeps the black, white, and cyan identity. It removes legibility de
 
 ## Portfolio evidence model
 
-### Tier A — repository-backed product builds
+### Tier A: repository-backed product builds
 
 These lead the portfolio because the implementation and product decisions can be inspected.
 
-- Rentnama — rental intelligence platform
-- Tirch — small-batch commerce system
+- Rentnama: rental intelligence platform
+- Tirch: small-batch commerce system
 
 Allowed claims come from current code, tests, product decision documents, and implementation notes. Commercial outcomes remain out of bounds until a source exists.
 
-### Tier B — team experience
+### Tier B: team experience
 
-- Hyundai Global — automotive purchase journey
-- Mitsubishi Motors Australia — connected ownership
+- Hyundai Global: automotive purchase journey
+- Mitsubishi Motors Australia: connected ownership
 
 These remain clearly labelled as experience contributed by members of the team. Attribution appears once, quietly and precisely. They do not borrow the authority of a current Userhood engagement.
 
-## Phase 1 — proof architecture and new case studies
+## Phase 1: proof architecture and new case studies
 
 Status: complete
 
@@ -64,7 +64,7 @@ Acceptance criteria:
 - Replacing a placeholder requires only adding an image path and alt text.
 - Every case-study route has exactly one H1, one main landmark, canonical metadata, and responsive output.
 
-## Phase 2 — legibility and motion
+## Phase 2: legibility and motion
 
 Status: complete
 
@@ -85,7 +85,7 @@ Acceptance criteria:
 - Supporting copy is comfortably readable at 390px wide and on a standard laptop.
 - Motion never delays navigation, comprehension, or interaction.
 
-## Phase 3 — homepage composition and conversion hierarchy
+## Phase 3: homepage composition and conversion hierarchy
 
 Status: complete
 
@@ -106,7 +106,7 @@ Acceptance criteria:
 - One primary action dominates each commercial section.
 - Decorative elements never receive more space than proof.
 
-## Phase 4 — final case-study media
+## Phase 4: final case-study media
 
 Status: waiting on approved product images
 
@@ -148,7 +148,7 @@ Asset contract:
 - Social image: 1200×630, created only from approved media.
 - Each file requires descriptive alt text and a source/permission note in the asset inventory.
 
-## Phase 5 — Services and About
+## Phase 5: Services and About
 
 Status: complete within supplied evidence; real photography and individual profile links await client inputs
 
@@ -173,7 +173,7 @@ Acceptance criteria:
 - The Services page no longer reads like a general capability catalogue.
 - The About page proves who does the work and why the operating model is credible.
 
-## Phase 6 — navigation, enquiry, and mobile polish
+## Phase 6: navigation, enquiry, and mobile polish
 
 Status: complete
 
@@ -195,7 +195,7 @@ Acceptance criteria:
 - Sticky UI never overlaps evidence, legal content, controls, or the footer.
 - Every route begins at the correct position.
 
-## Phase 7 — final quality and measurement
+## Phase 7: final quality and measurement
 
 Status: complete locally; production deployment and field measurement require separate approval
 

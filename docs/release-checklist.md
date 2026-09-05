@@ -36,7 +36,7 @@ Deployment status: not authorised; local candidate only
 3. Preserve failed-deployment logs, the affected URL, viewport, browser, and analytics/form evidence before making the corrective patch.
 4. Rerun `npm run check` and the relevant browser scenario before attempting a second release.
 
-## Known deferred inputs—not release surprises
+## Known deferred inputs, not release surprises
 
 - Rentnama and Tirch product screenshots, diagrams, and social cards are still intentional placeholders under Phase 4.
 - Hyundai and Mitsubishi media remain experience-note placeholders unless usage approval is supplied.

@@ -13,7 +13,7 @@ import { captureAttribution, trackAnalyticsEvent, trackPageView } from "./utils/
 import { useSEO } from "./utils/seo";
 
 
-// Below-the-fold homepage sections — lazy loaded
+// Homepage sections below the fold are lazy loaded.
 const SelectedWork = lazy(() => import("./components/SelectedWork"));
 const TwelveWeekBuild = lazy(() => import("./components/TwelveWeekBuild"));
 const EngagementModels = lazy(() => import("./components/EngagementModels"));

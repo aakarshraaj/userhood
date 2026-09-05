@@ -53,7 +53,7 @@ const selectedWork: WorkItem[] = [
     organisation: "Tirch",
     category: "End-to-end commerce engine",
     relationship: "Product build",
-    title: "The commerce engine behind a fashion brand—not just its storefront.",
+    title: "The complete commerce engine behind a fashion brand, far beyond the storefront.",
     problem: "A campaign-ready storefront still fails when price, identity, checkout, and orders disagree.",
     intervention: "Put merchandising, server-priced checkout, OTP accounts, orders, email, analytics, and launch controls behind one brand.",
     proof: [

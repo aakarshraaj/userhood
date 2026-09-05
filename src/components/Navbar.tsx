@@ -89,7 +89,7 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
     <nav className="safe-area-inset-top fixed top-0 z-[90] w-full border-b border-white/10 bg-background-dark/95 backdrop-blur-xl" aria-label="Main navigation">
       <div className="relative z-50 mx-auto flex h-14 max-w-[1440px] items-center justify-between px-4 sm:h-16 sm:px-6 md:px-8">
         <div className="flex min-w-0 items-center">
-          <Link to="/" className="flex min-h-11 shrink-0 items-center transition-opacity hover:opacity-80" onClick={() => setIsOpen(false)} aria-label="Userhood — Home">
+          <Link to="/" className="flex min-h-11 shrink-0 items-center transition-opacity hover:opacity-80" onClick={() => setIsOpen(false)} aria-label="Userhood home">
             <Logo />
           </Link>
         </div>

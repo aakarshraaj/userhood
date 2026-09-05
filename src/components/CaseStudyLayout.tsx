@@ -304,7 +304,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
                 </div>
                 <div className="md:col-span-7 md:pt-1">
                   <p className="max-w-2xl text-lg leading-relaxed text-slate-300">
-                    Conversion, completion, repeat behaviour, and customer adoption are the scorecard—not vanity traffic or a pile of shipped screens.
+                    Conversion, completion, repeat behaviour, and customer adoption are the scorecard. Vanity traffic and a pile of shipped screens are not.
                   </p>
                 </div>
               </div>
@@ -329,7 +329,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
               Bring the problem.<br /><span className="text-primary">We will bring the questions.</span>
             </h2>
             <p className="mx-auto mt-7 max-w-2xl text-base font-normal leading-relaxed text-slate-300 md:text-lg">
-              A useful first conversation is about the release, the constraints, and what must be true in twelve weeks—not a rehearsed capability pitch.
+              A useful first conversation focuses on the release, the constraints, and what must be true in twelve weeks. A rehearsed capability pitch can wait.
             </p>
             <button
               type="button"

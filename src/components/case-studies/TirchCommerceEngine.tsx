@@ -27,7 +27,7 @@ const stages: CommerceStage[] = [
     eyebrow: "Customer selection",
     title: "Responsive bag state",
     signal: "M · 01",
-    detail: "The bag preserves product choice, size, and quantity for a fast shopping experience—but its price is only a display snapshot.",
+    detail: "The bag preserves product choice, size, and quantity for a fast shopping experience. Its price remains only a display snapshot.",
     facts: ["Size + quantity", "Display state only"],
     icon: ShoppingBag,
   },

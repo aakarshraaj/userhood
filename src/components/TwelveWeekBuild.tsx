@@ -5,7 +5,7 @@ const phases = [
   {
     weeks: "WEEKS 01–02",
     title: "Scope the release.",
-    description: "Decide what ships—and what does not.",
+    description: "Decide what ships and what does not.",
   },
   {
     weeks: "WEEKS 03–05",

@@ -305,7 +305,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                   What needs to be live?
                 </h2>
                 <p id="contact-dialog-description" className="mt-4 max-w-2xl text-sm font-normal leading-relaxed text-slate-300 sm:text-base">
-                  Give us the release, the constraint, and the timing. We reply within one business day—usually with useful questions, not a sales deck.
+                  Give us the release, the constraint, and the timing. We reply within one business day, usually with useful questions instead of a sales deck.
                 </p>
 
                 <form
