@@ -121,7 +121,7 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
   return (
     <section
       id={standalone ? undefined : "case-studies"}
-      className={`section-band section-band-deep relative px-5 md:px-8 ${standalone ? "pb-20 pt-28 md:pb-28 md:pt-36" : "py-20 md:py-28"}`}
+      className={`section-band section-band-deep relative px-5 md:px-8 ${standalone ? "pb-20 pt-28 md:pb-28 md:pt-36" : "pb-20 pt-14 md:pb-28 md:pt-20"}`}
     >
       <div className="tech-grid pointer-events-none absolute inset-0 opacity-10" />
 

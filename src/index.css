@@ -155,16 +155,6 @@
   }
 }
 
-@keyframes hero-strike {
-  from {
-    transform: translateY(-50%) scaleX(0);
-  }
-
-  to {
-    transform: translateY(-50%) scaleX(1);
-  }
-}
-
 @keyframes userhood-monogram-swap {
   /* The U bridge begins flush with the stems. Every animated offset stays
      non-positive so it can never fall below their shared baseline. */
@@ -328,11 +318,6 @@
 
   .animate-infinite-scroll {
     animation: infinite-scroll 35s linear infinite;
-  }
-
-  .hero-strike {
-    transform: translateY(-50%) scaleX(0);
-    animation: hero-strike 320ms 120ms ease-out forwards;
   }
 
   .skip-link {
