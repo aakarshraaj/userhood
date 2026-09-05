@@ -1,5 +1,3 @@
-import HeroSculpture from "./HeroSculpture";
-
 interface HeroProps {
   onContactClick: () => void;
 }
@@ -60,9 +58,6 @@ export default function Hero({ onContactClick }: HeroProps) {
             </div>
           </div>
 
-          <div className="hidden lg:col-span-5 lg:block">
-            <HeroSculpture />
-          </div>
         </div>
 
       </div>
