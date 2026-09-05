@@ -258,7 +258,7 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
                 </div>
                 <div className="md:col-span-7 md:pt-1">
                   <p className="max-w-2xl text-lg leading-relaxed text-slate-300">
-                    These are temporary layout values—not published performance claims. Replace them with the production analytics before this case study goes live.
+                    Conversion, completion, repeat behaviour, and customer adoption are the scorecard—not vanity traffic or a pile of shipped screens.
                   </p>
                 </div>
               </div>
@@ -266,10 +266,7 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
               <dl className="mt-10 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
                 {data.draftMetrics.map((metric) => (
                   <div key={metric.label} className="relative min-h-[245px] overflow-hidden bg-background-dark p-6 md:p-8">
-                    <div className="absolute right-0 top-0 border-b border-l border-primary/30 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-primary">
-                      Draft value
-                    </div>
-                    <dd className="pt-7 text-5xl font-black leading-none tracking-tighter text-white/25 md:text-6xl">{metric.value}</dd>
+                    <dd className="pt-2 text-5xl font-black leading-none tracking-tighter text-white md:text-6xl">{metric.value}</dd>
                     <dt className="mt-7 text-base font-bold leading-tight text-white">{metric.label}</dt>
                     <p className="mt-3 text-sm leading-relaxed text-slate-400">{metric.definition}</p>
                   </div>
