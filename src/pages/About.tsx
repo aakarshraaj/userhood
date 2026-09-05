@@ -178,7 +178,7 @@ export default function About() {
                 </Link>
                 <Link to="/case-study/tirch" className="group flex min-h-[112px] flex-col justify-between border border-white/10 p-5 transition-colors hover:border-primary">
                   <span className="text-xl font-bold text-white group-hover:text-primary">Tirch</span>
-                  <span className="flex items-center justify-between text-sm text-slate-300">Commerce systems <ArrowRight className="h-4 w-4" /></span>
+                  <span className="flex items-center justify-between text-sm text-slate-300">End-to-end commerce <ArrowRight className="h-4 w-4" /></span>
                 </Link>
               </div>
             </div>

@@ -5,20 +5,20 @@ import { useSEO } from "../utils/seo";
 const caseStudy: CaseStudyData = {
   pageId: "tirch",
   brand: "Tirch",
-  category: "Commerce systems",
+  category: "End-to-end commerce engine",
   relationship: "Product build",
-  title: "A fashion storefront engineered to know exactly what it can promise.",
+  title: "Building the commerce engine behind a fashion brand—not just its storefront.",
   summary:
-    "A server-rendered apparel storefront with a real catalogue, account and checkout foundations, operational guardrails, and a deliberately gated pre-launch payment boundary.",
+    "An end-to-end commerce product spanning merchandising, bag, server-priced checkout, customer accounts, orders, transactional systems, analytics, and controlled launch operations.",
   facts: [
-    { label: "Surface", value: "Responsive web commerce" },
+    { label: "Surface", value: "Brand storefront + customer account" },
     { label: "Delivery", value: "Product, brand, design, engineering" },
     { label: "Platform", value: "Cloudflare Workers + D1" },
-    { label: "State", value: "Pre-launch commerce foundation" },
+    { label: "Engine", value: "Catalogue → quote → account → order" },
   ],
   heroMedia: {
-    label: "Live product // Campaign + catalogue system",
-    description: "The live Tirch storefront, collection hierarchy, and photographic art direction.",
+    label: "Live product // Storefront + commerce engine",
+    description: "The customer-facing expression of Tirch's wider merchandising, identity, checkout, and order system.",
     src: "/work/tirch-home.webp",
     alt: "Tirch's live storefront hero for the Ghungroo Break tee",
     secondarySrc: "/work/tirch-catalogue.webp",
@@ -29,12 +29,12 @@ const caseStudy: CaseStudyData = {
   proofNote:
     "The screens below come from the live product. The case study describes shipped behaviour and explicit release boundaries—not unverified commercial results.",
   context:
-    "A small-batch apparel storefront appears simple until product truth, collection boundaries, customer accounts, delivery rules, image performance, and payment readiness all have to agree. Tirch needed a brand-forward experience without letting visual confidence outrun operational reality.",
+    "The campaign and catalogue are the visible edge of a much larger product. Product truth, collection boundaries, bag state, customer identity, addresses, order history, delivery rules, transactional email, analytics, and payment readiness all have to agree. Tirch needed one coherent engine underneath the brand experience.",
   challenge:
-    "Build a fast, distinctive commerce product while ensuring the browser never becomes the authority for price, sensitive account state, payment success, or claims the business is not ready to keep.",
+    "Build the whole commerce journey without letting the browser become the authority for price, private customer state, payment success, or operational promises the business is not ready to keep.",
   decisions: [
     {
-      title: "Make the server—not the bag—the source of price truth.",
+      title: "Make checkout a backend responsibility—not a dressed-up bag.",
       detail:
         "The browser carries a convenient display snapshot. Checkout rebuilds every amount from the authoritative catalogue, applies order rules, rejects non-live products, and never trusts a client-supplied price.",
       media: {
@@ -48,9 +48,9 @@ const caseStudy: CaseStudyData = {
       },
     },
     {
-      title: "Separate the fast storefront from private account state.",
+      title: "Build identity, addresses, and orders as one customer system.",
       detail:
-        "Public catalogue and policy pages can be prerendered and cached aggressively. Account, address, order, and session surfaces stay private and server-led, with real loading, retry, empty, and failure states.",
+        "Public merchandising can be prerendered and cached aggressively. OTP sign-in, sessions, profiles, addresses, order history, and delivery updates stay private and server-led, with real loading, retry, empty, and failure states.",
       media: {
         label: "Live product // Private account boundary",
         description: "The private account surface starts with a passwordless, server-led sign-in boundary.",
@@ -60,7 +60,7 @@ const caseStudy: CaseStudyData = {
       },
     },
     {
-      title: "Turn brand rules into product rules.",
+      title: "Make the brand system travel through the entire engine.",
       detail:
         "The identity is more than a wordmark. Collection boundaries, voice, accessibility contrast, permanent URLs, and stable commercial identifiers are encoded so a rebrand cannot silently damage merchandising or customer records.",
       media: {
@@ -74,21 +74,26 @@ const caseStudy: CaseStudyData = {
       },
     },
     {
-      title: "Design pre-launch honesty into the system.",
+      title: "Gate launch behind operational truth.",
       detail:
-        "Concept pieces do not masquerade as available stock, missing operational facts stay missing, and payment remains disabled until the business and infrastructure are ready. The product fails closed instead of inventing readiness.",
+        "Concept pieces do not masquerade as available stock, missing operational facts stay missing, webhook paths are verified independently, and payment remains disabled until the business and infrastructure are ready. The engine fails closed instead of inventing readiness.",
     },
   ],
   documentedScope: [
     "Brand and responsive storefront system",
-    "Catalogue, collections, product pages, and bag",
+    "Catalogue, collections, product detail, bag, and merchandising rules",
     "Server-authoritative checkout quoting",
-    "OTP accounts, addresses, and order-history surfaces",
-    "Cloudflare Worker, D1, email, analytics, and image pipeline",
+    "OTP identity, sessions, profiles, addresses, and order history",
+    "Order lifecycle, payment-webhook boundary, and transactional email",
+    "Cloudflare Worker, D1, analytics, and image pipeline",
     "Accessibility, metadata, performance, and regression guardrails",
   ],
   evidenceBoundary:
     "The live product and implementation support these product and engineering claims. They do not establish commercial launch, enabled payment, revenue, conversion improvement, or tracked inventory because those states are intentionally gated or not yet evidenced.",
+  liveProduct: {
+    label: "Visit tirch.in",
+    href: "https://tirch.in/",
+  },
   accent: "#d2694a",
 };
 

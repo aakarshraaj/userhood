@@ -30,12 +30,12 @@ const proofProjects: Array<{
   },
   {
     name: "Tirch",
-    category: "Commerce systems",
+    category: "End-to-end commerce engine",
     link: "/case-study/tirch",
     accent: "#d2694a",
     media: {
-      label: "Live product // Tirch storefront",
-      description: "Storefront, checkout, customer accounts, release boundaries, and commerce infrastructure.",
+      label: "Live product // Tirch commerce engine",
+      description: "Merchandising, bag, checkout, identity, orders, transactional systems, and release operations.",
       src: "/work/tirch-home.webp",
       alt: "Tirch's live storefront with campaign art direction and product proposition",
       objectPosition: "center",

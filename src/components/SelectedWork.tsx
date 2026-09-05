@@ -39,16 +39,16 @@ const selectedWork: WorkItem[] = [
   {
     index: "02",
     organisation: "Tirch",
-    category: "Commerce systems",
+    category: "End-to-end commerce engine",
     relationship: "Product build",
-    title: "A fashion storefront engineered to know exactly what it can promise.",
+    title: "The commerce engine behind a fashion brand—not just its storefront.",
     description:
-      "A brand-forward apparel experience backed by server-authoritative commerce, private account flows, Cloudflare infrastructure, and honest release boundaries.",
+      "Merchandising, bag, server-priced checkout, OTP accounts, addresses, orders, email, analytics, and controlled release operations—built as one product.",
     link: "/case-study/tirch",
     accent: "#d2694a",
     media: {
-      label: "Live product // Campaign + catalogue",
-      description: "A sharp small-batch storefront connected to the commerce system behind it.",
+      label: "Live product // Storefront + engine",
+      description: "The visible storefront and the full commerce system behind it.",
       src: "/work/tirch-home.webp",
       alt: "Tirch storefront campaign featuring the Ghungroo Break tee",
       secondarySrc: "/work/tirch-catalogue.webp",

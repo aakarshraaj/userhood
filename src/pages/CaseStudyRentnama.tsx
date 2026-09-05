@@ -94,6 +94,10 @@ const caseStudy: CaseStudyData = {
   ],
   evidenceBoundary:
     "The live product and implementation verify the flows, evidence rules, privacy boundaries, and operating tools described here. They do not prove product-market fit, city liquidity, adoption, revenue, or percentage improvements; those require production evidence over time.",
+  liveProduct: {
+    label: "Visit rentnama.in",
+    href: "https://rentnama.in/",
+  },
   accent: "#b5ef67",
 };
 

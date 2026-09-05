@@ -1,6 +1,7 @@
-import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { PageId } from "../data/siteMetadata";
+import { trackAnalyticsEvent } from "../utils/analytics";
 import ProjectMedia, { type ProjectMediaSpec } from "./ProjectMedia";
 
 export interface CaseStudyDecision {
@@ -29,6 +30,10 @@ export interface CaseStudyData {
   decisions: CaseStudyDecision[];
   documentedScope: string[];
   evidenceBoundary: string;
+  liveProduct?: {
+    label: string;
+    href: string;
+  };
   trademarkNote?: string;
   accent?: string;
 }
@@ -70,6 +75,27 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
                   </div>
                   <div className="mt-2 text-2xl font-bold text-white">{data.brand}</div>
                   <p className="mt-5 text-base font-normal leading-relaxed text-slate-300">{data.summary}</p>
+                  {data.liveProduct && (
+                    <a
+                      href={data.liveProduct.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        trackAnalyticsEvent("live_product_open", {
+                          source: `case_study_${data.pageId}`,
+                          organisation: data.brand,
+                        })
+                      }
+                      className="group mt-7 inline-flex min-h-12 items-center gap-5 border border-white/15 bg-white/[0.025] px-5 py-3 text-white transition-colors hover:border-primary hover:bg-primary hover:text-black"
+                      aria-label={`${data.liveProduct.label} (opens in a new tab)`}
+                    >
+                      <span>
+                        <span className="block font-mono text-[10px] uppercase tracking-[0.16em] opacity-60">Live product</span>
+                        <span className="mt-0.5 block text-sm font-bold">{data.liveProduct.label}</span>
+                      </span>
+                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
