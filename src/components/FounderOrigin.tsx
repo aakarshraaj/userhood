@@ -1,16 +1,15 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import TeamAvatar from "./TeamAvatar";
 
 const founders = [
   {
     name: "Kriti",
-    role: "Co-founder · Product & Design",
-    image: "/team/kriti.png",
+    role: "Co-founder · Design and Product Engineering",
   },
   {
     name: "Ashwin",
-    role: "Co-founder · Engineering & Systems",
-    image: "/team/ashwin.png",
+    role: "Co-founder · Product and Experience",
   },
 ];
 
@@ -47,15 +46,7 @@ export default function FounderOrigin() {
               className="content-card motion-card group p-3 pb-5 sm:p-4 sm:pb-6"
             >
               <div className="aspect-[4/5] overflow-hidden border border-white/10 bg-background-dark">
-                <img
-                  src={founder.image}
-                  alt={`${founder.name}, ${founder.role} at Userhood`}
-                  className="h-full w-full object-cover grayscale transition duration-500 group-hover:grayscale-0"
-                  loading="lazy"
-                  decoding="async"
-                  width="360"
-                  height="450"
-                />
+                <TeamAvatar name={founder.name} />
               </div>
               <h3 className="mt-5 px-1 text-xl font-bold text-white md:text-2xl">{founder.name}</h3>
               <p className="mt-2 px-1 text-sm leading-relaxed text-white/75">{founder.role}</p>

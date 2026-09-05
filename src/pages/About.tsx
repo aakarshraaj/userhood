@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import BrandIdentity from "../components/BrandIdentity";
+import TeamAvatar from "../components/TeamAvatar";
 import { getPageSEO } from "../data/siteMetadata";
 import { useSEO } from "../utils/seo";
 
@@ -9,25 +10,23 @@ const founders = [
   {
     name: "Kriti",
     role: "Co-founder · Design and Product Engineering",
-    image: "/team/kriti.png",
     responsibility:
       "Owns problem framing, the release boundary, core journeys, the interface system, and the product decisions that keep the build coherent.",
   },
   {
     name: "Ashwin",
     role: "Co-founder · Product and Experience",
-    image: "/team/ashwin.png",
     responsibility:
       "Owns architecture, engineering quality, integrations, deployment, and the technical decisions the product must survive after handover.",
   },
 ];
 
 const team = [
-  { name: "Nishita", role: "Designer", image: "/team/nishita.png" },
-  { name: "Priya", role: "Growth Lead", image: "/team/priya.png" },
-  { name: "Somesh", role: "Product", image: "/team/somesh.png" },
-  { name: "Uttkarsh", role: "Product", image: "/team/uttkarsh.png" },
-  { name: "Priyanka", role: "Designer", image: "/team/priyanka.png" },
+  { name: "Nishita", role: "Designer" },
+  { name: "Priya", role: "Growth Lead" },
+  { name: "Somesh", role: "Product" },
+  { name: "Uttkarsh", role: "Product" },
+  { name: "Priyanka", role: "Designer" },
 ];
 
 const cadence = [
@@ -95,13 +94,7 @@ export default function About() {
               {founders.map((founder) => (
                 <article key={founder.name} className="content-card p-3 sm:p-4">
                   <div className="aspect-[5/4] overflow-hidden border-b border-white/10 bg-black">
-                    <img
-                      src={founder.image}
-                      alt={`${founder.name}, ${founder.role} at Userhood`}
-                      className="h-full w-full object-cover object-top grayscale"
-                      width="640"
-                      height="512"
-                    />
+                    <TeamAvatar name={founder.name} />
                   </div>
                   <div className="px-2 pb-2 pt-5 md:px-3 md:pb-3 md:pt-6">
                     <h2 className="text-2xl font-black tracking-tight text-white">{founder.name}</h2>
@@ -221,19 +214,11 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 md:col-span-8 md:grid-cols-5 md:gap-x-5">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-6 self-start sm:grid-cols-3 md:col-span-8 md:grid-cols-3 md:gap-x-5 xl:grid-cols-5">
             {team.map((member) => (
               <article key={member.name} className="content-card p-2 pb-4">
                 <div className="aspect-square overflow-hidden border border-white/10 bg-surface">
-                  <img
-                    src={member.image}
-                    alt={`${member.name}, ${member.role} at Userhood`}
-                    className="h-full w-full object-cover grayscale"
-                    loading="lazy"
-                    decoding="async"
-                    width="280"
-                    height="280"
-                  />
+                  <TeamAvatar name={member.name} />
                 </div>
                 <h3 className="mt-4 px-2 text-lg font-bold text-white">{member.name}</h3>
                 <p className="mt-1 px-2 text-sm leading-relaxed text-white/70">{member.role}</p>
