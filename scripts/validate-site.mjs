@@ -144,6 +144,29 @@ check(!searchableDist.includes("assets.apollo.io"), "dist: Apollo visitor identi
 check(!/https:\/\/userhood\.in(?:\/|["'])/.test(searchableDist), "dist: found a non-canonical non-www production URL");
 check(!searchableDist.includes("http://localhost:3000"), "dist: found a localhost production URL");
 
+const requiredConversionEvents = [
+  "case_study_open",
+  "selected_work_click",
+  "lead_form_open",
+  "lead_form_start",
+  "lead_project_type_select",
+  "lead_form_validation_error",
+  "lead_form_submit_attempt",
+  "generate_lead",
+  "lead_form_error",
+  "lead_form_close",
+  "whatsapp_click",
+  "page_view",
+];
+const sourceFiles = (await collectFiles(path.join(projectRoot, "src"))).filter((file) => /\.(?:ts|tsx)$/.test(file));
+const searchableSource = (await Promise.all(sourceFiles.map((file) => readFile(file, "utf8")))).join("\n");
+for (const eventName of requiredConversionEvents) {
+  check(searchableSource.includes(`"${eventName}"`), `src: required conversion event ${eventName} is missing`);
+  if (eventName !== "generate_lead") {
+    check(searchableDist.includes(eventName), `dist: required conversion event ${eventName} is missing`);
+  }
+}
+
 const sitemap = await readFile(path.join(distDirectory, "sitemap.xml"), "utf8");
 const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
 const expectedSitemapUrls = metadata.pages.filter((page) => page.sitemap).map(getCanonicalUrl);
@@ -180,5 +203,5 @@ if (failures.length > 0) {
   for (const failure of failures) console.error(`- ${failure}`);
   process.exitCode = 1;
 } else {
-  console.log(`Validated ${metadata.pages.length} prerendered routes, ${expectedSitemapUrls.length} sitemap URLs, metadata, consent boundaries, and Vercel safety rules.`);
+  console.log(`Validated ${metadata.pages.length} prerendered routes, ${expectedSitemapUrls.length} sitemap URLs, metadata, consent boundaries, ${requiredConversionEvents.length} conversion events, and Vercel safety rules.`);
 }

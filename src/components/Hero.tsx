@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { trackAnalyticsEvent } from "../utils/analytics";
@@ -62,12 +61,7 @@ export default function Hero({ onContactClick }: HeroProps) {
               <span className="flex items-center gap-4 md:gap-6">
                 <span className="relative select-none text-[min(21vw,104px)] font-black leading-none tracking-tighter text-white/55 sm:text-7xl md:text-8xl lg:text-[clamp(76px,6.8vw,104px)]">
                   12 months
-                  <motion.span
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 0.32, delay: 0.12, ease: "easeOut" }}
-                    className="absolute left-0 right-0 top-1/2 block h-[6px] origin-left -translate-y-1/2 bg-red-500/70 md:h-[8px]"
-                  />
+                  <span className="hero-strike absolute left-0 right-0 top-1/2 block h-[6px] origin-left -translate-y-1/2 bg-red-500/70 md:h-[8px]" />
                 </span>
               </span>
               <span className="block text-lg font-normal tracking-tight text-slate-300 sm:text-xl md:text-2xl">

@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -33,7 +32,7 @@ export default function StickyContactCTA({ onContactClick, suppressed = false }:
         return;
       }
 
-      const heroHasCleared = firstSectionAfterHero.getBoundingClientRect().top <= 72;
+      const heroHasCleared = firstSectionAfterHero.getBoundingClientRect().top <= 96;
       const finalCTAHasEntered = finalCTA.getBoundingClientRect().top <= window.innerHeight;
       const footerHasEntered = footer.getBoundingClientRect().top <= window.innerHeight;
 
@@ -54,13 +53,8 @@ export default function StickyContactCTA({ onContactClick, suppressed = false }:
   }, [location.pathname, suppressed]);
 
   return (
-    <AnimatePresence>
-      {show && (
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 16 }}
-          transition={{ duration: 0.18 }}
+    show ? (
+        <div
           className="pointer-events-none fixed bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] left-4 right-4 z-40 flex justify-center md:hidden"
         >
           <button
@@ -70,8 +64,7 @@ export default function StickyContactCTA({ onContactClick, suppressed = false }:
           >
             Discuss your build <ArrowRight className="h-4 w-4" />
           </button>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        </div>
+    ) : null
   );
 }

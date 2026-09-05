@@ -197,7 +197,7 @@ Acceptance criteria:
 
 ## Phase 7 — final quality and measurement
 
-Status: next
+Status: complete locally; production deployment and field measurement require separate approval
 
 Deliverables:
 
@@ -215,6 +215,15 @@ Acceptance criteria:
 - Core pages remain useful without animation.
 - Every tracked event answers a real conversion question.
 - Production deployment is reviewed separately from local completion.
+
+Completion note:
+
+- Browser QA passed at 390px, 768px, 1024px, and 1440px across the primary routes, navigation, sticky CTA, and enquiry modal.
+- Keyboard focus trapping, Escape handling, focus return, route focus, responsive overflow, semantic landmarks, image dimensions, and console output were checked in the local app.
+- The unused animation runtime and three dead animated sections were removed; the hero's only bespoke entrance effect is now CSS and respects reduced-motion preferences.
+- The production validator now requires the complete conversion-event chain as well as route, metadata, consent, sitemap, security, and hosting rules.
+- A measured Core Web Vitals trace is not recorded because the Chrome DevTools performance connection is unavailable in this workspace. Run the field/lab measurement gate in the release checklist before or immediately after an approved deployment.
+- Product imagery remains intentionally deferred under Phase 4; illustration portraits and company-level LinkedIn attribution remain until approved team inputs arrive.
 
 ## Execution order
 

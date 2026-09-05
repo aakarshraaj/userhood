@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState, Suspense, lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { MotionConfig } from "motion/react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Footer from "./components/Footer";
@@ -147,8 +146,7 @@ export default function App() {
   };
 
   return (
-    <MotionConfig reducedMotion="user">
-      <div className="min-h-screen selection:bg-primary selection:text-black">
+    <div className="min-h-screen selection:bg-primary selection:text-black">
         <div id="site-shell">
           <a href="#main-content" className="skip-link">Skip to main content</a>
           <RouteTracker />
@@ -197,7 +195,6 @@ export default function App() {
           onClose={() => setIsContactOpen(false)}
           source={contactSource}
         />
-      </div>
-    </MotionConfig>
+    </div>
   );
 }

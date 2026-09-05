@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, CheckCircle2, MessageCircle, X } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
@@ -15,7 +14,7 @@ type SubmissionStatus = "idle" | "submitting" | "success" | "error";
 const projectTypes = [
   {
     id: "twelve_week_build",
-    label: "12-week MVP build",
+    label: "12-week build",
     detail: "A focused product from brief to production.",
   },
   {
@@ -25,7 +24,7 @@ const projectTypes = [
   },
   {
     id: "post_launch_support",
-    label: "Post-launch support",
+    label: "Post-launch",
     detail: "Iterate, stabilise, or extend a shipped product.",
   },
 ];
@@ -255,29 +254,21 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
   };
 
   return (
-    <AnimatePresence>
-      {isOpen && (
+    isOpen ? (
         <div className="fixed inset-0 z-[100] flex items-end justify-center p-0 sm:items-center sm:p-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          <div
             onClick={() => closeModal("backdrop")}
             className="absolute inset-0 bg-background-dark/85 backdrop-blur-sm"
             aria-hidden="true"
           />
 
-          <motion.div
+          <div
             ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby="contact-dialog-title"
             aria-describedby="contact-dialog-description"
             tabIndex={-1}
-            initial={{ opacity: 0, scale: 0.98, y: 24 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98, y: 24 }}
-            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
             className="relative max-h-[92dvh] w-full max-w-2xl overflow-y-auto overflow-x-hidden rounded-t-2xl border border-b-0 border-white/10 bg-surface p-5 sm:rounded-none sm:border-b sm:p-8"
           >
             <button
@@ -318,7 +309,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                 </p>
 
                 <form
-                  className="mt-7 space-y-6"
+                  className="mt-7 space-y-5"
                   onSubmit={handleSubmit}
                   onInputCapture={registerFormStart}
                   onInvalidCapture={(event) => {
@@ -331,11 +322,11 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                 >
                   <fieldset>
                     <legend className="font-mono text-xs uppercase tracking-[0.12em] text-white/75">What kind of work is this?</legend>
-                    <div className="mt-3 grid gap-3 sm:grid-cols-3">
+                    <div className="mt-3 grid grid-cols-3 gap-2 sm:gap-3">
                       {projectTypes.map((type) => (
                         <label
                           key={type.id}
-                          className={`cursor-pointer border p-3.5 transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-primary ${
+                          className={`cursor-pointer border p-3 transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-primary sm:p-3.5 ${
                             projectType === type.id
                               ? "border-primary bg-primary/[0.06]"
                               : "border-white/10 bg-white/[0.02] hover:border-white/30"
@@ -354,7 +345,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                             {type.label}
                             <span className={`h-2 w-2 shrink-0 rounded-full ${projectType === type.id ? "bg-primary" : "bg-white/15"}`} />
                           </span>
-                          <span className="mt-2 block text-xs font-normal leading-relaxed text-white/75">{type.detail}</span>
+                          <span className="mt-2 hidden text-xs font-normal leading-relaxed text-white/75 sm:block">{type.detail}</span>
                         </label>
                       ))}
                     </div>
@@ -436,16 +427,14 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                     <p className="max-w-sm text-xs font-normal leading-relaxed text-white/75">
                       We use these details to assess and respond to your enquiry. See our <Link to="/privacy" onClick={() => closeModal("privacy_link")} className="underline underline-offset-2 hover:text-white">privacy policy</Link>.
                     </p>
-                    <motion.button
-                      whileHover={{ scale: 1.01 }}
-                      whileTap={{ scale: 0.99 }}
+                    <button
                       type="submit"
                       disabled={status === "submitting"}
                       className="inline-flex min-h-[52px] shrink-0 items-center justify-center gap-3 bg-primary px-7 py-4 text-base font-bold text-black transition-colors hover:bg-white disabled:cursor-wait disabled:opacity-60"
                     >
                       {status === "submitting" ? "Sending…" : "Send project brief"}
                       {status !== "submitting" && <ArrowRight className="h-4 w-4" />}
-                    </motion.button>
+                    </button>
                   </div>
                 </form>
 
@@ -466,9 +455,8 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                 </a>
               </>
             )}
-          </motion.div>
+          </div>
         </div>
-      )}
-    </AnimatePresence>
+    ) : null
   );
 }

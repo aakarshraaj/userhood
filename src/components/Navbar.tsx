@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { trackAnalyticsEvent } from "../utils/analytics";
@@ -128,28 +127,20 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
         </button>
       </div>
 
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            <motion.div
+      {isOpen && (
+        <>
+            <div
               aria-hidden="true"
               onClick={() => setIsOpen(false)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 top-14 z-30 bg-black/70 backdrop-blur-sm sm:top-16 md:hidden"
+              className="absolute inset-x-0 top-full z-30 h-[calc(100dvh-3.5rem)] bg-black/70 backdrop-blur-sm sm:h-[calc(100dvh-4rem)] md:hidden"
             />
-            <motion.div
+            <div
               ref={menuRef}
               id="primary-mobile-menu"
               role="dialog"
               aria-modal="true"
               aria-label="Site menu"
-              initial={{ opacity: 0, x: 24 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 24 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="fixed bottom-0 right-0 top-14 z-40 flex w-full max-w-sm flex-col border-l border-white/10 bg-background-dark p-5 shadow-2xl sm:top-16 sm:p-7 md:hidden"
+              className="absolute right-0 top-full z-40 flex h-[calc(100dvh-3.5rem)] w-full max-w-sm flex-col overflow-y-auto border-l border-white/10 bg-background-dark p-5 shadow-2xl sm:h-[calc(100dvh-4rem)] sm:p-7 md:hidden"
             >
               <div className="border-b border-white/10 pb-5">
                 <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">Navigate</div>
@@ -185,10 +176,9 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
                   <WhatsAppIcon size={18} /> Talk on WhatsApp
                 </a>
               </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+            </div>
+        </>
+      )}
     </nav>
   );
 }
