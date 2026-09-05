@@ -8,14 +8,14 @@ import { useSEO } from "../utils/seo";
 const founders = [
   {
     name: "Kriti",
-    role: "Co-founder · Product & Design",
+    role: "Co-founder · Design and Product Engineering",
     image: "/team/kriti.png",
     responsibility:
       "Owns problem framing, the release boundary, core journeys, the interface system, and the product decisions that keep the build coherent.",
   },
   {
     name: "Ashwin",
-    role: "Co-founder · Engineering & Systems",
+    role: "Co-founder · Product and Experience",
     image: "/team/ashwin.png",
     responsibility:
       "Owns architecture, engineering quality, integrations, deployment, and the technical decisions the product must survive after handover.",
