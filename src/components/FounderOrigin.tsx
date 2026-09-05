@@ -17,7 +17,7 @@ const founders = [
 export default function FounderOrigin() {
   return (
     <section className="border-t border-white/5 bg-surface px-5 py-16 md:px-8 md:py-20 lg:py-24">
-      <div className="mx-auto grid max-w-[1200px] gap-10 md:grid-cols-12 md:items-center md:gap-14">
+      <div className="motion-reveal mx-auto grid max-w-[1200px] gap-10 md:grid-cols-12 md:items-center md:gap-14">
         <div className="md:col-span-5">
           <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">[ 04 // ACCOUNTABILITY ]</div>
           <h2 className="mt-6 text-4xl font-black leading-[0.95] tracking-tighter text-white sm:text-5xl md:text-6xl">
@@ -44,7 +44,7 @@ export default function FounderOrigin() {
           {founders.map((founder) => (
             <article
               key={founder.name}
-              className="group"
+              className="motion-card group"
             >
               <div className="aspect-[4/5] overflow-hidden border border-white/10 bg-background-dark">
                 <img

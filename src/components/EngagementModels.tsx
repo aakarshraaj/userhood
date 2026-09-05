@@ -22,7 +22,7 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
       <div className="tech-grid absolute inset-0 opacity-10 pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-[1440px]">
-        <div className="bg-primary p-7 text-black sm:p-9 md:p-12 lg:p-14">
+        <div className="motion-reveal bg-primary p-7 text-black sm:p-9 md:p-12 lg:p-14">
           <div className="flex flex-col gap-8 border-b border-black/20 pb-8 md:flex-row md:items-start md:justify-between md:pb-10">
             <div>
               <div className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-black/65">
@@ -68,7 +68,7 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
             </div>
             <button
               onClick={onContactClick}
-              className="flex min-h-[52px] shrink-0 items-center justify-center gap-3 bg-black px-7 py-4 text-base font-bold text-white transition-colors hover:bg-white hover:text-black"
+              className="motion-button flex min-h-[52px] shrink-0 items-center justify-center gap-3 bg-black px-7 py-4 text-base font-bold text-white hover:bg-white hover:text-black"
             >
               Discuss your 12-week build
               <ArrowRight className="h-4 w-4" />
@@ -76,7 +76,7 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
           </div>
         </div>
 
-        <aside className="grid gap-6 border-x border-b border-white/10 bg-white/[0.025] p-6 md:grid-cols-[1.35fr_0.8fr_0.8fr_auto] md:items-center md:gap-8 md:p-8" aria-label="Other ways to work with Userhood">
+        <aside className="motion-reveal grid gap-6 border-x border-b border-white/10 bg-white/[0.025] p-6 md:grid-cols-[1.35fr_0.8fr_0.8fr_auto] md:items-center md:gap-8 md:p-8" aria-label="Other ways to work with Userhood">
           <div>
             <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/65">Already have a product?</div>
             <h3 className="mt-2 text-xl font-bold tracking-tight text-white md:text-2xl">
@@ -97,7 +97,7 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
           <Link
             to="/services"
             onClick={() => trackAnalyticsEvent("services_click", { source: "homepage_engagement" })}
-            className="flex min-h-[48px] items-center justify-between gap-5 border border-white/15 px-5 py-3 text-sm font-bold text-white transition-colors hover:border-primary hover:text-primary md:justify-center"
+            className="motion-button flex min-h-[48px] items-center justify-between gap-5 border border-white/15 px-5 py-3 text-sm font-bold text-white hover:border-primary hover:text-primary md:justify-center"
           >
             Other services
             <ArrowRight className="h-4 w-4" />

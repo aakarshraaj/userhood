@@ -154,8 +154,9 @@ export default function App() {
           <Navbar onContactClick={() => handleContactClick('navbar')} onMenuOpenChange={setIsMenuOpen} />
 
           <div id="main-content" tabIndex={-1} className="outline-none">
-            <Suspense fallback={<div className="min-h-screen bg-background-dark flex items-center justify-center" role="status" aria-label="Loading page"><div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin-slow"></div></div>}>
-              <Routes>
+            <div key={location.pathname} className="route-stage">
+              <Suspense fallback={<div className="min-h-screen bg-background-dark flex items-center justify-center" role="status" aria-label="Loading page"><div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin-slow"></div></div>}>
+                <Routes>
                 <Route path={getPageMetadata("home").path} element={
                   <main data-page-id="home">
                     <HomeSEO />
@@ -179,8 +180,9 @@ export default function App() {
                 <Route path={getPageMetadata("careers").path} element={<Careers />} />
                 <Route path={`${getPageMetadata("careers").path}/:slug`} element={<JobDetail />} />
                 <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
+                </Routes>
+              </Suspense>
+            </div>
           </div>
 
           <Footer />

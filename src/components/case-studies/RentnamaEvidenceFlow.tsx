@@ -39,7 +39,7 @@ export default function RentnamaEvidenceFlow() {
         style={{ backgroundColor: "color-mix(in srgb, var(--color-primary) 16%, transparent)" }}
       />
 
-      <div className="relative mx-auto max-w-[1280px]">
+      <div className="motion-reveal relative mx-auto max-w-[1280px]">
         <div className="grid gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
             <div className="font-mono text-xs uppercase tracking-[0.17em] text-primary">Rentnama signature system // Evidence chain</div>

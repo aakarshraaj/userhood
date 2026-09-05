@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+:root {
+  --motion-fast: 160ms;
+  --motion-base: 280ms;
+  --motion-slow: 520ms;
+  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @theme {
   --font-sans: "Author", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
@@ -24,7 +32,7 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   section[id] {
@@ -49,6 +57,63 @@
   :focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 3px;
+  }
+
+  :where(a, button, summary, input, textarea, select) {
+    transition-timing-function: var(--motion-ease-standard);
+  }
+}
+
+@keyframes route-arrive {
+  from {
+    opacity: 0.9;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes section-reveal {
+  from {
+    opacity: 0.78;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes backdrop-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes drawer-enter {
+  from {
+    opacity: 0.7;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -92,6 +157,64 @@
 }
 
 @layer utilities {
+  .route-stage {
+    animation: route-arrive var(--motion-slow) var(--motion-ease-out) both;
+  }
+
+  .motion-backdrop {
+    animation: backdrop-enter var(--motion-base) ease-out both;
+  }
+
+  .motion-drawer {
+    animation: drawer-enter var(--motion-base) var(--motion-ease-out) both;
+  }
+
+  .motion-dialog {
+    animation: dialog-enter 360ms var(--motion-ease-out) both;
+  }
+
+  .motion-card {
+    transition-duration: var(--motion-base);
+    transition-property: border-color, background-color, box-shadow, transform;
+    transition-timing-function: var(--motion-ease-out);
+  }
+
+  .motion-button {
+    transition-duration: var(--motion-fast);
+    transition-property: background-color, border-color, color, opacity, transform;
+    transition-timing-function: var(--motion-ease-out);
+  }
+
+  .motion-button:active {
+    transform: translateY(1px) scale(0.99);
+  }
+
+  .project-media img {
+    transition: filter var(--motion-slow) var(--motion-ease-out), transform var(--motion-slow) var(--motion-ease-out);
+  }
+
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    position: absolute;
+    right: 0;
+    bottom: -0.55rem;
+    left: 0;
+    height: 1px;
+    content: "";
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--motion-base) var(--motion-ease-out);
+  }
+
+  .nav-link:hover::after,
+  .nav-link[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+
   .safe-area-inset-top {
     padding-top: env(safe-area-inset-top, 0);
   }
@@ -149,6 +272,28 @@
   }
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .motion-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 70px color-mix(in srgb, var(--work-accent, var(--color-primary)) 8%, transparent);
+  }
+
+  .group:hover .project-media img {
+    filter: saturate(1.05) contrast(1.015);
+    transform: scale(1.018);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .motion-reveal {
+      animation: section-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 22%;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -162,5 +307,12 @@
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .motion-card:hover,
+  .motion-button:active,
+  .group:hover .project-media img {
+    filter: none !important;
+    transform: none !important;
   }
 }

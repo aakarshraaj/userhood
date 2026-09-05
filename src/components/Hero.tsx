@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { trackAnalyticsEvent } from "../utils/analytics";
@@ -95,14 +96,14 @@ export default function Hero({ onContactClick }: HeroProps) {
               <div className="flex flex-col items-stretch gap-3 text-base sm:flex-row sm:items-center sm:gap-5">
                 <button
                   onClick={onContactClick}
-                  className="flex min-h-[48px] w-full items-center justify-center gap-2 bg-primary px-6 py-4 font-bold text-black transition-colors hover:bg-white sm:w-auto"
+                  className="motion-button flex min-h-[48px] w-full items-center justify-center gap-2 bg-primary px-6 py-4 font-bold text-black hover:bg-white sm:w-auto"
                 >
                   Discuss your 12-week build
                 </button>
                 <Link
                   to="/work"
                   onClick={() => trackAnalyticsEvent("selected_work_click", { source: "hero" })}
-                  className="flex min-h-[48px] w-full items-center justify-center border border-white/10 px-6 py-4 text-white transition-colors hover:border-white/30 sm:w-auto"
+                  className="motion-button flex min-h-[48px] w-full items-center justify-center border border-white/10 px-6 py-4 text-white hover:border-white/30 sm:w-auto"
                 >
                   See selected work
                 </Link>
@@ -126,7 +127,8 @@ export default function Hero({ onContactClick }: HeroProps) {
                   to={project.link}
                   aria-label={`Open the ${project.name} case study: ${project.category}`}
                   onClick={() => trackAnalyticsEvent("case_study_open", { source: "hero_proof", organisation: project.name })}
-                  className="group grid grid-cols-[minmax(0,1fr)_158px] border border-white/10 bg-[#08080a] transition-colors hover:border-white/25"
+                  className="motion-card group grid grid-cols-[minmax(0,1fr)_158px] border border-white/10 bg-[#08080a] hover:border-white/25"
+                  style={{ "--work-accent": project.accent } as CSSProperties}
                 >
                   <ProjectMedia
                     project={project.name}

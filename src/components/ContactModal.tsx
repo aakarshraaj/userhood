@@ -258,7 +258,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
         <div className="fixed inset-0 z-[100] flex items-end justify-center p-0 sm:items-center sm:p-4">
           <div
             onClick={() => closeModal("backdrop")}
-            className="absolute inset-0 bg-background-dark/85 backdrop-blur-sm"
+            className="motion-backdrop absolute inset-0 bg-background-dark/85 backdrop-blur-sm"
             aria-hidden="true"
           />
 
@@ -269,7 +269,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
             aria-labelledby="contact-dialog-title"
             aria-describedby="contact-dialog-description"
             tabIndex={-1}
-            className="relative max-h-[92dvh] w-full max-w-2xl overflow-y-auto overflow-x-hidden rounded-t-2xl border border-b-0 border-white/10 bg-surface p-5 sm:rounded-none sm:border-b sm:p-8"
+            className="motion-dialog relative max-h-[92dvh] w-full max-w-2xl overflow-y-auto overflow-x-hidden rounded-t-2xl border border-b-0 border-white/10 bg-surface p-5 sm:rounded-none sm:border-b sm:p-8"
           >
             <button
               type="button"
@@ -293,7 +293,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                 <button
                   type="button"
                   onClick={() => closeModal("success_close")}
-                  className="mt-9 inline-flex min-h-[48px] items-center gap-3 bg-primary px-7 py-4 text-sm font-bold text-black transition-colors hover:bg-white"
+                  className="motion-button mt-9 inline-flex min-h-[48px] items-center gap-3 bg-primary px-7 py-4 text-sm font-bold text-black hover:bg-white"
                 >
                   Close <X className="h-4 w-4" />
                 </button>
@@ -430,7 +430,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                     <button
                       type="submit"
                       disabled={status === "submitting"}
-                      className="inline-flex min-h-[52px] shrink-0 items-center justify-center gap-3 bg-primary px-7 py-4 text-base font-bold text-black transition-colors hover:bg-white disabled:cursor-wait disabled:opacity-60"
+                      className="motion-button inline-flex min-h-[52px] shrink-0 items-center justify-center gap-3 bg-primary px-7 py-4 text-base font-bold text-black hover:bg-white disabled:cursor-wait disabled:opacity-60"
                     >
                       {status === "submitting" ? "Sending…" : "Send project brief"}
                       {status !== "submitting" && <ArrowRight className="h-4 w-4" />}
@@ -448,7 +448,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                   href={`https://wa.me/917498908702?text=${encodeURIComponent("Hey Userhood! I want to discuss a potential product build.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex min-h-[48px] w-full items-center justify-center gap-3 border border-[#25D366]/30 bg-[#25D366]/10 py-3 text-[#25D366] transition-colors hover:bg-[#25D366]/20"
+                  className="motion-button flex min-h-[48px] w-full items-center justify-center gap-3 border border-[#25D366]/30 bg-[#25D366]/10 py-3 text-[#25D366] hover:bg-[#25D366]/20"
                 >
                   <MessageCircle className="h-5 w-5" />
                   <span className="text-base font-bold">Continue on WhatsApp</span>

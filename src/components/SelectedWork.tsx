@@ -124,7 +124,7 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
       <div className="tech-grid pointer-events-none absolute inset-0 opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-[1440px]">
-        <div className="grid gap-7 border-b border-white/10 pb-8 md:grid-cols-12 md:items-end md:pb-10">
+        <div className="motion-reveal grid gap-7 border-b border-white/10 pb-8 md:grid-cols-12 md:items-end md:pb-10">
           <div className="md:col-span-8">
             <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-primary">[ {standalone ? "SELECTED_WORK" : "01 // SELECTED_WORK"} ]</div>
             <Heading className="max-w-4xl text-4xl font-black leading-[0.96] tracking-tighter text-white sm:text-5xl md:text-7xl">
@@ -137,14 +137,14 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
           </p>
         </div>
 
-        <div className="grid gap-px bg-white/10 lg:grid-cols-2">
+        <div className="motion-reveal grid gap-px bg-white/10 lg:grid-cols-2">
           {productBuilds.map((item) => (
             <Link
               key={item.organisation}
               to={item.link}
               onClick={() => trackAnalyticsEvent("case_study_open", { source: analyticsSource, organisation: item.organisation })}
               aria-label={`Read the ${item.organisation} ${item.relationship.toLowerCase()} case study`}
-              className="group flex min-w-0 flex-col bg-[#08080a] p-4 transition-colors hover:bg-white/[0.025] md:p-5"
+              className="motion-card group flex min-w-0 flex-col bg-[#08080a] p-4 hover:bg-white/[0.025] md:p-5"
               style={{ "--work-accent": item.accent } as CSSProperties}
             >
               <ProjectMedia project={item.organisation} media={item.media} accent={item.accent} compact />
@@ -183,7 +183,7 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
 
                 <div className="mt-5 flex items-center justify-between text-sm font-bold text-white/80">
                   <span>See the decisions behind it</span>
-                  <span className="flex h-11 w-11 items-center justify-center border border-white/15 text-white transition-all group-hover:border-primary group-hover:bg-primary group-hover:text-black">
+                  <span className="motion-button flex h-11 w-11 items-center justify-center border border-white/15 text-white group-hover:border-primary group-hover:bg-primary group-hover:text-black">
                     <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
                 </div>
@@ -193,7 +193,7 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
         </div>
 
         {standalone ? (
-          <div className="border-x border-b border-white/10 bg-[#08080a] p-5 md:p-7">
+          <div className="motion-reveal border-x border-b border-white/10 bg-[#08080a] p-5 md:p-7">
             <div className="grid gap-6 border-b border-white/10 pb-5 md:grid-cols-[0.75fr_1.25fr] md:items-end">
               <div className="font-mono text-xs uppercase tracking-[0.15em] text-white/65">
                 Team experience
@@ -210,7 +210,7 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
                   to={item.link}
                   onClick={() => trackAnalyticsEvent("case_study_open", { source: "work_page_team_experience", organisation: item.organisation })}
                   aria-label={`Read the ${item.organisation} team experience case study`}
-                  className="group flex flex-col bg-[#08080a] py-6 transition-colors hover:bg-white/[0.025] md:px-6"
+                  className="motion-card group flex flex-col bg-[#08080a] py-6 hover:bg-white/[0.025] md:px-6"
                 >
                   <div className="flex items-center justify-between gap-4 font-mono text-xs uppercase tracking-[0.11em] text-white/60">
                     <span>{item.category}</span>
@@ -232,7 +232,7 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
           <Link
             to="/work"
             onClick={() => trackAnalyticsEvent("selected_work_click", { source: "homepage_selected_work_footer" })}
-            className="group flex min-h-16 items-center justify-between border-x border-b border-white/10 bg-[#08080a] px-5 text-sm font-bold text-white transition-colors hover:border-primary hover:text-primary md:px-7"
+            className="motion-button motion-reveal group flex min-h-16 items-center justify-between border-x border-b border-white/10 bg-[#08080a] px-5 text-sm font-bold text-white hover:border-primary hover:text-primary md:px-7"
           >
             <span>View all work, including automotive team experience</span>
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

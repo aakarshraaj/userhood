@@ -96,17 +96,17 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
 
         <div className="hidden items-center gap-5 md:flex lg:gap-7">
           <div className="flex items-center gap-5 text-sm font-medium text-white/75 lg:gap-7">
-            <Link to="/work" aria-current={pathname === "/work" || pathname.startsWith("/case-study/") ? "page" : undefined} onClick={handleLinkClick} className={`transition-colors hover:text-primary ${pathname === "/work" || pathname.startsWith("/case-study/") ? "text-primary" : ""}`}>Work</Link>
-            <Link to="/services" aria-current={pathname === "/services" ? "page" : undefined} onClick={handleLinkClick} className={`transition-colors hover:text-primary ${pathname === "/services" ? "text-primary" : ""}`}>Services</Link>
-            <Link to="/about" aria-current={pathname === "/about" ? "page" : undefined} onClick={handleLinkClick} className={`transition-colors hover:text-primary ${pathname === "/about" ? "text-primary" : ""}`}>About</Link>
-            <Link to="/careers" aria-current={pathname.startsWith("/careers") ? "page" : undefined} onClick={handleLinkClick} className={`hidden transition-colors hover:text-primary lg:inline ${pathname.startsWith("/careers") ? "text-primary" : ""}`}>Careers</Link>
+            <Link to="/work" aria-current={pathname === "/work" || pathname.startsWith("/case-study/") ? "page" : undefined} onClick={handleLinkClick} className={`nav-link transition-colors hover:text-primary ${pathname === "/work" || pathname.startsWith("/case-study/") ? "text-primary" : ""}`}>Work</Link>
+            <Link to="/services" aria-current={pathname === "/services" ? "page" : undefined} onClick={handleLinkClick} className={`nav-link transition-colors hover:text-primary ${pathname === "/services" ? "text-primary" : ""}`}>Services</Link>
+            <Link to="/about" aria-current={pathname === "/about" ? "page" : undefined} onClick={handleLinkClick} className={`nav-link transition-colors hover:text-primary ${pathname === "/about" ? "text-primary" : ""}`}>About</Link>
+            <Link to="/careers" aria-current={pathname.startsWith("/careers") ? "page" : undefined} onClick={handleLinkClick} className={`nav-link hidden transition-colors hover:text-primary lg:inline ${pathname.startsWith("/careers") ? "text-primary" : ""}`}>Careers</Link>
           </div>
 
           <div className="border-l border-white/10 pl-5">
             <button
               type="button"
               onClick={onContactClick}
-              className="min-h-[42px] whitespace-nowrap bg-primary px-4 py-2 text-sm font-bold text-black transition-colors hover:bg-white"
+              className="motion-button min-h-[42px] whitespace-nowrap bg-primary px-4 py-2 text-sm font-bold text-black hover:bg-white"
             >
               Discuss your build
             </button>
@@ -131,7 +131,7 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
             <div
               aria-hidden="true"
               onClick={() => setIsOpen(false)}
-              className="absolute inset-x-0 top-full z-30 h-[calc(100dvh-3.5rem)] bg-black/70 backdrop-blur-sm sm:h-[calc(100dvh-4rem)] md:hidden"
+              className="motion-backdrop absolute inset-x-0 top-full z-30 h-[calc(100dvh-3.5rem)] bg-black/70 backdrop-blur-sm sm:h-[calc(100dvh-4rem)] md:hidden"
             />
             <div
               ref={menuRef}
@@ -139,7 +139,7 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
               role="dialog"
               aria-modal="true"
               aria-label="Site menu"
-              className="absolute right-0 top-full z-40 flex h-[calc(100dvh-3.5rem)] w-full max-w-sm flex-col overflow-y-auto border-l border-white/10 bg-background-dark p-5 shadow-2xl sm:h-[calc(100dvh-4rem)] sm:p-7 md:hidden"
+              className="motion-drawer absolute right-0 top-full z-40 flex h-[calc(100dvh-3.5rem)] w-full max-w-sm flex-col overflow-y-auto border-l border-white/10 bg-background-dark p-5 shadow-2xl sm:h-[calc(100dvh-4rem)] sm:p-7 md:hidden"
             >
               <div className="border-b border-white/10 pb-5">
                 <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">Navigate</div>
@@ -160,7 +160,7 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
                     setIsOpen(false);
                     onContactClick();
                   }}
-                  className="flex min-h-[52px] w-full items-center justify-between bg-primary px-5 py-4 text-base font-bold text-black transition-colors hover:bg-white"
+                  className="motion-button flex min-h-[52px] w-full items-center justify-between bg-primary px-5 py-4 text-base font-bold text-black hover:bg-white"
                 >
                   Discuss your build <ArrowRight className="h-4 w-4" />
                 </button>
@@ -169,7 +169,7 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
                   onClick={() => trackAnalyticsEvent("whatsapp_click", { source: "navbar_mobile_menu" })}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex min-h-[48px] items-center justify-center gap-3 border border-white/15 text-sm font-bold text-white transition-colors hover:border-[#25D366] hover:text-[#25D366]"
+                  className="motion-button flex min-h-[48px] items-center justify-center gap-3 border border-white/15 text-sm font-bold text-white hover:border-[#25D366] hover:text-[#25D366]"
                 >
                   <WhatsAppIcon size={18} /> Talk on WhatsApp
                 </a>

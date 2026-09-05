@@ -8,7 +8,7 @@ interface FinalCTAProps {
 export default function FinalCTA({ onContactClick }: FinalCTAProps) {
   return (
     <section className="border-t border-white/5 bg-white/[0.02] px-5 py-16 md:px-8 md:py-20 lg:py-24" id="contact">
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="motion-reveal max-w-4xl mx-auto text-center">
 
         <div className="font-mono text-xs text-primary mb-6 md:mb-8 uppercase tracking-widest">
           [ 05 // THE_DECISION ]
@@ -31,7 +31,7 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
           <button
             onClick={onContactClick}
-            className="bg-primary text-black px-8 py-5 md:px-14 md:py-6 font-bold text-base md:text-lg transition-all min-h-[52px] w-full sm:w-auto whitespace-nowrap"
+            className="motion-button min-h-[52px] w-full whitespace-nowrap bg-primary px-8 py-5 text-base font-bold text-black hover:bg-white sm:w-auto md:px-14 md:py-6 md:text-lg"
           >
             Discuss your 12-week build
           </button>

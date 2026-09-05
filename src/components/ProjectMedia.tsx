@@ -39,7 +39,7 @@ export default function ProjectMedia({
 
   return (
     <figure
-      className={`relative isolate overflow-hidden border border-white/10 bg-[#0b0c0f] ${
+      className={`project-media relative isolate overflow-hidden border border-white/10 bg-[#0b0c0f] ${
         resolvedSize === "mini"
           ? "aspect-video min-h-[205px]"
           : resolvedSize === "compact"

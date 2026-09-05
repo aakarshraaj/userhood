@@ -115,7 +115,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
                           organisation: data.brand,
                         })
                       }
-                      className="group mt-7 inline-flex min-h-12 items-center gap-5 border border-white/15 bg-white/[0.025] px-5 py-3 text-white transition-colors hover:border-primary hover:bg-primary hover:text-black"
+                      className="motion-button group mt-7 inline-flex min-h-12 items-center gap-5 border border-white/15 bg-white/[0.025] px-5 py-3 text-white hover:border-primary hover:bg-primary hover:text-black"
                       aria-label={`${data.liveProduct.label} (opens in a new tab)`}
                     >
                       <span>
@@ -153,7 +153,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
 
         {data.outcome && (
           <section className="mt-12 border-y border-white/10 bg-[#08080a] px-5 py-14 md:mt-16 md:px-8 md:py-20" aria-labelledby={`${data.pageId}-outcome-title`}>
-            <div className="mx-auto max-w-[1280px]">
+            <div className="motion-reveal mx-auto max-w-[1280px]">
               <div className="grid gap-8 md:grid-cols-12 md:items-end">
                 <div className="md:col-span-7">
                   <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">01 // Outcome snapshot</div>
@@ -184,7 +184,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
         {signatureStory}
 
         <section className={`${hasOutcome ? "" : "mt-16 md:mt-24"} border-b border-white/5 bg-[#08080a] px-5 py-16 md:px-8 md:py-24`}>
-          <div className="mx-auto grid max-w-[1280px] gap-10 md:grid-cols-12 md:gap-16">
+          <div className="motion-reveal mx-auto grid max-w-[1280px] gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-4">
               <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">{hasOutcome ? "02" : "01"} // The problem</div>
               <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-5xl">What the product had to overcome.</h2>
@@ -201,7 +201,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
 
         <section className="px-5 py-16 md:px-8 md:py-24">
           <div className="mx-auto max-w-[1280px]">
-            <div className="grid gap-8 border-b border-white/10 pb-10 md:grid-cols-12 md:items-end md:pb-12">
+            <div className="motion-reveal grid gap-8 border-b border-white/10 pb-10 md:grid-cols-12 md:items-end md:pb-12">
               <div className="md:col-span-8">
                 <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">{hasOutcome ? "03" : "02"} // The intervention</div>
                 <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-6xl">The decisions that changed the product.</h2>
@@ -213,7 +213,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
 
             <ol>
               {data.decisions.map((decision, index) => (
-                <li key={decision.title} className="border-b border-white/10 py-10 md:py-14">
+                <li key={decision.title} className="motion-reveal border-b border-white/10 py-10 md:py-14">
                   {decision.story ? (
                     <div className="grid gap-6 md:grid-cols-12 md:gap-8">
                       <div className="font-mono text-xs text-primary md:col-span-1">0{index + 1}</div>
@@ -254,7 +254,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
         </section>
 
         <section className="border-y border-white/5 bg-white/[0.025] px-5 py-16 md:px-8 md:py-20">
-          <div className="mx-auto grid max-w-[1280px] gap-10 md:grid-cols-12 md:gap-16">
+          <div className="motion-reveal mx-auto grid max-w-[1280px] gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-5">
               <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">{hasOutcome ? "04" : "03"} // The shipped system</div>
               <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-5xl">What actually exists.</h2>
@@ -279,7 +279,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
 
         {data.performanceMetrics && data.performanceMetrics.length > 0 && (
           <section className="border-b border-white/10 bg-[#08080a] px-5 py-16 md:px-8 md:py-24" aria-labelledby={`${data.pageId}-measurement-title`}>
-            <div className="mx-auto max-w-[1280px]">
+            <div className="motion-reveal mx-auto max-w-[1280px]">
               <div className="grid gap-8 md:grid-cols-12">
                 <div className="md:col-span-5">
                   <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">05 // Outcome measurement</div>
@@ -308,7 +308,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
         )}
 
         <section className="px-5 py-20 text-center md:px-8 md:py-28">
-          <div className="mx-auto max-w-4xl">
+          <div className="motion-reveal mx-auto max-w-4xl">
             <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">Your product is different</div>
             <h2 className="mt-6 text-4xl font-black leading-tight tracking-tighter text-white sm:text-5xl md:text-7xl">
               Bring the problem.<br /><span className="text-primary">We will bring the questions.</span>
@@ -319,7 +319,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
             <button
               type="button"
               onClick={onContactClick}
-              className="mt-10 inline-flex min-h-[52px] items-center justify-center gap-3 bg-primary px-8 py-4 text-base font-bold text-black transition-colors hover:bg-white"
+              className="motion-button mt-10 inline-flex min-h-[52px] items-center justify-center gap-3 bg-primary px-8 py-4 text-base font-bold text-black hover:bg-white"
             >
               Discuss your 12-week build <ArrowRight className="h-4 w-4" />
             </button>
