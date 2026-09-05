@@ -150,7 +150,7 @@ Asset contract:
 
 ## Phase 5 — Services and About
 
-Status: next
+Status: complete within supplied evidence; real photography and individual profile links await client inputs
 
 Deliverables:
 
@@ -162,6 +162,11 @@ Deliverables:
 - Add concise biographies, responsibilities, relevant experience, and LinkedIn links.
 - Show how founder involvement actually works during an engagement.
 
+Evidence note:
+
+- The supplied team assets are illustration portraits, not photography. They remain in place until approved photographs are supplied.
+- No individual biography history or personal LinkedIn URL was available in the repository. The page publishes engagement responsibilities and the verified company LinkedIn link without inventing personal credentials.
+
 Acceptance criteria:
 
 - A buyer can identify the correct engagement in under 30 seconds.
@@ -169,6 +174,8 @@ Acceptance criteria:
 - The About page proves who does the work and why the operating model is credible.
 
 ## Phase 6 — navigation, enquiry, and mobile polish
+
+Status: next
 
 Deliverables:
 

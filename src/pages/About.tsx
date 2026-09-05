@@ -1,29 +1,26 @@
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getPageSEO } from "../data/siteMetadata";
 import { useSEO } from "../utils/seo";
 
-const principles = [
+const founders = [
   {
-    title: "One accountable team",
-    detail:
-      "Product, design, and engineering make decisions together. The people in the review are the people responsible for the work.",
+    name: "Kriti",
+    role: "Co-founder · Product & Design",
+    image: "/team/kriti.png",
+    responsibility:
+      "Owns problem framing, the release boundary, core journeys, the interface system, and the product decisions that keep the build coherent.",
   },
   {
-    title: "Scope is a product decision",
-    detail:
-      "A twelve-week release only works when the boundary is real. We expose trade-offs early instead of burying them in a delivery plan.",
-  },
-  {
-    title: "Proof beats theatre",
-    detail:
-      "Working software, clear reasoning, and observable user behaviour matter more than stage-managed progress or invented precision.",
+    name: "Ashwin",
+    role: "Co-founder · Engineering & Systems",
+    image: "/team/ashwin.png",
+    responsibility:
+      "Owns architecture, engineering quality, integrations, deployment, and the technical decisions the product must survive after handover.",
   },
 ];
 
 const team = [
-  { name: "Kriti", role: "Co-founder · Product & Design", image: "/team/kriti.png" },
-  { name: "Ashwin", role: "Co-founder · Engineering & Systems", image: "/team/ashwin.png" },
   { name: "Nishita", role: "Designer", image: "/team/nishita.png" },
   { name: "Priya", role: "Growth Lead", image: "/team/priya.png" },
   { name: "Somesh", role: "Product", image: "/team/somesh.png" },
@@ -31,106 +28,230 @@ const team = [
   { name: "Priyanka", role: "Designer", image: "/team/priyanka.png" },
 ];
 
+const cadence = [
+  {
+    moment: "Before kickoff",
+    title: "The founders interrogate the scope.",
+    detail:
+      "The product thesis, release boundary, highest-risk assumptions, access, and decision owner are made explicit before the delivery clock starts.",
+  },
+  {
+    moment: "Every week",
+    title: "You review the working product.",
+    detail:
+      "Product, design, and engineering decisions are made in one review. Progress is demonstrated in functioning software wherever the build allows it.",
+  },
+  {
+    moment: "Between reviews",
+    title: "The decision loop stays direct.",
+    detail:
+      "Questions reach the person accountable for the choice. There is no account-management layer translating the work in either direction.",
+  },
+  {
+    moment: "At release",
+    title: "The system leaves with context.",
+    detail:
+      "Release readiness, analytics, documentation, and handover are part of the build so the next team is not forced to reverse-engineer our decisions.",
+  },
+];
+
+const commitments = [
+  "If the responsible release cannot fit inside twelve weeks, we will reduce it or say so before kickoff.",
+  "If AI adds cost without improving the product outcome, we will not force it into the scope.",
+  "If another team or engagement is a better fit, we would rather make that clear before a proposal.",
+];
+
 export default function About() {
   useSEO(getPageSEO("about"));
 
   return (
-    <main data-page-id="about" className="min-h-screen bg-background-dark pb-24 pt-28 sm:pt-32 md:pb-36 md:pt-40">
+    <main data-page-id="about" className="min-h-screen bg-background-dark pb-24 pt-28 selection:bg-primary selection:text-black md:pb-28 md:pt-36">
       <header className="px-5 md:px-8">
-        <div className="mx-auto max-w-[1200px]">
-          <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">[ STUDIO // ABOUT ]</div>
-          <h1 className="mt-7 max-w-5xl text-5xl font-black leading-[0.9] tracking-tighter text-white sm:text-6xl md:text-8xl">
-            One team.<br /><span className="text-primary">Both disciplines.</span>
-          </h1>
-          <div className="mt-12 grid gap-8 border-t border-white/10 pt-10 md:mt-16 md:grid-cols-12 md:gap-14 md:pt-14">
-            <p className="text-xl font-normal leading-relaxed text-slate-200 md:col-span-7 md:text-2xl">
-              Userhood exists because product quality collapses when design and engineering optimise for different outcomes.
-            </p>
-            <p className="text-base font-normal leading-relaxed text-slate-300 md:col-span-5 md:text-lg">
-              We are a compact studio built around shared accountability. Design serves comprehension and conviction. Engineering serves reliability and speed. Product judgment decides what belongs in the release.
-            </p>
+        <div className="mx-auto max-w-[1440px]">
+          <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Studio // founder accountability</div>
+
+          <div className="mt-6 grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-14">
+            <div className="lg:col-span-6">
+              <h1 className="text-5xl font-black leading-[0.88] tracking-tighter text-white sm:text-6xl md:text-8xl lg:text-[92px]">
+                The founders<br />you meet stay<br /><span className="text-primary">on the build.</span>
+              </h1>
+              <p className="mt-8 max-w-2xl border-l-2 border-primary/30 pl-6 text-lg font-normal leading-relaxed text-slate-200 md:text-xl">
+                Userhood is a compact product studio built around shared accountability. Product design and engineering own the same release, the same constraints, and the same weekly decisions.
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link to="/?contact=true&source=about_hero" className="inline-flex min-h-[50px] items-center justify-center gap-3 bg-primary px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-white">
+                  Discuss your 12-week build <ArrowRight className="h-4 w-4" />
+                </Link>
+                <a href="https://in.linkedin.com/company/userhood" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[50px] items-center justify-center gap-3 border border-white/15 px-6 py-4 text-sm font-bold text-white transition-colors hover:border-primary hover:text-primary">
+                  Userhood on LinkedIn <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2 lg:col-span-6">
+              {founders.map((founder) => (
+                <article key={founder.name} className="border border-white/10 bg-[#08080a]">
+                  <div className="aspect-[5/4] overflow-hidden border-b border-white/10 bg-black">
+                    <img
+                      src={founder.image}
+                      alt={`${founder.name}, ${founder.role} at Userhood`}
+                      className="h-full w-full object-cover object-top grayscale"
+                      width="640"
+                      height="512"
+                    />
+                  </div>
+                  <div className="p-5 md:p-6">
+                    <h2 className="text-2xl font-black tracking-tight text-white">{founder.name}</h2>
+                    <p className="mt-1 text-sm font-bold text-primary">{founder.role}</p>
+                    <div className="mt-5 border-t border-white/10 pt-4">
+                      <div className="font-mono text-xs uppercase tracking-[0.12em] text-white/55">Owns during an engagement</div>
+                      <p className="mt-3 text-sm leading-relaxed text-slate-300">{founder.responsibility}</p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-4 border-t border-white/10 pt-6 md:grid-cols-[auto_1fr] md:items-center md:gap-8">
+            <p className="font-mono text-xs uppercase tracking-[0.16em] text-white/60">Evidence boundary</p>
+            <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold text-white/70 sm:text-sm md:justify-end">
+              <span className="text-primary">Repository-backed: Rentnama + Tirch</span>
+              <span className="hidden text-primary/40 sm:inline">//</span>
+              <span>Team experience: Hyundai + Mitsubishi Motors</span>
+            </div>
           </div>
         </div>
       </header>
 
-      <section className="mt-20 border-y border-white/5 bg-[#08080a] px-5 py-20 md:mt-28 md:px-8 md:py-28">
-        <div className="mx-auto max-w-[1200px]">
-          <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">01 // How we work</div>
-          <h2 className="mt-5 max-w-4xl text-4xl font-black tracking-tighter text-white md:text-6xl">
-            The operating principles are deliberately unglamorous.
-          </h2>
+      <section className="mt-20 bg-primary px-5 py-16 text-black md:mt-24 md:px-8 md:py-20" aria-labelledby="cadence-title">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="grid gap-8 border-b border-black/20 pb-10 md:grid-cols-12 md:items-end">
+            <div className="md:col-span-8">
+              <div className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-black/60">01 // Founder-led in practice</div>
+              <h2 id="cadence-title" className="mt-4 max-w-5xl text-4xl font-black leading-[0.92] tracking-tighter md:text-7xl">
+                An operating constraint.<br />Not a sales line.
+              </h2>
+            </div>
+            <p className="max-w-lg text-base font-medium leading-relaxed text-black/75 md:col-span-4 md:justify-self-end md:text-lg">
+              Founder involvement matters only if it changes how decisions are made. This is where it appears in a typical engagement.
+            </p>
+          </div>
 
-          <div className="mt-12 grid border-l border-t border-white/10 md:mt-16 md:grid-cols-3">
-            {principles.map((principle, index) => (
-              <article
-                key={principle.title}
-                className="border-b border-r border-white/10 p-7 md:p-9"
-              >
-                <div className="font-mono text-xs text-primary">0{index + 1}</div>
-                <h3 className="mt-8 text-2xl font-bold tracking-tight text-white">{principle.title}</h3>
-                <p className="mt-4 text-sm font-normal leading-relaxed text-slate-300 md:text-base">{principle.detail}</p>
+          <ol className="grid gap-px bg-black/20 md:grid-cols-2 xl:grid-cols-4">
+            {cadence.map((step, index) => (
+              <li key={step.moment} className="bg-primary py-8 md:px-7">
+                <div className="flex items-center justify-between gap-5 font-mono text-xs font-bold uppercase tracking-[0.12em] text-black/55">
+                  <span>{step.moment}</span>
+                  <span>0{index + 1}</span>
+                </div>
+                <h3 className="mt-7 text-2xl font-black leading-tight tracking-tight text-black">{step.title}</h3>
+                <p className="mt-4 text-sm font-medium leading-relaxed text-black/75">{step.detail}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="border-b border-white/5 bg-[#08080a] px-5 py-16 md:px-8 md:py-20" aria-labelledby="proof-title">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="grid gap-8 md:grid-cols-12 md:items-end">
+            <div className="md:col-span-7">
+              <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">02 // Relevant product work</div>
+              <h2 id="proof-title" className="mt-4 text-4xl font-black leading-[0.94] tracking-tighter text-white md:text-6xl">
+                Inspect the work.<br /><span className="text-primary">Keep the provenance.</span>
+              </h2>
+            </div>
+            <p className="max-w-xl text-base leading-relaxed text-slate-300 md:col-span-5 md:justify-self-end md:text-lg">
+              Current product builds and earlier team experience are useful forms of evidence, but they are not the same claim. We label both.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-px border border-white/10 bg-white/10 md:grid-cols-2">
+            <div className="bg-[#08080a] p-7 md:p-9">
+              <div className="font-mono text-xs uppercase tracking-[0.14em] text-primary">Repository-backed builds</div>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <Link to="/case-study/rentnama" className="group flex min-h-[112px] flex-col justify-between border border-white/10 p-5 transition-colors hover:border-primary">
+                  <span className="text-xl font-bold text-white group-hover:text-primary">Rentnama</span>
+                  <span className="flex items-center justify-between text-sm text-slate-300">Rental intelligence <ArrowRight className="h-4 w-4" /></span>
+                </Link>
+                <Link to="/case-study/tirch" className="group flex min-h-[112px] flex-col justify-between border border-white/10 p-5 transition-colors hover:border-primary">
+                  <span className="text-xl font-bold text-white group-hover:text-primary">Tirch</span>
+                  <span className="flex items-center justify-between text-sm text-slate-300">Commerce systems <ArrowRight className="h-4 w-4" /></span>
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-[#08080a] p-7 md:p-9">
+              <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/60">Team experience</div>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <Link to="/case-study/hyundai" className="group flex min-h-[112px] flex-col justify-between border border-white/10 p-5 transition-colors hover:border-primary">
+                  <span className="text-xl font-bold text-white group-hover:text-primary">Hyundai Global</span>
+                  <span className="flex items-center justify-between text-sm text-slate-300">Automotive commerce <ArrowRight className="h-4 w-4" /></span>
+                </Link>
+                <Link to="/case-study/mitsubishi" className="group flex min-h-[112px] flex-col justify-between border border-white/10 p-5 transition-colors hover:border-primary">
+                  <span className="text-xl font-bold text-white group-hover:text-primary">Mitsubishi Motors</span>
+                  <span className="flex items-center justify-between text-sm text-slate-300">Connected ownership <ArrowRight className="h-4 w-4" /></span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-5 py-16 md:px-8 md:py-20" aria-labelledby="team-title">
+        <div className="mx-auto grid max-w-[1440px] gap-10 md:grid-cols-12 md:gap-14">
+          <div className="md:col-span-4">
+            <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">03 // The wider team</div>
+            <h2 id="team-title" className="mt-4 text-4xl font-black leading-[0.95] tracking-tighter text-white md:text-5xl">Specialists join around the release.</h2>
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-slate-300">
+              Product, design, engineering, and growth capacity changes with the work. Ownership does not: the founders remain accountable for the direction and delivery model.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 md:col-span-8 md:grid-cols-5 md:gap-x-5">
+            {team.map((member) => (
+              <article key={member.name}>
+                <div className="aspect-square overflow-hidden border border-white/10 bg-surface">
+                  <img
+                    src={member.image}
+                    alt={`${member.name}, ${member.role} at Userhood`}
+                    className="h-full w-full object-cover grayscale"
+                    loading="lazy"
+                    decoding="async"
+                    width="280"
+                    height="280"
+                  />
+                </div>
+                <h3 className="mt-4 text-lg font-bold text-white">{member.name}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-white/70">{member.role}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="px-5 py-20 md:px-8 md:py-28">
-        <div className="mx-auto max-w-[1200px]">
-          <div className="grid gap-10 md:grid-cols-12 md:gap-14">
-            <div className="md:col-span-4">
-              <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">02 // The team</div>
-              <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-5xl">Small enough to stay close to the work.</h2>
-              <p className="mt-6 text-base font-normal leading-relaxed text-slate-300">
-                These are the people behind the studio. Roles stay visible because a buyer should know what kind of team may be involved in the work.
-              </p>
-            </div>
+      <section className="border-y border-white/5 bg-white/[0.025] px-5 py-16 md:px-8 md:py-20" aria-labelledby="commitments-title">
+        <div className="mx-auto grid max-w-[1440px] gap-10 md:grid-cols-12 md:gap-14">
+          <div className="md:col-span-5">
+            <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">04 // What you can expect</div>
+            <h2 id="commitments-title" className="mt-4 text-4xl font-black leading-[0.95] tracking-tighter text-white md:text-6xl">
+              We will tell you the uncomfortable thing early.
+            </h2>
+          </div>
 
-            <div className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 md:col-span-8 md:gap-x-7 md:gap-y-12">
-              {team.map((member) => (
-                <article key={member.name}>
-                  <div className="aspect-square overflow-hidden border border-white/10 bg-surface">
-                    <img
-                      src={member.image}
-                      alt={`${member.name}, ${member.role} at Userhood`}
-                      className="h-full w-full object-cover grayscale transition duration-500 hover:grayscale-0"
-                      loading="lazy"
-                      decoding="async"
-                      width="240"
-                      height="240"
-                    />
-                  </div>
-                  <h3 className="mt-4 text-lg font-bold text-white">{member.name}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-white/75">{member.role}</p>
-                </article>
+          <div className="md:col-span-7">
+            <div className="border-t border-white/10">
+              {commitments.map((commitment) => (
+                <div key={commitment} className="flex items-start gap-4 border-b border-white/10 py-6 text-base leading-relaxed text-slate-200 md:text-lg">
+                  <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-primary" />
+                  <span>{commitment}</span>
+                </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
 
-      <section className="border-y border-white/5 bg-white/[0.02] px-5 py-20 md:px-8 md:py-24">
-        <div className="mx-auto grid max-w-[1200px] gap-10 md:grid-cols-12 md:gap-14">
-          <div className="md:col-span-5">
-            <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">03 // What you can expect</div>
-            <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-5xl">We will tell you the uncomfortable thing early.</h2>
-          </div>
-          <div className="space-y-5 md:col-span-7">
-            {[
-              "If the release cannot responsibly fit inside twelve weeks, we will reduce it or say so.",
-              "If AI adds cost without improving the product, we will not force it into the scope.",
-              "If another team is a better fit for the problem, we would rather make that clear before a proposal.",
-            ].map((statement) => (
-              <div key={statement} className="flex items-start gap-4 border-b border-white/10 pb-5 text-base font-normal leading-relaxed text-slate-200 md:text-lg">
-                <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-primary" />
-                <span>{statement}</span>
-              </div>
-            ))}
-
-            <Link
-              to="/?contact=true&source=about_page"
-              className="mt-8 inline-flex min-h-[48px] items-center gap-3 text-base font-bold text-primary transition-colors hover:text-white"
-            >
+            <Link to="/?contact=true&source=about_footer" className="mt-8 inline-flex min-h-[52px] items-center gap-3 bg-primary px-7 py-4 text-base font-bold text-black transition-colors hover:bg-white">
               Discuss your 12-week build <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
