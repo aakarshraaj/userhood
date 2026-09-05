@@ -161,57 +161,21 @@
   }
 }
 
-@keyframes userhood-u-bridge-swap {
-  0%, 10%, 52%, 100% {
+@keyframes userhood-monogram-swap {
+  0%, 12%, 54%, 100% {
     transform: translateY(0);
-    fill: currentColor;
   }
 
-  18% {
+  20% {
     transform: translateY(-15px);
-    fill: var(--color-primary);
   }
 
-  22%, 38% {
-    transform: translateY(-13.512px);
-    fill: var(--color-primary);
+  24%, 40% {
+    transform: translateY(-13px);
   }
 
-  46% {
-    transform: translateY(1.8px);
-    fill: currentColor;
-  }
-}
-
-@keyframes userhood-h-bridge-swap {
-  0%, 10%, 52%, 100% {
-    transform: translateY(0);
-    fill: currentColor;
-  }
-
-  18% {
-    transform: translateY(14px);
-    fill: var(--color-primary);
-  }
-
-  22%, 38% {
-    transform: translateY(12.414px);
-    fill: var(--color-primary);
-  }
-
-  46% {
-    transform: translateY(-1.5px);
-    fill: currentColor;
-  }
-}
-
-@keyframes userhood-h-right-swap {
-  0%, 10%, 52%, 100% {
-    transform: scaleY(1);
-  }
-
-  22%, 38% {
-    transform: scaleY(0.759);
+  48% {
+    transform: translateY(1.5px);
   }
 }
 
@@ -383,25 +347,11 @@
   transform: skewX(-12deg);
 }
 
-.userhood-logo-animated .userhood-logo-u-bridge,
-.userhood-logo-animated .userhood-logo-h-bridge,
-.userhood-logo-animated .userhood-logo-h-right {
+.userhood-monogram-bridge {
   transform-box: fill-box;
   transform-origin: center;
   will-change: transform;
-}
-
-.userhood-logo-animated .userhood-logo-u-bridge {
-  animation: userhood-u-bridge-swap 7s var(--motion-ease-out) 1.2s infinite;
-}
-
-.userhood-logo-animated .userhood-logo-h-bridge {
-  animation: userhood-h-bridge-swap 7s var(--motion-ease-out) 1.2s infinite;
-}
-
-.userhood-logo-animated .userhood-logo-h-right {
-  transform-origin: center top;
-  animation: userhood-h-right-swap 7s var(--motion-ease-out) 1.2s infinite;
+  animation: userhood-monogram-swap 6.8s var(--motion-ease-out) 1.1s infinite;
 }
 
 @media (hover: hover) and (pointer: fine) {
