@@ -1,53 +1,8 @@
-import type { CSSProperties } from "react";
-import { ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
-import { trackAnalyticsEvent } from "../utils/analytics";
-import BrandIdentity from "./BrandIdentity";
-import ProjectMedia, { type ProjectMediaSpec } from "./ProjectMedia";
+import HeroSculpture from "./HeroSculpture";
 
 interface HeroProps {
   onContactClick: () => void;
 }
-
-const proofProjects: Array<{
-  name: string;
-  category: string;
-  proof: string;
-  link: string;
-  accent: string;
-  media: ProjectMediaSpec;
-}> = [
-  {
-    name: "Rentnama",
-    category: "Rental intelligence platform",
-    proof: "178 first-hand reports across 146 societies",
-    link: "/case-study/rentnama",
-    accent: "#b5ef67",
-    media: {
-      label: "Live product // Pune rental map",
-      description: "Society-level rent answers, map-led contributions, watches, and privacy-safe operations.",
-      src: "/work/rentnama-map.webp",
-      alt: "Rentnama's live Pune rental map showing first-hand rent reports by society",
-      objectPosition: "center top",
-      priority: true,
-    },
-  },
-  {
-    name: "Tirch",
-    category: "End-to-end commerce engine",
-    proof: "10 live products running through one engine",
-    link: "/case-study/tirch",
-    accent: "#d2694a",
-    media: {
-      label: "Live product // Tirch commerce engine",
-      description: "Merchandising, bag, checkout, identity, orders, transactional systems, and release operations.",
-      src: "/work/tirch-home.webp",
-      alt: "Tirch's live storefront with campaign art direction and product proposition",
-      objectPosition: "center",
-      priority: true,
-    },
-  },
-];
 
 export default function Hero({ onContactClick }: HeroProps) {
   return (
@@ -94,67 +49,20 @@ export default function Hero({ onContactClick }: HeroProps) {
                 One senior team takes a sharply scoped MVP from product brief to production. Strategy, design, engineering, and useful AI move in one accountable build.
               </p>
 
-              <div className="flex flex-col items-stretch gap-3 text-base sm:flex-row sm:items-center sm:gap-5">
+              <div className="flex flex-col items-stretch gap-3 text-base sm:flex-row sm:items-center">
                 <button
                   onClick={onContactClick}
                   className="motion-button flex min-h-[48px] w-full items-center justify-center gap-2 bg-primary px-6 py-4 font-bold text-black hover:bg-white sm:w-auto"
                 >
                   Discuss your 12-week build
                 </button>
-                <Link
-                  to="/work"
-                  onClick={() => trackAnalyticsEvent("selected_work_click", { source: "hero" })}
-                  className="motion-button flex min-h-[48px] w-full items-center justify-center border border-white/10 px-6 py-4 text-white hover:border-white/30 sm:w-auto"
-                >
-                  See selected work
-                </Link>
               </div>
             </div>
           </div>
 
-          <aside className="hidden lg:col-span-5 lg:block" aria-label="Selected product work">
-            <div className="mb-5 flex items-end justify-between border-b border-white/10 pb-4">
-              <div>
-                <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Shipped product builds</div>
-                <p className="mt-2 text-sm text-slate-300">Two working products, opened up case by case.</p>
-              </div>
-              <span className="font-mono text-xs text-white/45">02 LIVE</span>
-            </div>
-
-            <div className="grid gap-4">
-              {proofProjects.map((project) => (
-                <Link
-                  key={project.name}
-                  to={project.link}
-                  aria-label={`Open the ${project.name} case study: ${project.category}`}
-                  onClick={() => trackAnalyticsEvent("case_study_open", { source: "hero_proof", organisation: project.name })}
-                  className="content-card motion-card group grid grid-cols-[minmax(0,1fr)_158px] hover:border-white/25"
-                  style={{ "--work-accent": project.accent } as CSSProperties}
-                >
-                  <ProjectMedia
-                    project={project.name}
-                    media={project.media}
-                    accent={project.accent}
-                    size="mini"
-                    className="border-0 border-r border-white/10"
-                  />
-                  <div className="flex min-w-0 flex-col justify-between p-4">
-                    <div>
-                      <div className="font-mono text-[9px] uppercase leading-relaxed tracking-[0.12em] text-white/50">{project.category}</div>
-                      <BrandIdentity brand={project.name as "Rentnama" | "Tirch"} size="compact" className="mt-3" />
-                    </div>
-                    <div>
-                      <p className="text-xs leading-relaxed text-slate-300">{project.proof}</p>
-                      <div className="mt-4 flex items-center justify-between">
-                        <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-white/55">Case study</span>
-                        <ArrowUpRight className="h-4 w-4 text-white/60 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </aside>
+          <div className="hidden lg:col-span-5 lg:block">
+            <HeroSculpture />
+          </div>
         </div>
 
       </div>
