@@ -1,4 +1,5 @@
 import CaseStudyLayout, { type CaseStudyData } from "../components/CaseStudyLayout";
+import TirchCommerceEngine from "../components/case-studies/TirchCommerceEngine";
 import { getPageSEO } from "../data/siteMetadata";
 import { useSEO } from "../utils/seo";
 
@@ -117,5 +118,5 @@ const caseStudy: CaseStudyData = {
 export default function CaseStudyTirch({ onContactClick }: { onContactClick: () => void }) {
   useSEO(getPageSEO("tirch"));
 
-  return <CaseStudyLayout data={caseStudy} onContactClick={onContactClick} />;
+  return <CaseStudyLayout data={caseStudy} onContactClick={onContactClick} signatureStory={<TirchCommerceEngine />} />;
 }
