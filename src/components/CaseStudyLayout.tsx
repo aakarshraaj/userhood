@@ -79,23 +79,20 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
               <ArrowLeft className="h-4 w-4" /> Back to selected work
             </Link>
 
-            <div className="mt-10 grid gap-10 md:mt-16 md:grid-cols-12 md:gap-12">
-              <div className="md:col-span-8">
-                <div className="mb-6 font-mono text-xs uppercase tracking-[0.18em] text-primary">
+            <div className="mt-8 grid items-center gap-9 md:mt-10 md:grid-cols-12 md:gap-10 lg:gap-14">
+              <div className="md:col-span-6 lg:col-span-7">
+                <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-primary">
                   [ {data.relationship} // {data.category} ]
                 </div>
-                <h1 className="max-w-5xl text-5xl font-black leading-[0.94] tracking-tighter text-white sm:text-6xl md:text-7xl lg:text-8xl">
+                <h1 className="max-w-5xl text-[clamp(3.15rem,6vw,5.7rem)] font-black leading-[0.92] tracking-tighter text-white">
                   {data.title}
                 </h1>
-              </div>
-
-              <div className="md:col-span-4 md:self-end">
-                <div className="border-l-2 border-primary/50 pl-5">
+                <div className="mt-7 max-w-2xl border-l-2 border-primary/50 pl-5 md:mt-8">
                   <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/70">
                     {isTeamExperience ? "Organisation" : "Product"}
                   </div>
-                  <div className="mt-2 text-2xl font-bold text-white">{data.brand}</div>
-                  <p className="mt-5 text-base font-normal leading-relaxed text-slate-300">{data.summary}</p>
+                  <div className="mt-2 text-xl font-bold text-white md:text-2xl">{data.brand}</div>
+                  <p className="mt-4 max-w-xl text-base font-normal leading-relaxed text-slate-300">{data.summary}</p>
                   {data.liveProduct && (
                     <a
                       href={data.liveProduct.href}
@@ -119,9 +116,13 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
                   )}
                 </div>
               </div>
+
+              <div className="md:col-span-6 lg:col-span-5">
+                <ProjectMedia project={data.brand} media={data.heroMedia} accent={data.accent} />
+              </div>
             </div>
 
-            <dl className="mt-12 grid border-y border-white/10 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+            <dl className="mt-10 grid border-y border-white/10 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
               {data.facts.map((fact) => (
                 <div key={fact.label} className="border-white/10 px-0 py-5 sm:px-5 sm:first:pl-0 sm:[&:nth-child(even)]:border-l lg:border-l lg:first:border-l-0 lg:last:pr-0">
                   <dt className="font-mono text-xs uppercase tracking-[0.12em] text-white/70">{fact.label}</dt>
@@ -129,8 +130,6 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
                 </div>
               ))}
             </dl>
-
-            <ProjectMedia project={data.brand} media={data.heroMedia} accent={data.accent} className="mt-10 md:mt-14" />
 
             <div className="grid border-b border-white/10 py-6 md:grid-cols-12 md:gap-10 md:py-8">
               <div className="font-mono text-xs uppercase tracking-[0.14em] text-primary md:col-span-3">
@@ -142,7 +141,7 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
         </header>
 
         {data.outcome && (
-          <section className="mt-16 border-y border-white/10 bg-[#08080a] px-5 py-14 md:mt-24 md:px-8 md:py-20" aria-labelledby={`${data.pageId}-outcome-title`}>
+          <section className="mt-12 border-y border-white/10 bg-[#08080a] px-5 py-14 md:mt-16 md:px-8 md:py-20" aria-labelledby={`${data.pageId}-outcome-title`}>
             <div className="mx-auto max-w-[1280px]">
               <div className="grid gap-8 md:grid-cols-12 md:items-end">
                 <div className="md:col-span-7">
