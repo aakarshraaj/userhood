@@ -18,7 +18,7 @@ export interface CaseStudyData {
   pageId: PageId;
   brand: string;
   category: string;
-  relationship: "Repository-backed product build" | "Team experience";
+  relationship: "Product build" | "Team experience";
   title: string;
   summary: string;
   facts: CaseStudyFact[];

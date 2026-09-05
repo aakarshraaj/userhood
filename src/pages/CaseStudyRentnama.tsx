@@ -6,7 +6,7 @@ const caseStudy: CaseStudyData = {
   pageId: "rentnama",
   brand: "Rentnama",
   category: "Rental intelligence platform",
-  relationship: "Repository-backed product build",
+  relationship: "Product build",
   title: "Building a public price layer for India’s rental market.",
   summary:
     "A society-first rental intelligence product that helps people see what renters actually pay, contribute first-hand data, and improve the answer for the next person.",
@@ -17,11 +17,17 @@ const caseStudy: CaseStudyData = {
     { label: "Market focus", value: "Pune density; Mumbai and Bengaluru pilots" },
   ],
   heroMedia: {
-    label: "Hero image // Society answer and rental map",
-    description: "Replace with a wide product view showing a society-level rent answer, its evidence basis, and the surrounding rental map.",
+    label: "Live product // Society answer + evidence map",
+    description: "A society-level rent answer, its evidence basis, and the surrounding rental map.",
+    src: "/work/rentnama-society.webp",
+    alt: "Rentnama's Life Republic society dossier showing first-hand rental evidence",
+    secondarySrc: "/work/rentnama-map.webp",
+    secondaryAlt: "Rentnama's live Pune rental map with society and locality evidence",
+    treatment: "layered",
+    priority: true,
   },
   proofNote:
-    "This case study is grounded in the working Rentnama repository, its product decision log, and completed delivery epics. Adoption and marketplace liquidity remain measurement questions—not portfolio claims.",
+    "The screens below come from the live product. They show what was designed and shipped; adoption and marketplace liquidity remain measurement questions—not portfolio claims.",
   context:
     "Rental portals tell people what landlords ask. Renters need a different answer: what people actually pay at a specific society, how recent the reports are, and whether the number is strong enough to trust. That answer only improves when the product can recruit the next legitimate report.",
   challenge:
@@ -32,8 +38,13 @@ const caseStudy: CaseStudyData = {
       detail:
         "The product was simplified around direct society and locality search. A renter reaches a stable society answer first; city breadth becomes a consequence of many dense local networks rather than the primary experience.",
       media: {
-        label: "Product image // Search to society answer",
-        description: "Replace with the search, disambiguation, and society-answer journey across phone and desktop.",
+        label: "Live product // Search to society answer",
+        description: "The public search and society-answer journey.",
+        src: "/work/rentnama-explore.webp",
+        alt: "Rentnama's Pune search experience inviting people to explore society by society",
+        secondarySrc: "/work/rentnama-society.webp",
+        secondaryAlt: "The resulting Life Republic society dossier with first-hand rent evidence",
+        treatment: "layered",
       },
     },
     {
@@ -41,8 +52,11 @@ const caseStudy: CaseStudyData = {
       detail:
         "One report stays a reported rent. A median appears only when the evidence supports one, accompanied by report count and freshness. Unsupported comparisons return nothing instead of a confident-looking zero.",
       media: {
-        label: "Product image // Evidence states",
-        description: "Replace with a comparison of one-report, supported-median, thin-data, and empty-society states.",
+        label: "Live product // Evidence before certainty",
+        description: "Rent ranges, report counts, freshness, and deposits shown together.",
+        src: "/work/rentnama-society.webp",
+        alt: "Life Republic rent dossier showing a range based on five reports and the latest deposit evidence",
+        treatment: "inset",
       },
     },
     {
@@ -50,8 +64,11 @@ const caseStudy: CaseStudyData = {
       detail:
         "A contribution from a known society reuses its canonical identity. An unknown place starts with search and visible disambiguation, then requires map confirmation or correction before the rent is attached.",
       media: {
-        label: "Product image // Guided-precision contribution",
-        description: "Replace with the known-society fast path and unknown-building map-confirmation flow.",
+        label: "Live product // Privacy-bounded contribution",
+        description: "The contribution entry point separates rent evidence from home pass-ons and states the privacy boundary upfront.",
+        src: "/work/rentnama-contribute.webp",
+        alt: "Rentnama contribution chooser for sharing rent evidence or passing on a home, with privacy assurances",
+        treatment: "inset",
       },
     },
     {
@@ -59,8 +76,11 @@ const caseStudy: CaseStudyData = {
       detail:
         "Purpose-specific sharing, society watches, contribution rewards, privacy-safe attribution, and a protected density dashboard connect the public product to the operating work required to make selected societies genuinely useful.",
       media: {
-        label: "Product image // Share, watch, and density loop",
-        description: "Replace with a three-frame story showing resident sharing, a watch return, and the privacy-bounded operations dashboard.",
+        label: "Live product // Density made visible",
+        description: "The map turns report density into an explorable public product rather than a hidden database.",
+        src: "/work/rentnama-map.webp",
+        alt: "Rentnama map showing Pune localities, rent report density, and society-level price markers",
+        treatment: "inset",
       },
     },
   ],
@@ -73,7 +93,7 @@ const caseStudy: CaseStudyData = {
     "Moderation, density operations, and native-readiness gates",
   ],
   evidenceBoundary:
-    "The repository verifies the product flows, data contracts, privacy rules, completed core-loop epics, and operational tooling described here. It does not prove product-market fit, city liquidity, adoption, revenue, or percentage improvements; those require production evidence over time.",
+    "The live product and implementation verify the flows, evidence rules, privacy boundaries, and operating tools described here. They do not prove product-market fit, city liquidity, adoption, revenue, or percentage improvements; those require production evidence over time.",
   accent: "#b5ef67",
 };
 

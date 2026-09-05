@@ -27,8 +27,13 @@ const selectedWork: WorkItem[] = [
     link: "/case-study/rentnama",
     accent: "#b5ef67",
     media: {
-      label: "Product image // Society answer and rental map",
+      label: "Live product // Answer + evidence map",
       description: "Society-level rent intelligence with visible evidence, freshness, and map context.",
+      src: "/work/rentnama-society.webp",
+      alt: "Rentnama society dossier for Life Republic showing rent range, report count, and deposit evidence",
+      secondarySrc: "/work/rentnama-map.webp",
+      secondaryAlt: "Rentnama's live Pune map with society-level rent pins and evidence filters",
+      treatment: "layered",
     },
   },
   {
@@ -42,8 +47,13 @@ const selectedWork: WorkItem[] = [
     link: "/case-study/tirch",
     accent: "#d2694a",
     media: {
-      label: "Product image // Storefront and collection system",
+      label: "Live product // Campaign + catalogue",
       description: "A sharp small-batch storefront connected to the commerce system behind it.",
+      src: "/work/tirch-home.webp",
+      alt: "Tirch storefront campaign featuring the Ghungroo Break tee",
+      secondarySrc: "/work/tirch-catalogue.webp",
+      secondaryAlt: "Tirch shop catalogue with distinct product photography and collection hierarchy",
+      treatment: "layered",
     },
   },
   {

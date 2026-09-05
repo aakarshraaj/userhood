@@ -5,6 +5,12 @@ export interface ProjectMediaSpec {
   description: string;
   src?: string;
   alt?: string;
+  secondarySrc?: string;
+  secondaryAlt?: string;
+  objectPosition?: string;
+  secondaryObjectPosition?: string;
+  treatment?: "cover" | "inset" | "layered";
+  priority?: boolean;
 }
 
 interface ProjectMediaProps {
@@ -25,6 +31,7 @@ export default function ProjectMedia({
   className = "",
 }: ProjectMediaProps) {
   const resolvedSize = size ?? (compact ? "compact" : "default");
+  const treatment = media.treatment ?? (media.secondarySrc ? "layered" : "cover");
   const style = {
     "--project-accent": accent,
     background: `radial-gradient(circle at 82% 18%, ${accent}26 0, transparent 34%), linear-gradient(145deg, #12151a 0%, #090a0d 72%)`,
@@ -34,20 +41,59 @@ export default function ProjectMedia({
     <figure
       className={`relative isolate overflow-hidden border border-white/10 bg-[#0b0c0f] ${
         resolvedSize === "mini"
-          ? "min-h-[205px]"
+          ? "aspect-video min-h-[205px]"
           : resolvedSize === "compact"
-            ? "min-h-[215px] md:min-h-[225px]"
-            : "min-h-[320px] md:min-h-[520px]"
+            ? "aspect-video min-h-[215px]"
+            : "aspect-video min-h-[250px]"
       } ${className}`}
       style={style}
     >
       {media.src ? (
-        <img
-          src={media.src}
-          alt={media.alt ?? `${project} product interface`}
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+        treatment === "layered" && media.secondarySrc ? (
+          <div className="absolute inset-x-3 bottom-14 top-3 md:inset-x-7 md:bottom-20 md:top-7">
+            <div className="absolute left-0 top-0 h-[82%] w-[84%] overflow-hidden border border-white/15 bg-black shadow-[0_28px_80px_rgba(0,0,0,0.55)]">
+              <img
+                src={media.src}
+                alt={media.alt ?? `${project} product interface`}
+                loading={media.priority ? "eager" : "lazy"}
+                fetchPriority={media.priority ? "high" : "auto"}
+                className="h-full w-full object-cover"
+                style={{ objectPosition: media.objectPosition ?? "center" }}
+              />
+            </div>
+            <div className="absolute bottom-0 right-0 aspect-video w-[48%] overflow-hidden border border-[var(--project-accent)]/70 bg-black shadow-[0_24px_64px_rgba(0,0,0,0.75)]">
+              <img
+                src={media.secondarySrc}
+                alt={media.secondaryAlt ?? `${project} product interface detail`}
+                loading={media.priority ? "eager" : "lazy"}
+                fetchPriority={media.priority ? "high" : "auto"}
+                className="h-full w-full object-cover"
+                style={{ objectPosition: media.secondaryObjectPosition ?? "center" }}
+              />
+            </div>
+            <div className="absolute right-0 top-0 h-5 w-5 border-r border-t border-[var(--project-accent)] md:h-8 md:w-8" aria-hidden="true" />
+          </div>
+        ) : treatment === "inset" ? (
+          <div className="absolute inset-x-3 bottom-14 top-3 overflow-hidden border border-white/15 bg-black shadow-[0_24px_70px_rgba(0,0,0,0.55)] md:inset-x-7 md:bottom-20 md:top-7">
+            <img
+              src={media.src}
+              alt={media.alt ?? `${project} product interface`}
+              loading={media.priority ? "eager" : "lazy"}
+              fetchPriority={media.priority ? "high" : "auto"}
+              className="h-full w-full object-cover"
+              style={{ objectPosition: media.objectPosition ?? "center" }}
+            />
+          </div>
+        ) : (
+          <img
+            src={media.src}
+            alt={media.alt ?? `${project} product interface`}
+            loading={media.priority ? "eager" : "lazy"}
+            fetchPriority={media.priority ? "high" : "auto"}
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ objectPosition: media.objectPosition ?? "center" }}
+          />
+        )
       ) : (
         <div
           role="img"
@@ -76,7 +122,7 @@ export default function ProjectMedia({
         </div>
       )}
 
-      <figcaption className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between gap-4 border-t border-white/10 bg-[#090a0d]/90 px-4 py-3 backdrop-blur-sm md:px-6">
+      <figcaption className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between gap-4 border-t border-white/10 bg-[#090a0d]/92 px-4 py-3 backdrop-blur-sm md:px-6">
         <span className="font-mono text-xs uppercase tracking-[0.11em] text-white/80">
           {media.label}
         </span>

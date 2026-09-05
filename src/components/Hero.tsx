@@ -20,8 +20,12 @@ const proofProjects: Array<{
     link: "/case-study/rentnama",
     accent: "#b5ef67",
     media: {
-      label: "Society answers + rental map",
+      label: "Live product // Pune rental map",
       description: "Society-level rent answers, map-led contributions, watches, and privacy-safe operations.",
+      src: "/work/rentnama-map.webp",
+      alt: "Rentnama's live Pune rental map showing first-hand rent reports by society",
+      objectPosition: "center top",
+      priority: true,
     },
   },
   {
@@ -30,8 +34,12 @@ const proofProjects: Array<{
     link: "/case-study/tirch",
     accent: "#d2694a",
     media: {
-      label: "Storefront + commerce system",
+      label: "Live product // Tirch storefront",
       description: "Storefront, checkout, customer accounts, release boundaries, and commerce infrastructure.",
+      src: "/work/tirch-home.webp",
+      alt: "Tirch's live storefront with campaign art direction and product proposition",
+      objectPosition: "center",
+      priority: true,
     },
   },
 ];

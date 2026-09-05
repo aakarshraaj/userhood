@@ -115,9 +115,9 @@ export default function About() {
           </div>
 
           <div className="mt-12 grid gap-4 border-t border-white/10 pt-6 md:grid-cols-[auto_1fr] md:items-center md:gap-8">
-            <p className="font-mono text-xs uppercase tracking-[0.16em] text-white/60">Evidence boundary</p>
+            <p className="font-mono text-xs uppercase tracking-[0.16em] text-white/60">Work shown</p>
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold text-white/70 sm:text-sm md:justify-end">
-              <span className="text-primary">Repository-backed: Rentnama + Tirch</span>
+              <span className="text-primary">Product builds: Rentnama + Tirch</span>
               <span className="hidden text-primary/40 sm:inline">//</span>
               <span>Team experience: Hyundai + Mitsubishi Motors</span>
             </div>
@@ -160,7 +160,7 @@ export default function About() {
             <div className="md:col-span-7">
               <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">02 // Relevant product work</div>
               <h2 id="proof-title" className="mt-4 text-4xl font-black leading-[0.94] tracking-tighter text-white md:text-6xl">
-                Inspect the work.<br /><span className="text-primary">Keep the provenance.</span>
+                Inspect the work.<br /><span className="text-primary">Understand the decisions.</span>
               </h2>
             </div>
             <p className="max-w-xl text-base leading-relaxed text-slate-300 md:col-span-5 md:justify-self-end md:text-lg">
@@ -170,7 +170,7 @@ export default function About() {
 
           <div className="mt-10 grid gap-px border border-white/10 bg-white/10 md:grid-cols-2">
             <div className="bg-[#08080a] p-7 md:p-9">
-              <div className="font-mono text-xs uppercase tracking-[0.14em] text-primary">Repository-backed builds</div>
+              <div className="font-mono text-xs uppercase tracking-[0.14em] text-primary">Product builds</div>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 <Link to="/case-study/rentnama" className="group flex min-h-[112px] flex-col justify-between border border-white/10 p-5 transition-colors hover:border-primary">
                   <span className="text-xl font-bold text-white group-hover:text-primary">Rentnama</span>
