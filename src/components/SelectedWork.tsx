@@ -125,17 +125,13 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
       <div className="tech-grid pointer-events-none absolute inset-0 opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-[1440px]">
-        <div className="motion-reveal grid gap-7 border-b border-white/10 pb-8 md:grid-cols-12 md:items-end md:pb-10">
-          <div className="md:col-span-8">
+        <div className="motion-reveal border-b border-white/10 pb-8 md:pb-10">
+          <div>
             <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-primary">[ {standalone ? "SELECTED_WORK" : "01 // SELECTED_WORK"} ]</div>
             <Heading className="max-w-4xl text-4xl font-black leading-[0.96] tracking-tighter text-white sm:text-5xl md:text-7xl">
               Products you can inspect. <span className="text-primary">Decisions we can defend.</span>
             </Heading>
           </div>
-
-          <p className="max-w-md text-base font-normal leading-relaxed text-slate-300 md:col-span-4 md:justify-self-end md:text-lg">
-            Two products built end to end. Open either one to see the constraint, the system, and the consequence.
-          </p>
         </div>
 
         <div className="motion-reveal grid gap-px bg-white/10 lg:grid-cols-2">
