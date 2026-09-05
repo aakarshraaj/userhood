@@ -10,6 +10,7 @@ interface HeroProps {
 const proofProjects: Array<{
   name: string;
   category: string;
+  proof: string;
   link: string;
   accent: string;
   media: ProjectMediaSpec;
@@ -17,6 +18,7 @@ const proofProjects: Array<{
   {
     name: "Rentnama",
     category: "Rental intelligence platform",
+    proof: "178 first-hand reports across 146 societies",
     link: "/case-study/rentnama",
     accent: "#b5ef67",
     media: {
@@ -31,6 +33,7 @@ const proofProjects: Array<{
   {
     name: "Tirch",
     category: "End-to-end commerce engine",
+    proof: "10 live products running through one engine",
     link: "/case-study/tirch",
     accent: "#d2694a",
     media: {
@@ -110,10 +113,10 @@ export default function Hero({ onContactClick }: HeroProps) {
           <aside className="hidden lg:col-span-5 lg:block" aria-label="Selected product work">
             <div className="mb-5 flex items-end justify-between border-b border-white/10 pb-4">
               <div>
-                <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Selected work</div>
-                <p className="mt-2 text-sm text-slate-300">Recent product design and engineering.</p>
+                <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Shipped product builds</div>
+                <p className="mt-2 text-sm text-slate-300">Two working products, opened up case by case.</p>
               </div>
-              <span className="font-mono text-xs text-white/45">02 BUILDS</span>
+              <span className="font-mono text-xs text-white/45">02 LIVE</span>
             </div>
 
             <div className="grid gap-4">
@@ -123,7 +126,7 @@ export default function Hero({ onContactClick }: HeroProps) {
                   to={project.link}
                   aria-label={`Open the ${project.name} case study: ${project.category}`}
                   onClick={() => trackAnalyticsEvent("case_study_open", { source: "hero_proof", organisation: project.name })}
-                  className="group grid grid-cols-[minmax(0,1fr)_52px] border border-white/10 bg-[#08080a] transition-colors hover:border-white/25"
+                  className="group grid grid-cols-[minmax(0,1fr)_158px] border border-white/10 bg-[#08080a] transition-colors hover:border-white/25"
                 >
                   <ProjectMedia
                     project={project.name}
@@ -132,12 +135,18 @@ export default function Hero({ onContactClick }: HeroProps) {
                     size="mini"
                     className="border-0 border-r border-white/10"
                   />
-                  <div className="flex flex-col items-center justify-between py-4">
-                    <ArrowUpRight className="h-5 w-5 text-white/60 transition-colors group-hover:text-primary" />
-                    <span className="-rotate-90 whitespace-nowrap font-mono text-xs uppercase tracking-[0.12em] text-white/55">
-                      {project.name}
-                    </span>
-                    <span className="h-2 w-2" style={{ backgroundColor: project.accent }} />
+                  <div className="flex min-w-0 flex-col justify-between p-4">
+                    <div>
+                      <div className="font-mono text-[9px] uppercase leading-relaxed tracking-[0.12em] text-white/50">{project.category}</div>
+                      <div className="mt-3 text-lg font-bold text-white transition-colors group-hover:text-primary">{project.name}</div>
+                    </div>
+                    <div>
+                      <p className="text-xs leading-relaxed text-slate-300">{project.proof}</p>
+                      <div className="mt-3 flex items-center justify-between border-t border-white/10 pt-3">
+                        <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-white/55">Case study</span>
+                        <ArrowUpRight className="h-4 w-4 text-white/60 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+                      </div>
+                    </div>
                   </div>
                 </Link>
               ))}
