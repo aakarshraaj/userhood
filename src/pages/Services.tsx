@@ -262,7 +262,7 @@ export default function Services() {
             </div>
 
             <div className="lg:col-span-5">
-              <p className="border-l-2 border-primary/30 pl-6 text-lg font-normal leading-relaxed text-slate-200 md:text-xl">
+              <p className="text-lg font-normal leading-relaxed text-slate-200 md:text-xl">
                 Start with the condition of the product instead of a shopping list of disciplines. The 12-week build is our default for a new, sharply scoped release. Existing products begin somewhere else.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
@@ -345,7 +345,7 @@ export default function Services() {
       </section>
 
       <section className="mx-auto max-w-[1440px] px-5 md:px-8">
-        <div className="content-card content-card-accent grid gap-8 p-7 md:grid-cols-12 md:items-center md:p-10 lg:p-12">
+        <div className="content-card grid gap-8 p-7 md:grid-cols-12 md:items-center md:p-10 lg:p-12">
           <div className="md:col-span-8">
             <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">Still deciding?</div>
             <h2 className="mt-4 text-3xl font-black tracking-tighter text-white md:text-5xl">Bring the product condition. We will help choose the first move.</h2>

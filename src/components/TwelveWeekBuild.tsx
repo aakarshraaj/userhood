@@ -45,7 +45,7 @@ export default function TwelveWeekBuild() {
 
         <ol className="motion-reveal grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {phases.map((phase, index) => (
-            <li key={phase.weeks} className="content-card motion-card flex min-h-[240px] flex-col border-t-2 border-t-primary/55 p-6 hover:border-white/20 md:p-7">
+            <li key={phase.weeks} className="content-card motion-card flex min-h-[240px] flex-col p-6 hover:border-white/20 md:p-7">
               <div className="flex items-center justify-between gap-4 font-mono text-xs uppercase tracking-[0.13em] text-primary">
                 <span>{phase.weeks}</span>
                 <span className="text-white/35">0{index + 1}</span>

@@ -141,7 +141,7 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
               to={item.link}
               onClick={() => trackAnalyticsEvent("case_study_open", { source: analyticsSource, organisation: item.organisation })}
               aria-label={`Read the ${item.organisation} ${item.relationship.toLowerCase()} case study`}
-              className="content-card content-card-accent motion-card group flex min-w-0 flex-col p-4 hover:border-white/20 md:p-5"
+              className="content-card motion-card group flex min-w-0 flex-col p-4 hover:border-white/20 md:p-5"
               style={{ "--work-accent": item.accent } as CSSProperties}
             >
               <ProjectMedia project={item.organisation} media={item.media} accent={item.accent} compact />
@@ -178,7 +178,7 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
                   ))}
                 </dl>
 
-                <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-5 text-sm font-bold text-white/80">
+                <div className="mt-7 flex items-center justify-between text-sm font-bold text-white/80">
                   <span>See the decisions behind it</span>
                   <span className="motion-button flex h-11 w-11 items-center justify-center border border-white/15 text-white group-hover:border-primary group-hover:bg-primary group-hover:text-black">
                     <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

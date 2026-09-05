@@ -73,7 +73,6 @@ export default function ProjectMedia({
                 style={{ objectPosition: media.secondaryObjectPosition ?? "center" }}
               />
             </div>
-            <div className="absolute right-0 top-0 h-5 w-5 border-r border-t border-[var(--project-accent)] md:h-8 md:w-8" aria-hidden="true" />
           </div>
         ) : treatment === "inset" ? (
           <div className="absolute inset-x-3 bottom-14 top-3 overflow-hidden border border-white/15 bg-black shadow-[0_24px_70px_rgba(0,0,0,0.55)] md:inset-x-7 md:bottom-20 md:top-7">
@@ -103,10 +102,6 @@ export default function ProjectMedia({
           className="absolute inset-0"
         >
           <div className="tech-grid absolute inset-0 opacity-50" />
-          <div className="absolute inset-x-0 top-1/2 h-px bg-white/10" />
-          <div className="absolute bottom-0 top-0 left-1/2 w-px bg-white/10" />
-          <div className="absolute left-5 top-5 h-8 w-8 border-l border-t border-[var(--project-accent)] md:left-7 md:top-7" />
-          <div className="absolute bottom-5 right-5 h-8 w-8 border-b border-r border-[var(--project-accent)] md:bottom-7 md:right-7" />
 
           <div className={`absolute inset-0 flex items-center justify-center text-center ${resolvedSize === "mini" ? "px-6 pb-14 pt-6" : "p-7 md:p-12"}`}>
             <div className="max-w-2xl">
@@ -124,7 +119,7 @@ export default function ProjectMedia({
         </div>
       )}
 
-      <figcaption className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between gap-4 border-t border-white/10 bg-[#090a0d]/92 px-4 py-3 backdrop-blur-sm md:px-6">
+      <figcaption className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between gap-4 bg-[#090a0d]/94 px-4 py-3 backdrop-blur-sm md:px-6">
         <span className="font-mono text-xs uppercase tracking-[0.11em] text-white/80">
           {media.label}
         </span>

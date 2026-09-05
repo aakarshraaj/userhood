@@ -88,7 +88,7 @@ export default function Hero({ onContactClick }: HeroProps) {
               </span>
             </h1>
 
-            <div className="max-w-2xl border-l-2 border-primary/30 pl-5 md:pl-7">
+            <div className="max-w-2xl">
               <p className="mb-7 text-base font-normal leading-relaxed text-slate-300 sm:text-lg md:mb-8">
                 One senior team takes a sharply scoped MVP from product brief to production. Strategy, design, engineering, and useful AI move in one accountable build.
               </p>
@@ -127,7 +127,7 @@ export default function Hero({ onContactClick }: HeroProps) {
                   to={project.link}
                   aria-label={`Open the ${project.name} case study: ${project.category}`}
                   onClick={() => trackAnalyticsEvent("case_study_open", { source: "hero_proof", organisation: project.name })}
-                  className="content-card content-card-accent motion-card group grid grid-cols-[minmax(0,1fr)_158px] hover:border-white/25"
+                  className="content-card motion-card group grid grid-cols-[minmax(0,1fr)_158px] hover:border-white/25"
                   style={{ "--work-accent": project.accent } as CSSProperties}
                 >
                   <ProjectMedia
@@ -144,7 +144,7 @@ export default function Hero({ onContactClick }: HeroProps) {
                     </div>
                     <div>
                       <p className="text-xs leading-relaxed text-slate-300">{project.proof}</p>
-                      <div className="mt-3 flex items-center justify-between border-t border-white/10 pt-3">
+                      <div className="mt-4 flex items-center justify-between">
                         <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-white/55">Case study</span>
                         <ArrowUpRight className="h-4 w-4 text-white/60 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
                       </div>

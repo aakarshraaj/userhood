@@ -30,7 +30,7 @@ function FlowArrow({ label }: { label: string }) {
 export default function RentnamaEvidenceFlow() {
   return (
     <section
-      className="relative isolate overflow-hidden border-y border-white/10 bg-[#0d100a] px-5 py-16 md:px-8 md:py-24"
+      className="relative isolate overflow-hidden bg-[#0d100a] px-5 py-16 md:px-8 md:py-24"
       aria-labelledby="rentnama-evidence-flow-title"
     >
       <div className="tech-grid pointer-events-none absolute inset-0 opacity-15" />
@@ -122,7 +122,7 @@ export default function RentnamaEvidenceFlow() {
           </article>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-8">
+        <div className="mt-14">
           <div className="mb-5 flex items-center justify-between gap-5">
             <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/65">Evidence rules expressed in the interface</div>
             <span className="hidden font-mono text-[10px] uppercase tracking-[0.14em] text-primary sm:block">Confidence without theatre</span>

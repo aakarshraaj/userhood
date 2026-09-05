@@ -48,12 +48,12 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
               </p>
             </div>
 
-            <div className="md:col-span-7 md:grid md:grid-cols-2 md:gap-x-8">
+            <div className="md:col-span-7 md:grid md:grid-cols-2 md:gap-3">
               <div className="mb-5 font-mono text-xs font-bold uppercase tracking-[0.14em] text-black/60 md:col-span-2">
                 Strong fit when
               </div>
               {fitSignals.map((signal) => (
-                <div key={signal} className="flex items-start gap-3 border-t border-black/20 py-4 text-sm font-medium leading-relaxed text-black md:text-base">
+                <div key={signal} className="flex items-start gap-3 bg-black/[0.045] p-4 text-sm font-medium leading-relaxed text-black md:text-base">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-black" />
                   <span>{signal}</span>
                 </div>
@@ -61,7 +61,7 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
             </div>
           </div>
 
-          <div className="flex flex-col gap-6 border-t border-black/20 pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-6 bg-black/[0.045] p-6 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <div className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-black/60">Next step</div>
               <div className="mt-2 max-w-2xl text-base font-medium text-black">A direct fit conversation with the people who would lead the build.</div>
@@ -84,12 +84,12 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
             </h3>
           </div>
 
-          <div className="border-t border-white/10 pt-4 md:border-l md:border-t-0 md:pl-8 md:pt-0">
+          <div className="bg-black/25 p-4">
             <div className="text-sm font-bold text-white">Product rescue</div>
             <div className="mt-1 font-mono text-xs uppercase tracking-[0.12em] text-primary">2–4 weeks</div>
           </div>
 
-          <div className="border-t border-white/10 pt-4 md:border-l md:border-t-0 md:pl-8 md:pt-0">
+          <div className="bg-black/25 p-4">
             <div className="text-sm font-bold text-white">Post-launch support</div>
             <div className="mt-1 font-mono text-xs uppercase tracking-[0.12em] text-primary">Ongoing</div>
           </div>

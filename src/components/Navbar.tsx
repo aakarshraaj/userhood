@@ -102,7 +102,7 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
             <Link to="/careers" aria-current={pathname.startsWith("/careers") ? "page" : undefined} onClick={handleLinkClick} className={`nav-link hidden transition-colors hover:text-primary lg:inline ${pathname.startsWith("/careers") ? "text-primary" : ""}`}>Careers</Link>
           </div>
 
-          <div className="border-l border-white/10 pl-5">
+          <div className="pl-2">
             <button
               type="button"
               onClick={onContactClick}
@@ -139,7 +139,7 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
               role="dialog"
               aria-modal="true"
               aria-label="Site menu"
-              className="motion-drawer absolute right-0 top-full z-40 flex h-[calc(100dvh-3.5rem)] w-full max-w-sm flex-col overflow-y-auto border-l border-white/10 bg-background-dark p-5 shadow-2xl sm:h-[calc(100dvh-4rem)] sm:p-7 md:hidden"
+              className="motion-drawer absolute right-0 top-full z-40 flex h-[calc(100dvh-3.5rem)] w-full max-w-sm flex-col overflow-y-auto bg-background-dark p-5 shadow-2xl sm:h-[calc(100dvh-4rem)] sm:p-7 md:hidden"
             >
               <div className="border-b border-white/10 pb-5">
                 <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">Navigate</div>

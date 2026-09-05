@@ -34,7 +34,7 @@ export function AnalyticsConsentBanner({ suppressed = false }: { suppressed?: bo
     <aside
       data-analytics-consent-banner
       aria-label="Analytics preference"
-      className="fixed bottom-0 left-0 right-0 z-[80] border-t border-white/15 bg-surface/95 px-4 py-3 shadow-2xl backdrop-blur-xl sm:bottom-4 sm:left-4 sm:right-4 sm:mx-auto sm:max-w-5xl sm:border sm:px-5 sm:py-4"
+      className="fixed bottom-0 left-0 right-0 z-[80] bg-surface/95 px-4 py-3 shadow-2xl backdrop-blur-xl sm:bottom-4 sm:left-4 sm:right-4 sm:mx-auto sm:max-w-5xl sm:border sm:border-white/15 sm:px-5 sm:py-4"
     >
       <div className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-6">
         <div>

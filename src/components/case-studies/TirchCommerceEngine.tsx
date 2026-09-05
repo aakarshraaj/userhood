@@ -65,7 +65,7 @@ function StageArrow() {
 
 export default function TirchCommerceEngine() {
   return (
-    <section className="relative overflow-hidden border-y border-black/15 bg-[#ebe6de] px-5 py-16 text-[#151512] md:px-8 md:py-24" aria-labelledby="tirch-commerce-engine-title">
+    <section className="relative overflow-hidden bg-[#ebe6de] px-5 py-16 text-[#151512] md:px-8 md:py-24" aria-labelledby="tirch-commerce-engine-title">
       <div
         className="pointer-events-none absolute inset-0 opacity-35"
         style={{
@@ -132,7 +132,7 @@ export default function TirchCommerceEngine() {
             </ul>
           </article>
 
-          <article className="border-t border-white/15 bg-[#151512] p-7 text-white md:border-l md:border-t-0 md:p-10">
+          <article className="bg-[#151512] p-7 text-white md:p-10">
             <div className="flex items-center gap-3 font-mono text-xs font-bold uppercase tracking-[0.15em] text-[var(--color-primary)]">
               <Database className="h-4 w-4" /> The server owns the promise
             </div>

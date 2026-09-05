@@ -165,9 +165,6 @@
   .section-band {
     position: relative;
     isolation: isolate;
-    border-top: 1px solid var(--line-soft);
-    border-bottom: 1px solid var(--line-soft);
-    box-shadow: inset 0 1px rgba(255, 255, 255, 0.015), inset 0 -1px rgba(0, 0, 0, 0.35);
   }
 
   .section-band-deep {
@@ -184,22 +181,6 @@
     border: 1px solid var(--line-soft);
     background: linear-gradient(145deg, rgba(19, 24, 30, 0.96), rgba(8, 10, 13, 0.98));
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
-  }
-
-  .content-card-accent {
-    position: relative;
-  }
-
-  .content-card-accent::before {
-    position: absolute;
-    top: -1px;
-    right: -1px;
-    left: -1px;
-    z-index: 2;
-    height: 3px;
-    content: "";
-    background: var(--work-accent, var(--color-primary));
-    opacity: 0.82;
   }
 
   .legal-sections {

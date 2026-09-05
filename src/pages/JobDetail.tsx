@@ -64,8 +64,6 @@ export default function JobDetail() {
                             {job.title}
                         </h1>
 
-                        <div className="w-full h-[1px] bg-white/10 mb-12" />
-
                         <div className="grid gap-5 text-white/80">
                             <section className="content-card p-6 md:p-8">
                                 <h2 className="text-xl font-medium text-white mb-6 font-mono tracking-tighter uppercase">01 // The_Role</h2>
@@ -115,7 +113,7 @@ export default function JobDetail() {
                     </div>
 
                     <div className="lg:col-span-4">
-                        <div className="content-card content-card-accent sticky top-32 p-8 backdrop-blur-sm">
+                        <div className="content-card sticky top-32 p-8 backdrop-blur-sm">
                             <h2 className="text-2xl font-medium mb-4">Ready to build?</h2>
                             <p className="text-white/70 mb-8 leading-relaxed">
                                 We're looking for ambitious builders who want to make a real impact. If you think you're a fit, we want to hear from you.

@@ -103,7 +103,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
                 <h1 className="max-w-5xl break-words text-[clamp(3.15rem,6vw,5.7rem)] font-black leading-[0.92] tracking-tighter text-white">
                   {data.title}
                 </h1>
-                <div className="mt-7 max-w-2xl border-l-2 border-primary/50 pl-5 md:mt-8">
+                <div className="mt-7 max-w-2xl md:mt-8">
                   <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/70">
                     {isTeamExperience ? "Organisation" : "Product"}
                   </div>
@@ -196,7 +196,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
             </div>
             <div className="space-y-8 md:col-span-8">
               <p className="text-xl font-normal leading-relaxed text-slate-200 md:text-2xl">{data.context}</p>
-              <div className="content-card border-l-2 border-l-primary/55 p-6 md:p-8">
+              <div className="content-card p-6 md:p-8">
                 <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/65">The non-negotiable constraint</div>
                 <p className="mt-3 text-base font-normal leading-relaxed text-slate-300 md:text-lg">{data.challenge}</p>
               </div>
@@ -284,7 +284,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
                 ))}
               </ul>
 
-              <div className="content-card mt-8 border-l-2 border-l-primary/50 p-6">
+              <div className="content-card mt-8 p-6">
                 <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/65">Evidence boundary</div>
                 <p className="mt-3 text-base font-normal leading-relaxed text-slate-300">{data.evidenceBoundary}</p>
               </div>
@@ -323,7 +323,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
         )}
 
         <section className="px-5 py-20 text-center md:px-8 md:py-28">
-          <div className="content-card content-card-accent motion-reveal mx-auto max-w-5xl px-6 py-14 sm:px-10 md:px-16 md:py-20">
+          <div className="content-card motion-reveal mx-auto max-w-5xl px-6 py-14 sm:px-10 md:px-16 md:py-20">
             <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">Your product is different</div>
             <h2 className="mt-6 text-4xl font-black leading-tight tracking-tighter text-white sm:text-5xl md:text-7xl">
               Bring the problem.<br /><span className="text-primary">We will bring the questions.</span>

@@ -423,7 +423,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                     </div>
                   )}
 
-                  <div className="flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex flex-col gap-4 bg-black/20 p-4 sm:flex-row sm:items-center sm:justify-between">
                     <p className="max-w-sm text-xs font-normal leading-relaxed text-white/75">
                       We use these details to assess and respond to your enquiry. See our <Link to="/privacy" onClick={() => closeModal("privacy_link")} className="underline underline-offset-2 hover:text-white">privacy policy</Link>.
                     </p>
@@ -438,9 +438,8 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                   </div>
                 </form>
 
-                <div className="relative my-6">
-                  <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/5" /></div>
-                  <div className="relative flex justify-center"><span className="bg-surface px-4 font-mono text-xs uppercase tracking-[0.14em] text-white/70">Or talk directly</span></div>
+                <div className="my-6 text-center font-mono text-xs uppercase tracking-[0.14em] text-white/70">
+                  Or talk directly
                 </div>
 
                 <a

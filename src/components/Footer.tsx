@@ -3,7 +3,7 @@ import { trackAnalyticsEvent } from "../utils/analytics";
 
 export default function Footer() {
   return (
-    <footer id="site-footer" className="border-t border-white/10 bg-[#050608] px-5 py-14 md:px-6 md:py-16" role="contentinfo">
+    <footer id="site-footer" className="bg-[#050608] px-5 py-14 md:px-6 md:py-16" role="contentinfo">
       <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-12 font-mono text-xs text-white/75 uppercase tracking-[0.1em]">
         <div className="space-y-3 md:space-y-4">
           <Link to="/" className="hover:opacity-80 transition-opacity inline-block" aria-label="Userhood homepage">

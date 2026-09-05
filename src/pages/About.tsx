@@ -75,7 +75,7 @@ export default function About() {
               <h1 className="text-5xl font-black leading-[0.88] tracking-tighter text-white sm:text-6xl md:text-8xl lg:text-[92px]">
                 The founders<br />you meet stay<br /><span className="text-primary">on the build.</span>
               </h1>
-              <p className="mt-8 max-w-2xl border-l-2 border-primary/30 pl-6 text-lg font-normal leading-relaxed text-slate-200 md:text-xl">
+              <p className="mt-8 max-w-2xl text-lg font-normal leading-relaxed text-slate-200 md:text-xl">
                 Userhood is a compact product studio built around shared accountability. Product design and engineering own the same release, the same constraints, and the same weekly decisions.
               </p>
 
@@ -104,7 +104,7 @@ export default function About() {
                   <div className="px-2 pb-2 pt-5 md:px-3 md:pb-3 md:pt-6">
                     <h2 className="text-2xl font-black tracking-tight text-white">{founder.name}</h2>
                     <p className="mt-1 text-sm font-bold text-primary">{founder.role}</p>
-                    <div className="mt-5 border-t border-white/10 pt-4">
+                    <div className="mt-5 bg-black/25 p-4">
                       <div className="font-mono text-xs uppercase tracking-[0.12em] text-white/55">Owns during an engagement</div>
                       <p className="mt-3 text-sm leading-relaxed text-slate-300">{founder.responsibility}</p>
                     </div>
@@ -114,7 +114,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="mt-12 grid gap-4 border-t border-white/10 pt-6 md:grid-cols-[auto_1fr] md:items-center md:gap-8">
+          <div className="content-card mt-12 grid gap-4 p-5 md:grid-cols-[auto_1fr] md:items-center md:gap-8">
             <p className="font-mono text-xs uppercase tracking-[0.16em] text-white/60">Work shown</p>
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold text-white/70 sm:text-sm md:justify-end">
               <span className="text-primary">Product builds: Rentnama + Tirch</span>

@@ -14,8 +14,7 @@ export default function Careers() {
 
             <div className="max-w-[1440px] mx-auto px-6 md:px-12 xl:px-24 relative z-10">
                 <div className="max-w-4xl">
-                    <div className="font-mono text-xs text-primary tracking-widest uppercase mb-6 flex items-center gap-3">
-                        <span className="w-8 h-[1px] bg-primary"></span>
+                    <div className="font-mono text-xs text-primary tracking-widest uppercase mb-6">
                         open_positions
                     </div>
 
@@ -34,7 +33,7 @@ export default function Careers() {
                         <div key={job.id}>
                             <Link
                                 to={`/careers/${job.slug}`}
-                                className="content-card content-card-accent group relative block overflow-hidden p-6 transition-all duration-300 hover:border-primary/30 md:p-8"
+                                className="content-card group relative block overflow-hidden p-6 transition-all duration-300 hover:border-primary/30 md:p-8"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none" />
 
