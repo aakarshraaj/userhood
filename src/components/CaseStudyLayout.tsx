@@ -15,6 +15,24 @@ export interface CaseStudyFact {
   value: string;
 }
 
+export interface CaseStudyMetric {
+  value: string;
+  label: string;
+  detail: string;
+}
+
+export interface CaseStudyOutcome {
+  title: string;
+  summary: string;
+  metrics: CaseStudyMetric[];
+}
+
+export interface CaseStudyDraftMetric {
+  value: string;
+  label: string;
+  definition: string;
+}
+
 export interface CaseStudyData {
   pageId: PageId;
   brand: string;
@@ -25,11 +43,13 @@ export interface CaseStudyData {
   facts: CaseStudyFact[];
   heroMedia: ProjectMediaSpec;
   proofNote: string;
+  outcome?: CaseStudyOutcome;
   context: string;
   challenge: string;
   decisions: CaseStudyDecision[];
   documentedScope: string[];
   evidenceBoundary: string;
+  draftMetrics?: CaseStudyDraftMetric[];
   liveProduct?: {
     label: string;
     href: string;
@@ -45,6 +65,7 @@ interface CaseStudyLayoutProps {
 
 export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayoutProps) {
   const isTeamExperience = data.relationship === "Team experience";
+  const hasOutcome = Boolean(data.outcome);
 
   return (
     <main data-page-id={data.pageId} className="min-h-screen bg-background-dark pb-20 pt-28 sm:pt-32 md:pb-28 md:pt-36">
@@ -120,16 +141,46 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
           </div>
         </header>
 
-        <section className="mt-16 border-y border-white/5 bg-[#08080a] px-5 py-16 md:mt-24 md:px-8 md:py-24">
+        {data.outcome && (
+          <section className="mt-16 border-y border-white/10 bg-[#08080a] px-5 py-14 md:mt-24 md:px-8 md:py-20" aria-labelledby={`${data.pageId}-outcome-title`}>
+            <div className="mx-auto max-w-[1280px]">
+              <div className="grid gap-8 md:grid-cols-12 md:items-end">
+                <div className="md:col-span-7">
+                  <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">01 // Outcome snapshot</div>
+                  <h2 id={`${data.pageId}-outcome-title`} className="mt-5 max-w-4xl text-4xl font-black leading-[0.96] tracking-tighter text-white md:text-6xl">
+                    {data.outcome.title}
+                  </h2>
+                </div>
+                <p className="max-w-xl text-base leading-relaxed text-slate-300 md:col-span-5 md:justify-self-end md:text-lg">
+                  {data.outcome.summary}
+                </p>
+              </div>
+
+              <dl className="mt-10 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+                {data.outcome.metrics.map((metric) => (
+                  <div key={metric.label} className="bg-[#08080a] p-6 md:min-h-[235px] md:p-8">
+                    <dd className="text-5xl font-black leading-none tracking-tighter md:text-7xl" style={{ color: data.accent ?? "#00f5ff" }}>
+                      {metric.value}
+                    </dd>
+                    <dt className="mt-7 text-base font-bold leading-tight text-white md:text-lg">{metric.label}</dt>
+                    <p className="mt-3 font-mono text-[11px] uppercase leading-relaxed tracking-[0.1em] text-white/50">{metric.detail}</p>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </section>
+        )}
+
+        <section className={`${hasOutcome ? "" : "mt-16 md:mt-24"} border-b border-white/5 bg-[#08080a] px-5 py-16 md:px-8 md:py-24`}>
           <div className="mx-auto grid max-w-[1280px] gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-4">
-              <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">01 // Context</div>
-              <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-5xl">The product situation.</h2>
+              <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">{hasOutcome ? "02" : "01"} // The problem</div>
+              <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-5xl">What the product had to overcome.</h2>
             </div>
             <div className="space-y-8 md:col-span-8">
               <p className="text-xl font-normal leading-relaxed text-slate-200 md:text-2xl">{data.context}</p>
               <div className="border-l border-white/20 pl-6">
-                <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/65">The central challenge</div>
+                <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/65">The non-negotiable constraint</div>
                 <p className="mt-3 text-base font-normal leading-relaxed text-slate-300 md:text-lg">{data.challenge}</p>
               </div>
             </div>
@@ -140,8 +191,8 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
           <div className="mx-auto max-w-[1280px]">
             <div className="grid gap-8 border-b border-white/10 pb-10 md:grid-cols-12 md:items-end md:pb-12">
               <div className="md:col-span-8">
-                <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">02 // Product decisions</div>
-                <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-6xl">Where the work earned its keep.</h2>
+                <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">{hasOutcome ? "03" : "02"} // The intervention</div>
+                <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-6xl">The decisions that changed the product.</h2>
               </div>
               <p className="text-base font-normal leading-relaxed text-slate-300 md:col-span-4">
                 The useful part of a case study is the reasoning, the constraint, and the product consequence—not a wall of polished screens.
@@ -174,8 +225,8 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
         <section className="border-y border-white/5 bg-white/[0.025] px-5 py-16 md:px-8 md:py-20">
           <div className="mx-auto grid max-w-[1280px] gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-5">
-              <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">03 // Verifiable scope</div>
-              <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-5xl">What exists—not what a pitch deck implies.</h2>
+              <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">{hasOutcome ? "04" : "03"} // The shipped system</div>
+              <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-5xl">What actually exists.</h2>
             </div>
             <div className="md:col-span-7">
               <ul className="grid gap-3 sm:grid-cols-2">
@@ -194,6 +245,39 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
             </div>
           </div>
         </section>
+
+        {data.draftMetrics && data.draftMetrics.length > 0 && (
+          <section className="border-b border-white/10 bg-[#08080a] px-5 py-16 md:px-8 md:py-24" aria-labelledby={`${data.pageId}-measurement-title`}>
+            <div className="mx-auto max-w-[1280px]">
+              <div className="grid gap-8 md:grid-cols-12">
+                <div className="md:col-span-5">
+                  <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">05 // Outcome measurement</div>
+                  <h2 id={`${data.pageId}-measurement-title`} className="mt-5 text-4xl font-black leading-[0.96] tracking-tighter text-white md:text-6xl">
+                    The numbers this product must move.
+                  </h2>
+                </div>
+                <div className="md:col-span-7 md:pt-1">
+                  <p className="max-w-2xl text-lg leading-relaxed text-slate-300">
+                    These are temporary layout values—not published performance claims. Replace them with the production analytics before this case study goes live.
+                  </p>
+                </div>
+              </div>
+
+              <dl className="mt-10 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+                {data.draftMetrics.map((metric) => (
+                  <div key={metric.label} className="relative min-h-[245px] overflow-hidden bg-background-dark p-6 md:p-8">
+                    <div className="absolute right-0 top-0 border-b border-l border-primary/30 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-primary">
+                      Draft value
+                    </div>
+                    <dd className="pt-7 text-5xl font-black leading-none tracking-tighter text-white/25 md:text-6xl">{metric.value}</dd>
+                    <dt className="mt-7 text-base font-bold leading-tight text-white">{metric.label}</dt>
+                    <p className="mt-3 text-sm leading-relaxed text-slate-400">{metric.definition}</p>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </section>
+        )}
 
         <section className="px-5 py-20 text-center md:px-8 md:py-28">
           <div className="mx-auto max-w-4xl">

@@ -28,6 +28,17 @@ const caseStudy: CaseStudyData = {
   },
   proofNote:
     "The screens below come from the live product. They show what was designed and shipped; adoption and marketplace liquidity remain measurement questions—not portfolio claims.",
+  outcome: {
+    title: "Rent decisions can begin with what tenants paid—not what owners asked.",
+    summary:
+      "The result is a live public intelligence layer: renters can search a society, inspect the evidence behind its answer, compare nearby places, and contribute the next verified rent without exposing their flat number.",
+    metrics: [
+      { value: "178", label: "first-hand rent reports", detail: "Live Pune product snapshot" },
+      { value: "146", label: "societies with rent evidence", detail: "Live Pune product snapshot" },
+      { value: "72", label: "localities represented", detail: "Live Pune product snapshot" },
+      { value: "5", label: "reports behind the featured society answer", detail: "Life Republic dossier" },
+    ],
+  },
   context:
     "Rental portals tell people what landlords ask. Renters need a different answer: what people actually pay at a specific society, how recent the reports are, and whether the number is strong enough to trust. That answer only improves when the product can recruit the next legitimate report.",
   challenge:
@@ -94,6 +105,12 @@ const caseStudy: CaseStudyData = {
   ],
   evidenceBoundary:
     "The live product and implementation verify the flows, evidence rules, privacy boundaries, and operating tools described here. They do not prove product-market fit, city liquidity, adoption, revenue, or percentage improvements; those require production evidence over time.",
+  draftMetrics: [
+    { value: "42%", label: "Search → society answer", definition: "Replace with the share of searches that reach a useful society or locality result." },
+    { value: "18%", label: "Answer → contribution start", definition: "Replace with the contribution-start rate from society and map surfaces." },
+    { value: "2.4×", label: "Repeat-view lift", definition: "Replace with the returning-user frequency for watched or revisited societies." },
+    { value: "31%", label: "Answer sharing rate", definition: "Replace with the share or copy-link rate from evidence-backed rent answers." },
+  ],
   liveProduct: {
     label: "Visit rentnama.in",
     href: "https://rentnama.in/",

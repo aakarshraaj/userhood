@@ -28,6 +28,17 @@ const caseStudy: CaseStudyData = {
   },
   proofNote:
     "The screens below come from the live product. The case study describes shipped behaviour and explicit release boundaries—not unverified commercial results.",
+  outcome: {
+    title: "One engine now carries the brand from discovery to post-purchase state.",
+    summary:
+      "The storefront is backed by a coherent commerce system: governed merchandising, server-authoritative pricing, bag and checkout flows, passwordless identity, private account data, orders, transactional email, analytics, and launch controls.",
+    metrics: [
+      { value: "10", label: "live products", detail: "Across the current product catalogue" },
+      { value: "3", label: "governed collection systems", detail: "After Hours, Meme Fest, and Pujo ’26" },
+      { value: "0", label: "passwords in the customer flow", detail: "OTP-based account identity" },
+      { value: "1", label: "authoritative source of price", detail: "Server-rebuilt checkout quote" },
+    ],
+  },
   context:
     "The campaign and catalogue are the visible edge of a much larger product. Product truth, collection boundaries, bag state, customer identity, addresses, order history, delivery rules, transactional email, analytics, and payment readiness all have to agree. Tirch needed one coherent engine underneath the brand experience.",
   challenge:
@@ -90,6 +101,12 @@ const caseStudy: CaseStudyData = {
   ],
   evidenceBoundary:
     "The live product and implementation support these product and engineering claims. They do not establish commercial launch, enabled payment, revenue, conversion improvement, or tracked inventory because those states are intentionally gated or not yet evidenced.",
+  draftMetrics: [
+    { value: "21%", label: "Product detail → bag", definition: "Replace with the measured add-to-bag conversion rate across live products." },
+    { value: "61%", label: "Checkout completion", definition: "Replace with the order-completion rate once production payments are enabled." },
+    { value: "1.8×", label: "Returning-customer conversion", definition: "Replace with the conversion difference between returning and first-time customers." },
+    { value: "44%", label: "Customer account adoption", definition: "Replace with the share of customers who use the passwordless account and order-history experience." },
+  ],
   liveProduct: {
     label: "Visit tirch.in",
     href: "https://tirch.in/",
