@@ -114,6 +114,7 @@ interface SelectedWorkProps {
 
 export default function SelectedWork({ standalone = false }: SelectedWorkProps) {
   const Heading = standalone ? "h1" : "h2";
+  const CardHeading = standalone ? "h2" : "h3";
   const analyticsSource = standalone ? "work_page" : "homepage_selected_work";
 
   return (
@@ -158,9 +159,9 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
                 </div>
 
                 <div className="mt-3 text-xl font-bold text-white">{item.organisation}</div>
-                <h3 className="mt-4 max-w-2xl text-2xl font-bold leading-tight tracking-tight text-white transition-colors group-hover:text-primary md:text-3xl">
+                <CardHeading className="mt-4 max-w-2xl text-2xl font-bold leading-tight tracking-tight text-white transition-colors group-hover:text-primary md:text-3xl">
                   {item.title}
-                </h3>
+                </CardHeading>
                 <div className="mt-6 grid border-y border-white/10 sm:grid-cols-2">
                   <div className="py-5 pr-0 sm:pr-5">
                     <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/50">The constraint</div>
@@ -218,9 +219,9 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
                     <span>{item.index}</span>
                   </div>
                   <div className="mt-4 text-lg font-bold text-white">{item.organisation}</div>
-                  <h3 className="mt-3 max-w-xl text-xl font-bold leading-tight tracking-tight text-white transition-colors group-hover:text-primary md:text-2xl">
+                  <CardHeading className="mt-3 max-w-xl text-xl font-bold leading-tight tracking-tight text-white transition-colors group-hover:text-primary md:text-2xl">
                     {item.title}
-                  </h3>
+                  </CardHeading>
                   <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-300">{item.description}</p>
                   <div className="mt-5 flex items-center gap-2 text-sm font-bold text-white/75 transition-colors group-hover:text-primary">
                     Read experience note <ArrowUpRight className="h-4 w-4" />

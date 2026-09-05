@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import ContactModal from "./components/ContactModal";
 import { AnalyticsConsentBanner } from "./components/AnalyticsConsent";
 import StickyContactCTA from "./components/StickyContactCTA";
-import { getPageMetadata, getPageSEO } from "./data/siteMetadata";
+import { getPageMetadata, getPageSEO, SITE_METADATA } from "./data/siteMetadata";
 
 import { captureAttribution, trackAnalyticsEvent, trackPageView } from "./utils/analytics";
 
@@ -103,7 +103,8 @@ function RouteTracker() {
       trackPageView(pathname);
 
       const announcer = document.getElementById("route-announcer");
-      if (announcer) announcer.textContent = `${document.title} loaded`;
+      const announcedPage = SITE_METADATA.pages.find((page) => page.path === pathname);
+      if (announcer) announcer.textContent = `${announcedPage?.title ?? document.title} loaded`;
 
       if (isRouteChange && !hash) document.getElementById("main-content")?.focus();
     }, 0);

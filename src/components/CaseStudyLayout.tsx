@@ -91,7 +91,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
             </Link>
 
             <div className="mt-8 grid items-center gap-9 md:mt-10 md:grid-cols-12 md:gap-10 lg:gap-14">
-              <div className="md:col-span-6 lg:col-span-7">
+              <div className="min-w-0 md:col-span-6 lg:col-span-7">
                 <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-primary">
                   [ {isTeamExperience ? "Attributed team experience" : data.relationship} // {data.category} ]
                 </div>
@@ -100,7 +100,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
                     Not a Userhood client engagement
                   </div>
                 )}
-                <h1 className="max-w-5xl text-[clamp(3.15rem,6vw,5.7rem)] font-black leading-[0.92] tracking-tighter text-white">
+                <h1 className="max-w-5xl break-words text-[clamp(3.15rem,6vw,5.7rem)] font-black leading-[0.92] tracking-tighter text-white">
                   {data.title}
                 </h1>
                 <div className="mt-7 max-w-2xl border-l-2 border-primary/50 pl-5 md:mt-8">
@@ -133,7 +133,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
                 </div>
               </div>
 
-              <div className="md:col-span-6 lg:col-span-5">
+              <div className="min-w-0 md:col-span-6 lg:col-span-5">
                 <ProjectMedia project={data.brand} media={data.heroMedia} accent={data.accent} />
               </div>
             </div>

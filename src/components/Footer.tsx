@@ -27,7 +27,7 @@ export default function Footer() {
           <div className="text-xs md:text-xs break-words">© 2026 USERHOOD. ALL_RIGHTS_RESERVED.</div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 md:gap-16 w-full md:w-auto">
+        <div className="grid w-full min-w-0 grid-cols-2 gap-8 sm:gap-12 md:w-auto md:grid-cols-3 md:gap-16">
           <div className="flex flex-col gap-2">
             <div className="text-white mb-4">Navigation</div>
             <Link to="/" className="hover:text-primary transition-colors">Home</Link>
@@ -38,7 +38,7 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-2">
             <div className="text-white/70 mb-4">Contact</div>
-            <a href="mailto:hello@userhood.in" className="hover:text-primary transition-colors normal-case">hello@userhood.in</a>
+            <a href="mailto:hello@userhood.in" className="break-all normal-case transition-colors hover:text-primary">hello@userhood.in</a>
             <a href={`https://wa.me/917498908702?text=${encodeURIComponent("Hey Userhood! I came across your work and want to chat about a potential collaboration.")}`} onClick={() => trackAnalyticsEvent("whatsapp_click", { source: "footer" })} target="_blank" rel="noopener noreferrer" className="hover:text-[#25D366] transition-colors">WhatsApp</a>
             <a href="https://in.linkedin.com/company/userhood" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">LinkedIn</a>
             <a href="https://instagram.com/userhood.in" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Instagram</a>
