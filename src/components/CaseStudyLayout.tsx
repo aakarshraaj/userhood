@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react"
 import { Link } from "react-router-dom";
 import type { PageId } from "../data/siteMetadata";
 import { trackAnalyticsEvent } from "../utils/analytics";
+import BrandIdentity, { isProductBrand } from "./BrandIdentity";
 import ProjectMedia, { type ProjectMediaSpec } from "./ProjectMedia";
 
 export interface CaseStudyDecision {
@@ -107,7 +108,13 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
                   <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/70">
                     {isTeamExperience ? "Organisation" : "Product"}
                   </div>
-                  <div className="mt-2 text-xl font-bold text-white md:text-2xl">{data.brand}</div>
+                  {isProductBrand(data.brand) ? (
+                    <div className="brand-stage mt-3 w-fit min-w-[min(100%,19rem)] px-5 py-4 md:px-6 md:py-5">
+                      <BrandIdentity brand={data.brand} size="hero" />
+                    </div>
+                  ) : (
+                    <div className="mt-2 text-xl font-bold text-white md:text-2xl">{data.brand}</div>
+                  )}
                   <p className="mt-4 max-w-xl text-base font-normal leading-relaxed text-slate-300">{data.summary}</p>
                   {data.liveProduct && (
                     <a

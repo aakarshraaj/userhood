@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { trackAnalyticsEvent } from "../utils/analytics";
+import BrandIdentity from "./BrandIdentity";
 import ProjectMedia, { type ProjectMediaSpec } from "./ProjectMedia";
 
 interface HeroProps {
@@ -140,7 +141,7 @@ export default function Hero({ onContactClick }: HeroProps) {
                   <div className="flex min-w-0 flex-col justify-between p-4">
                     <div>
                       <div className="font-mono text-[9px] uppercase leading-relaxed tracking-[0.12em] text-white/50">{project.category}</div>
-                      <div className="mt-3 text-lg font-bold text-white transition-colors group-hover:text-primary">{project.name}</div>
+                      <BrandIdentity brand={project.name as "Rentnama" | "Tirch"} size="compact" className="mt-3" />
                     </div>
                     <div>
                       <p className="text-xs leading-relaxed text-slate-300">{project.proof}</p>

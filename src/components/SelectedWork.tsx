@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { trackAnalyticsEvent } from "../utils/analytics";
+import BrandIdentity from "./BrandIdentity";
 import ProjectMedia, { type ProjectMediaSpec } from "./ProjectMedia";
 
 interface WorkItem {
@@ -146,15 +147,18 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
             >
               <ProjectMedia project={item.organisation} media={item.media} accent={item.accent} compact />
 
-              <div className="flex flex-1 flex-col px-1 pb-2 pt-6 md:px-2 md:pb-3 md:pt-7">
+              <div className="brand-stage mt-4 flex items-center justify-between gap-5 px-5 py-5 md:px-6 md:py-6">
+                <BrandIdentity brand={item.organisation as "Rentnama" | "Tirch"} size="card" />
+                <div className="font-mono text-xs text-white/45">{item.index}</div>
+              </div>
+
+              <div className="flex flex-1 flex-col px-1 pb-2 pt-7 md:px-2 md:pb-3 md:pt-8">
                 <div className="flex items-center justify-between gap-4">
                   <div className="font-mono text-xs uppercase tracking-[0.12em] text-[var(--work-accent)]">
                     {item.relationship} · {item.category}
                   </div>
-                  <div className="font-mono text-xs text-white/45">{item.index}</div>
                 </div>
 
-                <div className="mt-3 text-xl font-bold text-white">{item.organisation}</div>
                 <CardHeading className="mt-4 max-w-2xl text-2xl font-bold leading-tight tracking-tight text-white transition-colors group-hover:text-primary md:text-3xl">
                   {item.title}
                 </CardHeading>

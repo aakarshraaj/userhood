@@ -1,5 +1,7 @@
+import type { CSSProperties } from "react";
 import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+import BrandIdentity from "../components/BrandIdentity";
 import { getPageSEO } from "../data/siteMetadata";
 import { useSEO } from "../utils/seo";
 
@@ -172,12 +174,20 @@ export default function About() {
             <div className="content-card p-7 md:p-9">
               <div className="font-mono text-xs uppercase tracking-[0.14em] text-primary">Product builds</div>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                <Link to="/case-study/rentnama" className="group flex min-h-[112px] flex-col justify-between border border-white/10 bg-black/25 p-5 transition-colors hover:border-primary">
-                  <span className="text-xl font-bold text-white group-hover:text-primary">Rentnama</span>
+                <Link
+                  to="/case-study/rentnama"
+                  className="brand-stage group flex min-h-[132px] flex-col justify-between p-5 transition-colors"
+                  style={{ "--work-accent": "#d7ff4f" } as CSSProperties}
+                >
+                  <BrandIdentity brand="Rentnama" size="compact" />
                   <span className="flex items-center justify-between text-sm text-slate-300">Rental intelligence <ArrowRight className="h-4 w-4" /></span>
                 </Link>
-                <Link to="/case-study/tirch" className="group flex min-h-[112px] flex-col justify-between border border-white/10 bg-black/25 p-5 transition-colors hover:border-primary">
-                  <span className="text-xl font-bold text-white group-hover:text-primary">Tirch</span>
+                <Link
+                  to="/case-study/tirch"
+                  className="brand-stage group flex min-h-[132px] flex-col justify-between p-5 transition-colors"
+                  style={{ "--work-accent": "#d2694a" } as CSSProperties}
+                >
+                  <BrandIdentity brand="Tirch" size="compact" />
                   <span className="flex items-center justify-between text-sm text-slate-300">End-to-end commerce <ArrowRight className="h-4 w-4" /></span>
                 </Link>
               </div>
