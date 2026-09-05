@@ -162,6 +162,8 @@
 }
 
 @keyframes userhood-monogram-swap {
+  /* The U bridge begins flush with the stems. Every animated offset stays
+     non-positive so it can never fall below their shared baseline. */
   0%, 38%, 73%, 100% {
     transform: translateY(0);
   }
@@ -175,7 +177,7 @@
   }
 
   69% {
-    transform: translateY(1.25px);
+    transform: translateY(-1px);
   }
 }
 
