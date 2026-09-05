@@ -47,7 +47,7 @@ export default function CaseStudyLayout({ data, onContactClick }: CaseStudyLayou
         <header className="px-5 md:px-8">
           <div className="mx-auto max-w-[1280px]">
             <Link
-              to="/#case-studies"
+              to="/work"
               className="inline-flex min-h-11 items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-white/75 transition-colors hover:text-primary"
             >
               <ArrowLeft className="h-4 w-4" /> Back to selected work

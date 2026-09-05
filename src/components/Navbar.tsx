@@ -96,8 +96,7 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
 
         <div className="hidden items-center gap-5 md:flex lg:gap-7">
           <div className="flex items-center gap-5 text-sm font-medium text-white/75 lg:gap-7">
-            <a href="/#case-studies" onClick={handleLinkClick} className="transition-colors hover:text-primary">Work</a>
-            <a href="/#process" onClick={handleLinkClick} className="transition-colors hover:text-primary">12-week build</a>
+            <Link to="/work" aria-current={pathname === "/work" || pathname.startsWith("/case-study/") ? "page" : undefined} onClick={handleLinkClick} className={`transition-colors hover:text-primary ${pathname === "/work" || pathname.startsWith("/case-study/") ? "text-primary" : ""}`}>Work</Link>
             <Link to="/services" aria-current={pathname === "/services" ? "page" : undefined} onClick={handleLinkClick} className={`transition-colors hover:text-primary ${pathname === "/services" ? "text-primary" : ""}`}>Services</Link>
             <Link to="/about" aria-current={pathname === "/about" ? "page" : undefined} onClick={handleLinkClick} className={`transition-colors hover:text-primary ${pathname === "/about" ? "text-primary" : ""}`}>About</Link>
             <Link to="/careers" aria-current={pathname.startsWith("/careers") ? "page" : undefined} onClick={handleLinkClick} className={`hidden transition-colors hover:text-primary lg:inline ${pathname.startsWith("/careers") ? "text-primary" : ""}`}>Careers</Link>
@@ -148,8 +147,7 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
               </div>
 
               <div className="flex flex-col border-b border-white/10 py-3 text-xl font-bold text-white">
-                <a href="/#case-studies" onClick={handleLinkClick} className="flex min-h-[54px] items-center justify-between border-b border-white/5 transition-colors hover:text-primary">Selected work <ArrowRight className="h-4 w-4" /></a>
-                <a href="/#process" onClick={handleLinkClick} className="flex min-h-[54px] items-center justify-between border-b border-white/5 transition-colors hover:text-primary">The 12-week build <ArrowRight className="h-4 w-4" /></a>
+                <Link to="/work" aria-current={pathname === "/work" || pathname.startsWith("/case-study/") ? "page" : undefined} onClick={handleLinkClick} className={`flex min-h-[54px] items-center justify-between border-b border-white/5 transition-colors hover:text-primary ${pathname === "/work" || pathname.startsWith("/case-study/") ? "text-primary" : ""}`}>Selected work <ArrowRight className="h-4 w-4" /></Link>
                 <Link to="/services" aria-current={pathname === "/services" ? "page" : undefined} onClick={handleLinkClick} className={`flex min-h-[54px] items-center justify-between border-b border-white/5 transition-colors hover:text-primary ${pathname === "/services" ? "text-primary" : ""}`}>Services <ArrowRight className="h-4 w-4" /></Link>
                 <Link to="/about" aria-current={pathname === "/about" ? "page" : undefined} onClick={handleLinkClick} className={`flex min-h-[54px] items-center justify-between border-b border-white/5 transition-colors hover:text-primary ${pathname === "/about" ? "text-primary" : ""}`}>About <ArrowRight className="h-4 w-4" /></Link>
                 <Link to="/careers" aria-current={pathname.startsWith("/careers") ? "page" : undefined} onClick={handleLinkClick} className={`flex min-h-[54px] items-center justify-between transition-colors hover:text-primary ${pathname.startsWith("/careers") ? "text-primary" : ""}`}>Careers <ArrowRight className="h-4 w-4" /></Link>

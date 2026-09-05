@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getPageSEO, SITE_METADATA } from "../data/siteMetadata";
 import { useSEO } from "../utils/seo";
@@ -269,25 +269,24 @@ export default function Services() {
                 <Link to="/?contact=true&source=services_hero" className="inline-flex min-h-[50px] items-center justify-center gap-3 bg-primary px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-white">
                   Discuss your 12-week build <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link to="/#case-studies" className="inline-flex min-h-[50px] items-center justify-center border border-white/15 px-6 py-4 text-sm font-bold text-white transition-colors hover:border-primary hover:text-primary">
+                <Link to="/work" className="inline-flex min-h-[50px] items-center justify-center border border-white/15 px-6 py-4 text-sm font-bold text-white transition-colors hover:border-primary hover:text-primary">
                   Inspect the work
                 </Link>
               </div>
             </div>
           </div>
 
-          <nav className="mt-12 grid gap-px border border-white/10 bg-white/10 md:mt-16 md:grid-cols-3" aria-label="Choose an engagement">
+          <section className="mt-12 grid gap-px border border-white/10 bg-white/10 md:mt-16 md:grid-cols-3" aria-label="Engagement overview">
             {engagements.map((engagement, index) => (
-              <a key={engagement.id} href={`#${engagement.id}`} className={`group flex min-h-[128px] items-end justify-between gap-5 p-6 transition-colors ${engagement.primary ? "bg-primary text-black" : "bg-[#08080a] text-white hover:bg-white/[0.04]"}`}>
+              <article key={engagement.id} className={`flex min-h-[128px] items-end p-6 ${engagement.primary ? "bg-primary text-black" : "bg-[#08080a] text-white"}`}>
                 <div>
                   <div className={`font-mono text-xs font-bold uppercase tracking-[0.13em] ${engagement.primary ? "text-black/60" : "text-white/50"}`}>0{index + 1} // {engagement.duration}</div>
                   <div className="mt-3 text-xl font-bold">{engagement.situation}</div>
                   {engagement.primary && <div className="mt-2 text-xs font-bold uppercase tracking-[0.12em]">Default for new products</div>}
                 </div>
-                <ArrowDown className="h-5 w-5 shrink-0 transition-transform group-hover:translate-y-1" />
-              </a>
+              </article>
             ))}
-          </nav>
+          </section>
         </div>
       </header>
 

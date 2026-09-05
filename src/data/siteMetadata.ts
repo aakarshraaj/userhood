@@ -2,6 +2,7 @@ import metadata from "./site-metadata.json";
 
 export type PageId =
   | "home"
+  | "work"
   | "services"
   | "about"
   | "hyundai"

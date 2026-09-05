@@ -1,4 +1,5 @@
 import { trackAnalyticsEvent } from "../utils/analytics";
+import { Link } from "react-router-dom";
 
 interface FinalCTAProps {
   onContactClick: () => void;
@@ -34,13 +35,13 @@ export default function FinalCTA({ onContactClick }: FinalCTAProps) {
           >
             Discuss your 12-week build
           </button>
-          <a
-            href="/#case-studies"
+          <Link
+            to="/work"
             onClick={() => trackAnalyticsEvent("selected_work_click", { source: "final_cta" })}
             className="text-sm font-bold text-white/75 hover:text-primary transition-colors"
           >
             See case studies first
-          </a>
+          </Link>
         </div>
 
       </div>

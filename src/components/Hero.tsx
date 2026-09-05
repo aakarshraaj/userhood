@@ -21,7 +21,7 @@ const proofProjects: Array<{
     accent: "#b5ef67",
     media: {
       label: "Society answers + rental map",
-      description: "Repository-backed product logic, trust systems, maps, watches, and privacy-safe analytics.",
+      description: "Society-level rent answers, map-led contributions, watches, and privacy-safe operations.",
     },
   },
   {
@@ -31,7 +31,7 @@ const proofProjects: Array<{
     accent: "#d2694a",
     media: {
       label: "Storefront + commerce system",
-      description: "Repository-backed storefront, account flows, release boundaries, and Cloudflare infrastructure.",
+      description: "Storefront, checkout, customer accounts, release boundaries, and commerce infrastructure.",
     },
   },
 ];
@@ -88,22 +88,22 @@ export default function Hero({ onContactClick }: HeroProps) {
                 >
                   Discuss your 12-week build
                 </button>
-                <a
-                  href="#case-studies"
+                <Link
+                  to="/work"
                   onClick={() => trackAnalyticsEvent("selected_work_click", { source: "hero" })}
                   className="flex min-h-[48px] w-full items-center justify-center border border-white/10 px-6 py-4 text-white transition-colors hover:border-white/30 sm:w-auto"
                 >
                   See selected work
-                </a>
+                </Link>
               </div>
             </div>
           </div>
 
-          <aside className="hidden lg:col-span-5 lg:block" aria-label="Repository-backed product work">
+          <aside className="hidden lg:col-span-5 lg:block" aria-label="Selected product work">
             <div className="mb-5 flex items-end justify-between border-b border-white/10 pb-4">
               <div>
-                <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Proof before pitch</div>
-                <p className="mt-2 text-sm text-slate-300">Two products backed by working repositories.</p>
+                <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Selected work</div>
+                <p className="mt-2 text-sm text-slate-300">Recent product design and engineering.</p>
               </div>
               <span className="font-mono text-xs text-white/45">02 BUILDS</span>
             </div>
@@ -137,16 +137,6 @@ export default function Hero({ onContactClick }: HeroProps) {
           </aside>
         </div>
 
-        <div className="mt-12 grid gap-4 border-t border-white/10 pt-6 md:mt-14 md:grid-cols-[auto_1fr] md:items-center md:gap-8">
-          <p className="font-mono text-xs uppercase tracking-[0.16em] text-white/65">
-            Work provenance
-          </p>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-bold text-white/75 sm:text-sm md:justify-end">
-            <span className="text-primary">Repository-backed: Rentnama + Tirch</span>
-            <span className="hidden text-primary/40 sm:inline">//</span>
-            <span>Team experience: Hyundai + Mitsubishi Motors</span>
-          </div>
-        </div>
       </div>
 
       <div className="pointer-events-none absolute bottom-0 left-0 z-10 h-24 w-full bg-gradient-to-t from-background-dark to-transparent" />

@@ -24,6 +24,7 @@ const CaseStudyMitsubishi = lazy(() => import("./pages/CaseStudyMitsubishi"));
 const CaseStudyHyundai = lazy(() => import("./pages/CaseStudyHyundai"));
 const CaseStudyRentnama = lazy(() => import("./pages/CaseStudyRentnama"));
 const CaseStudyTirch = lazy(() => import("./pages/CaseStudyTirch"));
+const Work = lazy(() => import("./pages/Work"));
 const About = lazy(() => import("./pages/About"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
@@ -166,6 +167,7 @@ export default function App() {
                     <FinalCTA onContactClick={() => handleContactClick('final_cta')} />
                   </main>
                 } />
+                <Route path={getPageMetadata("work").path} element={<Work />} />
                 <Route path={getPageMetadata("mitsubishi").path} element={<CaseStudyMitsubishi onContactClick={() => handleContactClick('mitsubishi_case_study')} />} />
                 <Route path={getPageMetadata("hyundai").path} element={<CaseStudyHyundai onContactClick={() => handleContactClick('hyundai_case_study')} />} />
                 <Route path={getPageMetadata("rentnama").path} element={<CaseStudyRentnama onContactClick={() => handleContactClick('rentnama_case_study')} />} />

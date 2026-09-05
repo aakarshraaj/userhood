@@ -7,7 +7,7 @@ interface WorkItem {
   index: string;
   organisation: string;
   category: string;
-  relationship: "Repository-backed build" | "Team experience";
+  relationship: "Product build" | "Team experience";
   title: string;
   description: string;
   link: string;
@@ -20,7 +20,7 @@ const selectedWork: WorkItem[] = [
     index: "01",
     organisation: "Rentnama",
     category: "Rental intelligence platform",
-    relationship: "Repository-backed build",
+    relationship: "Product build",
     title: "Building a public price layer for India’s rental market.",
     description:
       "Society-level rent answers, guided contributions, maps, watches, privacy-safe analytics, and the operating system required to grow trustworthy local data.",
@@ -35,7 +35,7 @@ const selectedWork: WorkItem[] = [
     index: "02",
     organisation: "Tirch",
     category: "Commerce systems",
-    relationship: "Repository-backed build",
+    relationship: "Product build",
     title: "A fashion storefront engineered to know exactly what it can promise.",
     description:
       "A brand-forward apparel experience backed by server-authoritative commerce, private account flows, Cloudflare infrastructure, and honest release boundaries.",
@@ -78,34 +78,44 @@ const selectedWork: WorkItem[] = [
   },
 ];
 
-const repositoryBackedWork = selectedWork.filter((item) => item.relationship === "Repository-backed build");
+const productBuilds = selectedWork.filter((item) => item.relationship === "Product build");
 const teamExperience = selectedWork.filter((item) => item.relationship === "Team experience");
 
-export default function SelectedWork() {
+interface SelectedWorkProps {
+  standalone?: boolean;
+}
+
+export default function SelectedWork({ standalone = false }: SelectedWorkProps) {
+  const Heading = standalone ? "h1" : "h2";
+  const analyticsSource = standalone ? "work_page" : "homepage_selected_work";
+
   return (
-    <section id="case-studies" className="relative border-y border-white/5 bg-[#08080a] px-5 py-14 md:px-8 md:py-20">
+    <section
+      id={standalone ? undefined : "case-studies"}
+      className={`relative border-y border-white/5 bg-[#08080a] px-5 md:px-8 ${standalone ? "pb-16 pt-28 md:pb-24 md:pt-36" : "py-14 md:py-20"}`}
+    >
       <div className="tech-grid pointer-events-none absolute inset-0 opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-[1440px]">
         <div className="grid gap-7 border-b border-white/10 pb-8 md:grid-cols-12 md:items-end md:pb-10">
           <div className="md:col-span-8">
-            <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-primary">[ 01 // SELECTED_WORK ]</div>
-            <h2 className="max-w-4xl text-4xl font-black leading-[0.96] tracking-tighter text-white sm:text-5xl md:text-7xl">
+            <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-primary">[ {standalone ? "SELECTED_WORK" : "01 // SELECTED_WORK"} ]</div>
+            <Heading className="max-w-4xl text-4xl font-black leading-[0.96] tracking-tighter text-white sm:text-5xl md:text-7xl">
               Products you can inspect. <span className="text-primary">Decisions we can defend.</span>
-            </h2>
+            </Heading>
           </div>
 
           <p className="max-w-md text-base font-normal leading-relaxed text-slate-300 md:col-span-4 md:justify-self-end md:text-lg">
-            Repository-backed product builds lead. Clearly labelled team experience follows. The distinction is intentional.
+            Product strategy, design, and engineering shown through the decisions that shaped each release.
           </p>
         </div>
 
         <div className="grid gap-px bg-white/10 lg:grid-cols-2">
-          {repositoryBackedWork.map((item) => (
+          {productBuilds.map((item) => (
             <Link
               key={item.organisation}
               to={item.link}
-              onClick={() => trackAnalyticsEvent("case_study_open", { source: "homepage_selected_work", organisation: item.organisation })}
+              onClick={() => trackAnalyticsEvent("case_study_open", { source: analyticsSource, organisation: item.organisation })}
               aria-label={`Read the ${item.organisation} ${item.relationship.toLowerCase()} case study`}
               className="group flex min-w-0 flex-col bg-[#08080a] p-4 transition-colors hover:bg-white/[0.025] md:p-5"
             >
@@ -142,7 +152,7 @@ export default function SelectedWork() {
               Team experience
             </div>
             <p className="max-w-2xl text-sm leading-relaxed text-slate-300 md:justify-self-end md:text-right">
-              Relevant work contributed by members of the team before or outside Userhood. Kept separate from repository-backed builds on purpose.
+              Automotive product work contributed by members of the team.
             </p>
           </div>
 
@@ -151,7 +161,7 @@ export default function SelectedWork() {
               <Link
                 key={item.organisation}
                 to={item.link}
-                onClick={() => trackAnalyticsEvent("case_study_open", { source: "homepage_team_experience", organisation: item.organisation })}
+                onClick={() => trackAnalyticsEvent("case_study_open", { source: standalone ? "work_page_team_experience" : "homepage_team_experience", organisation: item.organisation })}
                 aria-label={`Read the ${item.organisation} team experience case study`}
                 className="group flex flex-col bg-[#08080a] py-6 transition-colors hover:bg-white/[0.025] md:px-6"
               >
@@ -172,9 +182,6 @@ export default function SelectedWork() {
           </div>
         </div>
 
-        <p className="mt-6 max-w-4xl font-mono text-xs uppercase leading-relaxed tracking-[0.1em] text-white/75">
-          Evidence standard // Repository-backed builds are described from working code and product documentation. Team-experience work is labelled. No outcome number appears without an attributable source.
-        </p>
       </div>
     </section>
   );

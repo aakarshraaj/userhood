@@ -17,6 +17,18 @@
       "sitemap": true
     },
     {
+      "id": "work",
+      "path": "/work",
+      "output": "work.html",
+      "canonicalPath": "/work",
+      "title": "Selected Product Work | Userhood",
+      "description": "Explore Userhood product work across rental intelligence, commerce, automotive buying, and connected ownership.",
+      "robots": "index, follow",
+      "ogType": "website",
+      "image": "/og-image.jpg",
+      "sitemap": true
+    },
+    {
       "id": "services",
       "path": "/services",
       "output": "services.html",
