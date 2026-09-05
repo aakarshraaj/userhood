@@ -7,8 +7,8 @@ interface FinalCTAProps {
 
 export default function FinalCTA({ onContactClick }: FinalCTAProps) {
   return (
-    <section className="border-t border-white/5 bg-white/[0.02] px-5 py-16 md:px-8 md:py-20 lg:py-24" id="contact">
-      <div className="motion-reveal max-w-4xl mx-auto text-center">
+    <section className="section-band section-band-deep px-5 py-20 md:px-8 md:py-28" id="contact">
+      <div className="content-card content-card-accent motion-reveal mx-auto max-w-5xl px-6 py-14 text-center sm:px-10 md:px-16 md:py-20">
 
         <div className="font-mono text-xs text-primary mb-6 md:mb-8 uppercase tracking-widest">
           [ 05 // THE_DECISION ]

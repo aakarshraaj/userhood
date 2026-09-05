@@ -24,7 +24,7 @@ export default function Privacy() {
           <p className="text-white/70 font-mono text-xs mt-4 uppercase tracking-[0.14em]">Last updated: 5 September 2026</p>
         </header>
 
-        <div className="space-y-12 text-slate-200 leading-relaxed font-normal">
+        <div className="legal-sections text-slate-200 leading-relaxed font-normal">
           <section>
             <h2 className="text-white font-bold uppercase tracking-widest text-xs mb-6 font-mono">01. What this policy covers</h2>
             <p>

@@ -26,9 +26,9 @@ const phases = [
 
 export default function TwelveWeekBuild() {
   return (
-    <section id="process" className="relative overflow-hidden bg-background-dark px-5 py-16 md:px-8 md:py-20 lg:py-24">
+    <section id="process" className="section-band section-band-raised relative overflow-hidden px-5 py-20 md:px-8 md:py-28">
       <div className="relative z-10 mx-auto max-w-[1440px]">
-        <div className="motion-reveal grid gap-7 border-b border-white/10 pb-9 md:grid-cols-12 md:items-end md:pb-11">
+        <div className="motion-reveal mb-10 grid gap-7 md:mb-14 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
             <div className="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-primary">[ 02 // THE_BUILD ]</div>
             <h2 className="max-w-4xl text-4xl font-black leading-[0.95] tracking-tighter text-white sm:text-5xl md:text-7xl">
@@ -43,9 +43,9 @@ export default function TwelveWeekBuild() {
           </div>
         </div>
 
-        <ol className="motion-reveal grid border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="motion-reveal grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {phases.map((phase, index) => (
-            <li key={phase.weeks} className="motion-card flex min-h-[220px] flex-col border-b border-r border-white/10 p-6 md:p-7 hover:bg-white/[0.025]">
+            <li key={phase.weeks} className="content-card motion-card flex min-h-[240px] flex-col border-t-2 border-t-primary/55 p-6 hover:border-white/20 md:p-7">
               <div className="flex items-center justify-between gap-4 font-mono text-xs uppercase tracking-[0.13em] text-primary">
                 <span>{phase.weeks}</span>
                 <span className="text-white/35">0{index + 1}</span>

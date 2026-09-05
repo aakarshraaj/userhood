@@ -172,7 +172,7 @@ function EngagementDetails({ engagement }: { engagement: Engagement }) {
     <section
       id={engagement.id}
       aria-labelledby={`${engagement.id}-title`}
-      className={isLaunch ? "scroll-mt-24 bg-primary p-7 text-black sm:p-10 md:p-12 lg:p-14" : "scroll-mt-24 border border-white/10 bg-[#08080a] p-7 sm:p-9 lg:p-10"}
+      className={isLaunch ? "scroll-mt-24 bg-primary p-7 text-black shadow-[0_28px_90px_rgba(0,245,255,0.12)] sm:p-10 md:p-12 lg:p-14" : "content-card scroll-mt-24 p-7 sm:p-9 lg:p-10"}
     >
       <div className={`flex flex-col gap-6 border-b pb-8 sm:flex-row sm:items-start sm:justify-between ${isLaunch ? "border-black/20" : "border-white/10"}`}>
         <div>
@@ -192,8 +192,8 @@ function EngagementDetails({ engagement }: { engagement: Engagement }) {
         {engagement.description}
       </p>
 
-      <div className={`grid gap-px ${isLaunch ? "bg-black/20" : "bg-white/10"} md:grid-cols-2`}>
-        <div className={isLaunch ? "bg-primary py-6 md:pr-8" : "bg-[#08080a] py-6 md:pr-8"}>
+      <div className="grid gap-4 md:grid-cols-2">
+        <div className={isLaunch ? "border border-black/20 bg-black/[0.045] p-6" : "border border-white/10 bg-black/25 p-6"}>
           <h3 className={`font-mono text-xs font-bold uppercase tracking-[0.14em] ${isLaunch ? "text-black/60" : "text-white/60"}`}>Strong fit when</h3>
           <ul className="mt-5 space-y-4">
             {engagement.fit.map((item) => (
@@ -205,7 +205,7 @@ function EngagementDetails({ engagement }: { engagement: Engagement }) {
           </ul>
         </div>
 
-        <div className={isLaunch ? "bg-primary py-6 md:pl-8" : "bg-[#08080a] py-6 md:pl-8"}>
+        <div className={isLaunch ? "border border-black/20 bg-black/[0.045] p-6" : "border border-white/10 bg-white/[0.035] p-6"}>
           <h3 className={`font-mono text-xs font-bold uppercase tracking-[0.14em] ${isLaunch ? "text-black/60" : "text-white/60"}`}>What moves</h3>
           <ul className="mt-5 space-y-4">
             {engagement.included.map((item) => (
@@ -218,12 +218,12 @@ function EngagementDetails({ engagement }: { engagement: Engagement }) {
         </div>
       </div>
 
-      <div className={`mt-8 grid gap-7 border-t pt-8 md:grid-cols-2 md:gap-10 ${isLaunch ? "border-black/20" : "border-white/10"}`}>
-        <div>
+      <div className="mt-4 grid gap-4 md:grid-cols-2">
+        <div className={isLaunch ? "border border-black/20 p-5" : "border border-white/10 bg-black/20 p-5"}>
           <h3 className={`font-mono text-xs font-bold uppercase tracking-[0.14em] ${isLaunch ? "text-black/60" : "text-white/60"}`}>Your responsibility</h3>
           <p className={`mt-3 text-sm font-medium leading-relaxed md:text-base ${isLaunch ? "text-black" : "text-slate-300"}`}>{engagement.clientRole}</p>
         </div>
-        <div>
+        <div className={isLaunch ? "border border-black/20 p-5" : "border border-white/10 bg-black/20 p-5"}>
           <h3 className={`font-mono text-xs font-bold uppercase tracking-[0.14em] ${isLaunch ? "text-black/60" : "text-white/60"}`}>End state</h3>
           <p className={`mt-3 text-sm font-medium leading-relaxed md:text-base ${isLaunch ? "text-black" : "text-slate-300"}`}>{engagement.endState}</p>
         </div>
@@ -276,9 +276,9 @@ export default function Services() {
             </div>
           </div>
 
-          <section className="mt-12 grid gap-px border border-white/10 bg-white/10 md:mt-16 md:grid-cols-3" aria-label="Engagement overview">
+          <section className="mt-14 grid gap-4 md:mt-18 md:grid-cols-3" aria-label="Engagement overview">
             {engagements.map((engagement, index) => (
-              <article key={engagement.id} className={`flex min-h-[128px] items-end p-6 ${engagement.primary ? "bg-primary text-black" : "bg-[#08080a] text-white"}`}>
+              <article key={engagement.id} className={`flex min-h-[140px] items-end p-6 ${engagement.primary ? "bg-primary text-black shadow-[0_20px_60px_rgba(0,245,255,0.1)]" : "content-card text-white"}`}>
                 <div>
                   <div className={`font-mono text-xs font-bold uppercase tracking-[0.13em] ${engagement.primary ? "text-black/60" : "text-white/50"}`}>0{index + 1} // {engagement.duration}</div>
                   <div className="mt-3 text-xl font-bold">{engagement.situation}</div>
@@ -300,7 +300,7 @@ export default function Services() {
         </div>
       </div>
 
-      <section className="mt-20 border-y border-white/5 bg-white/[0.025] px-5 py-16 md:mt-24 md:px-8 md:py-20" aria-labelledby="capabilities-title">
+      <section className="section-band section-band-raised mt-20 px-5 py-20 md:mt-24 md:px-8 md:py-28" aria-labelledby="capabilities-title">
         <div className="mx-auto max-w-[1440px]">
           <div className="grid gap-7 md:grid-cols-12 md:items-end">
             <div className="md:col-span-7">
@@ -314,9 +314,9 @@ export default function Services() {
             </p>
           </div>
 
-          <div className="mt-10 grid border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {capabilities.map((capability, index) => (
-              <article key={capability.title} className="border-b border-r border-white/10 p-6 md:p-7">
+              <article key={capability.title} className="content-card min-h-[220px] p-6 md:p-7">
                 <div className="font-mono text-xs text-primary">0{index + 1}</div>
                 <h3 className="mt-6 text-xl font-bold text-white">{capability.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-300">{capability.detail}</p>
@@ -331,7 +331,7 @@ export default function Services() {
           <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">The fine print</div>
           <h2 id="faq-title" className="mt-4 text-4xl font-black tracking-tighter text-white md:text-5xl">Useful answers before a call.</h2>
         </div>
-        <div className="border-t border-white/10 md:col-span-8">
+        <div className="content-card px-6 md:col-span-8 md:px-8">
           {faqs.map((faq) => (
             <details key={faq.q} className="group border-b border-white/10">
               <summary className="flex min-h-[68px] cursor-pointer list-none items-center justify-between gap-5 py-5 text-base font-bold text-white transition-colors hover:text-primary md:text-lg">
@@ -345,7 +345,7 @@ export default function Services() {
       </section>
 
       <section className="mx-auto max-w-[1440px] px-5 md:px-8">
-        <div className="grid gap-8 border border-white/10 bg-[#08080a] p-7 md:grid-cols-12 md:items-center md:p-10 lg:p-12">
+        <div className="content-card content-card-accent grid gap-8 p-7 md:grid-cols-12 md:items-center md:p-10 lg:p-12">
           <div className="md:col-span-8">
             <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">Still deciding?</div>
             <h2 className="mt-4 text-3xl font-black tracking-tighter text-white md:text-5xl">Bring the product condition. We will help choose the first move.</h2>

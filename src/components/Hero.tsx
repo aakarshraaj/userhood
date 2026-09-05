@@ -127,7 +127,7 @@ export default function Hero({ onContactClick }: HeroProps) {
                   to={project.link}
                   aria-label={`Open the ${project.name} case study: ${project.category}`}
                   onClick={() => trackAnalyticsEvent("case_study_open", { source: "hero_proof", organisation: project.name })}
-                  className="motion-card group grid grid-cols-[minmax(0,1fr)_158px] border border-white/10 bg-[#08080a] hover:border-white/25"
+                  className="content-card content-card-accent motion-card group grid grid-cols-[minmax(0,1fr)_158px] hover:border-white/25"
                   style={{ "--work-accent": project.accent } as CSSProperties}
                 >
                   <ProjectMedia

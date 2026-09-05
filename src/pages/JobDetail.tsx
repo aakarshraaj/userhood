@@ -66,15 +66,15 @@ export default function JobDetail() {
 
                         <div className="w-full h-[1px] bg-white/10 mb-12" />
 
-                        <div className="space-y-12 text-white/80">
-                            <section>
+                        <div className="grid gap-5 text-white/80">
+                            <section className="content-card p-6 md:p-8">
                                 <h2 className="text-xl font-medium text-white mb-6 font-mono tracking-tighter uppercase">01 // The_Role</h2>
                                 <p className="text-lg leading-relaxed text-white/70">
                                     {job.description}
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="content-card p-6 md:p-8">
                                 <h2 className="text-xl font-medium text-white mb-6 font-mono tracking-tighter uppercase">02 // Key_Responsibilities</h2>
                                 <ul className="space-y-4">
                                     {job.responsibilities.map((resp, i) => (
@@ -86,7 +86,7 @@ export default function JobDetail() {
                                 </ul>
                             </section>
 
-                            <section>
+                            <section className="content-card p-6 md:p-8">
                                 <h2 className="text-xl font-medium text-white mb-6 font-mono tracking-tighter uppercase">03 // What_We_Look_For</h2>
                                 <ul className="space-y-4">
                                     {job.requirements.map((req, i) => (
@@ -99,7 +99,7 @@ export default function JobDetail() {
                             </section>
 
                             {job.benefits && job.benefits.length > 0 && (
-                                <section>
+                                <section className="content-card p-6 md:p-8">
                                     <h2 className="text-xl font-medium text-white mb-6 font-mono tracking-tighter uppercase">04 // Perks_&_Benefits</h2>
                                     <ul className="space-y-4">
                                         {job.benefits.map((benefit, i) => (
@@ -115,7 +115,7 @@ export default function JobDetail() {
                     </div>
 
                     <div className="lg:col-span-4">
-                        <div className="sticky top-32 p-8 border border-white/10 bg-white/[0.02] backdrop-blur-sm">
+                        <div className="content-card content-card-accent sticky top-32 p-8 backdrop-blur-sm">
                             <h2 className="text-2xl font-medium mb-4">Ready to build?</h2>
                             <p className="text-white/70 mb-8 leading-relaxed">
                                 We're looking for ambitious builders who want to make a real impact. If you think you're a fit, we want to hear from you.

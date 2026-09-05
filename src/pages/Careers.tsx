@@ -34,7 +34,7 @@ export default function Careers() {
                         <div key={job.id}>
                             <Link
                                 to={`/careers/${job.slug}`}
-                                className="group block border border-white/10 bg-white/[0.02] p-6 md:p-8 hover:bg-white/[0.04] hover:border-primary/30 transition-all duration-300 relative overflow-hidden"
+                                className="content-card content-card-accent group relative block overflow-hidden p-6 transition-all duration-300 hover:border-primary/30 md:p-8"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none" />
 
@@ -65,7 +65,7 @@ export default function Careers() {
                     ))}
 
                     {jobs.length === 0 && (
-                        <div className="py-12 border border-white/10 bg-white/[0.02] flex flex-col items-center justify-center text-center">
+                        <div className="content-card flex flex-col items-center justify-center py-12 text-center">
                             <Briefcase className="w-12 h-12 text-white/20 mb-4" />
                             <h3 className="text-xl font-medium mb-2">No open positions currently</h3>
                             <p className="text-white/70 max-w-md">We aren't actively hiring for any specific roles right now, but feel free to reach out with your portfolio anyway.</p>

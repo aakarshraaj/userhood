@@ -138,16 +138,16 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
               </div>
             </div>
 
-            <dl className="mt-10 grid border-y border-white/10 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
+            <dl className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {data.facts.map((fact) => (
-                <div key={fact.label} className="border-white/10 px-0 py-5 sm:px-5 sm:first:pl-0 sm:[&:nth-child(even)]:border-l lg:border-l lg:first:border-l-0 lg:last:pr-0">
+                <div key={fact.label} className="content-card px-5 py-5">
                   <dt className="font-mono text-xs uppercase tracking-[0.12em] text-white/70">{fact.label}</dt>
                   <dd className="mt-2 text-sm font-medium leading-relaxed text-white md:text-base">{fact.value}</dd>
                 </div>
               ))}
             </dl>
 
-            <div className="grid border-b border-white/10 py-6 md:grid-cols-12 md:gap-10 md:py-8">
+            <div className="content-card mt-3 grid p-6 md:grid-cols-12 md:gap-10 md:p-8">
               <div className="font-mono text-xs uppercase tracking-[0.14em] text-primary md:col-span-3">
                 {isTeamExperience ? "Attribution note" : "Evidence note"}
               </div>
@@ -157,7 +157,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
         </header>
 
         {data.outcome && (
-          <section className="mt-12 border-y border-white/10 bg-[#08080a] px-5 py-14 md:mt-16 md:px-8 md:py-20" aria-labelledby={`${data.pageId}-outcome-title`}>
+          <section className="section-band section-band-deep mt-16 px-5 py-20 md:mt-24 md:px-8 md:py-28" aria-labelledby={`${data.pageId}-outcome-title`}>
             <div className="motion-reveal mx-auto max-w-[1280px]">
               <div className="grid gap-8 md:grid-cols-12 md:items-end">
                 <div className="md:col-span-7">
@@ -171,9 +171,9 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
                 </p>
               </div>
 
-              <dl className="mt-10 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+              <dl className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {data.outcome.metrics.map((metric) => (
-                  <div key={metric.label} className="bg-[#08080a] p-6 md:min-h-[235px] md:p-8">
+                  <div key={metric.label} className="content-card p-6 md:min-h-[235px] md:p-8">
                     <dd className="text-5xl font-black leading-none tracking-tighter md:text-7xl" style={{ color: data.accent ?? "#00f5ff" }}>
                       {metric.value}
                     </dd>
@@ -188,7 +188,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
 
         {signatureStory}
 
-        <section className={`${hasOutcome ? "" : "mt-16 md:mt-24"} border-b border-white/5 bg-[#08080a] px-5 py-16 md:px-8 md:py-24`}>
+        <section className={`${hasOutcome ? "" : "mt-16 md:mt-24"} section-band section-band-raised px-5 py-20 md:px-8 md:py-28`}>
           <div className="motion-reveal mx-auto grid max-w-[1280px] gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-4">
               <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">{hasOutcome ? "02" : "01"} // The problem</div>
@@ -196,7 +196,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
             </div>
             <div className="space-y-8 md:col-span-8">
               <p className="text-xl font-normal leading-relaxed text-slate-200 md:text-2xl">{data.context}</p>
-              <div className="border-l border-white/20 pl-6">
+              <div className="content-card border-l-2 border-l-primary/55 p-6 md:p-8">
                 <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/65">The non-negotiable constraint</div>
                 <p className="mt-3 text-base font-normal leading-relaxed text-slate-300 md:text-lg">{data.challenge}</p>
               </div>
@@ -204,9 +204,9 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
           </div>
         </section>
 
-        <section className="px-5 py-16 md:px-8 md:py-24">
+        <section className="section-band section-band-deep px-5 py-20 md:px-8 md:py-28">
           <div className="mx-auto max-w-[1280px]">
-            <div className="motion-reveal grid gap-8 border-b border-white/10 pb-10 md:grid-cols-12 md:items-end md:pb-12">
+            <div className="motion-reveal mb-10 grid gap-8 md:mb-14 md:grid-cols-12 md:items-end">
               <div className="md:col-span-8">
                 <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">
                   {hasOutcome ? "03" : "02"} // {isTeamExperience ? "Product reasoning" : "The intervention"}
@@ -222,20 +222,20 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
               </p>
             </div>
 
-            <ol>
+            <ol className="grid gap-5">
               {data.decisions.map((decision, index) => (
-                <li key={decision.title} className="motion-reveal border-b border-white/10 py-10 md:py-14">
+                <li key={decision.title} className="content-card motion-reveal p-6 md:p-8 lg:p-10">
                   {decision.story ? (
                     <div className="grid gap-6 md:grid-cols-12 md:gap-8">
                       <div className="font-mono text-xs text-primary md:col-span-1">0{index + 1}</div>
                       <h3 className="max-w-sm text-2xl font-bold tracking-tight text-white md:col-span-3 md:text-3xl">{decision.title}</h3>
-                      <dl className="grid border border-white/10 bg-white/10 sm:grid-cols-3 md:col-span-8">
+                      <dl className="grid gap-3 sm:grid-cols-3 md:col-span-8">
                         {([
                           ["Before", decision.story.before],
                           ["Intervention", decision.story.intervention],
                           ["Consequence", decision.story.consequence],
                         ] as const).map(([label, value]) => (
-                          <div key={label} className="bg-background-dark p-5 sm:[&:not(:first-child)]:border-l sm:[&:not(:first-child)]:border-white/10 md:p-6">
+                          <div key={label} className="border border-white/10 bg-black/25 p-5 md:p-6">
                             <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-primary">{label}</dt>
                             <dd className="mt-4 text-sm leading-relaxed text-slate-300">{value}</dd>
                           </div>
@@ -264,7 +264,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
           </div>
         </section>
 
-        <section className="border-y border-white/5 bg-white/[0.025] px-5 py-16 md:px-8 md:py-20">
+        <section className="section-band section-band-raised px-5 py-20 md:px-8 md:py-28">
           <div className="motion-reveal mx-auto grid max-w-[1280px] gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-5">
               <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">
@@ -284,7 +284,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
                 ))}
               </ul>
 
-              <div className="mt-8 border-l-2 border-primary/50 pl-6">
+              <div className="content-card mt-8 border-l-2 border-l-primary/50 p-6">
                 <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/65">Evidence boundary</div>
                 <p className="mt-3 text-base font-normal leading-relaxed text-slate-300">{data.evidenceBoundary}</p>
               </div>
@@ -293,7 +293,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
         </section>
 
         {data.performanceMetrics && data.performanceMetrics.length > 0 && (
-          <section className="border-b border-white/10 bg-[#08080a] px-5 py-16 md:px-8 md:py-24" aria-labelledby={`${data.pageId}-measurement-title`}>
+          <section className="section-band section-band-deep px-5 py-20 md:px-8 md:py-28" aria-labelledby={`${data.pageId}-measurement-title`}>
             <div className="motion-reveal mx-auto max-w-[1280px]">
               <div className="grid gap-8 md:grid-cols-12">
                 <div className="md:col-span-5">
@@ -309,9 +309,9 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
                 </div>
               </div>
 
-              <dl className="mt-10 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+              <dl className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {data.performanceMetrics.map((metric) => (
-                  <div key={metric.label} className="relative min-h-[245px] overflow-hidden bg-background-dark p-6 md:p-8">
+                  <div key={metric.label} className="content-card relative min-h-[245px] overflow-hidden p-6 md:p-8">
                     <dd className="pt-2 text-5xl font-black leading-none tracking-tighter text-white md:text-6xl">{metric.value}</dd>
                     <dt className="mt-7 text-base font-bold leading-tight text-white">{metric.label}</dt>
                     <p className="mt-3 text-sm leading-relaxed text-slate-400">{metric.definition}</p>
@@ -323,7 +323,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
         )}
 
         <section className="px-5 py-20 text-center md:px-8 md:py-28">
-          <div className="motion-reveal mx-auto max-w-4xl">
+          <div className="content-card content-card-accent motion-reveal mx-auto max-w-5xl px-6 py-14 sm:px-10 md:px-16 md:py-20">
             <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">Your product is different</div>
             <h2 className="mt-6 text-4xl font-black leading-tight tracking-tighter text-white sm:text-5xl md:text-7xl">
               Bring the problem.<br /><span className="text-primary">We will bring the questions.</span>

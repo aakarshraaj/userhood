@@ -91,7 +91,7 @@ export default function About() {
 
             <div className="grid gap-5 sm:grid-cols-2 lg:col-span-6">
               {founders.map((founder) => (
-                <article key={founder.name} className="border border-white/10 bg-[#08080a]">
+                <article key={founder.name} className="content-card p-3 sm:p-4">
                   <div className="aspect-[5/4] overflow-hidden border-b border-white/10 bg-black">
                     <img
                       src={founder.image}
@@ -101,7 +101,7 @@ export default function About() {
                       height="512"
                     />
                   </div>
-                  <div className="p-5 md:p-6">
+                  <div className="px-2 pb-2 pt-5 md:px-3 md:pb-3 md:pt-6">
                     <h2 className="text-2xl font-black tracking-tight text-white">{founder.name}</h2>
                     <p className="mt-1 text-sm font-bold text-primary">{founder.role}</p>
                     <div className="mt-5 border-t border-white/10 pt-4">
@@ -154,7 +154,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="border-b border-white/5 bg-[#08080a] px-5 py-16 md:px-8 md:py-20" aria-labelledby="proof-title">
+      <section className="section-band section-band-deep px-5 py-20 md:px-8 md:py-28" aria-labelledby="proof-title">
         <div className="mx-auto max-w-[1440px]">
           <div className="grid gap-8 md:grid-cols-12 md:items-end">
             <div className="md:col-span-7">
@@ -168,30 +168,30 @@ export default function About() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-px border border-white/10 bg-white/10 md:grid-cols-2">
-            <div className="bg-[#08080a] p-7 md:p-9">
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            <div className="content-card p-7 md:p-9">
               <div className="font-mono text-xs uppercase tracking-[0.14em] text-primary">Product builds</div>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                <Link to="/case-study/rentnama" className="group flex min-h-[112px] flex-col justify-between border border-white/10 p-5 transition-colors hover:border-primary">
+                <Link to="/case-study/rentnama" className="group flex min-h-[112px] flex-col justify-between border border-white/10 bg-black/25 p-5 transition-colors hover:border-primary">
                   <span className="text-xl font-bold text-white group-hover:text-primary">Rentnama</span>
                   <span className="flex items-center justify-between text-sm text-slate-300">Rental intelligence <ArrowRight className="h-4 w-4" /></span>
                 </Link>
-                <Link to="/case-study/tirch" className="group flex min-h-[112px] flex-col justify-between border border-white/10 p-5 transition-colors hover:border-primary">
+                <Link to="/case-study/tirch" className="group flex min-h-[112px] flex-col justify-between border border-white/10 bg-black/25 p-5 transition-colors hover:border-primary">
                   <span className="text-xl font-bold text-white group-hover:text-primary">Tirch</span>
                   <span className="flex items-center justify-between text-sm text-slate-300">End-to-end commerce <ArrowRight className="h-4 w-4" /></span>
                 </Link>
               </div>
             </div>
 
-            <div className="bg-[#08080a] p-7 md:p-9">
+            <div className="content-card p-7 md:p-9">
               <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/60">Attributed team experience</div>
               <p className="mt-3 text-xs leading-relaxed text-white/55">Not Userhood engagements or client endorsements. No outcome claims are made.</p>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                <Link to="/case-study/hyundai" className="group flex min-h-[112px] flex-col justify-between border border-white/10 p-5 transition-colors hover:border-primary">
+                <Link to="/case-study/hyundai" className="group flex min-h-[112px] flex-col justify-between border border-white/10 bg-black/25 p-5 transition-colors hover:border-primary">
                   <span className="text-xl font-bold text-white group-hover:text-primary">Hyundai Global</span>
                   <span className="flex items-center justify-between text-sm text-slate-300">Automotive commerce <ArrowRight className="h-4 w-4" /></span>
                 </Link>
-                <Link to="/case-study/mitsubishi" className="group flex min-h-[112px] flex-col justify-between border border-white/10 p-5 transition-colors hover:border-primary">
+                <Link to="/case-study/mitsubishi" className="group flex min-h-[112px] flex-col justify-between border border-white/10 bg-black/25 p-5 transition-colors hover:border-primary">
                   <span className="text-xl font-bold text-white group-hover:text-primary">Mitsubishi Motors</span>
                   <span className="flex items-center justify-between text-sm text-slate-300">Connected ownership <ArrowRight className="h-4 w-4" /></span>
                 </Link>
@@ -201,7 +201,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-5 py-16 md:px-8 md:py-20" aria-labelledby="team-title">
+      <section className="section-band section-band-raised px-5 py-20 md:px-8 md:py-28" aria-labelledby="team-title">
         <div className="mx-auto grid max-w-[1440px] gap-10 md:grid-cols-12 md:gap-14">
           <div className="md:col-span-4">
             <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">03 // The wider team</div>
@@ -213,7 +213,7 @@ export default function About() {
 
           <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 md:col-span-8 md:grid-cols-5 md:gap-x-5">
             {team.map((member) => (
-              <article key={member.name}>
+              <article key={member.name} className="content-card p-2 pb-4">
                 <div className="aspect-square overflow-hidden border border-white/10 bg-surface">
                   <img
                     src={member.image}
@@ -225,15 +225,15 @@ export default function About() {
                     height="280"
                   />
                 </div>
-                <h3 className="mt-4 text-lg font-bold text-white">{member.name}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-white/70">{member.role}</p>
+                <h3 className="mt-4 px-2 text-lg font-bold text-white">{member.name}</h3>
+                <p className="mt-1 px-2 text-sm leading-relaxed text-white/70">{member.role}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-y border-white/5 bg-white/[0.025] px-5 py-16 md:px-8 md:py-20" aria-labelledby="commitments-title">
+      <section className="section-band section-band-deep px-5 py-20 md:px-8 md:py-28" aria-labelledby="commitments-title">
         <div className="mx-auto grid max-w-[1440px] gap-10 md:grid-cols-12 md:gap-14">
           <div className="md:col-span-5">
             <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">04 // What you can expect</div>
@@ -243,9 +243,9 @@ export default function About() {
           </div>
 
           <div className="md:col-span-7">
-            <div className="border-t border-white/10">
+            <div className="grid gap-3">
               {commitments.map((commitment) => (
-                <div key={commitment} className="flex items-start gap-4 border-b border-white/10 py-6 text-base leading-relaxed text-slate-200 md:text-lg">
+                <div key={commitment} className="content-card flex items-start gap-4 p-5 text-base leading-relaxed text-slate-200 md:p-6 md:text-lg">
                   <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-primary" />
                   <span>{commitment}</span>
                 </div>

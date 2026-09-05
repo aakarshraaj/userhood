@@ -17,7 +17,7 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
   return (
     <section
       id="engagement"
-      className="relative overflow-hidden border-y border-white/5 bg-[#030303] px-5 py-16 md:px-8 md:py-20 lg:py-24"
+      className="section-band section-band-deep relative overflow-hidden px-5 py-20 md:px-8 md:py-28"
     >
       <div className="tech-grid absolute inset-0 opacity-10 pointer-events-none" />
 
@@ -76,7 +76,7 @@ export default function EngagementModels({ onContactClick }: EngagementModelsPro
           </div>
         </div>
 
-        <aside className="motion-reveal grid gap-6 border-x border-b border-white/10 bg-white/[0.025] p-6 md:grid-cols-[1.35fr_0.8fr_0.8fr_auto] md:items-center md:gap-8 md:p-8" aria-label="Other ways to work with Userhood">
+        <aside className="content-card motion-reveal mt-5 grid gap-6 p-6 md:grid-cols-[1.35fr_0.8fr_0.8fr_auto] md:items-center md:gap-8 md:p-8" aria-label="Other ways to work with Userhood">
           <div>
             <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/65">Already have a product?</div>
             <h3 className="mt-2 text-xl font-bold tracking-tight text-white md:text-2xl">
