@@ -16,17 +16,18 @@ export default function Hero({ onContactClick }: HeroProps) {
       </div>
       <div className="scanline absolute inset-0 opacity-20 pointer-events-none z-0 hidden md:block" />
 
-      <div className="max-w-[1440px] mx-auto w-full relative z-10">
+      <div className="brand-intro-hero-content max-w-[1440px] mx-auto w-full relative z-10">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-16">
           <div className="lg:col-span-8 xl:col-span-7">
-            <h1 className="mb-7 max-w-5xl text-5xl font-black leading-[0.9] tracking-tighter text-white/55 sm:text-6xl md:mb-8 md:text-7xl lg:text-[clamp(72px,6.5vw,100px)]">
+            <h1 className="mb-7 max-w-5xl text-5xl font-medium leading-[0.96] tracking-[-0.035em] text-white/60 sm:text-6xl md:mb-8 md:text-7xl lg:text-[clamp(68px,6vw,92px)]">
               From product brief<br />
-              <span className="text-white">to production in 12 weeks.</span>
+              <span className="text-white/90">to production in </span>
+              <span className="font-black tracking-[-0.055em] text-white">12 weeks.</span>
             </h1>
 
             <div className="max-w-3xl">
               <p className="mb-7 text-base font-normal leading-relaxed text-slate-300 sm:text-lg md:mb-8">
-                A senior product, design, and engineering team for funded startups building their first serious release.
+                A hands-on product, design, and engineering team for funded startups with a real release to ship.
               </p>
 
               <div className="flex flex-col items-stretch gap-3 text-base sm:flex-row sm:items-center">

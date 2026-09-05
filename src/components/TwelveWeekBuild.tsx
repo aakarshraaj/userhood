@@ -28,24 +28,16 @@ export default function TwelveWeekBuild() {
   return (
     <section id="process" className="section-band section-band-raised relative overflow-hidden px-5 py-20 md:px-8 md:py-28">
       <div className="relative z-10 mx-auto max-w-[1440px]">
-        <div className="motion-reveal mb-10 grid gap-7 md:mb-14 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-8">
-            <div className="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-white/50">[ 02 // THE_BUILD ]</div>
-            <h2 className="max-w-4xl text-4xl font-black leading-[0.95] tracking-tighter text-white/55 sm:text-5xl md:text-7xl">
-              How twelve weeks <span className="text-white">move.</span>
-            </h2>
-          </div>
-          <div className="md:col-span-4 md:justify-self-end">
-            <p className="max-w-md text-base leading-relaxed text-slate-300">Four stages. One scoped production release.</p>
-            <Link to="/services" className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-white transition-colors hover:text-primary">
-              See the full engagement <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+        <div className="motion-reveal mb-10 md:mb-14">
+          <div className="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-white/50">[ 02 // THE_BUILD ]</div>
+          <h2 className="max-w-4xl text-4xl font-black leading-[0.95] tracking-tighter text-white/55 sm:text-5xl md:text-7xl">
+            How twelve weeks <span className="text-white">move.</span>
+          </h2>
         </div>
 
-        <ol className="motion-reveal grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="motion-reveal grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {phases.map((phase, index) => (
-            <li key={phase.weeks} className="content-card motion-card flex min-h-[240px] flex-col p-6 hover:border-white/20 md:p-7">
+            <li key={phase.weeks} className="flex min-h-[210px] flex-col bg-white/[0.035] p-6 md:p-7">
               <div className="flex items-center justify-between gap-4 font-mono text-xs uppercase tracking-[0.13em] text-white/55">
                 <span>{phase.weeks}</span>
                 <span className="text-white/35">0{index + 1}</span>
@@ -57,6 +49,12 @@ export default function TwelveWeekBuild() {
             </li>
           ))}
         </ol>
+
+        <div className="motion-reveal mt-6 flex justify-end">
+          <Link to="/services" className="motion-button inline-flex min-h-11 items-center gap-2 text-sm font-bold text-white/65 hover:text-white">
+            See the full engagement <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -92,14 +92,18 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
       <div className="relative z-50 mx-auto flex h-14 max-w-[1440px] items-center justify-between px-4 sm:h-16 sm:px-6 md:px-8">
         <div className="flex min-w-0 items-center">
           <Link to="/" className="flex min-h-11 shrink-0 items-center gap-2.5 transition-opacity hover:opacity-80" onClick={() => setIsOpen(false)} aria-label="Userhood home">
-            <span className="userhood-monogram-tile flex h-8 w-8 shrink-0 items-center justify-center bg-white sm:h-9 sm:w-9" aria-hidden="true">
+            <span
+              data-userhood-monogram-target
+              className="userhood-monogram-tile flex h-8 w-8 shrink-0 items-center justify-center bg-white sm:h-9 sm:w-9"
+              aria-hidden="true"
+            >
               <UserhoodMonogram className="h-[22px] w-[22px] text-[#0a0a0a] sm:h-6 sm:w-6" />
             </span>
-            <UserhoodLogo className="h-[19px] w-[100px] text-white sm:h-[23px] sm:w-[120px]" />
+            <UserhoodLogo className="brand-intro-wordmark h-[19px] w-[100px] text-white sm:h-[23px] sm:w-[120px]" />
           </Link>
         </div>
 
-        <div className="hidden items-center gap-5 md:flex lg:gap-7">
+        <div className="brand-intro-nav-actions hidden items-center gap-5 md:flex lg:gap-7">
           <div className="flex items-center gap-5 text-sm font-medium text-white/75 lg:gap-7">
             <Link to="/work" aria-current={pathname === "/work" || pathname.startsWith("/case-study/") ? "page" : undefined} onClick={handleLinkClick} className={`nav-link transition-colors hover:text-primary ${pathname === "/work" || pathname.startsWith("/case-study/") ? "text-primary" : ""}`}>Work</Link>
             <Link to="/services" aria-current={pathname === "/services" ? "page" : undefined} onClick={handleLinkClick} className={`nav-link transition-colors hover:text-primary ${pathname === "/services" ? "text-primary" : ""}`}>Services</Link>
@@ -121,7 +125,7 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
         <button
           ref={toggleRef}
           type="button"
-          className="flex min-h-[44px] min-w-[44px] items-center justify-center text-white/75 transition-colors hover:text-white md:hidden"
+          className="brand-intro-nav-actions flex min-h-[44px] min-w-[44px] items-center justify-center text-white/75 transition-colors hover:text-white md:hidden"
           onClick={() => setIsOpen((current) => !current)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
@@ -148,7 +152,7 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
             >
               <div className="border-b border-white/10 pb-5">
                 <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/50">Navigate</div>
-                <p className="mt-2 text-sm leading-relaxed text-slate-300">Inspect the work, understand the engagement, or speak directly with the team.</p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-300">See our work, compare services, or speak directly with the team.</p>
               </div>
 
               <div className="flex flex-col border-b border-white/10 py-3 text-xl font-bold text-white">

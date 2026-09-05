@@ -3,7 +3,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { trackAnalyticsEvent } from "../utils/analytics";
 import BrandIdentity from "./BrandIdentity";
-import ProjectMedia, { type ProjectMediaSpec } from "./ProjectMedia";
+import ProjectShowcase, { type ProjectShowcaseFrame } from "./ProjectShowcase";
 
 interface WorkItem {
   index: string;
@@ -12,15 +12,9 @@ interface WorkItem {
   relationship: "Product build" | "Team experience";
   title: string;
   description?: string;
-  problem?: string;
-  intervention?: string;
-  proof?: Array<{
-    value: string;
-    label: string;
-  }>;
   link: string;
   accent: string;
-  media: ProjectMediaSpec;
+  showcase?: ProjectShowcaseFrame[];
 }
 
 const selectedWork: WorkItem[] = [
@@ -30,24 +24,14 @@ const selectedWork: WorkItem[] = [
     category: "Rental intelligence platform",
     relationship: "Product build",
     title: "Building a public price layer for India’s rental market.",
-    problem: "Listings showed asking prices. Renters still could not see what people actually paid at a specific society.",
-    intervention: "Make the society the unit of truth, expose evidence strength, and make every answer recruit the next report.",
-    proof: [
-      { value: "178", label: "first-hand reports" },
-      { value: "146", label: "societies" },
-      { value: "72", label: "localities" },
-    ],
     link: "/case-study/rentnama",
     accent: "#b5ef67",
-    media: {
-      label: "Live product // Answer + evidence map",
-      description: "Society-level rent intelligence with visible evidence, freshness, and map context.",
-      src: "/work/rentnama-society.webp",
-      alt: "Rentnama society dossier for Life Republic showing rent range, report count, and deposit evidence",
-      secondarySrc: "/work/rentnama-map.webp",
-      secondaryAlt: "Rentnama's live Pune map with society-level rent pins and evidence filters",
-      treatment: "layered",
-    },
+    showcase: [
+      { src: "/work/rentnama-map.webp", alt: "Rentnama's live Pune map with society-level rent pins and evidence filters" },
+      { src: "/work/rentnama-society.webp", alt: "Rentnama society dossier for Life Republic showing rent range, report count, and deposit evidence" },
+      { src: "/work/rentnama-explore.webp", alt: "Rentnama's society-by-society exploration experience" },
+      { src: "/work/rentnama-contribute.webp", alt: "Rentnama's first-hand rent contribution flow" },
+    ],
   },
   {
     index: "02",
@@ -55,24 +39,15 @@ const selectedWork: WorkItem[] = [
     category: "End-to-end commerce engine",
     relationship: "Product build",
     title: "Building Tirch’s end-to-end commerce engine.",
-    problem: "A campaign-ready storefront still fails when price, identity, checkout, and orders disagree.",
-    intervention: "Put merchandising, server-priced checkout, OTP accounts, orders, email, analytics, and launch controls behind one brand.",
-    proof: [
-      { value: "10", label: "live products" },
-      { value: "3", label: "collection systems" },
-      { value: "1", label: "price authority" },
-    ],
     link: "/case-study/tirch",
     accent: "#d2694a",
-    media: {
-      label: "Live product // Storefront + engine",
-      description: "The visible storefront and the full commerce system behind it.",
-      src: "/work/tirch-home.webp",
-      alt: "Tirch storefront campaign featuring the Ghungroo Break tee",
-      secondarySrc: "/work/tirch-catalogue.webp",
-      secondaryAlt: "Tirch shop catalogue with distinct product photography and collection hierarchy",
-      treatment: "layered",
-    },
+    showcase: [
+      { src: "/work/tirch-home.webp", alt: "Tirch storefront campaign featuring the Ghungroo Break tee" },
+      { src: "/work/tirch-catalogue.webp", alt: "Tirch shop catalogue with distinct product photography and collection hierarchy" },
+      { src: "/work/tirch-product.webp", alt: "Tirch product detail page with pricing, fit, and size selection" },
+      { src: "/work/tirch-bag.webp", alt: "Tirch shopping bag and checkout flow" },
+      { src: "/work/tirch-account.webp", alt: "Tirch passwordless account experience" },
+    ],
   },
   {
     index: "03",
@@ -84,10 +59,6 @@ const selectedWork: WorkItem[] = [
       "A team member’s experience shaping a staged path through model discovery, configuration, finance, and dealer fulfilment.",
     link: "/case-study/hyundai",
     accent: "#ffffff",
-    media: {
-      label: "Product image // Vehicle purchase journey",
-      description: "An approved or anonymised view of the connected purchase journey will live here.",
-    },
   },
   {
     index: "04",
@@ -99,10 +70,6 @@ const selectedWork: WorkItem[] = [
       "A team member’s experience translating vehicle health, servicing, and driving feedback into calmer ownership decisions.",
     link: "/case-study/mitsubishi",
     accent: "#ffffff",
-    media: {
-      label: "Product image // Connected ownership",
-      description: "An approved or anonymised view of the connected ownership experience will live here.",
-    },
   },
 ];
 
@@ -136,66 +103,34 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
         </div>
 
         <div className="motion-reveal grid gap-6 lg:grid-cols-2 lg:gap-7">
-          {productBuilds.map((item) => (
+          {productBuilds.map((item, index) => (
             <Link
               key={item.organisation}
               to={item.link}
               onClick={() => trackAnalyticsEvent("case_study_open", { source: analyticsSource, organisation: item.organisation })}
               aria-label={`Read the ${item.organisation} ${item.relationship.toLowerCase()} case study`}
-              className="content-card motion-card group flex min-w-0 flex-col p-4 hover:border-white/20 md:p-5"
+              className="content-card motion-card group flex min-w-0 flex-col overflow-hidden hover:border-white/20"
               style={{ "--work-accent": item.accent } as CSSProperties}
             >
-              <ProjectMedia project={item.organisation} media={item.media} accent={item.accent} compact />
+              <ProjectShowcase frames={item.showcase ?? []} accent={item.accent} startDelay={index * 900} />
 
-              <div className="brand-stage mt-4 flex items-center justify-between gap-5 px-5 py-5 md:px-6 md:py-6">
-                <BrandIdentity brand={item.organisation as "Rentnama" | "Tirch"} size="card" />
-                <div className="font-mono text-xs text-white/45">{item.index}</div>
-              </div>
-
-              <div className="flex flex-1 flex-col px-1 pb-2 pt-7 md:px-2 md:pb-3 md:pt-8">
-                <div className="flex items-center justify-between gap-4">
-                  <div className="font-mono text-xs uppercase tracking-[0.12em] text-[var(--work-accent)]">
-                    {item.relationship} · {item.category}
-                  </div>
+              <div className="flex flex-1 flex-col px-5 pb-6 pt-6 md:px-7 md:pb-8 md:pt-7">
+                <div className="flex items-center justify-between gap-5">
+                  <BrandIdentity brand={item.organisation as "Rentnama" | "Tirch"} size="card" />
+                  <ArrowUpRight className="h-5 w-5 text-white/45 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
                 </div>
 
-                <CardHeading className="mt-4 max-w-2xl text-2xl font-bold leading-tight tracking-tight text-white transition-colors group-hover:text-primary md:text-3xl">
+                <CardHeading className="mt-6 max-w-2xl text-2xl font-bold leading-tight tracking-tight text-white md:text-3xl">
                   {item.title}
                 </CardHeading>
-                <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                  <div className="border border-white/10 bg-black/25 p-5">
-                    <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/50">The constraint</div>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-300">{item.problem}</p>
-                  </div>
-                  <div className="border border-white/10 bg-white/[0.035] p-5">
-                    <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--work-accent)]">The product move</div>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-200">{item.intervention}</p>
-                  </div>
-                </div>
-
-                <dl className="mt-3 grid grid-cols-3 gap-2">
-                  {item.proof?.map((signal) => (
-                    <div key={signal.label} className="border border-white/10 bg-black/25 p-4">
-                      <dd className="text-2xl font-black tracking-tight text-white md:text-3xl">{signal.value}</dd>
-                      <dt className="mt-1 font-mono text-[9px] uppercase leading-relaxed tracking-[0.1em] text-white/50">{signal.label}</dt>
-                    </div>
-                  ))}
-                </dl>
-
-                <div className="mt-7 flex items-center justify-between text-sm font-bold text-white/80">
-                  <span>See the decisions behind it</span>
-                  <span className="motion-button flex h-11 w-11 items-center justify-center border border-white/15 text-white group-hover:border-primary group-hover:bg-primary group-hover:text-black">
-                    <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </span>
-                </div>
               </div>
             </Link>
           ))}
         </div>
 
         {standalone ? (
-          <div className="content-card motion-reveal mt-10 p-5 md:mt-12 md:p-7">
-            <div className="grid gap-6 border-b border-white/10 pb-5 md:grid-cols-[0.75fr_1.25fr] md:items-end">
+          <div className="motion-reveal mt-10 bg-white/[0.025] p-5 md:mt-12 md:p-7">
+            <div className="grid gap-6 pb-5 md:grid-cols-[0.75fr_1.25fr] md:items-end">
               <div className="font-mono text-xs uppercase tracking-[0.15em] text-white/65">
                 Team experience
               </div>
@@ -212,7 +147,7 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
                   to={item.link}
                   onClick={() => trackAnalyticsEvent("case_study_open", { source: "work_page_team_experience", organisation: item.organisation })}
                   aria-label={`Read the ${item.organisation} attributed team experience note`}
-                  className="motion-card group flex flex-col border border-white/10 bg-black/25 p-6 hover:border-white/20"
+                  className="motion-card group flex flex-col bg-black/25 p-6 transition-colors hover:bg-white/[0.035]"
                 >
                   <div className="flex items-center justify-between gap-4 font-mono text-xs uppercase tracking-[0.11em] text-white/60">
                     <span>{item.category}</span>
@@ -234,7 +169,7 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
           <Link
             to="/work"
             onClick={() => trackAnalyticsEvent("selected_work_click", { source: "homepage_selected_work_footer" })}
-            className="motion-button motion-reveal group mt-6 flex min-h-16 items-center justify-between border border-white/10 bg-white/[0.025] px-5 text-sm font-bold text-white hover:border-primary hover:text-primary md:px-7"
+            className="motion-button motion-reveal group mt-8 inline-flex min-h-12 items-center gap-3 text-sm font-bold text-white/65 hover:text-white"
           >
             <span>View all work, including automotive team experience</span>
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

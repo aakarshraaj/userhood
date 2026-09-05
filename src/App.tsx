@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import ContactModal from "./components/ContactModal";
 import { AnalyticsConsentBanner } from "./components/AnalyticsConsent";
 import StickyContactCTA from "./components/StickyContactCTA";
+import BrandIntro from "./components/BrandIntro";
 import { getPageMetadata, getPageSEO, SITE_METADATA } from "./data/siteMetadata";
 
 import { captureAttribution, trackAnalyticsEvent, trackPageView } from "./utils/analytics";
@@ -153,13 +154,14 @@ export default function App() {
           <a href="#main-content" className="skip-link">Skip to main content</a>
           <RouteTracker />
           <Navbar onContactClick={() => handleContactClick('navbar')} onMenuOpenChange={setIsMenuOpen} />
+          {location.pathname === "/" && <BrandIntro />}
 
           <div id="main-content" tabIndex={-1} className="outline-none">
             <div key={location.pathname} className="route-stage">
               <Suspense fallback={<div className="min-h-screen bg-background-dark flex items-center justify-center" role="status" aria-label="Loading page"><div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin-slow"></div></div>}>
                 <Routes>
                 <Route path={getPageMetadata("home").path} element={
-                  <main data-page-id="home">
+                  <main data-page-id="home" className="brand-intro-page-content">
                     <HomeSEO />
                     <Hero onContactClick={() => handleContactClick('hero')} />
                     <SelectedWork />

@@ -20,6 +20,7 @@ interface ProjectMediaProps {
   media: ProjectMediaSpec;
   accent?: string;
   compact?: boolean;
+  flush?: boolean;
   size?: "default" | "compact" | "mini";
   className?: string;
 }
@@ -29,6 +30,7 @@ export default function ProjectMedia({
   media,
   accent = "#ffffff",
   compact = false,
+  flush = false,
   size,
   className = "",
 }: ProjectMediaProps) {
@@ -41,7 +43,7 @@ export default function ProjectMedia({
 
   return (
     <figure
-      className={`project-media relative isolate w-full min-w-0 max-w-full overflow-hidden border border-white/10 bg-[#0b0b0b] ${
+      className={`project-media relative isolate w-full min-w-0 max-w-full overflow-hidden bg-[#0b0b0b] ${flush ? "" : "border border-white/10"} ${
         resolvedSize === "mini"
           ? "aspect-video min-h-[205px]"
           : resolvedSize === "compact"
@@ -52,8 +54,8 @@ export default function ProjectMedia({
     >
       {media.src ? (
         treatment === "layered" && media.secondarySrc ? (
-          <div className="absolute inset-x-3 bottom-14 top-3 md:inset-x-7 md:bottom-20 md:top-7">
-            <div className="absolute left-0 top-0 h-[82%] w-[84%] overflow-hidden border border-white/15 bg-black shadow-[0_28px_80px_rgba(0,0,0,0.55)]">
+          <div className={flush ? "absolute inset-x-0 bottom-12 top-0 md:bottom-14" : "absolute inset-x-3 bottom-14 top-3 md:inset-x-7 md:bottom-20 md:top-7"}>
+            <div className={`absolute left-0 top-0 overflow-hidden bg-black shadow-[0_28px_80px_rgba(0,0,0,0.55)] ${flush ? "h-[88%] w-[88%]" : "h-[82%] w-[84%] border border-white/15"}`}>
               <img
                 src={media.src}
                 alt={media.alt ?? `${project} product interface`}
@@ -63,7 +65,7 @@ export default function ProjectMedia({
                 style={{ objectPosition: media.objectPosition ?? "center" }}
               />
             </div>
-            <div className="absolute bottom-0 right-0 aspect-video w-[48%] overflow-hidden border border-[var(--project-accent)]/70 bg-black shadow-[0_24px_64px_rgba(0,0,0,0.75)]">
+            <div className={`absolute bottom-0 aspect-video overflow-hidden bg-black shadow-[0_24px_64px_rgba(0,0,0,0.75)] ${flush ? "right-3 w-[52%] md:right-5" : "right-0 w-[48%] border border-[var(--project-accent)]/70"}`}>
               <img
                 src={media.secondarySrc}
                 alt={media.secondaryAlt ?? `${project} product interface detail`}
