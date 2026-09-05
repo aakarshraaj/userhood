@@ -7,7 +7,12 @@ import ProjectMedia, { type ProjectMediaSpec } from "./ProjectMedia";
 
 export interface CaseStudyDecision {
   title: string;
-  detail: string;
+  detail?: string;
+  story?: {
+    before: string;
+    intervention: string;
+    consequence: string;
+  };
   media?: ProjectMediaSpec;
 }
 
@@ -28,7 +33,7 @@ export interface CaseStudyOutcome {
   metrics: CaseStudyMetric[];
 }
 
-export interface CaseStudyDraftMetric {
+export interface CaseStudyPerformanceMetric {
   value: string;
   label: string;
   definition: string;
@@ -50,7 +55,7 @@ export interface CaseStudyData {
   decisions: CaseStudyDecision[];
   documentedScope: string[];
   evidenceBoundary: string;
-  draftMetrics?: CaseStudyDraftMetric[];
+  performanceMetrics?: CaseStudyPerformanceMetric[];
   liveProduct?: {
     label: string;
     href: string;
@@ -202,25 +207,44 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
                 <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-6xl">The decisions that changed the product.</h2>
               </div>
               <p className="text-base font-normal leading-relaxed text-slate-300 md:col-span-4">
-                The useful part of a case study is the reasoning, the constraint, and the product consequence—not a wall of polished screens.
+                Four constraints. Four deliberate moves. Four consequences.
               </p>
             </div>
 
             <ol>
               {data.decisions.map((decision, index) => (
                 <li key={decision.title} className="border-b border-white/10 py-10 md:py-14">
-                  <div className="grid gap-6 md:grid-cols-12 md:gap-10">
-                    <div className="font-mono text-xs text-primary md:col-span-1">0{index + 1}</div>
-                    <h3 className="text-2xl font-bold tracking-tight text-white md:col-span-4 md:text-3xl">{decision.title}</h3>
-                    <p className="max-w-2xl text-base font-normal leading-relaxed text-slate-300 md:col-span-7">{decision.detail}</p>
-                  </div>
+                  {decision.story ? (
+                    <div className="grid gap-6 md:grid-cols-12 md:gap-8">
+                      <div className="font-mono text-xs text-primary md:col-span-1">0{index + 1}</div>
+                      <h3 className="max-w-sm text-2xl font-bold tracking-tight text-white md:col-span-3 md:text-3xl">{decision.title}</h3>
+                      <dl className="grid border border-white/10 bg-white/10 sm:grid-cols-3 md:col-span-8">
+                        {([
+                          ["Before", decision.story.before],
+                          ["Intervention", decision.story.intervention],
+                          ["Consequence", decision.story.consequence],
+                        ] as const).map(([label, value]) => (
+                          <div key={label} className="bg-background-dark p-5 sm:[&:not(:first-child)]:border-l sm:[&:not(:first-child)]:border-white/10 md:p-6">
+                            <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-primary">{label}</dt>
+                            <dd className="mt-4 text-sm leading-relaxed text-slate-300">{value}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </div>
+                  ) : (
+                    <div className="grid gap-6 md:grid-cols-12 md:gap-10">
+                      <div className="font-mono text-xs text-primary md:col-span-1">0{index + 1}</div>
+                      <h3 className="text-2xl font-bold tracking-tight text-white md:col-span-4 md:text-3xl">{decision.title}</h3>
+                      {decision.detail && <p className="max-w-2xl text-base font-normal leading-relaxed text-slate-300 md:col-span-7">{decision.detail}</p>}
+                    </div>
+                  )}
                   {decision.media && (
                     <ProjectMedia
                       project={data.brand}
                       media={decision.media}
                       accent={data.accent}
                       compact
-                      className="mt-8 md:ml-[8.333%] md:mt-10"
+                      className={decision.story ? "mt-8 md:ml-[33.333%] md:mt-10 md:w-[66.667%]" : "mt-8 md:ml-[8.333%] md:mt-10 md:w-[91.667%]"}
                     />
                   )}
                 </li>
@@ -253,7 +277,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
           </div>
         </section>
 
-        {data.draftMetrics && data.draftMetrics.length > 0 && (
+        {data.performanceMetrics && data.performanceMetrics.length > 0 && (
           <section className="border-b border-white/10 bg-[#08080a] px-5 py-16 md:px-8 md:py-24" aria-labelledby={`${data.pageId}-measurement-title`}>
             <div className="mx-auto max-w-[1280px]">
               <div className="grid gap-8 md:grid-cols-12">
@@ -271,7 +295,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
               </div>
 
               <dl className="mt-10 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
-                {data.draftMetrics.map((metric) => (
+                {data.performanceMetrics.map((metric) => (
                   <div key={metric.label} className="relative min-h-[245px] overflow-hidden bg-background-dark p-6 md:p-8">
                     <dd className="pt-2 text-5xl font-black leading-none tracking-tighter text-white md:text-6xl">{metric.value}</dd>
                     <dt className="mt-7 text-base font-bold leading-tight text-white">{metric.label}</dt>

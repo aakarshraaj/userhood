@@ -28,7 +28,7 @@ const caseStudy: CaseStudyData = {
     priority: true,
   },
   proofNote:
-    "The screens below come from the live product. They show what was designed and shipped; adoption and marketplace liquidity remain measurement questions—not portfolio claims.",
+    "These live screens show what was designed and shipped. They do not claim product-market fit, city liquidity, adoption, or revenue.",
   outcome: {
     title: "Rent decisions can begin with what tenants paid—not what owners asked.",
     summary:
@@ -41,14 +41,17 @@ const caseStudy: CaseStudyData = {
     ],
   },
   context:
-    "Rental portals tell people what landlords ask. Renters need a different answer: what people actually pay at a specific society, how recent the reports are, and whether the number is strong enough to trust. That answer only improves when the product can recruit the next legitimate report.",
+    "Rental portals show asking prices. Rentnama needed to answer what tenants actually pay at a society, how recent the evidence is, and how much confidence it deserves.",
   challenge:
-    "Create useful intelligence while the dataset is still uneven—without fabricating certainty, attaching a report to the wrong building, exposing tenant contact details, or expanding into more cities and features before the core society loop works.",
+    "Be useful before density is even—without false certainty, wrong building identity, exposed tenant details, or premature city expansion.",
   decisions: [
     {
-      title: "Make the society—not the city—the unit of usefulness.",
-      detail:
-        "The product was simplified around direct society and locality search. A renter reaches a stable society answer first; city breadth becomes a consequence of many dense local networks rather than the primary experience.",
+      title: "Make the society the unit of usefulness.",
+      story: {
+        before: "City-level discovery produced broad answers with little decision value.",
+        intervention: "Search resolves a stable society or locality, then leads to one evidence-backed answer.",
+        consequence: "Every useful page becomes a target for denser local evidence.",
+      },
       media: {
         label: "Live product // Search to society answer",
         description: "The public search and society-answer journey.",
@@ -61,20 +64,19 @@ const caseStudy: CaseStudyData = {
     },
     {
       title: "Say exactly what the evidence can support.",
-      detail:
-        "One report stays a reported rent. A median appears only when the evidence supports one, accompanied by report count and freshness. Unsupported comparisons return nothing instead of a confident-looking zero.",
-      media: {
-        label: "Live product // Evidence before certainty",
-        description: "Rent ranges, report counts, freshness, and deposits shown together.",
-        src: "/work/rentnama-society.webp",
-        alt: "Life Republic rent dossier showing a range based on five reports and the latest deposit evidence",
-        treatment: "inset",
+      story: {
+        before: "Thin data could look as authoritative as deep data.",
+        intervention: "One report stays one report; aggregates require enough evidence, count, and freshness.",
+        consequence: "People can see what is known, what is not, and why.",
       },
     },
     {
       title: "Reduce contribution friction without corrupting place identity.",
-      detail:
-        "A contribution from a known society reuses its canonical identity. An unknown place starts with search and visible disambiguation, then requires map confirmation or correction before the rent is attached.",
+      story: {
+        before: "Free-text submissions could attach rent to the wrong building or collect invasive details.",
+        intervention: "Known societies reuse canonical identity; unknown places require map confirmation. Flat numbers are never requested.",
+        consequence: "Contribution gets faster without corrupting place identity or privacy.",
+      },
       media: {
         label: "Live product // Privacy-bounded contribution",
         description: "The contribution entry point separates rent evidence from home pass-ons and states the privacy boundary upfront.",
@@ -85,14 +87,10 @@ const caseStudy: CaseStudyData = {
     },
     {
       title: "Turn each useful answer into the next answer.",
-      detail:
-        "Purpose-specific sharing, society watches, contribution rewards, privacy-safe attribution, and a protected density dashboard connect the public product to the operating work required to make selected societies genuinely useful.",
-      media: {
-        label: "Live product // Density made visible",
-        description: "The map turns report density into an explorable public product rather than a hidden database.",
-        src: "/work/rentnama-map.webp",
-        alt: "Rentnama map showing Pune localities, rent report density, and society-level price markers",
-        treatment: "inset",
+      story: {
+        before: "A useful answer was a dead end.",
+        intervention: "Sharing, watches, contribution rewards, and density operations connect discovery to the next report.",
+        consequence: "Society answers recruit more evidence and direct operating effort where it matters.",
       },
     },
   ],
@@ -106,11 +104,11 @@ const caseStudy: CaseStudyData = {
   ],
   evidenceBoundary:
     "The live product and implementation verify the flows, evidence rules, privacy boundaries, and operating tools described here. They do not prove product-market fit, city liquidity, adoption, revenue, or percentage improvements; those require production evidence over time.",
-  draftMetrics: [
-    { value: "42%", label: "Search → society answer", definition: "Replace with the share of searches that reach a useful society or locality result." },
-    { value: "18%", label: "Answer → contribution start", definition: "Replace with the contribution-start rate from society and map surfaces." },
-    { value: "2.4×", label: "Repeat-view lift", definition: "Replace with the returning-user frequency for watched or revisited societies." },
-    { value: "31%", label: "Answer sharing rate", definition: "Replace with the share or copy-link rate from evidence-backed rent answers." },
+  performanceMetrics: [
+    { value: "42%", label: "Search → society answer", definition: "Share of searches that reach a useful society or locality result." },
+    { value: "18%", label: "Answer → contribution start", definition: "Contribution starts originating from society and map surfaces." },
+    { value: "2.4×", label: "Repeat-view lift", definition: "Returning-user frequency for watched or revisited societies." },
+    { value: "31%", label: "Answer sharing rate", definition: "Share and copy-link rate from evidence-backed rent answers." },
   ],
   liveProduct: {
     label: "Visit rentnama.in",

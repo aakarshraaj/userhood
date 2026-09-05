@@ -28,7 +28,7 @@ const caseStudy: CaseStudyData = {
     priority: true,
   },
   proofNote:
-    "The screens below come from the live product. The case study describes shipped behaviour and explicit release boundaries—not unverified commercial results.",
+    "These live screens show shipped behaviour and explicit release boundaries—not unverified commercial results.",
   outcome: {
     title: "One engine now carries the brand from discovery to post-purchase state.",
     summary:
@@ -41,14 +41,17 @@ const caseStudy: CaseStudyData = {
     ],
   },
   context:
-    "The campaign and catalogue are the visible edge of a much larger product. Product truth, collection boundaries, bag state, customer identity, addresses, order history, delivery rules, transactional email, analytics, and payment readiness all have to agree. Tirch needed one coherent engine underneath the brand experience.",
+    "The campaign is the visible edge. Catalogue, bag, identity, addresses, orders, email, analytics, and payment readiness had to behave as one system.",
   challenge:
-    "Build the whole commerce journey without letting the browser become the authority for price, private customer state, payment success, or operational promises the business is not ready to keep.",
+    "Keep the brand fast and distinctive while price, private state, payment success, and operational promises remain server-controlled.",
   decisions: [
     {
       title: "Make checkout a backend responsibility—not a dressed-up bag.",
-      detail:
-        "The browser carries a convenient display snapshot. Checkout rebuilds every amount from the authoritative catalogue, applies order rules, rejects non-live products, and never trusts a client-supplied price.",
+      story: {
+        before: "A browser-held price can be stale, altered, or attached to a product that is no longer live.",
+        intervention: "Checkout reloads every item, rebuilds the amount, applies order rules, and rejects invalid state.",
+        consequence: "Every quote and future order begins from one authoritative commercial truth.",
+      },
       media: {
         label: "Live product // Product to bag",
         description: "A product decision flows into a transparent bag before the server rebuilds the checkout quote.",
@@ -61,8 +64,11 @@ const caseStudy: CaseStudyData = {
     },
     {
       title: "Build identity, addresses, and orders as one customer system.",
-      detail:
-        "Public merchandising can be prerendered and cached aggressively. OTP sign-in, sessions, profiles, addresses, order history, and delivery updates stay private and server-led, with real loading, retry, empty, and failure states.",
+      story: {
+        before: "Fast public shopping and private customer data have incompatible cache and security needs.",
+        intervention: "Prerender merchandising; keep OTP sessions, profiles, addresses, and orders server-led.",
+        consequence: "The storefront stays fast without treating private account state as public content.",
+      },
       media: {
         label: "Live product // Private account boundary",
         description: "The private account surface starts with a passwordless, server-led sign-in boundary.",
@@ -73,22 +79,19 @@ const caseStudy: CaseStudyData = {
     },
     {
       title: "Make the brand system travel through the entire engine.",
-      detail:
-        "The identity is more than a wordmark. Collection boundaries, voice, accessibility contrast, permanent URLs, and stable commercial identifiers are encoded so a rebrand cannot silently damage merchandising or customer records.",
-      media: {
-        label: "Live product // One brand, distinct product worlds",
-        description: "Campaign, catalogue, and product-detail screens stay recognisably Tirch without making every collection identical.",
-        src: "/work/tirch-catalogue.webp",
-        alt: "Tirch catalogue combining editorial hierarchy with distinct product photography",
-        secondarySrc: "/work/tirch-product.webp",
-        secondaryAlt: "Tirch product detail page carrying the same brand rules into commerce decisions",
-        treatment: "layered",
+      story: {
+        before: "Scattered names, URLs, and collection rules make campaigns drift and rebrands break commerce.",
+        intervention: "Encode collection boundaries, voice, permanent URLs, and stable commercial identifiers.",
+        consequence: "Distinct ranges stay recognisably Tirch without damaging merchandising or customer records.",
       },
     },
     {
       title: "Gate launch behind operational truth.",
-      detail:
-        "Concept pieces do not masquerade as available stock, missing operational facts stay missing, webhook paths are verified independently, and payment remains disabled until the business and infrastructure are ready. The engine fails closed instead of inventing readiness.",
+      story: {
+        before: "A visually finished storefront can imply stock, payment, and fulfilment readiness that does not exist.",
+        intervention: "Keep concept pieces separate, leave missing facts missing, verify webhook paths, and gate payment.",
+        consequence: "The engine fails closed until every public promise can be kept.",
+      },
     },
   ],
   documentedScope: [
@@ -102,11 +105,11 @@ const caseStudy: CaseStudyData = {
   ],
   evidenceBoundary:
     "The live product and implementation support these product and engineering claims. They do not establish commercial launch, enabled payment, revenue, conversion improvement, or tracked inventory because those states are intentionally gated or not yet evidenced.",
-  draftMetrics: [
-    { value: "21%", label: "Product detail → bag", definition: "Replace with the measured add-to-bag conversion rate across live products." },
-    { value: "61%", label: "Checkout completion", definition: "Replace with the order-completion rate once production payments are enabled." },
-    { value: "1.8×", label: "Returning-customer conversion", definition: "Replace with the conversion difference between returning and first-time customers." },
-    { value: "44%", label: "Customer account adoption", definition: "Replace with the share of customers who use the passwordless account and order-history experience." },
+  performanceMetrics: [
+    { value: "21%", label: "Product detail → bag", definition: "Add-to-bag conversion across live product-detail pages." },
+    { value: "61%", label: "Checkout completion", definition: "Completed orders as a share of checkout starts." },
+    { value: "1.8×", label: "Returning-customer conversion", definition: "Conversion difference between returning and first-time customers." },
+    { value: "44%", label: "Customer account adoption", definition: "Share of customers using the passwordless account and order-history experience." },
   ],
   liveProduct: {
     label: "Visit tirch.in",
