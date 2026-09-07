@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { trackAnalyticsEvent } from "../utils/analytics";
+import FooterPlayground from "./FooterPlayground";
 import UserhoodLogo from "./UserhoodLogo";
 
 export default function Footer() {
   return (
-    <footer id="site-footer" className="bg-[#050505] px-5 py-14 md:px-6 md:py-16" role="contentinfo">
-      <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-12 font-mono text-xs text-white/75 uppercase tracking-[0.1em]">
+    <footer id="site-footer" className="bg-[#050505]" role="contentinfo">
+      <FooterPlayground />
+
+      <div className="mx-auto flex max-w-[1440px] flex-col items-start justify-between gap-10 px-5 py-14 font-mono text-xs uppercase tracking-[0.1em] text-white/75 md:flex-row md:gap-12 md:px-6 md:py-16">
         <div className="space-y-3 md:space-y-4">
           <Link to="/" className="hover:opacity-80 transition-opacity inline-block" aria-label="Userhood homepage">
             <UserhoodLogo className="w-20 text-white/70 md:w-[100px]" />

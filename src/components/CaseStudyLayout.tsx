@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react"
 import { Link } from "react-router-dom";
 import type { PageId } from "../data/siteMetadata";
 import { trackAnalyticsEvent } from "../utils/analytics";
+import AutomotiveBrandIdentity, { isAutomotiveBrand } from "./AutomotiveBrandIdentity";
 import BrandIdentity, { isProductBrand } from "./BrandIdentity";
 import ProjectMedia, { type ProjectMediaSpec } from "./ProjectMedia";
 
@@ -111,6 +112,10 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
                   {isProductBrand(data.brand) ? (
                     <div className="brand-stage mt-3 w-fit min-w-[min(100%,19rem)] px-5 py-4 md:px-6 md:py-5">
                       <BrandIdentity brand={data.brand} size="hero" />
+                    </div>
+                  ) : isAutomotiveBrand(data.brand) ? (
+                    <div className="mt-3">
+                      <AutomotiveBrandIdentity brand={data.brand} variant="hero" />
                     </div>
                   ) : (
                     <div className="mt-2 text-xl font-bold text-white md:text-2xl">{data.brand}</div>

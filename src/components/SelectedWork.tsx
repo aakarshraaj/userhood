@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { trackAnalyticsEvent } from "../utils/analytics";
+import AutomotiveBrandIdentity, { type AutomotiveBrand } from "./AutomotiveBrandIdentity";
 import BrandIdentity from "./BrandIdentity";
 import ProjectShowcase, { type ProjectShowcaseFrame } from "./ProjectShowcase";
 
@@ -147,19 +148,21 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
                   to={item.link}
                   onClick={() => trackAnalyticsEvent("case_study_open", { source: "work_page_team_experience", organisation: item.organisation })}
                   aria-label={`Read the ${item.organisation} attributed team experience note`}
-                  className="motion-card group flex flex-col bg-black/25 p-6 transition-colors hover:bg-white/[0.035]"
+                  className="motion-card group flex flex-col overflow-hidden bg-[#101010] shadow-[0_24px_70px_rgba(0,0,0,0.28)] transition-colors hover:bg-[#131313]"
                 >
-                  <div className="flex items-center justify-between gap-4 font-mono text-xs uppercase tracking-[0.11em] text-white/60">
-                    <span>{item.category}</span>
-                    <span>{item.index}</span>
-                  </div>
-                  <div className="mt-4 text-lg font-bold text-white">{item.organisation}</div>
-                  <CardHeading className="mt-3 max-w-xl text-xl font-bold leading-tight tracking-tight text-white transition-colors group-hover:text-primary md:text-2xl">
-                    {item.title}
-                  </CardHeading>
-                  <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-300">{item.description}</p>
-                  <div className="mt-5 flex items-center gap-2 text-sm font-bold text-white/75 transition-colors group-hover:text-primary">
-                    Read experience note <ArrowUpRight className="h-4 w-4" />
+                  <AutomotiveBrandIdentity brand={item.organisation as AutomotiveBrand} index={item.index} />
+                  <div className="flex flex-1 flex-col p-6 md:p-7">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/50 md:text-xs">
+                      {item.category}
+                    </div>
+                    <CardHeading className="mt-4 max-w-xl text-xl font-bold leading-tight tracking-tight text-white md:text-2xl">
+                      {item.title}
+                    </CardHeading>
+                    <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-300">{item.description}</p>
+                    <div className="mt-6 flex items-center gap-2 text-sm font-bold text-white/75 transition-colors group-hover:text-white">
+                      Read experience note
+                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </div>
                   </div>
                 </Link>
               ))}

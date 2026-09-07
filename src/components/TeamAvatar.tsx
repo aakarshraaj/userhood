@@ -152,9 +152,11 @@ function eyeAngles(expression: Expression): [number, number] {
 type TeamAvatarProps = {
   name: string;
   className?: string;
+  transparent?: boolean;
+  followCursor?: boolean;
 };
 
-export default function TeamAvatar({ name, className = "" }: TeamAvatarProps) {
+export default function TeamAvatar({ name, className = "", transparent = false, followCursor = false }: TeamAvatarProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerRef = useRef({ active: false, x: 0, y: 0 });
   const profile = profiles[name] ?? fallbackProfile;
@@ -205,8 +207,10 @@ export default function TeamAvatar({ name, className = "" }: TeamAvatarProps) {
       currentY += (targetY - currentY) * easing;
 
       context.clearRect(0, 0, width, height);
-      context.fillStyle = profile.background;
-      context.fillRect(0, 0, width, height);
+      if (!transparent) {
+        context.fillStyle = profile.background;
+        context.fillRect(0, 0, width, height);
+      }
 
       const size = Math.min(width * 0.62, height * 0.7);
       const centerX = width * 0.5;
@@ -261,10 +265,28 @@ export default function TeamAvatar({ name, className = "" }: TeamAvatarProps) {
       if (visible) scheduleRender();
     }, { rootMargin: "120px" });
     const handleMotionPreference = () => scheduleRender();
+    const handleWindowPointerMove = (event: globalThis.PointerEvent) => {
+      if (!followCursor) return;
+      const bounds = canvas.getBoundingClientRect();
+      const centerX = bounds.left + bounds.width / 2;
+      const centerY = bounds.top + bounds.height / 2;
+      pointerRef.current = {
+        active: true,
+        x: Math.max(-1, Math.min(1, (event.clientX - centerX) / Math.max(220, window.innerWidth * 0.24))),
+        y: Math.max(-1, Math.min(1, (event.clientY - centerY) / Math.max(160, window.innerHeight * 0.24))),
+      };
+    };
+    const handleWindowPointerLeave = () => {
+      if (followCursor) pointerRef.current = { active: false, x: 0, y: 0 };
+    };
 
     resizeObserver.observe(canvas);
     visibilityObserver.observe(canvas);
     reduceMotion.addEventListener("change", handleMotionPreference);
+    if (followCursor) {
+      window.addEventListener("pointermove", handleWindowPointerMove, { passive: true });
+      document.documentElement.addEventListener("pointerleave", handleWindowPointerLeave);
+    }
     resize();
     scheduleRender();
 
@@ -272,9 +294,11 @@ export default function TeamAvatar({ name, className = "" }: TeamAvatarProps) {
       resizeObserver.disconnect();
       visibilityObserver.disconnect();
       reduceMotion.removeEventListener("change", handleMotionPreference);
+      window.removeEventListener("pointermove", handleWindowPointerMove);
+      document.documentElement.removeEventListener("pointerleave", handleWindowPointerLeave);
       window.cancelAnimationFrame(animationFrame);
     };
-  }, [profile]);
+  }, [followCursor, profile, transparent]);
 
   const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect();
