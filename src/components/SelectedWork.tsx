@@ -24,7 +24,7 @@ const selectedWork: WorkItem[] = [
     organisation: "Rentnama",
     category: "Rental intelligence platform",
     relationship: "Product build",
-    title: "Building a public price layer for India’s rental market.",
+    title: "What people pay. Not what listings ask.",
     link: "/case-study/rentnama",
     accent: "#b5ef67",
     showcase: [
@@ -39,7 +39,7 @@ const selectedWork: WorkItem[] = [
     organisation: "Tirch",
     category: "End-to-end commerce engine",
     relationship: "Product build",
-    title: "Building Tirch’s end-to-end commerce engine.",
+    title: "An entire commerce engine. Unmistakably Tirch.",
     link: "/case-study/tirch",
     accent: "#d2694a",
     showcase: [
@@ -55,7 +55,7 @@ const selectedWork: WorkItem[] = [
     organisation: "Hyundai Global",
     category: "Automotive commerce",
     relationship: "Team experience",
-    title: "Turning a dealership journey into one coherent digital purchase flow.",
+    title: "Making a car purchase easier to think through.",
     description:
       "A team member’s experience shaping a staged path through model discovery, configuration, finance, and dealer fulfilment.",
     link: "/case-study/hyundai",
@@ -66,7 +66,7 @@ const selectedWork: WorkItem[] = [
     organisation: "Mitsubishi Motors Australia",
     category: "Connected ownership",
     relationship: "Team experience",
-    title: "Making a complex vehicle ecosystem feel calm behind the wheel.",
+    title: "Helping drivers make sense of their car.",
     description:
       "A team member’s experience translating vehicle health, servicing, and driving feedback into calmer ownership decisions.",
     link: "/case-study/mitsubishi",
@@ -89,17 +89,17 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
   return (
     <section
       id={standalone ? undefined : "case-studies"}
-      className={`section-band section-band-deep relative px-5 md:px-8 ${standalone ? "pb-20 pt-28 md:pb-28 md:pt-36" : "pb-20 pt-14 md:pb-28 md:pt-20"}`}
+      className={`section-band section-band-deep relative px-5 md:px-8 ${standalone ? "pb-20 pt-28 md:pb-28 md:pt-36" : "pb-16 pt-4 md:pb-24 md:pt-6"}`}
     >
-      <div className="tech-grid pointer-events-none absolute inset-0 opacity-10" />
+      {standalone && <div className="tech-grid pointer-events-none absolute inset-0 opacity-10" />}
 
       <div className="relative z-10 mx-auto max-w-[1440px]">
-        <div className="motion-reveal mb-10 md:mb-14">
+        <div className={`motion-reveal ${standalone ? "mb-10 md:mb-14" : "mb-8 md:mb-10"}`}>
           <div>
-            <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-white/50">[ {standalone ? "SELECTED_WORK" : "01 // SELECTED_WORK"} ]</div>
-            <Heading className="max-w-4xl text-4xl font-black leading-[0.96] tracking-tighter text-white sm:text-5xl md:text-7xl">
-              Recent product builds.
+            <Heading className={standalone ? "max-w-4xl text-4xl font-medium leading-[1.04] tracking-tighter text-white sm:text-5xl md:text-7xl" : "text-[clamp(3rem,5.5vw,5.5rem)] font-medium leading-none tracking-[-0.045em] text-white"}>
+              The work.
             </Heading>
+            {standalone && <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/65 md:text-lg">Product builds by Userhood, followed by earlier work from members of the team.</p>}
           </div>
         </div>
 
@@ -174,7 +174,7 @@ export default function SelectedWork({ standalone = false }: SelectedWorkProps) 
             onClick={() => trackAnalyticsEvent("selected_work_click", { source: "homepage_selected_work_footer" })}
             className="motion-button motion-reveal group mt-8 inline-flex min-h-12 items-center gap-3 text-sm font-bold text-white/65 hover:text-white"
           >
-            <span>View all work, including automotive team experience</span>
+            <span>View all work</span>
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         )}

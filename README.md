@@ -1,11 +1,15 @@
 # Userhood
 
-A product design and engineering studio for focused MVP releases. Userhood brings product strategy, interface design, software engineering, and useful AI integration into one accountable delivery team.
+Dreaming as a Service. Hire us for the thinking. Keep us for what we make. Userhood is a product strategy, design and engineering studio for founders and product teams.
 
 ## Core Philosophy
-Design and engineering share the same release boundary, product decisions, and accountability. Neither discipline exists to decorate or merely execute the other.
+The brand promise is imaginative; the offer is concrete. Product strategy, design and prototyping, and product engineering are independently hireable services. The studio brings a point of view to the brief and carries it into the work.
 
-The flagship engagement takes a deliberately scoped MVP from product brief to production in twelve weeks. Complexity that cannot responsibly fit is surfaced before kickoff.
+Clients can engage the studio for direction, design exploration or a complete product build. A full build is not required to work with the team. Scope, timing, deliverables and budget are agreed for each engagement. Shared offering copy lives in `src/data/studio.ts`.
+
+## Content and hierarchy
+
+Lead sections with their actual heading. Do not add decorative eyebrow labels, numbered category captions, or helper phrases above headings (for example, "Services", "How we work", or "Start a conversation"). This applies across all pages, case studies, menus, and dialogs. When removing a label, remove its extra spacing or empty grid column too. Keep meaningful form labels, navigation, project facts, diagram annotations, and attribution disclosures.
 
 ## Tech Stack
 - React 19 + TypeScript

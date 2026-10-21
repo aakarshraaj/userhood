@@ -13,6 +13,7 @@ export default function Footer() {
           <Link to="/" className="hover:opacity-80 transition-opacity inline-block" aria-label="Userhood homepage">
             <UserhoodLogo className="w-20 text-white/70 md:w-[100px]" />
           </Link>
+          <p className="max-w-[15rem] font-sans text-sm normal-case leading-relaxed tracking-normal text-white/55">Dreaming as a Service.</p>
           <div className="text-xs md:text-xs break-words">© 2026 USERHOOD. ALL_RIGHTS_RESERVED.</div>
         </div>
 

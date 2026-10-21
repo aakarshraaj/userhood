@@ -42,13 +42,12 @@ export default function RentnamaEvidenceFlow() {
       <div className="motion-reveal relative mx-auto max-w-[1280px]">
         <div className="grid gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
-            <div className="font-mono text-xs uppercase tracking-[0.17em] text-primary">Rentnama signature system // Evidence chain</div>
-            <h2 id="rentnama-evidence-flow-title" className="mt-5 max-w-5xl text-4xl font-black leading-[0.94] tracking-tighter text-white md:text-7xl">
-              From one rent payment to a public answer people can trust.
+            <h2 id="rentnama-evidence-flow-title" className="max-w-5xl text-4xl font-black leading-[0.94] tracking-tighter text-white md:text-7xl">
+              Every answer starts with someone’s rent.
             </h2>
           </div>
           <p className="max-w-lg text-base leading-relaxed text-slate-300 md:col-span-4 md:justify-self-end md:text-lg">
-            Every number keeps its source, place identity, evidence threshold, and freshness. The interface shows the boundary instead of hiding it.
+            A report belongs to a real place and a point in time. The interface shows how much is known, so a single report never looks like a market average.
           </p>
         </div>
 
@@ -125,7 +124,7 @@ export default function RentnamaEvidenceFlow() {
         <div className="mt-14">
           <div className="mb-5 flex items-center justify-between gap-5">
             <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/65">Evidence rules expressed in the interface</div>
-            <span className="hidden font-mono text-[10px] uppercase tracking-[0.14em] text-primary sm:block">Confidence without theatre</span>
+            <span className="hidden text-xs text-primary sm:block">Make uncertainty visible</span>
           </div>
           <div className="grid gap-px bg-white/10 md:grid-cols-3">
             {evidenceRules.map((rule) => (

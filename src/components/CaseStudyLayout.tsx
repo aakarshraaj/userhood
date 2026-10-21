@@ -48,6 +48,7 @@ export interface CaseStudyData {
   relationship: "Product build" | "Team experience";
   title: string;
   summary: string;
+  question: string;
   facts: CaseStudyFact[];
   heroMedia: ProjectMediaSpec;
   proofNote: string;
@@ -94,31 +95,25 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
 
             <div className="mt-8 grid items-center gap-9 md:mt-10 md:grid-cols-12 md:gap-10 lg:gap-14">
               <div className="min-w-0 md:col-span-6 lg:col-span-7">
-                <div className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-primary">
-                  [ {isTeamExperience ? "Attributed team experience" : data.relationship} // {data.category} ]
-                </div>
                 {isTeamExperience && (
                   <div className="mb-6 w-fit border border-white/15 bg-white/[0.025] px-3 py-2 font-mono text-[10px] uppercase tracking-[0.13em] text-white/70">
                     Not a Userhood client engagement
                   </div>
                 )}
-                <h1 className="max-w-5xl break-words text-[clamp(3.15rem,6vw,5.7rem)] font-black leading-[0.92] tracking-tighter text-white">
+                <h1 className="max-w-5xl break-words text-[clamp(2.7rem,5.5vw,5.3rem)] font-medium leading-[1.04] tracking-tighter text-white">
                   {data.title}
                 </h1>
                 <div className="mt-7 max-w-2xl md:mt-8">
-                  <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/70">
-                    {isTeamExperience ? "Organisation" : "Product"}
-                  </div>
                   {isProductBrand(data.brand) ? (
-                    <div className="brand-stage mt-3 w-fit min-w-[min(100%,19rem)] px-5 py-4 md:px-6 md:py-5">
+                    <div className="brand-stage w-fit min-w-[min(100%,19rem)] px-5 py-4 md:px-6 md:py-5">
                       <BrandIdentity brand={data.brand} size="hero" />
                     </div>
                   ) : isAutomotiveBrand(data.brand) ? (
-                    <div className="mt-3">
+                    <div>
                       <AutomotiveBrandIdentity brand={data.brand} variant="hero" />
                     </div>
                   ) : (
-                    <div className="mt-2 text-xl font-bold text-white md:text-2xl">{data.brand}</div>
+                    <div className="text-xl font-bold text-white md:text-2xl">{data.brand}</div>
                   )}
                   <p className="mt-4 max-w-xl text-base font-normal leading-relaxed text-slate-300">{data.summary}</p>
                   {data.liveProduct && (
@@ -135,10 +130,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
                       className="motion-button group mt-7 inline-flex min-h-12 items-center gap-5 border border-white/15 bg-white/[0.025] px-5 py-3 text-white hover:border-primary hover:bg-primary hover:text-black"
                       aria-label={`${data.liveProduct.label} (opens in a new tab)`}
                     >
-                      <span>
-                        <span className="block font-mono text-[10px] uppercase tracking-[0.16em] opacity-60">Live product</span>
-                        <span className="mt-0.5 block text-sm font-bold">{data.liveProduct.label}</span>
-                      </span>
+                      <span className="text-sm font-bold">{data.liveProduct.label}</span>
                       <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                     </a>
                   )}
@@ -159,11 +151,9 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
               ))}
             </dl>
 
-            <div className="content-card mt-3 grid p-6 md:grid-cols-12 md:gap-10 md:p-8">
-              <div className="font-mono text-xs uppercase tracking-[0.14em] text-primary md:col-span-3">
-                {isTeamExperience ? "Attribution note" : "Evidence note"}
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-slate-300 md:col-span-9 md:mt-0 md:text-base">{data.proofNote}</p>
+            <div className="mt-10">
+              <p className="max-w-3xl text-2xl font-medium leading-relaxed tracking-tight text-white md:text-3xl">{data.question}</p>
+              <p className="mt-6 max-w-2xl text-xs leading-relaxed text-white/55">{data.proofNote}</p>
             </div>
           </div>
         </header>
@@ -173,8 +163,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
             <div className="motion-reveal mx-auto max-w-[1280px]">
               <div className="grid gap-8 md:grid-cols-12 md:items-end">
                 <div className="md:col-span-7">
-                  <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">01 // Outcome snapshot</div>
-                  <h2 id={`${data.pageId}-outcome-title`} className="mt-5 max-w-4xl text-4xl font-black leading-[0.96] tracking-tighter text-white md:text-6xl">
+                  <h2 id={`${data.pageId}-outcome-title`} className="max-w-4xl text-4xl font-black leading-[0.96] tracking-tighter text-white md:text-6xl">
                     {data.outcome.title}
                   </h2>
                 </div>
@@ -203,14 +192,12 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
         <section className={`${hasOutcome ? "" : "mt-16 md:mt-24"} section-band section-band-raised px-5 py-20 md:px-8 md:py-28`}>
           <div className="motion-reveal mx-auto grid max-w-[1280px] gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-4">
-              <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">{hasOutcome ? "02" : "01"} // The problem</div>
-              <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-5xl">What the product had to overcome.</h2>
+              <h2 className="text-4xl font-medium tracking-tighter text-white md:text-5xl">What needed a closer look.</h2>
             </div>
             <div className="space-y-8 md:col-span-8">
               <p className="text-xl font-normal leading-relaxed text-slate-200 md:text-2xl">{data.context}</p>
               <div className="content-card p-6 md:p-8">
-                <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/65">The non-negotiable constraint</div>
-                <p className="mt-3 text-base font-normal leading-relaxed text-slate-300 md:text-lg">{data.challenge}</p>
+                <p className="text-base font-normal leading-relaxed text-slate-300 md:text-lg">{data.challenge}</p>
               </div>
             </div>
           </div>
@@ -220,32 +207,28 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
           <div className="mx-auto max-w-[1280px]">
             <div className="motion-reveal mb-10 grid gap-8 md:mb-14 md:grid-cols-12 md:items-end">
               <div className="md:col-span-8">
-                <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">
-                  {hasOutcome ? "03" : "02"} // {isTeamExperience ? "Product reasoning" : "The intervention"}
-                </div>
-                <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-6xl">
-                  {isTeamExperience ? "The principles carried into the work." : "The decisions that changed the product."}
+                <h2 className="text-4xl font-black tracking-tighter text-white md:text-6xl">
+                  {isTeamExperience ? "The thinking behind the experience." : "The choices behind the product."}
                 </h2>
               </div>
               <p className="text-base font-normal leading-relaxed text-slate-300 md:col-span-4">
                 {isTeamExperience
-                  ? "The decision logic is public. Client-confidential execution detail and outcomes are not."
-                  : "Four constraints. Four deliberate moves. Four consequences."}
+                  ? "A look at the approach, without sharing confidential client work."
+                  : "What needed attention, how the product handles it, and why that matters to the person using it."}
               </p>
             </div>
 
-            <ol className="grid gap-5">
-              {data.decisions.map((decision, index) => (
-                <li key={decision.title} className="content-card motion-reveal p-6 md:p-8 lg:p-10">
+            <ol className="grid grid-cols-1 gap-5">
+              {data.decisions.map((decision) => (
+                <li key={decision.title} className="content-card motion-reveal min-w-0 p-6 md:p-8 lg:p-10">
                   {decision.story ? (
-                    <div className="grid gap-6 md:grid-cols-12 md:gap-8">
-                      <div className="font-mono text-xs text-primary md:col-span-1">0{index + 1}</div>
-                      <h3 className="max-w-sm text-2xl font-bold tracking-tight text-white md:col-span-3 md:text-3xl">{decision.title}</h3>
-                      <dl className="grid gap-3 sm:grid-cols-3 md:col-span-8">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8">
+                      <h3 className="max-w-sm text-2xl font-bold tracking-tight text-white md:col-span-4 md:text-3xl">{decision.title}</h3>
+                      <dl className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-3 md:col-span-8">
                         {([
-                          ["Before", decision.story.before],
-                          ["Intervention", decision.story.intervention],
-                          ["Consequence", decision.story.consequence],
+                          ["The problem", decision.story.before],
+                          ["The choice", decision.story.intervention],
+                          ["Why it matters", decision.story.consequence],
                         ] as const).map(([label, value]) => (
                           <div key={label} className="border border-white/10 bg-black/25 p-5 md:p-6">
                             <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-primary">{label}</dt>
@@ -255,9 +238,8 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
                       </dl>
                     </div>
                   ) : (
-                    <div className="grid gap-6 md:grid-cols-12 md:gap-10">
-                      <div className="font-mono text-xs text-primary md:col-span-1">0{index + 1}</div>
-                      <h3 className="text-2xl font-bold tracking-tight text-white md:col-span-4 md:text-3xl">{decision.title}</h3>
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-10">
+                      <h3 className="text-2xl font-bold tracking-tight text-white md:col-span-5 md:text-3xl">{decision.title}</h3>
                       {decision.detail && <p className="max-w-2xl text-base font-normal leading-relaxed text-slate-300 md:col-span-7">{decision.detail}</p>}
                     </div>
                   )}
@@ -267,7 +249,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
                       media={decision.media}
                       accent={data.accent}
                       compact
-                      className={decision.story ? "mt-8 md:ml-[33.333%] md:mt-10 md:w-[66.667%]" : "mt-8 md:ml-[8.333%] md:mt-10 md:w-[91.667%]"}
+                      className={decision.story ? "mt-8 md:ml-[33.333%] md:mt-10 md:w-[66.667%]" : "mt-8 md:mt-10"}
                     />
                   )}
                 </li>
@@ -279,11 +261,8 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
         <section className="section-band section-band-raised px-5 py-20 md:px-8 md:py-28">
           <div className="motion-reveal mx-auto grid max-w-[1280px] gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-5">
-              <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">
-                {hasOutcome ? "04" : "03"} // {isTeamExperience ? "Contribution scope" : "The shipped system"}
-              </div>
-              <h2 className="mt-5 text-4xl font-black tracking-tighter text-white md:text-5xl">
-                {isTeamExperience ? "What this experience covered." : "What actually exists."}
+              <h2 className="text-4xl font-black tracking-tighter text-white md:text-5xl">
+                {isTeamExperience ? "What this experience covered." : "What went into it."}
               </h2>
             </div>
             <div className="md:col-span-7">
@@ -297,8 +276,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
               </ul>
 
               <div className="content-card mt-8 p-6">
-                <div className="font-mono text-xs uppercase tracking-[0.14em] text-white/65">Evidence boundary</div>
-                <p className="mt-3 text-base font-normal leading-relaxed text-slate-300">{data.evidenceBoundary}</p>
+                <p className="text-base font-normal leading-relaxed text-slate-300">{data.evidenceBoundary}</p>
               </div>
             </div>
           </div>
@@ -309,8 +287,7 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
             <div className="motion-reveal mx-auto max-w-[1280px]">
               <div className="grid gap-8 md:grid-cols-12">
                 <div className="md:col-span-5">
-                  <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">05 // Outcome measurement</div>
-                  <h2 id={`${data.pageId}-measurement-title`} className="mt-5 text-4xl font-black leading-[0.96] tracking-tighter text-white md:text-6xl">
+                  <h2 id={`${data.pageId}-measurement-title`} className="text-4xl font-black leading-[0.96] tracking-tighter text-white md:text-6xl">
                     The numbers this product must move.
                   </h2>
                 </div>
@@ -336,19 +313,18 @@ export default function CaseStudyLayout({ data, onContactClick, signatureStory }
 
         <section className="px-5 py-20 text-center md:px-8 md:py-28">
           <div className="content-card motion-reveal mx-auto max-w-5xl px-6 py-14 sm:px-10 md:px-16 md:py-20">
-            <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary">Your product is different</div>
-            <h2 className="mt-6 text-4xl font-black leading-tight tracking-tighter text-white sm:text-5xl md:text-7xl">
-              Bring the problem.<br /><span className="text-primary">We will bring the questions.</span>
+            <h2 className="text-4xl font-black leading-tight tracking-tighter text-white sm:text-5xl md:text-7xl">
+              Give us something to think about.
             </h2>
             <p className="mx-auto mt-7 max-w-2xl text-base font-normal leading-relaxed text-slate-300 md:text-lg">
-              A useful first conversation focuses on the release, the constraints, and what must be true in twelve weeks. A rehearsed capability pitch can wait.
+              The product you want to exist. The problem you can’t leave alone. Start there.
             </p>
             <button
               type="button"
               onClick={onContactClick}
               className="motion-button mt-10 inline-flex min-h-[52px] items-center justify-center gap-3 bg-primary px-8 py-4 text-base font-bold text-black hover:bg-white"
             >
-              Discuss your 12-week build <ArrowRight className="h-4 w-4" />
+              Let’s collaborate <ArrowRight className="h-4 w-4" />
             </button>
             {data.trademarkNote && <p className="mt-12 text-xs leading-relaxed text-white/70">{data.trademarkNote}</p>}
           </div>

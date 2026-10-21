@@ -7,7 +7,8 @@ const caseStudy: CaseStudyData = {
   brand: "Mitsubishi Motors Australia",
   category: "Connected ownership",
   relationship: "Team experience",
-  title: "Giving vehicle intelligence a calmer human interface.",
+  title: "Helping drivers make sense of their car.",
+  question: "How can a connected car help someone know what needs attention and what can wait?",
   summary:
     "A connected-ownership experience bringing vehicle health, servicing, and driving feedback into one understandable system.",
   facts: [
@@ -30,22 +31,22 @@ const caseStudy: CaseStudyData = {
     "Protect the driver's attention while still making vehicle health, maintenance needs, and efficiency feedback useful. The interface had to establish priority and context instead of behaving like a permanent diagnostic dashboard.",
   decisions: [
     {
-      title: "Prioritise by driving context.",
+      title: "Show what matters in the moment.",
       detail:
         "The contribution focused on what a driver needed now, what could wait, and what required action after the journey. Available data did not automatically earn screen space.",
     },
     {
-      title: "Translate diagnostics into decisions.",
+      title: "Explain what a warning means.",
       detail:
         "Vehicle-health direction moved from technical codes towards plain consequences, next steps, and understandable ownership actions.",
     },
     {
-      title: "Connect maintenance to fulfilment.",
+      title: "Give a service reminder a next step.",
       detail:
         "The journey connected detected needs to service discovery and scheduling because a warning without a resolution path only creates anxiety.",
     },
     {
-      title: "Use feedback without manufacturing urgency.",
+      title: "Help without adding distraction.",
       detail:
         "Driving-feedback principles encouraged useful habits without noisy scores, false precision, or competitive mechanics that could distract from the road.",
     },

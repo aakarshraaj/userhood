@@ -2,6 +2,7 @@ import { ArrowRight, CheckCircle2, MessageCircle, X } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAttribution, trackAnalyticsEvent } from "../utils/analytics";
+import { engagements } from "../data/studio";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -12,20 +13,15 @@ interface ContactModalProps {
 type SubmissionStatus = "idle" | "submitting" | "success" | "error";
 
 const projectTypes = [
+  ...engagements.map((engagement) => ({
+    id: engagement.id,
+    label: engagement.enquiryLabel,
+    detail: engagement.summary,
+  })),
   {
-    id: "twelve_week_build",
-    label: "12-week build",
-    detail: "A focused product from brief to production.",
-  },
-  {
-    id: "product_rescue",
-    label: "Product rescue",
-    detail: "Fix an existing product, system, or codebase.",
-  },
-  {
-    id: "post_launch_support",
-    label: "Post-launch",
-    detail: "Iterate, stabilise, or extend a shipped product.",
+    id: "not_sure",
+    label: "Not sure yet",
+    detail: "Let’s work out which kind of help fits.",
   },
 ];
 
@@ -38,9 +34,10 @@ const launchWindows = [
 
 function projectTypeFromSource(source: string) {
   const normalisedSource = source.toLowerCase();
-  if (normalisedSource.includes("rescue")) return "product_rescue";
-  if (normalisedSource.includes("extend") || normalisedSource.includes("post_launch")) return "post_launch_support";
-  return "twelve_week_build";
+  if (normalisedSource.includes("direction") || normalisedSource.includes("rescue")) return "direction";
+  if (normalisedSource.includes("exploration") || normalisedSource.includes("prototype")) return "exploration";
+  if (normalisedSource.includes("build") || normalisedSource.includes("launch") || normalisedSource.includes("extend")) return "build";
+  return "not_sure";
 }
 
 const focusableSelector = [
@@ -61,7 +58,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
   const statusRef = useRef<SubmissionStatus>("idle");
   const requestControllerRef = useRef<AbortController | null>(null);
 
-  const [projectType, setProjectType] = useState("twelve_week_build");
+  const [projectType, setProjectType] = useState("not_sure");
   const [status, setStatus] = useState<SubmissionStatus>("idle");
   const [feedback, setFeedback] = useState("");
 
@@ -189,7 +186,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
     }
 
     setStatus("submitting");
-    setFeedback("Sending your project brief…");
+    setFeedback("Sending your enquiry…");
 
     formData.append("access_key", accessKey);
     formData.append("project_type", projectType);
@@ -215,7 +212,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
 
       form.reset();
       setStatus("success");
-      setFeedback("Your brief is in. We will reply within one business day.");
+      setFeedback("We have your enquiry and will reply within one business day.");
       trackAnalyticsEvent("generate_lead", {
         source,
         project_type: projectType,
@@ -283,9 +280,9 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
             {status === "success" ? (
               <div ref={successRef} tabIndex={-1} className="py-8 outline-none sm:py-12">
                 <CheckCircle2 className="h-10 w-10 text-primary" />
-                <div className="mt-7 font-mono text-xs uppercase tracking-[0.2em] text-primary">Brief received</div>
+                <div className="mt-7 font-mono text-xs uppercase tracking-[0.2em] text-primary">Enquiry received</div>
                 <h2 id="contact-dialog-title" className="mt-4 max-w-xl text-4xl font-black tracking-tighter text-white sm:text-5xl">
-                  Now we do the useful part.
+                  Thanks for getting in touch.
                 </h2>
                 <p id="contact-dialog-description" role="status" className="mt-6 max-w-xl text-base font-light leading-relaxed text-slate-300 md:text-lg">
                   {feedback}
@@ -300,12 +297,11 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
               </div>
             ) : (
               <>
-                <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Project enquiry</div>
-                <h2 id="contact-dialog-title" className="mt-5 pr-12 text-3xl font-black tracking-tighter text-white sm:text-4xl md:text-5xl">
-                  What needs to be live?
+                <h2 id="contact-dialog-title" className="pr-12 text-3xl font-black tracking-tighter text-white sm:text-4xl md:text-5xl">
+                  What’s the ambition?
                 </h2>
                 <p id="contact-dialog-description" className="mt-4 max-w-2xl text-sm font-normal leading-relaxed text-slate-300 sm:text-base">
-                  Give us the release, the constraint, and the timing. We reply within one business day, usually with useful questions instead of a sales deck.
+                  Tell us what you’re trying to change. A few lines is enough. We’ll reply within one business day.
                 </p>
 
                 <form
@@ -321,8 +317,8 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                   }}
                 >
                   <fieldset>
-                    <legend className="font-mono text-xs uppercase tracking-[0.12em] text-white/75">What kind of work is this?</legend>
-                    <div className="mt-3 grid grid-cols-3 gap-2 sm:gap-3">
+                    <legend className="font-mono text-xs uppercase tracking-[0.12em] text-white/75">Where would you like to start?</legend>
+                    <div className="mt-3 grid grid-cols-2 gap-2 sm:gap-3">
                       {projectTypes.map((type) => (
                         <label
                           key={type.id}
@@ -341,7 +337,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                             onChange={() => handleProjectTypeChange(type.id)}
                             className="sr-only"
                           />
-                          <span className="flex items-center justify-between gap-3 font-mono text-xs font-bold uppercase tracking-[0.08em] text-white">
+                          <span className="flex items-center justify-between gap-2 text-xs font-medium text-white sm:text-sm">
                             {type.label}
                             <span className={`h-2 w-2 shrink-0 rounded-full ${projectType === type.id ? "bg-primary" : "bg-white/15"}`} />
                           </span>
@@ -380,7 +376,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                   </div>
 
                   <div>
-                    <label htmlFor="contact-message" className="font-mono text-xs uppercase tracking-[0.12em] text-white/75">The release</label>
+                    <label htmlFor="contact-message" className="font-mono text-xs uppercase tracking-[0.12em] text-white/75">Tell us a little</label>
                     <textarea
                       id="contact-message"
                       name="message"
@@ -388,7 +384,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                       minLength={20}
                       rows={3}
                       className="mt-2 w-full resize-none border border-white/15 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/50 focus:border-primary"
-                      placeholder="What are you building, what is blocking it, and what must be true when it launches?"
+                      placeholder="What are you building, changing or trying to work out?"
                     />
                   </div>
 
@@ -432,7 +428,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
                       disabled={status === "submitting"}
                       className="motion-button inline-flex min-h-[52px] shrink-0 items-center justify-center gap-3 bg-primary px-7 py-4 text-base font-bold text-black hover:bg-white/80 disabled:cursor-wait disabled:opacity-60"
                     >
-                      {status === "submitting" ? "Sending…" : "Send project brief"}
+                      {status === "submitting" ? "Sending…" : "Send message"}
                       {status !== "submitting" && <ArrowRight className="h-4 w-4" />}
                     </button>
                   </div>
@@ -444,7 +440,7 @@ export default function ContactModal({ isOpen, onClose, source }: ContactModalPr
 
                 <a
                   onClick={handleWhatsAppClick}
-                  href={`https://wa.me/917498908702?text=${encodeURIComponent("Hey Userhood! I want to discuss a potential product build.")}`}
+                  href={`https://wa.me/917498908702?text=${encodeURIComponent("Hey Userhood! I have something in mind and would like to explore it with you.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="motion-button flex min-h-[48px] w-full items-center justify-center gap-3 border border-[#25D366]/30 bg-[#25D366]/10 py-3 text-[#25D366] hover:bg-[#25D366]/20"

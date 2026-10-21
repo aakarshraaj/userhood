@@ -15,6 +15,7 @@ const menuFocusableSelector = "a[href], button:not([disabled])";
 export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps) {
   const { pathname, hash } = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
@@ -50,9 +51,9 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
         return;
       }
 
-      if (event.key !== "Tab" || !menuRef.current) return;
+      if (event.key !== "Tab" || !navRef.current) return;
 
-      const menuItems = Array.from(menuRef.current.querySelectorAll<HTMLElement>(menuFocusableSelector)).filter(
+      const menuItems = Array.from(navRef.current.querySelectorAll<HTMLElement>(menuFocusableSelector)).filter(
         (element) => element.getClientRects().length > 0
       );
       const firstItem = menuItems[0];
@@ -61,13 +62,10 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
 
       if (event.shiftKey && document.activeElement === firstItem) {
         event.preventDefault();
-        toggleRef.current?.focus();
+        lastItem.focus();
       } else if (!event.shiftKey && document.activeElement === lastItem) {
         event.preventDefault();
-        toggleRef.current?.focus();
-      } else if (document.activeElement === toggleRef.current) {
-        event.preventDefault();
-        (event.shiftKey ? lastItem : firstItem).focus();
+        firstItem.focus();
       }
     };
 
@@ -88,10 +86,16 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
   };
 
   return (
-    <nav className="safe-area-inset-top fixed top-0 z-[90] w-full border-b border-white/10 bg-background-dark/95 backdrop-blur-xl" aria-label="Main navigation">
-      <div className="relative z-50 mx-auto flex h-14 max-w-[1504px] items-center justify-between px-4 sm:h-16 sm:px-6 md:px-8">
+    <nav
+      ref={navRef}
+      className="safe-area-inset-top fixed top-0 z-[90] w-full border-b border-white/10 bg-background-dark/95 backdrop-blur-xl"
+      role={isOpen ? "dialog" : undefined}
+      aria-modal={isOpen ? true : undefined}
+      aria-label={isOpen ? "Site menu" : "Main navigation"}
+    >
+      <div className="relative z-50 mx-auto flex h-14 max-w-[1504px] items-center justify-between gap-2 px-4 sm:h-16 sm:px-6 md:px-8">
         <div className="flex min-w-0 items-center">
-          <Link to="/" className="flex min-h-11 shrink-0 items-center gap-2.5 transition-opacity hover:opacity-80" onClick={() => setIsOpen(false)} aria-label="Userhood home">
+          <Link to="/" className="flex min-h-11 shrink-0 items-center gap-2 transition-opacity hover:opacity-80 sm:gap-2.5" onClick={() => setIsOpen(false)} aria-label="Userhood home">
             <span
               data-userhood-monogram-target
               className="userhood-monogram-tile flex h-8 w-8 shrink-0 items-center justify-center bg-white sm:h-9 sm:w-9"
@@ -99,40 +103,41 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
             >
               <UserhoodMonogram className="h-[22px] w-[22px] text-[#0a0a0a] sm:h-6 sm:w-6" />
             </span>
-            <UserhoodLogo className="brand-intro-wordmark h-[19px] w-[100px] text-white sm:h-[23px] sm:w-[120px]" />
+            <UserhoodLogo className="brand-intro-wordmark h-[15px] w-[76px] text-white min-[375px]:h-[19px] min-[375px]:w-[100px] sm:h-[23px] sm:w-[120px]" />
           </Link>
         </div>
 
-        <div className="brand-intro-nav-actions hidden items-center gap-5 md:flex lg:gap-7">
-          <div className="flex items-center gap-5 text-sm font-medium text-white/75 lg:gap-7">
+        <div className="brand-intro-nav-actions flex shrink-0 items-center gap-1 sm:gap-3 md:gap-7 lg:gap-9">
+          <div className="hidden items-center gap-5 text-sm font-medium text-white/75 md:flex lg:gap-7">
             <Link to="/work" aria-current={pathname === "/work" || pathname.startsWith("/case-study/") ? "page" : undefined} onClick={handleLinkClick} className={`nav-link transition-colors hover:text-primary ${pathname === "/work" || pathname.startsWith("/case-study/") ? "text-primary" : ""}`}>Work</Link>
             <Link to="/services" aria-current={pathname === "/services" ? "page" : undefined} onClick={handleLinkClick} className={`nav-link transition-colors hover:text-primary ${pathname === "/services" ? "text-primary" : ""}`}>Services</Link>
             <Link to="/about" aria-current={pathname === "/about" ? "page" : undefined} onClick={handleLinkClick} className={`nav-link transition-colors hover:text-primary ${pathname === "/about" ? "text-primary" : ""}`}>About</Link>
             <Link to="/careers" aria-current={pathname.startsWith("/careers") ? "page" : undefined} onClick={handleLinkClick} className={`nav-link hidden transition-colors hover:text-primary lg:inline ${pathname.startsWith("/careers") ? "text-primary" : ""}`}>Careers</Link>
           </div>
 
-          <div className="pl-2">
-            <button
-              type="button"
-              onClick={onContactClick}
-              className="motion-button min-h-[42px] whitespace-nowrap bg-primary px-4 py-2 text-sm font-bold text-black hover:bg-white/80"
-            >
-              Discuss your build
-            </button>
-          </div>
-        </div>
+          <button
+            ref={toggleRef}
+            type="button"
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center text-white/75 transition-colors hover:text-white md:hidden"
+            onClick={() => setIsOpen((current) => !current)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            aria-controls="primary-mobile-menu"
+          >
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
 
-        <button
-          ref={toggleRef}
-          type="button"
-          className="brand-intro-nav-actions flex min-h-[44px] min-w-[44px] items-center justify-center text-white/75 transition-colors hover:text-white md:hidden"
-          onClick={() => setIsOpen((current) => !current)}
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isOpen}
-          aria-controls="primary-mobile-menu"
-        >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+          <button
+            type="button"
+            onClick={() => {
+              setIsOpen(false);
+              onContactClick();
+            }}
+            className="motion-button min-h-[44px] whitespace-nowrap bg-primary px-3 py-2 text-[13px] font-bold text-black hover:bg-white/80 sm:px-4 sm:text-sm"
+          >
+            Let’s collaborate
+          </button>
+        </div>
       </div>
 
       {isOpen && (
@@ -145,16 +150,8 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
             <div
               ref={menuRef}
               id="primary-mobile-menu"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Site menu"
               className="motion-drawer absolute right-0 top-full z-40 flex h-[calc(100dvh-3.5rem)] w-full max-w-sm flex-col overflow-y-auto bg-background-dark p-5 shadow-2xl sm:h-[calc(100dvh-4rem)] sm:p-7 md:hidden"
             >
-              <div className="border-b border-white/10 pb-5">
-                <div className="font-mono text-xs uppercase tracking-[0.16em] text-white/50">Navigate</div>
-                <p className="mt-2 text-sm leading-relaxed text-slate-300">See our work, compare services, or speak directly with the team.</p>
-              </div>
-
               <div className="flex flex-col border-b border-white/10 py-3 text-xl font-bold text-white">
                 <Link to="/work" aria-current={pathname === "/work" || pathname.startsWith("/case-study/") ? "page" : undefined} onClick={handleLinkClick} className={`flex min-h-[54px] items-center justify-between border-b border-white/5 transition-colors hover:text-primary ${pathname === "/work" || pathname.startsWith("/case-study/") ? "text-primary" : ""}`}>Selected work <ArrowRight className="h-4 w-4" /></Link>
                 <Link to="/services" aria-current={pathname === "/services" ? "page" : undefined} onClick={handleLinkClick} className={`flex min-h-[54px] items-center justify-between border-b border-white/5 transition-colors hover:text-primary ${pathname === "/services" ? "text-primary" : ""}`}>Services <ArrowRight className="h-4 w-4" /></Link>
@@ -163,16 +160,6 @@ export default function Navbar({ onContactClick, onMenuOpenChange }: NavbarProps
               </div>
 
               <div className="mt-auto space-y-3 pt-6">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsOpen(false);
-                    onContactClick();
-                  }}
-                  className="motion-button flex min-h-[52px] w-full items-center justify-between bg-primary px-5 py-4 text-base font-bold text-black hover:bg-white/80"
-                >
-                  Discuss your build <ArrowRight className="h-4 w-4" />
-                </button>
                 <a
                   href={`https://wa.me/917498908702?text=${encodeURIComponent("Hey Userhood! I came across your work and want to chat about a potential collaboration.")}`}
                   onClick={() => trackAnalyticsEvent("whatsapp_click", { source: "navbar_mobile_menu" })}

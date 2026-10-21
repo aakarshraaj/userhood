@@ -20,18 +20,18 @@ export const jobs: Job[] = [
     type: "Internship",
     location: "Remote / Hybrid (India)",
     department: "Sales & Growth",
-    description: "We are looking for a highly motivated Sales Intern to join our growth team and help us build powerful connections with ambitious founders and enterprises. You'll be at the forefront of identifying high-value opportunities and learning the intricacies of B2B sales in a premium design and technology studio environment.",
+    description: "Help us meet founders and teams who need a partner to think through, design or build a product. You’ll research people and their businesses, write thoughtful outreach and learn how a conversation becomes a useful collaboration.",
     responsibilities: [
       "Identify and research potential leads, focusing on ambitious founders, startups, and enterprise clients.",
-      "Assist in crafting personalized, high-conversion outreach emails and messages.",
+      "Write personal outreach that connects a prospect’s product challenge to the work we do.",
       "Maintain and update the CRM with lead statuses and communication logs.",
       "Analyze market trends and competitor strategies to refine our pitch.",
       "Support the sales team in preparing presentations, pitch decks, and proposals."
     ],
     requirements: [
       "Strong communication skills, both written and verbal, with a knack for persuasive storytelling.",
-      "A proactive, hustle-oriented mindset with a genuine interest in technology, design, and product development.",
-      "Ability to thrive in a fast-paced, ambiguous startup environment.",
+      "Curiosity about people, businesses, design and how products are made.",
+      "Comfort asking questions, organising your work and following through on conversations.",
       "Basic understanding of B2B sales cycles and lead generation techniques is a plus.",
       "Available for a 3 to 6-month internship."
     ],

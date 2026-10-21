@@ -11,6 +11,17 @@ import {
 const distDirectory = path.join(projectRoot, "dist");
 const failures = [];
 
+// These redundant section captions were deliberately retired site-wide.
+// Inspect only standalone div/span text, never form labels or navigation links.
+const retiredSectionCaptions = new Set([
+  "Services", "Selected work", "Join the studio", "How we work",
+  "Start a conversation", "What you leave with", "What you can hire us for",
+  "How we get there", "The team", "The studio", "Work with us", "Working together",
+  "A closer look", "The question", "What took shape", "The context", "The thinking",
+  "What we had to get right", "About this case study", "Design and engineering",
+  "Team contribution", "Navigate",
+]);
+
 const check = (condition, message) => {
   if (!condition) failures.push(message);
 };
@@ -77,6 +88,10 @@ for (const page of metadata.pages) {
   }
 
   const canonical = getCanonicalUrl(page);
+  for (const match of html.matchAll(/<(div|span)\b[^>]*>([^<>]*)<\/\1>/gi)) {
+    const caption = match[2].replace(/\s+/g, " ").trim();
+    check(!retiredSectionCaptions.has(caption), `${page.output}: retired decorative caption "${caption}" has returned`);
+  }
   const titleMatches = [...html.matchAll(/<title>([\s\S]*?)<\/title>/gi)].map((match) => match[1]);
   checkSingleValue(titleMatches, escapeHtml(page.title), "title", page.output);
   checkSingleValue(getCanonicalValues(html), canonical, "canonical link", page.output);

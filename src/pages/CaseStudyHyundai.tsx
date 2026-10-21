@@ -7,7 +7,8 @@ const caseStudy: CaseStudyData = {
   brand: "Hyundai Global",
   category: "Automotive commerce",
   relationship: "Team experience",
-  title: "Designing confidence into a high-consideration vehicle purchase.",
+  title: "Making a car purchase easier to think through.",
+  question: "What does someone need to understand before choosing a car online?",
   summary:
     "A digital buying journey connecting vehicle discovery, configuration, finance exploration, and dealership fulfilment.",
   facts: [
@@ -30,7 +31,7 @@ const caseStudy: CaseStudyData = {
     "Make the journey feel simple without pretending the underlying purchase is simple. Every reduction in interface complexity still had to preserve consequential information and a credible path to a real dealer.",
   decisions: [
     {
-      title: "Sequence commitment instead of demanding it.",
+      title: "Let people understand before asking them to commit.",
       detail:
         "The contribution focused on a staged journey: explore, configure, understand financing, then move into a dealer-supported commitment.",
     },
@@ -40,12 +41,12 @@ const caseStudy: CaseStudyData = {
         "Variant, colour, feature, and price were treated as one connected choice system that made change, cost, and availability easier to compare.",
     },
     {
-      title: "Make finance legible before it becomes a form.",
+      title: "Explain finance before asking for details.",
       detail:
         "The work treated finance exploration as a decision aid before any application flow or request for personal information.",
     },
     {
-      title: "Design the dealer handoff as a product moment.",
+      title: "Keep the conversation going at the dealership.",
       detail:
         "The journey direction preserved context between digital intent and physical fulfilment instead of ending when the organisation changed channels.",
     },

@@ -114,9 +114,9 @@ export default function JobDetail() {
 
                     <div className="lg:col-span-4">
                         <div className="content-card sticky top-32 p-8 backdrop-blur-sm">
-                            <h2 className="text-2xl font-medium mb-4">Ready to build?</h2>
+                            <h2 className="text-2xl font-medium mb-4">Sound like your kind of work?</h2>
                             <p className="text-white/70 mb-8 leading-relaxed">
-                                We're looking for ambitious builders who want to make a real impact. If you think you're a fit, we want to hear from you.
+                                Tell us about yourself, what interests you about the role and what you would bring to the team.
                             </p>
 
                             <a

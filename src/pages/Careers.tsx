@@ -14,17 +14,13 @@ export default function Careers() {
 
             <div className="max-w-[1440px] mx-auto px-6 md:px-12 xl:px-24 relative z-10">
                 <div className="max-w-4xl">
-                    <div className="font-mono text-xs text-primary tracking-widest uppercase mb-6">
-                        open_positions
-                    </div>
-
                     <h1 className="text-4xl sm:text-5xl md:text-7xl font-medium tracking-tight mb-8">
-                        Build the future <br />
-                        <span className="text-white/75">with Userhood.</span>
+                        Bring a mind <br />
+                        <span className="text-white/75">of your own.</span>
                     </h1>
 
                     <p className="text-lg md:text-xl text-white/75 mb-16 max-w-2xl leading-relaxed">
-                        We value clear thinking, direct communication, and people who care about the quality of the work. Inflated titles and performative busyness do not impress us.
+                        Have a point of view. Be willing to change it. Care enough to make the work better. If that sounds like your kind of team, here’s where you could fit.
                     </p>
                 </div>
 

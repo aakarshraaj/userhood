@@ -15,27 +15,21 @@ const founders = [
 
 export default function FounderOrigin() {
   return (
-    <section className="section-band section-band-raised px-5 py-20 md:px-8 md:py-28">
-      <div className="motion-reveal mx-auto grid max-w-[1200px] gap-10 md:grid-cols-12 md:items-center md:gap-14">
+    <section className="section-band section-band-raised px-5 py-16 md:px-8 md:py-24">
+      <div className="motion-reveal mx-auto grid max-w-[1440px] gap-10 md:grid-cols-12 md:items-center md:gap-14">
         <div className="md:col-span-5">
-          <div className="font-mono text-xs uppercase tracking-[0.2em] text-white/50">[ 04 // ACCOUNTABILITY ]</div>
-          <h2 className="mt-6 text-4xl font-black leading-[0.95] tracking-tighter text-white/55 sm:text-5xl md:text-6xl">
-            The people in the room stay <span className="text-white">on the work.</span>
+          <h2 className="text-4xl font-medium leading-tight tracking-[-0.035em] text-white md:text-5xl">
+            Good company for big questions.
           </h2>
-          <div className="mt-6 space-y-4 text-base font-normal leading-relaxed text-slate-300 md:text-lg">
-            <p>
-              Userhood was built around a simple operating decision: product design and engineering should share the same release, the same constraints, and the same accountability.
-            </p>
-            <p>
-              The founders remain involved in product direction and delivery. The wider team is compact by design, so context does not disappear between a sales conversation and the build.
-            </p>
-          </div>
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-white/65 md:text-lg">
+            Product people, designers and engineers. Opinionated enough to challenge an idea. Close enough to the work to make it happen.
+          </p>
 
           <Link
             to="/about"
             className="mt-7 inline-flex min-h-[48px] items-center gap-3 text-sm font-bold text-white transition-colors hover:text-white/65"
           >
-            Meet the complete team <ArrowRight className="h-4 w-4" />
+            Meet the full team <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 

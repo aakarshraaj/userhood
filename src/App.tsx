@@ -5,7 +5,6 @@ import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 import ContactModal from "./components/ContactModal";
 import { AnalyticsConsentBanner } from "./components/AnalyticsConsent";
-import StickyContactCTA from "./components/StickyContactCTA";
 import BrandIntro from "./components/BrandIntro";
 import { getPageMetadata, getPageSEO, SITE_METADATA } from "./data/siteMetadata";
 
@@ -16,10 +15,8 @@ import { useSEO } from "./utils/seo";
 
 // Homepage sections below the fold are lazy loaded.
 const SelectedWork = lazy(() => import("./components/SelectedWork"));
-const TwelveWeekBuild = lazy(() => import("./components/TwelveWeekBuild"));
-const EngagementModels = lazy(() => import("./components/EngagementModels"));
+const Capabilities = lazy(() => import("./components/Capabilities"));
 const FounderOrigin = lazy(() => import("./components/FounderOrigin"));
-const FinalCTA = lazy(() => import("./components/FinalCTA"));
 
 const CaseStudyMitsubishi = lazy(() => import("./pages/CaseStudyMitsubishi"));
 const CaseStudyHyundai = lazy(() => import("./pages/CaseStudyHyundai"));
@@ -163,12 +160,10 @@ export default function App() {
                 <Route path={getPageMetadata("home").path} element={
                   <main data-page-id="home" className="brand-intro-page-content">
                     <HomeSEO />
-                    <Hero onContactClick={() => handleContactClick('hero')} />
+                    <Hero />
                     <SelectedWork />
-                    <TwelveWeekBuild />
-                    <EngagementModels onContactClick={() => handleContactClick('engagement_models')} />
+                    <Capabilities />
                     <FounderOrigin />
-                    <FinalCTA onContactClick={() => handleContactClick('final_cta')} />
                   </main>
                 } />
                 <Route path={getPageMetadata("work").path} element={<Work />} />
@@ -189,10 +184,6 @@ export default function App() {
           </div>
 
           <Footer />
-          <StickyContactCTA
-            onContactClick={() => handleContactClick('sticky_mobile')}
-            suppressed={isContactOpen || isMenuOpen}
-          />
           <AnalyticsConsentBanner suppressed={isContactOpen || isMenuOpen} />
           <div id="route-announcer" className="sr-only" aria-live="polite" aria-atomic="true" />
         </div>

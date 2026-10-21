@@ -16,27 +16,27 @@ const stages: CommerceStage[] = [
   {
     index: "01",
     eyebrow: "Merchandising",
-    title: "Governed catalogue",
-    signal: "10 live",
-    detail: "Products, collections, campaign boundaries, permanent URLs, and commercial identifiers resolve from one catalogue model.",
-    facts: ["3 collection systems", "Stable product IDs"],
+    title: "One catalogue",
+    signal: "10 products",
+    detail: "Collections have their own character, while products, links and shop rules stay connected.",
+    facts: ["3 collections", "Captured product snapshot"],
     icon: Package,
   },
   {
     index: "02",
     eyebrow: "Customer selection",
-    title: "Responsive bag state",
+    title: "A bag that remembers",
     signal: "M · 01",
-    detail: "The bag preserves product choice, size, and quantity for a fast shopping experience. Its price remains only a display snapshot.",
+    detail: "Keep the chosen product, size and quantity together. Check the current price again when the shopper proceeds.",
     facts: ["Size + quantity", "Display state only"],
     icon: ShoppingBag,
   },
   {
     index: "03",
     eyebrow: "Commerce authority",
-    title: "Server-priced quote",
+    title: "A checked total",
     signal: "₹2,499",
-    detail: "Checkout reloads every product, checks live status, rebuilds the amount, and applies commercial rules away from browser control.",
+    detail: "The server checks each product and calculates the total using the current catalogue and order rules.",
     facts: ["Catalogue repriced", "Order rules applied"],
     icon: Server,
     authority: true,
@@ -44,9 +44,9 @@ const stages: CommerceStage[] = [
   {
     index: "04",
     eyebrow: "Private lifecycle",
-    title: "Identity to order",
+    title: "A personal account",
     signal: "OTP → order",
-    detail: "Passwordless sessions connect customer identity, addresses, order history, delivery updates, and transactional communication.",
+    detail: "A code-based sign-in connects a customer to their addresses, order history and updates without another password to remember.",
     facts: ["Private account state", "Server-led lifecycle"],
     icon: UserRound,
   },
@@ -78,13 +78,12 @@ export default function TirchCommerceEngine() {
       <div className="motion-reveal relative mx-auto max-w-[1280px]">
         <div className="grid gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
-            <div className="font-mono text-xs font-bold uppercase tracking-[0.17em] text-[var(--color-primary)]">Tirch signature system // Commerce engine</div>
-            <h2 id="tirch-commerce-engine-title" className="mt-5 max-w-5xl text-4xl font-black leading-[0.92] tracking-tighter md:text-7xl">
-              The storefront is the surface. This is the engine underneath it.
+            <h2 id="tirch-commerce-engine-title" className="max-w-5xl text-4xl font-black leading-[0.92] tracking-tighter md:text-7xl">
+              Every step of shopping has to belong together.
             </h2>
           </div>
           <p className="max-w-lg text-base font-medium leading-relaxed text-black/65 md:col-span-4 md:justify-self-end md:text-lg">
-            One transaction crosses merchandising, client state, authoritative pricing, customer identity, and operational fulfilment without confusing their responsibilities.
+            The product page, bag, checkout and account each have a job. Here is how they connect, and where the system checks the details.
           </p>
         </div>
 
@@ -123,7 +122,7 @@ export default function TirchCommerceEngine() {
         <div className="mt-14 grid border border-black/20 bg-black md:grid-cols-2">
           <article className="bg-[#f5f1ea] p-7 md:p-10">
             <div className="flex items-center gap-3 font-mono text-xs font-bold uppercase tracking-[0.15em] text-black/50">
-              <ShoppingBag className="h-4 w-4" /> The browser may carry
+              <ShoppingBag className="h-4 w-4" /> What the shopper chooses
             </div>
             <ul className="mt-7 grid gap-px bg-black/10 sm:grid-cols-2">
               {browserState.map((item) => (
@@ -134,7 +133,7 @@ export default function TirchCommerceEngine() {
 
           <article className="bg-[#151512] p-7 text-white md:p-10">
             <div className="flex items-center gap-3 font-mono text-xs font-bold uppercase tracking-[0.15em] text-[var(--color-primary)]">
-              <Database className="h-4 w-4" /> The server owns the promise
+              <Database className="h-4 w-4" /> What the server checks
             </div>
             <ul className="mt-7 grid gap-px bg-white/10 sm:grid-cols-2">
               {serverState.map((item) => (

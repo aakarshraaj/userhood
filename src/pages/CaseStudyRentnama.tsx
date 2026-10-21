@@ -8,9 +8,10 @@ const caseStudy: CaseStudyData = {
   brand: "Rentnama",
   category: "Rental intelligence platform",
   relationship: "Product build",
-  title: "Building a public price layer for India’s rental market.",
+  title: "What people pay. Not what listings ask.",
   summary:
-    "A society-first rental intelligence product that helps people see what renters actually pay, contribute first-hand data, and improve the answer for the next person.",
+    "The listing tells you what the landlord wants. Rentnama shows what tenants report paying, building by building. A different starting point for the same big decision.",
+  question: "What if renters could see what people actually pay in the building they’re considering?",
   facts: [
     { label: "Core job", value: "Society-level rent answers" },
     { label: "Delivery", value: "Strategy, design, web, data, operations" },
@@ -28,29 +29,29 @@ const caseStudy: CaseStudyData = {
     priority: true,
   },
   proofNote:
-    "These live screens show what was designed and shipped. They do not claim product-market fit, city liquidity, adoption, or revenue.",
+    "Screens and counts reflect the captured product. They show the experience and its evidence, not independently measured business results.",
   outcome: {
-    title: "Rent decisions can begin with what tenants paid instead of what owners asked.",
+    title: "A rent answer with something behind it.",
     summary:
-      "The result is a live public intelligence layer: renters can search a society, inspect the evidence behind its answer, compare nearby places, and contribute the next verified rent without exposing their flat number.",
+      "Search a building, see the reported rents and check how much evidence supports the answer. Compare nearby places or add your own rent without sharing your flat number.",
     metrics: [
-      { value: "178", label: "first-hand rent reports", detail: "Live Pune product snapshot" },
-      { value: "146", label: "societies with rent evidence", detail: "Live Pune product snapshot" },
-      { value: "72", label: "localities represented", detail: "Live Pune product snapshot" },
+      { value: "178", label: "first-hand rent reports", detail: "Captured Pune product snapshot" },
+      { value: "146", label: "societies with rent evidence", detail: "Captured Pune product snapshot" },
+      { value: "72", label: "localities represented", detail: "Captured Pune product snapshot" },
       { value: "5", label: "reports behind the featured society answer", detail: "Life Republic dossier" },
     ],
   },
   context:
     "Rental portals show asking prices. Rentnama needed to answer what tenants actually pay at a society, how recent the evidence is, and how much confidence it deserves.",
   challenge:
-    "Be useful before data density is even, while avoiding false certainty, wrong building identity, exposed tenant details, and premature city expansion.",
+    "Some buildings have plenty of reports; others have one or none. The design needs to make that difference obvious while protecting the people who contribute.",
   decisions: [
     {
-      title: "Make the society the unit of usefulness.",
+      title: "Start with the building, not the whole city.",
       story: {
-        before: "City-level discovery produced broad answers with little decision value.",
-        intervention: "Search resolves a stable society or locality, then leads to one evidence-backed answer.",
-        consequence: "Every useful page becomes a target for denser local evidence.",
+        before: "A city-wide rent average says little about the building someone is considering.",
+        intervention: "Let people search for a society or locality and see the reports for that place.",
+        consequence: "The answer stays close to the decision the renter is trying to make.",
       },
       media: {
         label: "Live product // Search to society answer",
@@ -71,11 +72,11 @@ const caseStudy: CaseStudyData = {
       },
     },
     {
-      title: "Reduce contribution friction without corrupting place identity.",
+      title: "Make sharing useful without making it invasive.",
       story: {
         before: "Free-text submissions could attach rent to the wrong building or collect invasive details.",
-        intervention: "Known societies reuse canonical identity; unknown places require map confirmation. Flat numbers are never requested.",
-        consequence: "Contribution gets faster without corrupting place identity or privacy.",
+        intervention: "Reuse known building names and confirm new places on the map. Never ask for a flat number.",
+        consequence: "A report can help the next renter without exposing someone’s exact home.",
       },
       media: {
         label: "Live product // Privacy-bounded contribution",
@@ -86,11 +87,11 @@ const caseStudy: CaseStudyData = {
       },
     },
     {
-      title: "Turn each useful answer into the next answer.",
+      title: "Give people a reason to come back and contribute.",
       story: {
-        before: "A useful answer was a dead end.",
-        intervention: "Sharing, watches, contribution rewards, and density operations connect discovery to the next report.",
-        consequence: "Society answers recruit more evidence and direct operating effort where it matters.",
+        before: "Reading an answer does not automatically lead to another report.",
+        intervention: "Let people share an answer, watch a building and contribute their own experience.",
+        consequence: "The product offers ways to stay involved as the information changes.",
       },
     },
   ],
@@ -104,12 +105,6 @@ const caseStudy: CaseStudyData = {
   ],
   evidenceBoundary:
     "The live product and implementation verify the flows, evidence rules, privacy boundaries, and operating tools described here. They do not prove product-market fit, city liquidity, adoption, revenue, or percentage improvements; those require production evidence over time.",
-  performanceMetrics: [
-    { value: "42%", label: "Search → society answer", definition: "Share of searches that reach a useful society or locality result." },
-    { value: "18%", label: "Answer → contribution start", definition: "Contribution starts originating from society and map surfaces." },
-    { value: "2.4×", label: "Repeat-view lift", definition: "Returning-user frequency for watched or revisited societies." },
-    { value: "31%", label: "Answer sharing rate", definition: "Share and copy-link rate from evidence-backed rent answers." },
-  ],
   liveProduct: {
     label: "Visit rentnama.in",
     href: "https://rentnama.in/",

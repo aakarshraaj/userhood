@@ -9,8 +9,7 @@ export default function NotFound() {
   return (
     <main data-page-id="notFound" className="flex min-h-screen items-center bg-background-dark px-5 pb-24 pt-32 text-white">
       <div className="mx-auto w-full max-w-[1200px]">
-        <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">[ 404 // ROUTE_NOT_FOUND ]</div>
-        <h1 className="mt-7 max-w-4xl text-5xl font-black leading-[0.9] tracking-tighter sm:text-7xl md:text-8xl">
+        <h1 className="max-w-4xl text-5xl font-black leading-[0.9] tracking-tighter sm:text-7xl md:text-8xl">
           This route leads <span className="text-primary">nowhere useful.</span>
         </h1>
         <p className="mt-8 max-w-xl text-lg font-normal leading-relaxed text-slate-300">

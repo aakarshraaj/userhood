@@ -19,7 +19,6 @@ export default function Privacy() {
         </div>
 
         <header className="mb-24">
-          <div className="font-mono text-xs text-primary mb-4 uppercase tracking-[0.3em]">[ LEGAL_DOCUMENT // 0x01 ]</div>
           <h1 className="text-6xl font-black text-white tracking-tighter">Privacy Policy.</h1>
           <p className="text-white/70 font-mono text-xs mt-4 uppercase tracking-[0.14em]">Last updated: 5 September 2026</p>
         </header>

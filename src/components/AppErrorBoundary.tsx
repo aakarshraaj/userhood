@@ -25,8 +25,7 @@ export default class AppErrorBoundary extends Component<AppErrorBoundaryProps, A
     return (
       <main className="flex min-h-screen items-center bg-background-dark px-5 py-24 text-white">
         <div className="mx-auto w-full max-w-3xl border border-white/10 bg-surface p-8 sm:p-12">
-          <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">[ RECOVERY // RENDER_FAILURE ]</div>
-          <h1 className="mt-6 text-4xl font-black tracking-tighter sm:text-6xl">This page failed to load cleanly.</h1>
+          <h1 className="text-4xl font-black tracking-tighter sm:text-6xl">This page failed to load cleanly.</h1>
           <p className="mt-6 max-w-xl text-base font-light leading-relaxed text-slate-300">
             Your information has not been submitted. Reload the page to fetch a fresh copy, or return to the homepage.
           </p>
